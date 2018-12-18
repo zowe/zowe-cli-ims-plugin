@@ -1,0 +1,20 @@
+# Example properties file for IMS plugin
+# Copy this to custom_properties.yaml in the same directory and modify to fill
+# in your customized connection and test details
+
+#-----------------------------------------------------------------------------#
+#  find and replace the following:                                            #
+#                                                                             #
+#  my-user-name    - This is your TSO user ID to connect to IMS               #
+#  my-password     - This is your TSO password                                #
+#  my-ims-host     - This is the hostname for the IMS server                  #
+#  my-ims-port     - this is the port for the IMS server                      #
+###############################################################################
+
+
+#  see bright profiles create ims --help for more info
+cmci:
+      user: my-user-name
+      password: my-password
+      host: my-ims-host
+      port: my-ims-port
