@@ -15,31 +15,55 @@ import { ImsConstants } from "../../constants";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
 
 /**
- * Get resources on in IMS through REST API
- * @param {AbstractSession} session - the session to connect to CMCI with
- * @param {IResourceParms} parms - parameters for getting resources
+ * Query program in IMS through REST API
+ * @param {AbstractSession} session - the session to connect to IMS with
+ * @param {IResourceParms} parms - parameters for querying a program
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
- * @throws {ImperativeError} IMS resource name not defined or blank
+ * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryResource(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Resource name", "IMS resource name is required");
+export async function queryProgram(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
     const imsPlex = "/";
-    let cmciResource = "/";
+    let imsProgram = "/";
 
-    if (parms.criteria != null) {
-        cmciResource = cmciResource + delimiter + "CRITERIA=(" + encodeURIComponent(parms.criteria) + ")";
+    if (parms.show != null) {
+        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
         delimiter = "&";
     }
 
-    if (parms.parameter != null) {
-        cmciResource = cmciResource + delimiter + "PARAMETER=" + encodeURIComponent(parms.parameter);
+    return ImsRestClient.getExpectParsedXml(session, imsProgram, []);
+}
+
+/**
+ * Query program in IMS through REST API
+ * @param {AbstractSession} session - the session to connect to IMS with
+ * @param {IResourceParms} parms - parameters for querying a program
+ * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} IMS program name not defined or blank
+ * @throws {ImperativeError} ImsRestClient request fails
+ */
+export async function queryTransaction(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Transaction name", "IMS transaction name is required");
+
+    let delimiter = "?"; // initial delimiter
+
+    Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
+
+    const imsPlex = "/";
+    let imsProgram = "/";
+
+    if (parms.show != null) {
+        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+        delimiter = "&";
     }
-    return ImsRestClient.getExpectParsedXml(session, cmciResource, []);
+
+    return ImsRestClient.getExpectParsedXml(session, imsProgram, []);
 }

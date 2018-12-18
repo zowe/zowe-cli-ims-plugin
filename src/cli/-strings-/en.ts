@@ -140,22 +140,36 @@ export default {
     },
     QUERY: {
         SUMMARY: "Query resources from IMS",
-        DESCRIPTION: "Query resources (for example, programs or transactions) from IMS.",
+        DESCRIPTION: "Query programs from IMS.",
         RESOURCES: {
-            RESOURCE: {
-                DESCRIPTION: "Query resources (for example, programs or transactions) from IMS.",
+            PROGRAM: {
+                DESCRIPTION: "Query programs from IMS.",
                 POSITIONALS: {
-                    RESOURCENAME: "The name of the resource to query.",
+                    PROGRAMNAME: "The name of the program to query.",
                 },
                 OPTIONS: {
-                    CRITERIA: "The criteria by which to filter the resource",
-                    PARAMETER: "The parameter by which to refine the resource"
+                    SHOW: "Specifies the program output fields to be returned"
                 },
                 MESSAGES: {
-                    SUCCESS: "The resource(s) for '%s' were retrieved successfully."
+                    SUCCESS: "The information for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Query program resources from the region named MYREGION",
+                    EX1: "Query program information for program named PGM123",
+                }
+            },
+            TRANSACTION: {
+                DESCRIPTION: "Query transactions from IMS.",
+                POSITIONALS: {
+                    TRANSACTIONNAME: "The name of the transaction to query.",
+                },
+                OPTIONS: {
+                    SHOW: "Specifies the transactions output fields to be returned"
+                },
+                MESSAGES: {
+                    SUCCESS: "The information for '%s' were retrieved successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Query transaction information for transaction TRN12",
                 }
             }
         }

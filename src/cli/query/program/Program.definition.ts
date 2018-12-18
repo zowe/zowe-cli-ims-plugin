@@ -9,35 +9,35 @@
 *                                                                                 *
 */
 
-import { ImsSession } from "../ImsSession";
 import { ICommandDefinition } from "@brightside/imperative";
-import { ProgramDefinition } from "./program/Program.definition";
-import { TransactionDefinition } from "./transaction/Transaction.definition";
 
-import i18nTypings from "../-strings-/en";
+import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../-strings-/en").default as typeof i18nTypings).QUERY;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
 
-/**
- * Definition for the "query" group of commands under the IMS plugin
- */
-const definition: ICommandDefinition = {
-    name: "query",
-    summary: strings.SUMMARY,
+export const ProgramDefinition: ICommandDefinition = {
+    name: "program", aliases: ["prog"],
     description: strings.DESCRIPTION,
-    type: "group",
-    children: [ProgramDefinition,
-               TransactionDefinition],
-    passOn: [
+    handler: __dirname + "/Program.handler",
+    type: "command",
+    positionals: [{
+        name: "programName",
+        description: strings.POSITIONALS.PROGRAMNAME,
+        type: "string",
+        required: true
+    }],
+    outputFormatOptions: true,
+    options: [
         {
-            property: "options",
-            value: ImsSession.IMS_CONNECTION_OPTIONS,
-            merge: true,
-            ignoreNodes: [
-                {type: "group"}
-            ]
-        }
-    ]
+            name: "show",
+            description: strings.OPTIONS.SHOW,
+            type: "string",
+            defaultValue: "ALL"
+        }],
+    profile: {optional: ["ims"]},
+    examples: [{
+        description: strings.EXAMPLES.EX1,
+        options: "PGM123"
+    }]
 };
-export = definition;

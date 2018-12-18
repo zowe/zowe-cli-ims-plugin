@@ -39,7 +39,7 @@ export class ImsSession {
         aliases: ["P"],
         description: "The IMS server port.",
         type: "number",
-        defaultValue: 443,
+        defaultValue: 999,
         group: ImsSession.IMS_CONNECTION_OPTION_GROUP
     };
 
@@ -116,7 +116,6 @@ export class ImsSession {
             protocol: "http",
         });
     }
-
 
     private static get log(): Logger {
         return Logger.getAppLogger();
