@@ -14,7 +14,7 @@ import { ICommandDefinition } from "@brightside/imperative";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).GET.RESOURCES.RESOURCE;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.RESOURCE;
 
 export const ResourceDefinition: ICommandDefinition = {
     name: "resource", aliases: ["res"],
@@ -49,12 +49,3 @@ export const ResourceDefinition: ICommandDefinition = {
     ]
 };
 
-// These are GET REST API options available (for future)
-// options: [
-//     ResourceOptions.count,
-//     ResourceOptions.orderby,
-//     ResourceOptions.descending,
-//     ResourceOptions.nodiscard,
-//     ResourceOptions.summonly,
-//     ResourceOptions.showApiResponse
-// ]

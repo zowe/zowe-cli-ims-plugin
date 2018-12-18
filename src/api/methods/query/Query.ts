@@ -23,12 +23,12 @@ import { IIMSApiResponse, IResourceParms } from "../../doc";
  * @throws {ImperativeError} IMS resource name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function getResource(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
+export async function queryResource(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
     ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Resource name", "IMS resource name is required");
 
     let delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to get resource(s) with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
     const imsPlex = "/";
     let cmciResource = "/";

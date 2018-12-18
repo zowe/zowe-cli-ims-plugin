@@ -16,13 +16,13 @@ import { ResourceDefinition } from "./resource/Resource.definition";
 import i18nTypings from "../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../-strings-/en").default as typeof i18nTypings).GET;
+const strings = (require("../-strings-/en").default as typeof i18nTypings).QUERY;
 
 /**
- * Definition for the "get" group of commands under the IMS plugin
+ * Definition for the "query" group of commands under the IMS plugin
  */
 const definition: ICommandDefinition = {
-    name: "get",
+    name: "query",
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",

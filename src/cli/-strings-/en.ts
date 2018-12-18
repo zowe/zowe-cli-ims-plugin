@@ -138,18 +138,16 @@ export default {
             }
         }
     },
-    GET: {
-        SUMMARY: "Get resources from IMS",
-        DESCRIPTION: "Get resources (for example, programs or transactions) from IMS through IBM CMCI.",
+    QUERY: {
+        SUMMARY: "Query resources from IMS",
+        DESCRIPTION: "Query resources (for example, programs or transactions) from IMS.",
         RESOURCES: {
             RESOURCE: {
-                DESCRIPTION: "Get resources (for example, programs or transactions) from IMS.",
+                DESCRIPTION: "Query resources (for example, programs or transactions) from IMS.",
                 POSITIONALS: {
-                    RESOURCENAME: "The name of the resource to get.",
+                    RESOURCENAME: "The name of the resource to query.",
                 },
                 OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to get the resources",
-                    IMSPLEX: "The name of the IMSPlex from which to get the resources",
                     CRITERIA: "The criteria by which to filter the resource",
                     PARAMETER: "The parameter by which to refine the resource"
                 },
@@ -157,14 +155,7 @@ export default {
                     SUCCESS: "The resource(s) for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Get program resources from the region named MYREGION",
-                    EX2: "Get local transaction resources from the region named MYREGION",
-                    EX3: "Get local file resources from the region named MYREGION",
-                    EX4: "Get program definition resources from the CSD group named GRP1 and the region named MYREGION",
-                    EX5: "Get transaction definition resources from the CSD group named GRP1 and the region named MYREGION",
-                    EX6: "Get program resources that start with the name PRG from the region named MYREGION",
-                    EX7: "Get a local transaction resource named TRAN from the region named MYREGION",
-                    EX8: "Get program resources that start with the name MYPRG from the region named MYREGION and display various fields as a table",
+                    EX1: "Query program resources from the region named MYREGION",
                 }
             }
         }
