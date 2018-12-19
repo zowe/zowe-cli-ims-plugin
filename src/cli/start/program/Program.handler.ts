@@ -11,16 +11,16 @@
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
     ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { queryProgram, IIMSApiResponse } from "../../../api";
+import { startProgram, IIMSApiResponse } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).START.RESOURCES.PROGRAM;
 
 /**
- * Command handler for defining CICS programs via CMCI
+ * Command handler for starting IMS programs
  * @export
  * @class ProgramHandler
  * @implements {ICommandHandler}
@@ -31,15 +31,14 @@ export default class ProgramHandler extends ImsBaseHandler {
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Querying program defined to IMS",
+            statusMessage: "Start program defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await queryProgram(session, {
-            name: params.arguments.programName,
-            show: params.arguments.show
+        const response = await startProgram(session, {
+            name: params.arguments.programName
         });
 
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);

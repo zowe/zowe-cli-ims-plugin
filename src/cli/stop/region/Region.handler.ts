@@ -11,38 +11,37 @@
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
     ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { queryProgram, IIMSApiResponse } from "../../../api";
+import { stopRegion, IIMSApiResponse } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).STOP.RESOURCES.REGION;
 
 /**
- * Command handler for defining CICS programs via CMCI
+ * Command handler for stopping IMS regions
  * @export
- * @class ProgramHandler
+ * @class RegionHandler
  * @implements {ICommandHandler}
  */
-export default class ProgramHandler extends ImsBaseHandler {
+export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
                                     session: AbstractSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Querying program defined to IMS",
+            statusMessage: "Stop region defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await queryProgram(session, {
-            name: params.arguments.programName,
-            show: params.arguments.show
+        const response = await stopRegion(session, {
+            name: params.arguments.regionName
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionName);
         return response;
     }
 }

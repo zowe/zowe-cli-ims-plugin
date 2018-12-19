@@ -21,7 +21,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
 /**
  * Command handler for defining IMS programs
  * @export
- * @class ProgramHandler
+ * @class TransactionHandler
  * @implements {ICommandHandler}
  */
 export default class TransactionHandler extends ImsBaseHandler {
