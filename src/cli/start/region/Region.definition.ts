@@ -22,8 +22,8 @@ export const RegionDefinition: ICommandDefinition = {
     handler: __dirname + "/Region.handler",
     type: "command",
     positionals: [{
-        name: "regionName",
-        description: strings.POSITIONALS.REGIONNAME,
+        name: "name",
+        description: strings.POSITIONALS.NAME,
         type: "string",
         required: true
     }],
