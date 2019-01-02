@@ -50,35 +50,35 @@ Before you install the plug-in, meet the following prerequisites:
 1.  Meet the prerequisites.
 2.  Install the plug-in:
     ```
-    zowe plugins install @brightside/cics
+    zowe plugins install @zowe/ims
     ``` 
 3.  (Optional) Verify the installation:
     ```
-    zowe plugins validate @brightside/cics
+    zowe plugins validate @zowe/ims
     ```
     When you install the plug-in successfully, the following message displays:
     ```
-    Validation results for plugin 'cics':
-    Successfully validated.
+    _____ Validation results for plugin '@zowe/ims' _____
+    This plugin was successfully validated. Enjoy the plugin.
     ``` 
     **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.  
 
 4.  [Create a user profile](#create-a-user-profile).
 
 ## Create a User Profile
-You can create a `cics` user profile to avoid typing your connection details on every command. A `cics` profile contains the host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
+You can create a `ims` user profile to avoid typing your connection details on every command. A `cics` profile contains the host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
 
 **Follow these steps:**
 1.  Create a IMS profile: 
     ```
-    zowe profiles create cics <profile name> <host> <port> <user> <password>
+    zowe profiles create ims <profile name> <host> <port> <user> <password>
     ```
     The result of the command displays as a success or failure message. You can use your profile when you issue commands in the cics command group.
 
 **Tip:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
 
 ```
-zowe profiles create cics -h
+zowe profiles create ims -h
 ```
 
 ## Run Tests
@@ -90,7 +90,7 @@ For information about running automated, unit, and system and integration tests 
 **Follow these steps:**
 1.  To uninstall the plug-in from a base application, issue the following command:
     ```
-    zowe plugins uninstall @brightside/cics
+    zowe plugins uninstall @zowe/ims
     ```
 After the uninstallation process completes successfully, the product no longer contains the plug-in configuration.
 
