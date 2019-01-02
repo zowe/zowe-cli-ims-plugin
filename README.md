@@ -1,5 +1,5 @@
 # Zowe CLI Plug-in for IBM® IMS® 
-The Zowe CLI Plug-in for IBM® IMS® lets you extend Zowe CLI to interact with IBM IMS programs and transactions. The plug-in uses the IBM IMS Management Client Interface (CMCI) API to achieve the interaction with IMS. For more information, see [IMS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
+The Zowe CLI Plug-in for IBM® IMS® lets you extend Zowe CLI to interact with IBM IMS programs and transactions. The plug-in uses the IBM IMS Management Client Interface API to achieve the interaction with IMS. For more information, see [IMS management client interface](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) on the IBM Knowledge Center.
 
 As an application developer, you can use the plug-in to perform various IMS-related tasks, such as the following:
 
@@ -66,14 +66,14 @@ Before you install the plug-in, meet the following prerequisites:
 4.  [Create a user profile](#create-a-user-profile).
 
 ## Create a User Profile
-You can create a `ims` user profile to avoid typing your connection details on every command. A `cics` profile contains the host, port, username, and password for the IBM CMCI server of your choice. You can create multiple profiles and switch between them as needed.
+You can create an `ims` user profile to avoid typing your connection details on every command. An `ims` profile contains the host, port, username, and password for the IMS API server of your choice. You can create multiple profiles and switch between them as needed.
 
 **Follow these steps:**
 1.  Create a IMS profile: 
     ```
     zowe profiles create ims <profile name> <host> <port> <user> <password>
     ```
-    The result of the command displays as a success or failure message. You can use your profile when you issue commands in the cics command group.
+    The result of the command displays as a success or failure message. You can use your profile when you issue commands in the ims command group.
 
 **Tip:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
 
