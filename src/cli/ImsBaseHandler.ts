@@ -11,7 +11,7 @@
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
-import { ImsSession } from "./ImsSession";
+import { ImsSessionUtils } from "./ImsSessionUtils";
 
 /**
  * This class is used by the various ims handlers as the base class for their implementation.
@@ -28,7 +28,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         const profile = commandParameters.profiles.get("ims", false) || {};
-        const session = ImsSession.createBasicImsSessionFromArguments(commandParameters.arguments);
+        const session = ImsSessionUtils.createBasicImsSessionFromArguments(commandParameters.arguments);
 
         const response = await this.processWithSession(commandParameters, session, profile);
 

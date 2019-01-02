@@ -10,12 +10,13 @@
 */
 
 import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@brightside/imperative";
+import { ImsSession } from "../api/rest/ImsSession";
 
 /**
- * Utility Methods for Brightside
+ * Utility Methods for Zowe IMS plugin
  * @export
  */
-export class ImsSession {
+export class ImsSessionUtils {
 
     public static IMS_CONNECTION_OPTION_GROUP = "IMS Connection Options";
 
@@ -28,7 +29,7 @@ export class ImsSession {
         description: "The IMS server host name.",
         type: "string",
         required: true,
-        group: ImsSession.IMS_CONNECTION_OPTION_GROUP
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -36,11 +37,47 @@ export class ImsSession {
      */
     public static IMS_OPTION_PORT: ICommandOptionDefinition = {
         name: "port",
+        required: true,
         aliases: ["P"],
         description: "The IMS server port.",
         type: "number",
-        defaultValue: 999,
-        group: ImsSession.IMS_CONNECTION_OPTION_GROUP
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
+
+    /**
+     * Option used in profile creation and commands for hostname for IMS
+     */
+    public static IMS_OPTION_REGION_HOST: ICommandOptionDefinition = {
+        name: "region-host",
+        aliases: ["rh"],
+        description: "The hostname of the individual IMS region.",
+        type: "string",
+        required: true,
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
+
+    /**
+     * Option used in profile creation and commands for port for IMS
+     */
+    public static IMS_OPTION_REGION_PORT: ICommandOptionDefinition = {
+        name: "region-port",
+        required: true,
+        aliases: ["rp"],
+        description: "The port of the individual IMS region.",
+        type: "number",
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
+
+    /**
+     * Option used in profile creation and commands for port for IMS
+     */
+    public static IMS_OPTION_PLEX: ICommandOptionDefinition = {
+        name: "plex",
+        required: true,
+        aliases: ["x"],
+        description: "The name of the IMS plex.",
+        type: "number",
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -52,7 +89,7 @@ export class ImsSession {
         description: "Mainframe (IMS) user name, which can be the same as your TSO login.",
         type: "string",
         required: true,
-        group: ImsSession.IMS_CONNECTION_OPTION_GROUP
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
     /**
@@ -63,7 +100,7 @@ export class ImsSession {
         aliases: ["pw"],
         description: "Mainframe (IMS) password, which can be the same as your TSO password.",
         type: "string",
-        group: ImsSession.IMS_CONNECTION_OPTION_GROUP,
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP,
         required: true
     };
 
@@ -72,30 +109,14 @@ export class ImsSession {
      * These options can be filled in if the user creates a profile
      */
     public static IMS_CONNECTION_OPTIONS: ICommandOptionDefinition[] = [
-        ImsSession.IMS_OPTION_HOST,
-        ImsSession.IMS_OPTION_PORT,
-        ImsSession.IMS_OPTION_USER,
-        ImsSession.IMS_OPTION_PASSWORD
+        ImsSessionUtils.IMS_OPTION_HOST,
+        ImsSessionUtils.IMS_OPTION_PORT,
+        ImsSessionUtils.IMS_OPTION_REGION_HOST,
+        ImsSessionUtils.IMS_OPTION_REGION_PORT,
+        ImsSessionUtils.IMS_OPTION_PLEX,
+        ImsSessionUtils.IMS_OPTION_USER,
+        ImsSessionUtils.IMS_OPTION_PASSWORD
     ];
-
-    /**
-     * Given a IMS profile, create a REST Client Session.
-     * @static
-     * @param {IProfile} profile - The IMS profile contents
-     * @returns {Session} - A session for usage in the IMS REST Client
-     */
-    public static createBasicIMSSession(profile: IProfile): Session {
-        this.log.debug("Creating a IMS session from the profile named %s", profile.name);
-        return new Session({
-            type: "basic",
-            hostname: profile.host,
-            port: profile.port,
-            user: profile.user,
-            password: profile.pass,
-            basePath: profile.basePath,
-            protocol: "http",
-        });
-    }
 
     /**
      * Given command line arguments, create a REST Client Session.
@@ -103,21 +124,25 @@ export class ImsSession {
      * @param {IProfile} args - The arguments specified by the user
      * @returns {Session} - A session for usage in the IMS REST Client
      */
-    public static createBasicImsSessionFromArguments(args: ICommandArguments): Session {
+    public static createBasicImsSessionFromArguments(args: ICommandArguments): ImsSession {
         this.log.debug("Creating a IMS session from arguments");
-        return new Session({
+        return new ImsSession({
             type: "basic",
             hostname: args.host,
             port: args.port,
             user: args.user,
+            plex: args.plex,
+            regionHost: args.regionHost,
+            regionPort: args.regionPort,
             password: args.password,
             basePath: args.basePath,
             strictSSL: false,
-            protocol: "http",
+            protocol: "http"
         });
     }
 
     private static get log(): Logger {
         return Logger.getAppLogger();
     }
+
 }

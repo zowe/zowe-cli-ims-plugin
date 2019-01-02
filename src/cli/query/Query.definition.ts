@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ImsSession } from "../ImsSession";
+import { ImsSessionUtils } from "../ImsSessionUtils";
 import { ICommandDefinition } from "@brightside/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
@@ -28,11 +28,11 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               TransactionDefinition],
+        TransactionDefinition],
     passOn: [
         {
             property: "options",
-            value: ImsSession.IMS_CONNECTION_OPTIONS,
+            value: ImsSessionUtils.IMS_CONNECTION_OPTIONS,
             merge: true,
             ignoreNodes: [
                 {type: "group"}

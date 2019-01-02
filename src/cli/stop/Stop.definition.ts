@@ -9,13 +9,13 @@
 *                                                                                 *
 */
 
-import { ImsSession } from "../ImsSession";
 import { ICommandDefinition } from "@brightside/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
 import { RegionDefinition } from "./region/Region.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
 
 import i18nTypings from "../-strings-/en";
+import { ImsSessionUtils } from "../ImsSessionUtils";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
 const strings = (require("../-strings-/en").default as typeof i18nTypings).STOP;
@@ -34,7 +34,7 @@ const definition: ICommandDefinition = {
     passOn: [
         {
             property: "options",
-            value: ImsSession.IMS_CONNECTION_OPTIONS,
+            value: ImsSessionUtils.IMS_CONNECTION_OPTIONS,
             merge: true,
             ignoreNodes: [
                 {type: "group"}
