@@ -24,7 +24,7 @@ export const TransactionDefinition: ICommandDefinition = {
     positionals: [{
         name: "name",
         description: strings.POSITIONALS.NAME,
-        type: "string",
+        type: "array",
         required: true
     }],
     outputFormatOptions: true,

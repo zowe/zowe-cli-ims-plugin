@@ -17,14 +17,14 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
 
 export const ProgramDefinition: ICommandDefinition = {
-    name: "program", aliases: ["prog"],
+    name: "program", aliases: ["pgm"],
     description: strings.DESCRIPTION,
     handler: __dirname + "/Program.handler",
     type: "command",
     positionals: [{
         name: "name",
         description: strings.POSITIONALS.NAME,
-        type: "string",
+        type: "array",
         required: true
     }],
     outputFormatOptions: true,
