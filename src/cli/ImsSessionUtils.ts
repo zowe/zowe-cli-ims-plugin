@@ -76,7 +76,7 @@ export class ImsSessionUtils {
         required: true,
         aliases: ["x"],
         description: "The name of the IMS plex.",
-        type: "number",
+        type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
