@@ -97,7 +97,7 @@ export class ImsSessionUtils {
      */
     public static IMS_OPTION_PASSWORD: ICommandOptionDefinition = {
         name: "password",
-        aliases: ["pw"],
+        aliases: ["pass"],
         description: "Mainframe (IMS) password, which can be the same as your TSO password.",
         type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP,
