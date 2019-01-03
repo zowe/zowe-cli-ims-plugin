@@ -24,13 +24,13 @@ const strings = (require("../-strings-/en").default as typeof i18nTypings).STOP;
  * Definition for the "stop" group of commands under the IMS plugin
  */
 const definition: ICommandDefinition = {
-    name: "stop",
+    name: "stop", aliases: ["sto"],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
-               RegionDefinition,
-               TransactionDefinition],
+        RegionDefinition,
+        TransactionDefinition],
     passOn: [
         {
             property: "options",

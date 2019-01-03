@@ -24,7 +24,7 @@ const strings = (require("../-strings-/en").default as typeof i18nTypings).START
  * Definition for the "start" group of commands under the IMS plugin
  */
 const definition: ICommandDefinition = {
-    name: "start",
+    name: "start", aliases: ["sta"],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",

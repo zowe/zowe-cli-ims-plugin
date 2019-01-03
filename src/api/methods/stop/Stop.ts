@@ -11,8 +11,8 @@
 
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
-import { ImsConstants } from "../../constants";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
+
 // TODO update to work with IMS REST API
 /**
  * Stop program in IMS through REST API
@@ -38,7 +38,7 @@ export async function stopProgram(session: AbstractSession, parms: IResourceParm
         delimiter = "&";
     }
 
-    return ImsRestClient.getExpectParsedXml(session, imsProgram, []);
+    return ImsRestClient.getExpectJSON(session, imsProgram, []);
 }
 
 /**
@@ -65,7 +65,7 @@ export async function stopTransaction(session: AbstractSession, parms: IResource
         delimiter = "&";
     }
 
-    return ImsRestClient.getExpectParsedXml(session, imsProgram, []);
+    return ImsRestClient.getExpectJSON(session, imsProgram, []);
 }
 
 /**
@@ -92,5 +92,5 @@ export async function stopRegion(session: AbstractSession, parms: IResourceParms
         delimiter = "&";
     }
 
-    return ImsRestClient.getExpectParsedXml(session, imsProgram, []);
+    return ImsRestClient.getExpectJSON(session, imsProgram, []);
 }
