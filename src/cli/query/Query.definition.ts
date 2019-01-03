@@ -23,7 +23,7 @@ const strings = (require("../-strings-/en").default as typeof i18nTypings).QUERY
  * Definition for the "query" group of commands under the IMS plugin
  */
 const definition: ICommandDefinition = {
-    name: "query",
+    name: "query", aliases: ["qry"],
     summary: strings.SUMMARY,
     description: strings.DESCRIPTION,
     type: "group",
