@@ -30,14 +30,14 @@ export async function queryProgram(session: AbstractSession, parms: IResourcePar
     Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
     const imsPlex = "/";
-    let imsProgram = "/";
+    let resource = "/ims/apis/v1/program";
 
     if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+        resource = resource + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
         delimiter = "&";
     }
 
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    return ImsRestClient.getExpectJSON(session, resource, []);
 }
 
 /**

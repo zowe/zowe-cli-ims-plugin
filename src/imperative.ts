@@ -37,13 +37,13 @@ const config: IImperativeConfig = {
                         type: "number",
                         optionDefinition: ImsSessionUtils.IMS_OPTION_PORT
                     },
-                    regionHost: {
+                    imsConnectHost: {
                         type: "string",
-                        optionDefinition: ImsSessionUtils.IMS_OPTION_REGION_HOST
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_IMS_CONNECT_HOST
                     },
-                    regionPort: {
+                    imsConnectPort: {
                         type: "number",
-                        optionDefinition: ImsSessionUtils.IMS_OPTION_REGION_PORT
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_IMS_CONNECT_PORT
                     },
                     plex: {
                         type: "string",
@@ -64,7 +64,7 @@ const config: IImperativeConfig = {
             },
             createProfileExamples: [
                 {
-                    options: "ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --region-host zos124 --region-port 1491",
+                    options: "ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --ich zos124 --icp 1491",
                     description: "Create a ims profile named 'ims123' to connect to IMS APIs at host zos123 and port 1490. The name of " +
                         "the IMS plex in this example is 'PLEX1' and the IMS region we want to communicate with has " +
                         "a host of zos124 and a port of 1491"

@@ -11,6 +11,7 @@
 
 import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
 import { Parser } from "xml2js";
+import { ImsSession } from "./ImsSession";
 
 /**
  * Wrapper for invoke IMS API through the RestClient to perform common error
@@ -55,6 +56,33 @@ export class ImsRestClient extends RestClient {
     }
 
     /**
+     * Overridden performRest method implemented to append hostname, port, and plex headers to all IMS requests
+     * Takes the same parameters as the vanilla Imperative 'performRest' method.
+     * @param resource
+     * @param request
+     * @param reqHeaders
+     * @param writeData
+     */
+    public performRest(resource: string, request: any /*TODO: HTTP_VERB*/, reqHeaders?: any[], writeData?: any): Promise<string> {
+
+        if (reqHeaders == null) {
+            reqHeaders = [];
+        }
+
+        const imsSession = this.session as ImsSession;
+        if (imsSession.imsConnectHost != null) {
+            reqHeaders.push({hostname: imsSession.imsConnectHost});
+        }
+        if (imsSession.imsConnectPort != null) {
+            reqHeaders.push({port: imsSession.imsConnectPort});
+        }
+        if (imsSession.plex != null) {
+            reqHeaders.push({plex: imsSession.plex});
+        }
+        return super.performRest(resource, request, reqHeaders, writeData);
+    }
+
+    /**
      * Process an error encountered in the rest client
      * @param {IImperativeError} original - the original error automatically built by the abstract rest client
      * @returns {IImperativeError} - the processed error with details added
@@ -73,4 +101,6 @@ export class ImsRestClient extends RestClient {
         original.msg += "\n" + details; // add the data string which is the original error
         return original;
     }
+
+
 }

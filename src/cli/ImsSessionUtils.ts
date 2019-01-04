@@ -26,7 +26,7 @@ export class ImsSessionUtils {
     public static IMS_OPTION_HOST: ICommandOptionDefinition = {
         name: "host",
         aliases: ["H"],
-        description: "The IMS server host name.",
+        description: "The IMS Command Services server host name.",
         type: "string",
         required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
@@ -39,7 +39,7 @@ export class ImsSessionUtils {
         name: "port",
         required: true,
         aliases: ["P"],
-        description: "The IMS server port.",
+        description: "The IMS Command Services server port.",
         type: "number",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
@@ -47,10 +47,11 @@ export class ImsSessionUtils {
     /**
      * Option used in profile creation and commands for hostname for IMS
      */
-    public static IMS_OPTION_REGION_HOST: ICommandOptionDefinition = {
-        name: "region-host",
-        aliases: ["rh"],
-        description: "The hostname of the individual IMS region.",
+    public static IMS_OPTION_IMS_CONNECT_HOST: ICommandOptionDefinition = {
+        name: "ims-connect-host",
+        aliases: ["ich"],
+        description: "The hostname of your instance of IMS Connect. This is typically the hostname " +
+            "of the mainframe LPAR where IMS Connect is running.",
         type: "string",
         required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
@@ -59,11 +60,12 @@ export class ImsSessionUtils {
     /**
      * Option used in profile creation and commands for port for IMS
      */
-    public static IMS_OPTION_REGION_PORT: ICommandOptionDefinition = {
-        name: "region-port",
+    public static IMS_OPTION_IMS_CONNECT_PORT: ICommandOptionDefinition = {
+        name: "ims-connect-port",
         required: true,
-        aliases: ["rp"],
-        description: "The port of the individual IMS region.",
+        aliases: ["icp"],
+        description: "The port of your instance of IMS Connect." +
+            " This port can be found in your IMS Connect configuration file on the mainframe.",
         type: "number",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
@@ -111,8 +113,8 @@ export class ImsSessionUtils {
     public static IMS_CONNECTION_OPTIONS: ICommandOptionDefinition[] = [
         ImsSessionUtils.IMS_OPTION_HOST,
         ImsSessionUtils.IMS_OPTION_PORT,
-        ImsSessionUtils.IMS_OPTION_REGION_HOST,
-        ImsSessionUtils.IMS_OPTION_REGION_PORT,
+        ImsSessionUtils.IMS_OPTION_IMS_CONNECT_HOST,
+        ImsSessionUtils.IMS_OPTION_IMS_CONNECT_PORT,
         ImsSessionUtils.IMS_OPTION_PLEX,
         ImsSessionUtils.IMS_OPTION_USER,
         ImsSessionUtils.IMS_OPTION_PASSWORD
@@ -132,8 +134,8 @@ export class ImsSessionUtils {
             port: args.port,
             user: args.user,
             plex: args.plex,
-            regionHost: args.regionHost,
-            regionPort: args.regionPort,
+            imsConnectHost: args.imsConnectHost,
+            imsConnectPort: args.imsConnectPort,
             password: args.password,
             basePath: args.basePath,
             strictSSL: false,

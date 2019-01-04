@@ -16,12 +16,12 @@ export class ImsSession extends Session {
   /**
    * The host for the specific IMS region
    */
-  public regionHost: string;
+  public imsConnectHost: string;
 
   /**
    * The port for the specific IMS region
    */
-  public regionPort: number;
+  public imsConnectPort: number;
 
   /**
    * The name of the IMS Plex
@@ -30,8 +30,8 @@ export class ImsSession extends Session {
 
   constructor(iSession: IImsSession) {
     super(iSession);
-    this.regionHost = iSession.regionHost;
-    this.regionPort = iSession.regionPort;
+    this.imsConnectHost = iSession.imsConnectHost;
+    this.imsConnectPort = iSession.imsConnectPort;
     this.plex = iSession.plex;
   }
 

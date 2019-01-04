@@ -12,17 +12,17 @@
 import { ISession } from "@brightside/imperative";
 
 export interface IImsSession extends ISession {
-  /**
-   * The host for the specific IMS region
-   */
-  regionHost: string;
+    /**
+     * The host for the instance of IMS connect
+     */
+    imsConnectHost: string;
 
-  /**
-   * The port for the specific IMS region
-   */
-  regionPort: number;
-  /**
-   * The name of the IMS Plex
-   */
-  plex: string;
+    /**
+     * The port for the instance of IMS connect
+     */
+    imsConnectPort: number;
+    /**
+     * The name of the IMS Plex
+     */
+    plex: string;
 }
