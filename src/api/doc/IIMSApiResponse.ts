@@ -13,23 +13,42 @@
  * Interface representing API response from CMCI's web interface, parsed from XML to a javascript object
  * using the xml2js package.
  */
-import { IIMSResponseResultSummary } from "./IIMSResponseResultSummary";
-// TODO - This needs updated for IMS
+
 export interface IIMSApiResponse {
     /**
-     * See the following link for more information:
-     * https://www.ibm.com/support/knowledgecenter/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_response_element.html
+     * A list of objects returned from the API
      */
-    response: {
+    data: any;
+    /**
+     * Error or success messages encountered during the execution of the request
+     * A map that represents messages that are returned from OM after submitting the command.
+     *
+     */
+    messages: {
         /**
-         * See the following link for more information:
-         * https://www.ibm.com/support/knowledgecenter/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_resultsummary_element.html
+         * The key is either the IMS member or OM that returned the message
          */
-        resultsummary: IIMSResponseResultSummary;
-        /**
-         * See the following link for more information:
-         * https://www.ibm.com/support/knowledgecenter/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_records_element.html
-         */
-        records: any;
+        [key: string]: {
+            /**
+             * Reason code text
+             */
+            rsntxt: string;
+            /**
+             * Message from OM. Usually returned only when there is an error
+             */
+            message: string;
+            /**
+             * Return code
+             */
+            rc: string;
+            /**
+             * The command executed
+             */
+            command: string;
+            /**
+             * Reason code
+             */
+            rsn: string;
+        }
     };
 }
