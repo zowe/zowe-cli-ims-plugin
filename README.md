@@ -19,11 +19,11 @@ Before you install the plug-in, meet the following prerequisites:
 
     **Note:** For more information, see [Installing Zowe CLI](https://zowe.github.io/docs-site/latest/user-guide/cli-installcli.html).
 
-* Ensure that IBM [IMS v14.1.0](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_14.1.0/com.ibm.ims14.doc/ims_product_landing_v14.html) or later is installed and running in your mainframe environment.
+* Ensure that [IBM® IMS™ v14.1.0](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_14.1.0/com.ibm.ims14.doc/ims_product_landing_v14.html) or later is installed and running in your mainframe environment.
 
 * Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.htm). IMS Connect is required so that IBM IMS Command Services can function. 
 
-* Configure IBM IMS Command Services. IMS Command Services are APIs that enable communication between the CLI and the IMS instance. 
+* Configure IBM® IMS™ Command Services. IMS Command Services are APIs that enable communication between the CLI and the IMS instance. 
 
 ## Build the Plug-in from Source
 **Follow these steps:**
