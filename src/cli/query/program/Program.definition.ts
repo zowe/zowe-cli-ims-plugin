@@ -39,5 +39,13 @@ export const ProgramDefinition: ICommandDefinition = {
     examples: [{
         description: strings.EXAMPLES.EX1,
         options: "PGM123"
+    },
+    {
+        description: strings.EXAMPLES.EX2,
+        options: "ABC XYZ"
+    },
+    {
+        description: strings.EXAMPLES.EX3,
+        options: "PROG*"
     }]
 };

@@ -63,16 +63,18 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program(s) to be queried.",
                 POSITIONALS: {
-                    NAME: "The name of the program(*) to query.",
+                    NAME: "The names of the programs to query.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the application program output fields to be returned"
+                    SHOW: "Specifies the application program output fields to be returned."
                 },
                 MESSAGES: {
                     SUCCESS: "The information for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
                     EX1: "Query information for application program named PGM123",
+                    EX2: "Query information for application programs named ABC and XYZ",
+                    EX3: "Query information for application programs starting with PROG using the wild card character '*'",
                 }
             },
             TRANSACTION: {
@@ -81,20 +83,22 @@ export default {
                     NAME: "The name of the transaction(*) to query.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the transaction output fields to be returned"
+                    SHOW: "Specifies the transaction output fields to be returned."
                 },
                 MESSAGES: {
                     SUCCESS: "The information for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
                     EX1: "Query transaction information for transaction TRN12",
+                    EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
+                    EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
                 }
             }
         }
     },
     START: {
         SUMMARY: "Start resources in IMS",
-        DESCRIPTION: "Starts a region, application program or transaction and makes IMS resources available for reference and use. " +
+        DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
         "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
@@ -198,6 +202,7 @@ export default {
                 },
                 EXAMPLES: {
                     EX1: "Stop a region named REGION1"
+
                 }
             }
         }

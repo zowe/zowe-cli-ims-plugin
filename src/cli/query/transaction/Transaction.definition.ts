@@ -40,7 +40,14 @@ export const TransactionDefinition: ICommandDefinition = {
         {
             description: strings.EXAMPLES.EX1,
             options: "TRN12"
-        }
-    ]
+        },
+        {
+            description: strings.EXAMPLES.EX2,
+            options: "TRAN1 TRAN2"
+        },
+        {
+            description: strings.EXAMPLES.EX3,
+            options: "TRAN*"
+        }]
 };
 
