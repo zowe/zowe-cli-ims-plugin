@@ -35,6 +35,18 @@ export interface ITestPropertiesSchema {
          * Port for IMS
          */
         port?: number
+        /**
+         * Host to connect to IMS connect server
+         */
+        imsConnectHost: string;
+        /**
+         * Port to connect to IMS connect server
+         */
+        imsConnectPort: number;
+        /**
+         * The name of the IMS plex
+         */
+        plex: string;
     };
 
 }

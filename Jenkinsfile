@@ -29,7 +29,7 @@ def RELEASE_BRANCHES = ["master", "1.0.0"]
 def PIPELINE_CONTROL = [
     build: true,
     unit_test: true,
-    integration_test: false,
+    integration_test: true,
     system_test: false,
     deploy: true,
     smoke_test: true,
@@ -537,6 +537,9 @@ pipeline {
                 timeout(time: 30, unit: 'MINUTES') {
                     echo 'Integration Test'
 
+                    // Custom properties need to exist for integration tests, but their contents shouldn't matter
+                    // So we can just copy the example properties file
+                    sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
                     /**************************************************************************
                         * Welp, IDK even how to describe this witchcraft in a simple fashion so
                         * just checkout the README in the jenkins folder for a more in depth
@@ -564,7 +567,7 @@ pipeline {
         /************************************************************************
          * STAGE
          * -----
-         * Test: Sysem
+         * Test: System
          *
          * TIMEOUT
          * -------
