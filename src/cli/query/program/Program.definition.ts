@@ -14,47 +14,38 @@ import { ICommandDefinition } from "@brightside/imperative";
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).GET.RESOURCES.RESOURCE;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
 
-export const ResourceDefinition: ICommandDefinition = {
-    name: "resource", aliases: ["res"],
+export const ProgramDefinition: ICommandDefinition = {
+    name: "program", aliases: ["pgm"],
     description: strings.DESCRIPTION,
-    handler: __dirname + "/Resource.handler",
+    handler: __dirname + "/Program.handler",
     type: "command",
     positionals: [{
-        name: "resourceName",
-        description: strings.POSITIONALS.RESOURCENAME,
-        type: "string",
+        name: "name",
+        description: strings.POSITIONALS.NAME,
+        type: "array",
         required: true
     }],
     outputFormatOptions: true,
     options: [
         {
-            name: "criteria", aliases: ["c"],
-            description: strings.OPTIONS.CRITERIA,
-            type: "string"
-        },
-        {
-            name: "parameter", aliases: ["p"],
-            description: strings.OPTIONS.PARAMETER,
-            type: "string"
+            name: "show",
+            description: strings.OPTIONS.SHOW,
+            type: "string",
+            defaultValue: "ALL"
         }],
-
     profile: {optional: ["ims"]},
-    examples: [
-        {
-            description: strings.EXAMPLES.EX1,
-            options: "IMSProgram"
-        }
-    ]
+    examples: [{
+        description: strings.EXAMPLES.EX1,
+        options: "PGM123"
+    },
+    {
+        description: strings.EXAMPLES.EX2,
+        options: "ABC XYZ"
+    },
+    {
+        description: strings.EXAMPLES.EX3,
+        options: "PROG*"
+    }]
 };
-
-// These are GET REST API options available (for future)
-// options: [
-//     ResourceOptions.count,
-//     ResourceOptions.orderby,
-//     ResourceOptions.descending,
-//     ResourceOptions.nodiscard,
-//     ResourceOptions.summonly,
-//     ResourceOptions.showApiResponse
-// ]

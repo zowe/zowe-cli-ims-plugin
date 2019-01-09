@@ -9,20 +9,20 @@
 *                                                                                 *
 */
 
-// TODO - needs updated or removed for IMS
-export interface IResourceParms {
+import { ISession } from "@brightside/imperative";
+
+export interface IImsSession extends ISession {
     /**
-     * The name of the resource
+     * The host for the instance of IMS connect
      */
-    name: string;
+    imsConnectHost: string;
 
     /**
-     * Specifies the program output fields to be returned.
-     *
-     * Examples:
-     *    "SHOW(ALL_"
-     *    "SHOW(DEFN,LOCAL)"
+     * The port for the instance of IMS connect
      */
-    show?: string;
-
+    imsConnectPort: number;
+    /**
+     * The name of the IMS Plex
+     */
+    plex: string;
 }

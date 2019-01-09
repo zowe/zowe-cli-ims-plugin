@@ -12,224 +12,197 @@
 // ******* ATTENTION:  LEASE KEEP IN ALPHABETICAL ORDER
 // TODO - needs updated for IMS
 export default {
-    DEFINE: {
-        SUMMARY: "Define new resources to IMS",
-        DESCRIPTION: "Define new resources (for example, programs) to IMS.",
+    // CREATE: {
+    //     SUMMARY: "Create new resources to IMS",
+    //     DESCRIPTION: "Define new resources (for example, programs) to IMS.",
+    //     RESOURCES: {
+    //         PROGRAM: {
+    //             DESCRIPTION: "Create a new program to IMS.",
+    //             POSITIONALS: {
+    //                 PROGRAMNAME: "The name of the new program to create.
+    //             },
+    //             OPTIONS: {
+    //                 REGIONNAME: "The IMS region name to which to define the new program",
+    //                 IMSPLEX: "The name of the IMSPlex to which to define the new program"
+    //             },
+    //             MESSAGES: {
+    //                 SUCCESS: "The program '%s' was defined successfully."
+    //             },
+    //             EXAMPLES: {
+    //                 EX1: "Create a program named PGM123 to the region name MYREGION in the CSD group MYGRP"
+    //             }
+    //         },
+    //         TRANSACTION: {
+    //             DESCRIPTION: "Define a new transaction to IMS.",
+    //             POSITIONALS: {
+    //                 TRANSACTIONNAME: "The name of the new transaction to define. The maximum length of the transaction name is four characters.",
+    //                 PROGRAMNAME: "The name of the program that the transaction uses. The maximum length of the program name is eight characters.",
+    //                 CSDGROUP: "The IMS system definition (CSD) Group for the new transaction that you want to define." +
+    //                     " The maximum length of the group name is eight characters."
+    //             },
+    //             OPTIONS: {
+    //                 REGIONNAME: "The IMS region name to which to define the new transaction",
+    //                 IMSPLEX: "The name of the IMSPlex to which to define the new transaction"
+    //             },
+    //             MESSAGES: {
+    //                 SUCCESS: "The transaction '%s' was defined successfully."
+    //             },
+    //             EXAMPLES: {
+    //                 EX1: "Define a transaction named TRN1 for the program named PGM123 to the region named MYREGION " +
+    //                     "in the CSD group MYGRP"
+    //             }
+    //         }
+    //     }
+    // },
+    QUERY: {
+        SUMMARY: "Query resources from IMS",
+        DESCRIPTION: "Query application programs or transactions across the IMSplex. " +
+            "It displays information about application programs and transactions (for example, class, status, queue count, and others). " +
+            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Define a new program to IMS.",
+                DESCRIPTION: "Command to specify the application program(s) to be queried.",
                 POSITIONALS: {
-                    PROGRAMNAME: "The name of the new program to define. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the new program that you want to define." +
-                    " The maximum length of the group "
-                    + "name is eight characters."
+                    NAME: "The names of the programs to query.",
                 },
                 OPTIONS: {
-                    REGIONNAME: "The IMS region name to which to define the new program",
-                    IMSPLEX: "The name of the IMSPlex to which to define the new program"
+                    SHOW: "Specifies the application program output fields to be returned."
                 },
                 MESSAGES: {
-                    SUCCESS: "The program '%s' was defined successfully."
+                    SUCCESS: "The information for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Define a program named PGM123 to the region name MYREGION in the CSD group MYGRP"
+                    EX1: "Query information for application program named PGM123",
+                    EX2: "Query information for application programs named ABC and XYZ",
+                    EX3: "Query information for application programs starting with PROG using the wild card character '*'",
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Define a new transaction to IMS.",
+                DESCRIPTION: "Command to specify the transaction(s) to be queried.",
                 POSITIONALS: {
-                    TRANSACTIONNAME: "The name of the new transaction to define. The maximum length of the transaction name is four characters.",
-                    PROGRAMNAME: "The name of the program that the transaction uses. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the new transaction that you want to define." +
-                        " The maximum length of the group name is eight characters."
+                    NAME: "The name of the transaction(*) to query.",
                 },
                 OPTIONS: {
-                    REGIONNAME: "The IMS region name to which to define the new transaction",
-                    IMSPLEX: "The name of the IMSPlex to which to define the new transaction"
+                    SHOW: "Specifies the transaction output fields to be returned."
                 },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was defined successfully."
+                    SUCCESS: "The information for '%s' were retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Define a transaction named TRN1 for the program named PGM123 to the region named MYREGION " +
-                        "in the CSD group MYGRP"
+                    EX1: "Query transaction information for transaction TRN12",
+                    EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
+                    EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
                 }
             }
         }
     },
-    DELETE: {
-        SUMMARY: "Delete resources from IMS",
-        DESCRIPTION: "Delete resources (for example, programs) from IMS.",
+    START: {
+        SUMMARY: "Start resources in IMS",
+        DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
+        "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Delete a program from IMS.",
+                DESCRIPTION: "Command to specify the application program to be started.",
                 POSITIONALS: {
-                    PROGRAMNAME: "The name of the program to delete. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the program that you want to delete." +
-                        " The maximum length of the group name is eight characters."
+                    NAME: "The name of the application program to start. The maximum length of the program name is eight characters.",
                 },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to delete the program",
-                    IMSPLEX: "The name of the IMSPlex from which to delete the program"
-                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name to which to install the program",
+                //     IMSPLEX: "The name of the IMSPlex to which to install the program"
+                // },
                 MESSAGES: {
-                    SUCCESS: "The program '%s' was deleted successfully."
+                    SUCCESS: "The application program named '%s' was started successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Delete a program named PGM123 from the region named MYREGION"
+                    EX1: "Start an application program named PGM123"
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Delete a transaction from IMS.",
+                DESCRIPTION: "Command to specify the transaction that is to be started.",
                 POSITIONALS: {
-                    TRANSACTIONNAME: "The name of the transaction to delete. The maximum length of the transaction name is four characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the transaction that you want to delete." +
-                        " The maximum length of the group "
-                        + "name is eight characters."
+                    NAME: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
                 },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to delete the transaction",
-                    IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
-                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name to which to install the transaction",
+                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
+                // },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was deleted successfully."
+                    SUCCESS: "The transaction '%s' was started successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Delete a transaction named TRN1 from the region named MYREGION"
+                    EX1: "Start a transaction named TRN1",
+                }
+            },
+            REGION: {
+                DESCRIPTION: "Command to specify the region that is to be started.",
+                POSITIONALS: {
+                    NAME: "The name of the region to start. The maximum length of the region name is eight characters.",
+                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name to which to install the transaction",
+                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
+                // },
+                MESSAGES: {
+                    SUCCESS: "The region '%s' was started successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Start a region named REGION",
                 }
             }
         }
     },
-    DISCARD: {
-        SUMMARY: "Discard resources from IMS",
-        DESCRIPTION: "Discard resources (for example, programs) from IMS through IBM CMCI.",
+    STOP: {
+        SUMMARY: "Stop resources in IMS",
+        DESCRIPTION: "Stops a running region, application program or transaction. " +
+        "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Discard a program from IMS.",
+                DESCRIPTION: "Command to specify the application program to be stopped.",
                 POSITIONALS: {
-                    PROGRAMNAME: "The name of the program to discard. The maximum length of the program name is eight characters."
+                    NAME: "The name of the program to stop. The maximum length of the program name is eight characters.",
                 },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to discard the program",
-                    IMSPLEX: "The name of the IMSPlex from which to discard the program"
-                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name from which to delete the program",
+                //     IMSPLEX: "The name of the IMSPlex from which to delete the program"
+                // },
                 MESSAGES: {
-                    SUCCESS: "The program '%s' was discarded successfully."
+                    SUCCESS: "The application program '%s' was stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Discard a program named PGM123 from the region named MYREGION"
+                    EX1: "Stop an application program named PGM123"
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Discard a transaction from IMS.",
+                DESCRIPTION: "Command to specify the transaction that is to be stopped.",
                 POSITIONALS: {
-                    TRANSACTIONNAME: "The name of the transaction to discard. The maximum length of the transaction name is four characters."
+                    NAME: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
                 },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to discard the transaction",
-                    IMSPLEX: "The name of the IMSPlex from which to discard the transaction"
-                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name from which to delete the transaction",
+                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
+                // },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was discarded successfully."
+                    SUCCESS: "The transaction '%s' was stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Discard a transaction named TRN1 from the region named MYREGION"
-                }
-            }
-        }
-    },
-    GET: {
-        SUMMARY: "Get resources from IMS",
-        DESCRIPTION: "Get resources (for example, programs or transactions) from IMS through IBM CMCI.",
-        RESOURCES: {
-            RESOURCE: {
-                DESCRIPTION: "Get resources (for example, programs or transactions) from IMS.",
-                POSITIONALS: {
-                    RESOURCENAME: "The name of the resource to get.",
-                },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name from which to get the resources",
-                    IMSPLEX: "The name of the IMSPlex from which to get the resources",
-                    CRITERIA: "The criteria by which to filter the resource",
-                    PARAMETER: "The parameter by which to refine the resource"
-                },
-                MESSAGES: {
-                    SUCCESS: "The resource(s) for '%s' were retrieved successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Get program resources from the region named MYREGION",
-                    EX2: "Get local transaction resources from the region named MYREGION",
-                    EX3: "Get local file resources from the region named MYREGION",
-                    EX4: "Get program definition resources from the CSD group named GRP1 and the region named MYREGION",
-                    EX5: "Get transaction definition resources from the CSD group named GRP1 and the region named MYREGION",
-                    EX6: "Get program resources that start with the name PRG from the region named MYREGION",
-                    EX7: "Get a local transaction resource named TRAN from the region named MYREGION",
-                    EX8: "Get program resources that start with the name MYPRG from the region named MYREGION and display various fields as a table",
-                }
-            }
-        }
-    },
-    INSTALL: {
-        SUMMARY: "Install resources to IMS",
-        DESCRIPTION: "Install resources (for example, programs) to IMS through IBM CMCI.",
-        RESOURCES: {
-            PROGRAM: {
-                DESCRIPTION: "Install a program to IMS.",
-                POSITIONALS: {
-                    PROGRAMNAME: "The name of the program to install. The maximum length of the program name is eight characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the program that you want to install." +
-                        " The maximum length of the group name is eight characters."
-                },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name to which to install the program",
-                    IMSPLEX: "The name of the IMSPlex to which to install the program"
-                },
-                MESSAGES: {
-                    SUCCESS: "The program named '%s' was installed successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Install a program named PGM123 to the region named MYREGION in the CSD group MYGRP"
+                    EX1: "Stop a transaction named TRN1"
                 }
             },
-            TRANSACTION: {
-                DESCRIPTION: "Install a transaction to IMS.",
+            REGION: {
+                DESCRIPTION: "Command to specify the IMS region to be stopped.",
                 POSITIONALS: {
-                    TRANSACTIONNAME: "The name of the transaction to install. The maximum length of the transaction name is four characters.",
-                    CSDGROUP: "The IMS system definition (CSD) Group for the transaction that you want to install." +
-                        " The maximum length of the group name is eight characters."
+                    NAME: "The name of the region (job) to stop. The maximum length of the transaction name is four characters.",
                 },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name to which to install the transaction",
-                    IMSPLEX: "The name of the IMSPlex to which to install the transaction"
-                },
+                // OPTIONS: {
+                //     REGIONNAME: "The IMS region name from which to delete the transaction",
+                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
+                // },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was installed successfully."
+                    SUCCESS: "The region '%s' was stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Install a transaction named TRN1 to the region named MYREGION " +
-                        "in the CSD group MYGRP",
-                }
-            }
-        }
-    },
-    REFRESH: {
-        SUMMARY: "Refresh program on IMS",
-        DESCRIPTION: "Refresh a program on IMS through IBM CMCI.",
-        RESOURCES: {
-            PROGRAM: {
-                DESCRIPTION: "Refresh a program on IMS.",
-                POSITIONALS: {
-                    PROGRAMNAME: "The name of the program to refresh. The maximum length of the program name is eight characters."
-                },
-                OPTIONS: {
-                    REGIONNAME: "The IMS region name on which you want to refresh the program",
-                    IMSPLEX: "The name of the IMSPlex on which to refresh the program"
-                },
-                MESSAGES: {
-                    SUCCESS: "The program '%s' was refreshed successfully."
-                },
-                EXAMPLES: {
-                    DEFINE_EXAMPLE_ONE: "Refresh a program named PGM123 from the region named MYREGION"
+                    EX1: "Stop a region named REGION1"
+
                 }
             }
         }

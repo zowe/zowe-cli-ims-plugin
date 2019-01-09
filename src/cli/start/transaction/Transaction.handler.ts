@@ -9,42 +9,39 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@brightside/imperative";
-import { getResource, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
+    ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { startTransaction, IIMSApiResponse } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).GET.RESOURCES.RESOURCE;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).START.RESOURCES.TRANSACTION;
 
 /**
- * Command handler for defining IMS programs
+ * Command handler for stopping IMS transactions
  * @export
- * @class ProgramHandler
+ * @class TransactionHandler
  * @implements {ICommandHandler}
  */
-export default class ResourceHandler extends ImsBaseHandler {
-    public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<IIMSApiResponse> {
+export default class TransactionHandler extends ImsBaseHandler {
+    public async processWithSession(params: IHandlerParameters,
+                                    session: AbstractSession,
+                                    profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Getting resources from IMS",
+            statusMessage: "Start transaction defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await getResource(session, {
-            name: params.arguments.resourceName,
-            criteria: params.arguments.criteria,
-            parameter: params.arguments.parameter
+        const response = await startTransaction(session, {
+            name: params.arguments.transactionName
         });
 
-        params.response.format.output({
-            fields: [],
-            format: "object",
-            output: response.response.records[params.arguments.resourceName.toLowerCase()]
-        });
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.transactionName);
         return response;
     }
 }

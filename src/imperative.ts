@@ -12,78 +12,67 @@
 // Imperative version of Zowe CLI
 import { IImperativeConfig } from "@brightside/imperative";
 import { PluginConstants } from "./api/constants/PluginConstants";
+import { ImsSessionUtils } from "./cli/ImsSessionUtils";
 
 const config: IImperativeConfig = {
-  commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
-  rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
-  productDisplayName: PluginConstants.PLUGIN_NAME,
-  name: PluginConstants.PLUGIN_GROUP_NAME,
-  profiles: [
-    {
-      type: "ims",
-      schema: {
-        type: "object",
-        title: "IMS Profile",
-        description: "A ims profile is required to issue commands in the ims command group that interact with " +
-          "IMS regions. The ims profile contains your host, port, user name, and password " +
-          "for the IBM IMS server of your choice.",
-        properties: {
-          host: {
-            type: "string",
-            optionDefinition: {
-              name: "host",
-              aliases: ["H"],
-              description: "The IMS server host name",
-              type: "string",
-              required: true,
-            },
-          },
-          port: {
-            type: "number",
-            optionDefinition: {
-              name: "port",
-              aliases: ["P"],
-              description: "The IMS server port",
-              type: "number",
-              defaultValue: 1490,
-            },
-          },
-          user: {
-            type: "string",
-            secure: true,
-            optionDefinition: {
-              name: "user",
-              aliases: ["u"],
-              description: "Your username to connect to IMS",
-              type: "string",
-              implies: ["password"],
-              required: true,
-            },
-          },
-          password: {
-            type: "string",
-            secure: true,
-            optionDefinition: {
-              name: "password",
-              aliases: ["p"],
-              description: "Your password to connect to IMS",
-              type: "string",
-              implies: ["user"],
-              required: true,
-            },
-          }
-        },
-        required: ["host"],
-      },
-      createProfileExamples: [
+    commandModuleGlobs: ["**/cli/*/*.definition!(.d).*s"],
+    rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
+    productDisplayName: PluginConstants.PLUGIN_NAME,
+    name: PluginConstants.PLUGIN_GROUP_NAME,
+    profiles: [
         {
-          options: "ims123 --host zos123 --port 1490 --user ibmuser --password myp4ss",
-          description: "Create a ims profile named 'ims123' to connect to IMS at host zos123 and port 1490"
+            type: "ims",
+            schema: {
+                type: "object",
+                title: "IMS Profile",
+                description: "An ims profile is used to issue commands in the ims command group that interact with " +
+                    "IMS regions. The ims profile contains your host, port, user name, and password " +
+                    "for the IBM IMS server of your choice.",
+                properties: {
+                    host: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_HOST
+                    },
+                    port: {
+                        type: "number",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_PORT
+                    },
+                    imsConnectHost: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_IMS_CONNECT_HOST
+                    },
+                    imsConnectPort: {
+                        type: "number",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_IMS_CONNECT_PORT
+                    },
+                    plex: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_PLEX
+                    },
+                    user: {
+                        type: "string",
+                        secure: true,
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_USER
+                    },
+                    password: {
+                        type: "string",
+                        secure: true,
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_PASSWORD
+                    }
+                },
+                required: ["host"],
+            },
+            createProfileExamples: [
+                {
+                    options: "ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --ich zos124 --icp 1491",
+                    description: "Create a ims profile named 'ims123' to connect to IMS APIs at host zos123 and port 1490. The name of " +
+                        "the IMS plex in this example is 'PLEX1' and the IMS region we want to communicate with has " +
+                        "a host of zos124 and a port of 1491"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  pluginHealthCheck: __dirname + "/healthCheck"
+    ],
+    pluginHealthCheck: __dirname + "/healthCheck"
 };
 
 export = config;

@@ -9,33 +9,35 @@
 *                                                                                 *
 */
 
-import { ImsSession } from "../ImsSession";
 import { ICommandDefinition } from "@brightside/imperative";
-import { ResourceDefinition } from "./resource/Resource.definition";
 
-import i18nTypings from "../-strings-/en";
+import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../-strings-/en").default as typeof i18nTypings).GET;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).STOP.RESOURCES.REGION;
 
-/**
- * Definition for the "get" group of commands under the IMS plugin
- */
-const definition: ICommandDefinition = {
-    name: "get",
-    summary: strings.SUMMARY,
+export const RegionDefinition: ICommandDefinition = {
+    name: "region", aliases: ["reg"],
     description: strings.DESCRIPTION,
-    type: "group",
-    children: [ResourceDefinition],
-    passOn: [
-        {
-            property: "options",
-            value: ImsSession.IMS_CONNECTION_OPTIONS,
-            merge: true,
-            ignoreNodes: [
-                {type: "group"}
-            ]
-        }
-    ]
+    handler: __dirname + "/Region.handler",
+    type: "command",
+    positionals: [{
+        name: "name",
+        description: strings.POSITIONALS.NAME,
+        type: "string",
+        required: true
+    }],
+    outputFormatOptions: true,
+    // options: [
+    //     {
+    //         name: "show",
+    //         description: strings.OPTIONS.SHOW,
+    //         type: "string",
+    //         defaultValue: "ALL"
+    //     }],
+    profile: {optional: ["ims"]},
+    examples: [{
+        description: strings.EXAMPLES.EX1,
+        options: "REGION1"
+    }]
 };
-export = definition;

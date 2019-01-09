@@ -9,20 +9,4 @@
 *                                                                                 *
 */
 
-// TODO - needs updated or removed for IMS
-export interface IResourceParms {
-    /**
-     * The name of the resource
-     */
-    name: string;
-
-    /**
-     * Specifies the program output fields to be returned.
-     *
-     * Examples:
-     *    "SHOW(ALL_"
-     *    "SHOW(DEFN,LOCAL)"
-     */
-    show?: string;
-
-}
+export * from "./Query";

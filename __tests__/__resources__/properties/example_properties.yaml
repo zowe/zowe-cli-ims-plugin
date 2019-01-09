@@ -9,12 +9,18 @@
 #  my-password     - This is your TSO password                                #
 #  my-ims-host     - This is the hostname for the IMS server                  #
 #  my-ims-port     - this is the port for the IMS server                      #
+#  my-ims-connect-host     - This is the hostname for the IMS Connect server  #
+#  my-ims-connect-port     - this is the port for the IMS Connect server      #
+#  my-ims-plex     - this is the name of your IMS plex                        #
 ###############################################################################
 
 
 #  see bright profiles create ims --help for more info
-cmci:
-      user: my-user-name
-      password: my-password
-      host: my-ims-host
-      port: my-ims-port
+ims:
+  user: my-user-name
+  password: my-password
+  host: my-ims-host
+  port: my-ims-port
+  imsConnectHost: my-ims-connect-host
+  imsConnectPort: my-ims-connect-port
+  plex: my-ims-plex
