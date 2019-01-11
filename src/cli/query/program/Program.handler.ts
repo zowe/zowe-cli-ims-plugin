@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { queryProgram, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, queryProgram } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -42,7 +41,12 @@ export default class ProgramHandler extends ImsBaseHandler {
             show: params.arguments.show
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);
+        params.response.format.output({
+            header: true,
+            output: response.data,
+            format: "table"
+        });
+
         return response;
     }
 }
