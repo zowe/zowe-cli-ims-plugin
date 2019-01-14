@@ -99,7 +99,7 @@ export default {
     START: {
         SUMMARY: "Start resources in IMS",
         DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
-        "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
+            "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program to be started.",
@@ -136,17 +136,23 @@ export default {
             REGION: {
                 DESCRIPTION: "Command to specify the region that is to be started.",
                 POSITIONALS: {
-                    NAME: "The name of the region to start. The maximum length of the region name is eight characters.",
+                    MEMBERNAME: "The name of the member containing JCL for the region to start. " +
+                        " The maximum length of the member name is eight characters. " +
+                        " If no member name is specified, the default " +
+                        "member name is used\n",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the transaction",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
-                // },
+                OPTIONS: {
+                    LOCAL: "If you specify the --local option, IMS overrides the symbolic IMSID parameter " +
+                        "in the JCL of the default or specified member. --local is the default if you specify " +
+                        "the --job-name option.",
+                    JOBNAME: "Use this option to override the job name on the JOB statement of the " +
+                        "default or specified JCL member for a dependent region"
+                },
                 MESSAGES: {
                     SUCCESS: "The region '%s' was started successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Start a region named REGION",
+                    EX1: "Start a region stored in a member named MEM1",
                 }
             }
         }
@@ -154,7 +160,7 @@ export default {
     STOP: {
         SUMMARY: "Stop resources in IMS",
         DESCRIPTION: "Stops a running region, application program or transaction. " +
-        "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
+            "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program to be stopped.",

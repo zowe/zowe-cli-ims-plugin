@@ -12,6 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { IStartRegionParms } from "../../doc/IStartRegionParms";
 
 // TODO update to work with IMS REST API
 /**
@@ -71,26 +72,30 @@ export async function startTransaction(session: AbstractSession, parms: IResourc
 /**
  * Start region in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IStartRegionParms} parms - parameters for starting a region, see interface for more details
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function startRegion(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Job name", "IMS job name is required");
-
+export async function startRegion(session: AbstractSession, parms: IStartRegionParms): Promise<IIMSApiResponse> {
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let imsProgram = "/";
+    let imsProgram = "/apis/v1/region/start";
 
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    if (parms.memberName != null) {
+        imsProgram = imsProgram + delimiter + "membername=" + encodeURIComponent(parms.memberName);
         delimiter = "&";
     }
+    if (parms.jobName != null) {
+        imsProgram = imsProgram + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
+        delimiter = "&";
+    }
+    if (parms.local != null) {
+        imsProgram = imsProgram + delimiter + "local=" + encodeURIComponent(parms.local + "");
+    }
 
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    return ImsRestClient.putExpectJSON(session, imsProgram, [], undefined);
 }

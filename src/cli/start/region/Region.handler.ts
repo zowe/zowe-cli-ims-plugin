@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { startRegion, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, startRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -31,17 +30,19 @@ export default class RegionHandler extends ImsBaseHandler {
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Start region defined to IMS",
+            statusMessage: "Starting region defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
         const response = await startRegion(session, {
-            name: params.arguments.regionName
+            memberName: params.arguments.memberName,
+            jobName: params.arguments.jobName,
+            local: params.arguments.local
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionName);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.memberName);
         return response;
     }
 }
