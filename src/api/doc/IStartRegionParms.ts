@@ -1,3 +1,6 @@
+/**
+ * Interface representing parameters for the startRegion API
+ */
 export interface IStartRegionParms {
 
     /**

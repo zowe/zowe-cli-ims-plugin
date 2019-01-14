@@ -12,6 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { IStopRegionParms } from "../../doc/IStopRegionParms";
 
 // TODO update to work with IMS REST API
 /**
@@ -71,26 +72,39 @@ export async function stopTransaction(session: AbstractSession, parms: IResource
 /**
  * Stop region in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IStopRegionParms} parms - parameters for stopping the region
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function stopRegion(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Job name", "IMS job name is required");
-
+export async function stopRegion(session: AbstractSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
+    ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
+        "Either region number or job name (but not both) must be specified.");
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let imsProgram = "/";
+    let resource = "/";
 
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    if (parms.regNum != null) {
+        resource = resource + delimiter + "regNum=" + encodeURIComponent(parms.regNum.join(","));
         delimiter = "&";
     }
-
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    if (parms.jobName != null) {
+        resource = resource + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
+        delimiter = "&";
+    }
+    if (parms.abdump != null) {
+        resource = resource + delimiter + "abdump=" + encodeURIComponent(parms.abdump);
+        delimiter = "&";
+    }
+    if (parms.transaction != null) {
+        resource = resource + delimiter + "transaction=" + encodeURIComponent(parms.transaction);
+        delimiter = "&";
+    }
+    if (parms.cancel != null) {
+        resource = resource + delimiter + "cancel=" + encodeURIComponent(parms.cancel + "");
+    }
+    return ImsRestClient.getExpectJSON(session, resource, []);
 }

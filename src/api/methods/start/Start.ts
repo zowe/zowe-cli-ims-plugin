@@ -83,19 +83,19 @@ export async function startRegion(session: AbstractSession, parms: IStartRegionP
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let imsProgram = "/apis/v1/region/start";
+    let resource = "/apis/v1/region/start";
 
     if (parms.memberName != null) {
-        imsProgram = imsProgram + delimiter + "membername=" + encodeURIComponent(parms.memberName);
+        resource = resource + delimiter + "membername=" + encodeURIComponent(parms.memberName);
         delimiter = "&";
     }
     if (parms.jobName != null) {
-        imsProgram = imsProgram + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
+        resource = resource + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
         delimiter = "&";
     }
     if (parms.local != null) {
-        imsProgram = imsProgram + delimiter + "local=" + encodeURIComponent(parms.local + "");
+        resource = resource + delimiter + "local=" + encodeURIComponent(parms.local + "");
     }
 
-    return ImsRestClient.putExpectJSON(session, imsProgram, [], undefined);
+    return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }

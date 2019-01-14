@@ -195,20 +195,27 @@ export default {
                 }
             },
             REGION: {
-                DESCRIPTION: "Command to specify the IMS region to be stopped.",
-                POSITIONALS: {
-                    NAME: "The name of the region (job) to stop. The maximum length of the transaction name is four characters.",
+                DESCRIPTION: "Stop an IMS region.",
+                POSITIONALS: {},
+                OPTIONS: {
+                    JOBNAME: "The name of the job for the IMS region you want to stop. You must specify either this option or --region-ids.",
+                    REGIONIDS: "Region identifier numbers for the regions you would like to stop. You must specify either this option " +
+                        "or --job-name.",
+                    ABDUMP: "Specify this option to cause abnormal termination of an application program. " +
+                        "If the transaction indicated by this argument is currently running in the specified region," +
+                        " an error message is received at the master terminal, indicating an application " +
+                        "program abend. The region will remain active, but the transaction will be " +
+                        "stopped. The command is ignored if the transaction is not currently scheduled " +
+                        "in the region.",
+                    TRANSACTION: "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
+                    CANCEL: "Use this option if the region cannot be stopped with a stop region --abdump" +
+                        " command. To use this option, you must have already submitted a stop region command using the --abdump option."
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the transaction",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
-                // },
                 MESSAGES: {
                     SUCCESS: "The region '%s' was stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Stop a region named REGION1"
-
+                    EX1: "Stop a region with job name JOBNM1"
                 }
             }
         }

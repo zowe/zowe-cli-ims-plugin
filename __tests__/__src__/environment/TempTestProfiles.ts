@@ -87,9 +87,9 @@ export class TempTestProfiles {
         const profileName: string = "tmp_ims" + uuidv4();
         const imsProps = testEnvironment.systemTestProperties.ims;
         const createProfileScript = TemporaryScripts.SHEBANG +
-            `${TemporaryScripts.BRIGHT_BIN} profiles create ims ${profileName} --user ${imsProps.user} -p ` +
-            `${imsProps.password} ` +
-            ` --host ${imsProps.host} --port ${imsProps.port}`;
+            `${TemporaryScripts.BRIGHT_BIN} profiles create ims ${profileName} --user ${imsProps.user} --password ` +
+            `${imsProps.password} --plex ${imsProps.plex}` +
+            ` --host ${imsProps.host} --port ${imsProps.port} --ich ${imsProps.imsConnectHost} --icp ${imsProps.imsConnectPort}`;
 
         const scriptPath = testEnvironment.workingDir + "_create_profile_" + profileName;
         await IO.writeFileAsync(scriptPath, createProfileScript);
@@ -97,9 +97,9 @@ export class TempTestProfiles {
         if (output.status !== 0 || output.stderr.toString().trim().length > 0) {
             throw new ImperativeError({
                 msg: "Creation of ims profile '" + profileName + "' failed! You should delete the script: \n'" + scriptPath + "' " +
-                "after reviewing it to check for possible errors.\n Output of the profile create command:\n" + output.stderr.toString() +
-                output.stdout.toString() +
-                TempTestProfiles.GLOBAL_INSTALL_NOTE
+                    "after reviewing it to check for possible errors.\n Output of the profile create command:\n" + output.stderr.toString() +
+                    output.stdout.toString() +
+                    TempTestProfiles.GLOBAL_INSTALL_NOTE
             });
         }
         IO.deleteFile(scriptPath);
@@ -123,8 +123,8 @@ export class TempTestProfiles {
         if (output.status !== 0 || output.stderr.toString().trim().length > 0) {
             throw new ImperativeError({
                 msg: "Deletion of " + profileType + " profile '" + profileName + "' failed! You should delete the script: '" + scriptPath + "' " +
-                "after reviewing it to check for possible errors. Stderr of the profile create command:\n" + output.stderr.toString()
-                + TempTestProfiles.GLOBAL_INSTALL_NOTE
+                    "after reviewing it to check for possible errors. Stderr of the profile create command:\n" + output.stderr.toString()
+                    + TempTestProfiles.GLOBAL_INSTALL_NOTE
             });
         }
         this.log(testEnvironment, `Deleted ${profileType} profile '${profileName}'. Stdout from deletion:\n${output.stdout.toString()}`);

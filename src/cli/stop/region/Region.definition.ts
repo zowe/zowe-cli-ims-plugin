@@ -21,23 +21,35 @@ export const RegionDefinition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     handler: __dirname + "/Region.handler",
     type: "command",
-    positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
-        type: "string",
-        required: true
-    }],
+    positionals: [],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [
+        {
+            name: "region-ids",
+            description: strings.OPTIONS.REGIONIDS,
+            type: "array",
+            conflictsWith: ["job-name"]
+        },
+        {
+            name: "job-name",
+            description: strings.OPTIONS.JOBNAME,
+            type: "string",
+            conflictsWith: ["region-ids"],
+        },
+        {
+            name: "abdump",
+            description: strings.OPTIONS.ABDUMP,
+            type: "string",
+        },
+        {
+            name: "cancel",
+            description: strings.OPTIONS.CANCEL,
+            type: "boolean"
+        }],
+    mustSpecifyOne: ["job-name", "region-ids"],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "REGION1"
+        options: "--job-name JOBNM1"
     }]
 };

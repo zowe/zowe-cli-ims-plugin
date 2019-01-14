@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { stopRegion, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, stopRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -38,10 +37,14 @@ export default class RegionHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await stopRegion(session, {
-            name: params.arguments.regionName
+            regNum: params.arguments.regionNumber,
+            jobName: params.arguments.jobName,
+            abdump: params.arguments.abdump,
+            cancel: params.arguments.cancel,
+            transaction: params.arguments.transaction
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionName);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionNumber);
         return response;
     }
 }
