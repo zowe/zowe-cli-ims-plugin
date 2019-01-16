@@ -134,7 +134,7 @@ export default {
                 }
             },
             REGION: {
-                DESCRIPTION: "Command to specify the region that is to be started.",
+                DESCRIPTION: "Start an IMS region.",
                 POSITIONALS: {
                     MEMBERNAME: "The name of the member containing JCL for the region to start. " +
                         " The maximum length of the member name is eight characters. " +
@@ -149,7 +149,7 @@ export default {
                         "default or specified JCL member for a dependent region"
                 },
                 MESSAGES: {
-                    SUCCESS: "The region '%s' was started successfully."
+                    SUCCESS: "The region specified in member '%s' was started successfully."
                 },
                 EXAMPLES: {
                     EX1: "Start a region stored in a member named MEM1",
