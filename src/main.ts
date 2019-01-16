@@ -18,5 +18,5 @@ Imperative.init().then(() => {
     Imperative.parse();
     Imperative.api.imperativeLogger.info("Parsed the input command!");
 }).catch((error) => {
-    Imperative.console.error(`An error occured during imperative initalization:\n${error}`);
+    Imperative.console.error(`An error occurred during imperative initialization:\n${error}`);
 });

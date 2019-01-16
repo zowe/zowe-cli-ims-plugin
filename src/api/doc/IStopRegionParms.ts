@@ -32,7 +32,7 @@ export interface IStopRegionParms {
      */
     abdump?: string;
     /**
-     * Specify a transaction in WFI mode to stop its message processing within the specified region
+     * Specify a transaction in wait-for-input (WFI) mode to stop its message processing within the specified region
      */
     transaction?: string;
     /**
