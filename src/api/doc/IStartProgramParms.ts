@@ -9,12 +9,35 @@
 *                                                                                 *
 */
 
-// TODO - needs updated for IMS
-export interface IProgramParms {
+/**
+ * Interface representing parameters for the startProgram API
+ */
+export interface IStartProgramParms {
     /**
-     * The name of the program
-     * Up to eight characters long
+     * Specifies the 1-8 character name of the program.
+     * Wildcards can be specified in the name.
+     * The name is a repeatable parameter.
+     * The default is NAME(*) which returns all program resources.
      */
-    name: string;
+    name: string[];
 
+    /**
+     *
+     */
+    route?: string[];
+
+    /**
+     *
+     */
+    start?: string[];
+
+    /**
+     *
+     */
+    stop?: string[];
+
+    /**
+     *
+     */
+    bmptype?: string[];
 }

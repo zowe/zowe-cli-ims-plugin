@@ -15,28 +15,27 @@
 export const ImsConstants: { [key: string]: any } = {
 
     /**
-     * ORDERBY parameter
+     * URL parameter
      */
-    ORDER_BY: "ORDERBY",
+    URL: "/ims/apis/v1/",
 
     /**
-     * SUMMONLY parameter
+     * PROGRAM
      */
-    SUMM_ONLY: "SUMMONLY",
+    PROGRAM: "program",
 
     /**
-     * NODISCARD parameter
+     * TRANSACTION
      */
-    NO_DISCARD: "NODISCARD",
+    TRANSACTION: "transaction",
 
     /**
-     * CRITERIA parameter
+     * START
      */
-    CRITERIA: "CRITERIA",
+    START: "start",
 
     /**
-     * PARAMETER parameter
+     * STOP
      */
-    PARAMETER: "PARAMETER",
-
+    STOP: "stop"
 };

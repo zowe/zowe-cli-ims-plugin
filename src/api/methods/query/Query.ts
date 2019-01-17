@@ -12,6 +12,7 @@
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { ImsConstants } from "../../constants";
 
 /**
  * Query program in IMS through REST API
@@ -30,7 +31,13 @@ export async function queryProgram(session: AbstractSession, parms: IResourcePar
     Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
     const imsPlex = "/";
-    let resource = "/ims/apis/v1/program";
+    let resource = ImsConstants.URL + ImsConstants.PROGRAM;
+
+    if (parms.name != null) {
+        // names must be lower case
+        resource = resource + delimiter + "names=" + encodeURIComponent(parms.name);
+        delimiter = "&";
+    }
 
     if (parms.show != null) {
         resource = resource + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
