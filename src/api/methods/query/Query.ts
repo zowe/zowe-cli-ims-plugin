@@ -11,7 +11,7 @@
 
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
-import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { IIMSApiResponse, IQueryProgramParms, IQueryTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 
 /**
@@ -23,8 +23,8 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryProgram(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Program name", "IMS program name is required");
+export async function queryProgram(session: AbstractSession, parms: IQueryProgramParms): Promise<IIMSApiResponse> {
+    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -33,15 +33,71 @@ export async function queryProgram(session: AbstractSession, parms: IResourcePar
     const imsPlex = "/";
     let resource = ImsConstants.URL + ImsConstants.PROGRAM;
 
-    if (parms.name != null) {
-        // names must be lower case
-        resource = resource + delimiter + "names=" + encodeURIComponent(parms.name);
+    // names is not required; defaults to all programs
+    if (parms.names !== undefined) {
+        if (parms.names.length > 0) {
+            // 'names' text must be lower case
+            resource = resource + delimiter + "names=";
+            for (let i = 0; i < parms.names.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.names[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.names[i]);
+                }
+            }
+            delimiter = "&";
+        }
+    }
+
+    // if no attributes default to ALL
+    if (parms.attributes !== undefined) {
+        if (parms.attributes.length > 0) {
+            // 'attributes' text must be lower case
+            resource = resource + delimiter + "attributes=";
+            for (let i = 0; i < parms.attributes.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.attributes[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.attributes[i]);
+                }
+            }
+        }
+        delimiter = "&";
+    }
+    else {
+        resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
 
-    if (parms.show != null) {
-        resource = resource + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    // if status specified, add
+    if (parms.status !== undefined) {
+        if (parms.status.length > 0) {
+            // 'status' text must be lower case
+            resource = resource + delimiter + "status=";
+            for (let i = 0; i < parms.status.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.status[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.status[i]);
+                }
+            }
+        }
         delimiter = "&";
+    }
+
+    // check if route specified
+    if (parms.route !== undefined) {
+        if (parms.status.length > 0) {
+            // 'route' text must be lower case
+            resource = resource + delimiter + "route=";
+            for (let i = 0; i < parms.route.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.route[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.route[i]);
+                }
+            }
+        }
     }
 
     return ImsRestClient.getExpectJSON(session, resource, []);
@@ -56,8 +112,8 @@ export async function queryProgram(session: AbstractSession, parms: IResourcePar
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryTransaction(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Transaction name", "IMS transaction name is required");
+export async function queryTransaction(session: AbstractSession, parms: IQueryTransactionParms): Promise<IIMSApiResponse> {
+    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -66,8 +122,8 @@ export async function queryTransaction(session: AbstractSession, parms: IResourc
     const imsPlex = "/";
     let imsProgram = "/";
 
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    if (parms.attributes != null) {
+        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.attributes[0]) + ")";
         delimiter = "&";
     }
 

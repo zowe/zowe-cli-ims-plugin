@@ -66,7 +66,9 @@ export default {
                     NAME: "The names of the programs to query.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the application program output fields to be returned."
+                    ATTRIBUTES: "Specifies the application program output fields to be returned.",
+                    STATUS: "Selects programs for display that possess at least one of the specified program status.",
+                    ROUTE: "Specifies the routes to be returned."
                 },
                 MESSAGES: {
                     SUCCESS: "The information for '%s' were retrieved successfully."

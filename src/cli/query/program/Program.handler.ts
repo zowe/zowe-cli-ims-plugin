@@ -37,8 +37,8 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await queryProgram(session, {
-            name: params.arguments.name,
-            show: params.arguments.show
+            names: params.arguments.names,
+            attributes: params.arguments.attributes
         });
 
         params.response.format.output({
