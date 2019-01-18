@@ -23,18 +23,17 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryProgram(session: AbstractSession, parms: IQueryProgramParms): Promise<IIMSApiResponse> {
+export async function queryProgram(session: AbstractSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
     // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
     let resource = ImsConstants.URL + ImsConstants.PROGRAM;
 
     // names is not required; defaults to all programs
-    if (parms.names !== undefined) {
+    if ((parms !== undefined) && (parms.names !== undefined)) {
         if (parms.names.length > 0) {
             // 'names' text must be lower case
             resource = resource + delimiter + "names=";
@@ -50,7 +49,7 @@ export async function queryProgram(session: AbstractSession, parms: IQueryProgra
     }
 
     // if no attributes default to ALL
-    if (parms.attributes !== undefined) {
+    if ((parms !== undefined) && (parms.attributes !== undefined)) {
         if (parms.attributes.length > 0) {
             // 'attributes' text must be lower case
             resource = resource + delimiter + "attributes=";
@@ -69,37 +68,38 @@ export async function queryProgram(session: AbstractSession, parms: IQueryProgra
         delimiter = "&";
     }
 
-    // if status specified, add
-    if (parms.status !== undefined) {
-        if (parms.status.length > 0) {
-            // 'status' text must be lower case
-            resource = resource + delimiter + "status=";
-            for (let i = 0; i < parms.status.length; i++) {
-                if (i === 0) {
-                    resource = resource + encodeURIComponent(parms.status[i]);
-                } else {
-                    resource = resource + "," + encodeURIComponent(parms.status[i]);
+    if (parms !== undefined) {
+        // if status specified, add
+        if (parms.status !== undefined) {
+            if (parms.status.length > 0) {
+                // 'status' text must be lower case
+                resource = resource + delimiter + "status=";
+                for (let i = 0; i < parms.status.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.status[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.status[i]);
+                    }
+                }
+            }
+            delimiter = "&";
+        }
+
+        // check if route specified
+        if (parms.route !== undefined) {
+            if (parms.status.length > 0) {
+                // 'route' text must be lower case
+                resource = resource + delimiter + "route=";
+                for (let i = 0; i < parms.route.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.route[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.route[i]);
+                    }
                 }
             }
         }
-        delimiter = "&";
     }
-
-    // check if route specified
-    if (parms.route !== undefined) {
-        if (parms.status.length > 0) {
-            // 'route' text must be lower case
-            resource = resource + delimiter + "route=";
-            for (let i = 0; i < parms.route.length; i++) {
-                if (i === 0) {
-                    resource = resource + encodeURIComponent(parms.route[i]);
-                } else {
-                    resource = resource + "," + encodeURIComponent(parms.route[i]);
-                }
-            }
-        }
-    }
-
     return ImsRestClient.getExpectJSON(session, resource, []);
 }
 
