@@ -89,7 +89,7 @@ describe("IMS Query program", () => {
         let response;
 
         options.names = ["*"];
-        options.attributes = ["A"];
+        options.attributes = ["A"];  // invalid value
         options.status = ["LOCK"];
 
         try {
