@@ -15,11 +15,11 @@ import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 // Test environment will be populated in the "beforeAll"
 let TEST_ENVIRONMENT: ITestEnvironment;
-let regionName: string;
-let host: string;
-let port: number;
-let user: string;
-let password: string;
+// let regionName: string;
+// let host: string;
+// let port: number;
+// let user: string;
+// let password: string;
 
 describe("ims query program", () => {
 

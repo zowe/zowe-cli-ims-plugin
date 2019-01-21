@@ -31,8 +31,7 @@ export const RegionDefinition: ICommandDefinition = {
         {
             name: "local", aliases: ["l"],
             description: strings.OPTIONS.LOCAL,
-            type: "boolean",
-            defaultValue: "ALL"
+            type: "boolean"
         },
         {
             name: "job-name", aliases: ["jn"],
