@@ -82,7 +82,7 @@ describe("QueryProgramHandler", () => {
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
-      }
+      };
 
     const functionSpy = jest.spyOn(Get, "queryProgram");
 
@@ -127,7 +127,7 @@ describe("QueryProgramHandler", () => {
             }),
             {
                 attribute: undefined,
-                names: names
+                names
             }
         );
     });
