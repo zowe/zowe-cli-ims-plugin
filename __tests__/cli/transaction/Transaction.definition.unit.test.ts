@@ -13,7 +13,7 @@ import { ICommandDefinition } from "@brightside/imperative";
 
 describe("ims query transaction", () => {
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/query/transaction/Transaction.definition").ProgramDefinition;
+        const definition: ICommandDefinition = require("../../../src/cli/query/transaction/Transaction.definition");
         expect(definition).toBeDefined();
         delete definition.handler;
         expect(definition).toMatchSnapshot();

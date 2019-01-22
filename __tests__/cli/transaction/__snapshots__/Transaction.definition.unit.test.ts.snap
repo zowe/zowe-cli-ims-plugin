@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims query transaction should not have changed 1`] = `
+Object {
+  "TransactionDefinition": Object {
+    "aliases": Array [
+      "tran",
+    ],
+    "description": "Command to specify the transaction(s) to be queried.",
+    "examples": Array [
+      Object {
+        "description": "Query transaction information for transaction TRN12",
+        "options": "TRN12",
+      },
+      Object {
+        "description": "Query transaction information for transactions named TRAN1 and TRAN2",
+        "options": "TRAN1 TRAN2",
+      },
+      Object {
+        "description": "Query transaction information for transactions starting with TRAN using the wild card character '*'",
+        "options": "TRAN*",
+      },
+    ],
+    "handler": "C:\\\\Users\\\\SWAWI03\\\\IdeaProjects\\\\zowe-cli-ims-plugin\\\\src\\\\cli\\\\query\\\\transaction/Transaction.handler",
+    "name": "transaction",
+    "options": Array [
+      Object {
+        "aliases": Array [
+          "att",
+        ],
+        "allowableValues": Object {
+          "caseSensitive": true,
+          "values": Array [
+            "ALL",
+            "BMPTYPE",
+            "DEFN",
+            "DEFNTYPE",
+            "DOPT",
+            "FP",
+            "GLOBAL",
+            "IMSID",
+            "GPSB",
+            "LANG",
+            "LOCAL",
+            "MODEL",
+            "RESIDENT",
+            "SCHDTYPE",
+            "STATUS",
+            "TIMESTAMP",
+            "TRANSTAT",
+            "EXPORTNEEDED",
+            "DB",
+            "RTC",
+            "TRAN",
+            "WORK",
+          ],
+        },
+        "defaultValue": Array [
+          "ALL",
+        ],
+        "description": "Specifies the transaction output fields to be returned.",
+        "name": "attributes",
+        "type": "array",
+      },
+      Object {
+        "aliases": Array [
+          "st",
+        ],
+        "allowableValues": Object {
+          "caseSensitive": true,
+          "values": Array [
+            "DB-NOTAVL",
+            "IOPREV",
+            "LOCK",
+            "NOTINIT",
+            "STOSCHD",
+            "TRACE",
+          ],
+        },
+        "description": "Selects transactions for display that possess at least one of the specified transaction status.",
+        "name": "status",
+        "type": "array",
+      },
+      Object {
+        "aliases": Array [
+          "rt",
+        ],
+        "description": "Specifies the routes to be returned.",
+        "name": "route",
+        "type": "array",
+      },
+      Object {
+        "aliases": Array [
+          "cl",
+        ],
+        "description": "Selects transactions by the classes specified.",
+        "name": "class",
+        "type": "array",
+      },
+      Object {
+        "aliases": Array [
+          "qco",
+        ],
+        "description": "The compare operator used to select transactions based on queue count.  Valid values: LT, LE, GT, GE, EQ or NE.",
+        "name": "queue-count-operator",
+        "type": "array",
+      },
+      Object {
+        "aliases": Array [
+          "qcv",
+        ],
+        "description": "The numeric value used with 'queue_count_operator' to select transactions based on queue count.",
+        "name": "queue-count-value",
+        "type": "number",
+      },
+      Object {
+        "aliases": Array [
+          "ca",
+        ],
+        "description": "Selects transactions by the conversational attributes specified.",
+        "name": "conversation-attributes",
+        "type": "string",
+      },
+      Object {
+        "aliases": Array [
+          "fpo",
+        ],
+        "description": "Selects transactions by the Fast Path options specified.",
+        "name": "fast-path-options",
+        "type": "string",
+      },
+      Object {
+        "aliases": Array [
+          "ros",
+        ],
+        "description": "Selects transactions by the remote option specified.",
+        "name": "remote-option-specified",
+        "type": "string",
+      },
+      Object {
+        "aliases": Array [
+          "rmos",
+        ],
+        "description": "Selects transactions by the response mode option specified.",
+        "name": "response-mode-option-specified",
+        "type": "string",
+      },
+    ],
+    "outputFormatOptions": true,
+    "positionals": Array [
+      Object {
+        "description": "The name of the transaction(*) to query.",
+        "name": "name",
+        "required": false,
+        "type": "array",
+      },
+    ],
+    "profile": Object {
+      "optional": Array [
+        "ims",
+      ],
+    },
+    "type": "command",
+  },
+}
+`;

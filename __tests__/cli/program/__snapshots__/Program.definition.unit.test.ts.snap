@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims query program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "pgm",
+  ],
+  "description": "Command to specify the application program(s) to be queried.",
+  "examples": Array [
+    Object {
+      "description": "Query information for application program named PGM123",
+      "options": "PGM123",
+    },
+    Object {
+      "description": "Query information for application programs named ABC and XYZ",
+      "options": "ABC XYZ",
+    },
+    Object {
+      "description": "Query information for application programs starting with PROG using the wild card character '*'",
+      "options": "PROG*",
+    },
+  ],
+  "name": "program",
+  "options": Array [
+    Object {
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ALL",
+          "BMPTYPE",
+          "DEFN",
+          "DEFNTYPE",
+          "DOPT",
+          "FP",
+          "GLOBAL",
+          "IMSID",
+          "GPSB",
+          "LANG",
+          "LOCAL",
+          "MODEL",
+          "RESIDENT",
+          "SCHDTYPE",
+          "STATUS",
+          "TIMESTAMP",
+          "TRANSTAT",
+          "EXPORTNEEDED",
+          "DB",
+          "RTC",
+          "TRAN",
+          "WORK",
+        ],
+      },
+      "defaultValue": Array [
+        "ALL",
+      ],
+      "description": "Specifies the application program output fields to be returned.",
+      "name": "attributes",
+      "type": "array",
+    },
+    Object {
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "DB-NOTAVL",
+          "IOPREV",
+          "LOCK",
+          "NOTINIT",
+          "STOSCHD",
+          "TRACE",
+        ],
+      },
+      "description": "Selects programs for display that possess at least one of the specified program status.",
+      "name": "status",
+      "type": "array",
+    },
+    Object {
+      "description": "Specifies the routes to be returned.",
+      "name": "route",
+      "type": "array",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The names of the programs to query.",
+      "name": "names...",
+      "required": false,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;
