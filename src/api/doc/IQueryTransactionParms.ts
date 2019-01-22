@@ -66,7 +66,7 @@ export interface IQueryTransactionParms {
     /**
      *
      */
-    qcntval?: string[];
+    qcntval?: number;
 
     /**
      *

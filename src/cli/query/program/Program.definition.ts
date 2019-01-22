@@ -39,6 +39,7 @@ export const ProgramDefinition: ICommandDefinition = {
                     "DB", "RTC", "TRAN", "WORK"],
                 caseSensitive: true
             },
+            aliases: ["att"],
             defaultValue: ["ALL"]
         },
         {
@@ -48,12 +49,14 @@ export const ProgramDefinition: ICommandDefinition = {
             allowableValues: {
                 values: ["DB-NOTAVL", "IOPREV", "LOCK", "NOTINIT", "STOSCHD", "TRACE"],
                 caseSensitive: true
-            }
+            },
+            aliases: ["st"],
         },
         {
             name: "route",
             description: strings.OPTIONS.ROUTE,
             type: "array",
+            aliases: ["rt"],
         }
     ],
     profile: {optional: ["ims"]},

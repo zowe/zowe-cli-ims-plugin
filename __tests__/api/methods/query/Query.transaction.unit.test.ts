@@ -14,18 +14,18 @@ import {
     ImsConstants,
     ImsRestClient,
     ImsSession,
-    queryProgram,
-    IQueryProgramParms
+    queryTransaction,
+    IQueryTransactionParms
 } from "../../../../src";
 
-describe("IMS - Query program", () => {
+describe("IMS - Query transaction", () => {
 
-    const program = "program";
+    const transaction = "transaction";
     const attributes = "ALL";
     const content = "This\nis\r\na\ntest";
 
-    const queryProgramParms: IQueryProgramParms = {
-        names: [program],
+    const queryTransactionParms: IQueryTransactionParms = {
+        names: [transaction],
         attributes: [attributes],
         status: undefined,
         route: undefined
@@ -56,27 +56,27 @@ describe("IMS - Query program", () => {
             deleteSpy.mockImplementation(() => content);
         });
 
-        it("should be able to query all programs without any parameters", async () => {
+        it("should be able to query all transactions without any parameters", async () => {
 
-            // if no parameters, then /ims/apis/v1/program?attributes=ALL which
-            // returns all programs with all columns
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
+            // if no parameters, then /ims/apis/v1/transaction?attributes=ALL which
+            // returns all transactions with all columns
+            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
                 "?attributes=" + attributes;
 
-            response = await queryProgram(dummySession);
+            response = await queryTransaction(dummySession);
 
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
         });
 
-        it("should be able to query all programs without program name specified", async () => {
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
+        it("should be able to query all transactions without program name specified", async () => {
+            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
                 "?attributes=BMPTYPE";
 
-            queryProgramParms.names = undefined;
-            queryProgramParms.attributes = ["BMPTYPE"];
+            queryTransactionParms.names = undefined;
+            queryTransactionParms.attributes = ["BMPTYPE"];
 
-            response = await queryProgram(dummySession, queryProgramParms);
+            response = await queryTransaction(dummySession, queryTransactionParms);
 
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);

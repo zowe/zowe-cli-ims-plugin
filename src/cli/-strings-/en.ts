@@ -85,7 +85,16 @@ export default {
                     NAME: "The name of the transaction(*) to query.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the transaction output fields to be returned."
+                    ATTRIBUTES: "Specifies the transaction output fields to be returned.",
+                    STATUS: "Selects transactions for display that possess at least one of the specified transaction status.",
+                    ROUTE: "Specifies the routes to be returned.",
+                    CLASS: "Selects transactions by the classes specified.",
+                    QCNTCOMP: "The compare operator used to select transactions based on queue count.  Valid values: LT, LE, GT, GE, EQ or NE.",
+                    QCNTVAL: "The numeric value used with 'queue_count_operator' to select transactions based on queue count.",
+                    CONV: "Selects transactions by the conversational attributes specified.",
+                    FP: "Selects transactions by the Fast Path options specified.",
+                    REMOTE: "Selects transactions by the remote option specified.",
+                    RESP: "Selects transactions by the response mode option specified.",
                 },
                 MESSAGES: {
                     SUCCESS: "The information for '%s' were retrieved successfully."
