@@ -37,14 +37,14 @@ export default class RegionHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await stopRegion(session, {
-            regNum: params.arguments.regionNumber,
+            regNum: params.arguments.regionIds,
             jobName: params.arguments.jobName,
             abdump: params.arguments.abdump,
             cancel: params.arguments.cancel,
             transaction: params.arguments.transaction
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionNumber);
+        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionIds);
         return response;
     }
 }

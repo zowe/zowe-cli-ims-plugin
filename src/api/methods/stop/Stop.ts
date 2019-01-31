@@ -13,6 +13,7 @@ import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperativ
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
 import { IStopRegionParms } from "../../doc/IStopRegionParms";
+import { ImsConstants } from "../../constants";
 
 // TODO update to work with IMS REST API
 /**
@@ -85,7 +86,7 @@ export async function stopRegion(session: AbstractSession, parms: IStopRegionPar
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = "/";
+    let resource = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
     if (parms.regNum != null) {
         resource = resource + delimiter + "regNum=" + encodeURIComponent(parms.regNum.join(","));
@@ -106,5 +107,5 @@ export async function stopRegion(session: AbstractSession, parms: IStopRegionPar
     if (parms.cancel != null) {
         resource = resource + delimiter + "cancel=" + encodeURIComponent(parms.cancel + "");
     }
-    return ImsRestClient.getExpectJSON(session, resource, []);
+    return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }

@@ -25,9 +25,9 @@ export const ImsConstants: { [key: string]: any } = {
     PROGRAM: "program",
 
     /**
-     * TRANSACTION
+     * REGION
      */
-    TRANSACTION: "transaction",
+    REGION: "region",
 
     /**
      * START
@@ -37,5 +37,10 @@ export const ImsConstants: { [key: string]: any } = {
     /**
      * STOP
      */
-    STOP: "stop"
+    STOP: "stop",
+
+    /**
+     * TRANSACTION
+     */
+    TRANSACTION: "transaction"
 };
