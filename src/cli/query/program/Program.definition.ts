@@ -23,7 +23,7 @@ export const ProgramDefinition: ICommandDefinition = {
     type: "command",
     positionals: [{
         name: "names...",
-        description: strings.POSITIONALS.NAME,
+        description: strings.POSITIONALS.NAMES,
         type: "string",
         required: false
     }],

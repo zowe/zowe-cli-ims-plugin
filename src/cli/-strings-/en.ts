@@ -63,7 +63,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program(s) to be queried.",
                 POSITIONALS: {
-                    NAME: "The names of the programs to query.",
+                    NAMES: "The names of the programs to query.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "Specifies the application program output fields to be returned.",
@@ -82,7 +82,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Command to specify the transaction(s) to be queried.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction(*) to query.",
+                    NAMES: "The name of the transaction(*) to query.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "Specifies the transaction output fields to be returned.",
@@ -115,7 +115,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program to be started.",
                 POSITIONALS: {
-                    NAME: "The name of the application program to start. The maximum length of the program name is eight characters.",
+                    NAMES: "The name of the application program to start. The maximum length of the program name is eight characters.",
                 },
                 // OPTIONS: {
                 //     REGIONNAME: "The IMS region name to which to install the program",
@@ -131,7 +131,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Command to specify the transaction that is to be started.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
                 },
                 // OPTIONS: {
                 //     REGIONNAME: "The IMS region name to which to install the transaction",
@@ -176,7 +176,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Command to specify the application program to be stopped.",
                 POSITIONALS: {
-                    NAME: "The name of the program to stop. The maximum length of the program name is eight characters.",
+                    NAMES: "The name of the program to stop. The maximum length of the program name is eight characters.",
                 },
                 // OPTIONS: {
                 //     REGIONNAME: "The IMS region name from which to delete the program",
@@ -192,7 +192,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Command to specify the transaction that is to be stopped.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
                 },
                 // OPTIONS: {
                 //     REGIONNAME: "The IMS region name from which to delete the transaction",

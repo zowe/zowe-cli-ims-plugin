@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@brightside/imperative";
-import { queryTransaction, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -36,10 +36,24 @@ export default class TransactionHandler extends ImsBaseHandler {
 
         const response = await queryTransaction(session, {
             names: params.arguments.names,
-            attributes: params.arguments.attributes
+            attributes: params.arguments.attributes,
+            status: params.arguments.status,
+            route: params.arguments.route,
+            class: params.arguments.class,
+            qcntcomp: params.arguments.queueCountOperator,
+            qcntval: params.arguments.queueCountValue,
+            conv: params.arguments.converationAttributes,
+            fp: params.arguments.fastPathOptions,
+            remote: params.arguments.remoteOptionSpecified,
+            resp: params.arguments.responseModeOptionSpecified
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.names[0]);
+        params.response.format.output({
+            output: response.data,
+            format: "table",
+            fields: ["tran", "tmcr", "msgt", "mbr", "fp"],
+            header: true
+        });
         return response;
     }
 }
