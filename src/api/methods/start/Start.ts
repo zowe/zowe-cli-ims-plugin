@@ -13,6 +13,7 @@ import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperativ
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IResourceParms } from "../../doc";
 import { IStartRegionParms } from "../../doc/IStartRegionParms";
+import { ImsConstants } from "../../constants";
 
 // TODO update to work with IMS REST API
 /**
@@ -83,7 +84,7 @@ export async function startRegion(session: AbstractSession, parms: IStartRegionP
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = "/apis/v1/region/start";
+    let resource = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.START;
 
     if (parms.memberName != null) {
         resource = resource + delimiter + "membername=" + encodeURIComponent(parms.memberName);

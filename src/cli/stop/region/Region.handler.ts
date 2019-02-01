@@ -44,7 +44,10 @@ export default class RegionHandler extends ImsBaseHandler {
             transaction: params.arguments.transaction
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionIds);
+        params.response.console.log(strings.MESSAGES.SUCCESS,
+            (params.arguments.regionIds !== undefined) ?
+                "--region_ids " + params.arguments.regionIds : "--job-name " + params.arguments.jobName);
+
         return response;
     }
 }

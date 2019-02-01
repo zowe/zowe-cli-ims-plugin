@@ -223,7 +223,7 @@ export default {
                         " command. To use this option, you must have already submitted a stop region command using the --abdump option."
                 },
                 MESSAGES: {
-                    SUCCESS: "The region '%s' was stopped successfully."
+                    SUCCESS: "The region identified by '%s' was stopped successfully."
                 },
                 EXAMPLES: {
                     EX1: "Stop a region with job name JOBNM1"
