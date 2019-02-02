@@ -39,5 +39,5 @@ export interface IStopRegionParms {
      * Is used if the region cannot be stopped with a stop region --abdump
      * command and must be preceded by a stop region --abdump command.
      */
-    cancel: boolean;
+    cancel?: boolean;
 }
