@@ -22,9 +22,9 @@ export const TransactionDefinition: ICommandDefinition = {
     handler: __dirname + "/Transaction.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
-        type: "array",
+        name: "names...",
+        description: strings.POSITIONALS.NAMES,
+        type: "string",
         required: false
     }],
     outputFormatOptions: true,
