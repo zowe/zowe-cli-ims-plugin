@@ -23,6 +23,10 @@ describe("Creating an IMS profile", () => {
         });
     });
 
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(testEnvironment);
+    });
+
     it("should create an IMS profile successfully with fake connection details", () => {
         const output = runCliScript(__dirname + "/__scripts__/create_ims_profile.sh", testEnvironment);
         expect(output.stderr.toString()).toEqual("");
