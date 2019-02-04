@@ -48,6 +48,8 @@ export default class TransactionHandler extends ImsBaseHandler {
             resp: params.arguments.responseModeOptionSpecified
         });
 
+        this.checkReturnCode(response);
+        
         params.response.format.output({
             output: response.data,
             format: "table",

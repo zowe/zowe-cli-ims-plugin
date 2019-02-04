@@ -42,6 +42,8 @@ export default class RegionHandler extends ImsBaseHandler {
             local: params.arguments.local
         });
 
+        this.checkReturnCode(response);
+
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.memberName);
         return response;
     }

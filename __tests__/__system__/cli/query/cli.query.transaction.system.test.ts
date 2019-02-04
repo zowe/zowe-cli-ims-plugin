@@ -34,17 +34,17 @@ describe("ims query transaction", () => {
 
     it("should be able to successfully query transactions", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_transaction.sh", TEST_ENVIRONMENT,
-            ["D*", "ALL"]);
+            [transactionName.substring(0, 1) + "*", "ALL"]); // wildcard the transaction name
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("dopt");
+        expect(stdout).toContain(transactionName); // expect the full transaction name to come out
     });
 
-    it("should be able to successfully get resources using profile options", async () => {
+    it("should be able to successfully query transactions using fully qualified options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_transaction_fully_qualified.sh", TEST_ENVIRONMENT,
-            ["D*",
+            [transactionName.substring(0, 1) + "*",
                 "ALL",
                 TEST_ENVIRONMENT.systemTestProperties.ims.host,
                 TEST_ENVIRONMENT.systemTestProperties.ims.port,
@@ -57,6 +57,16 @@ describe("ims query transaction", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("dopt");
+        expect(stdout).toContain(transactionName);
     });
+
+    it("should fail if a transaction name is too long", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/query_transaction.sh", TEST_ENVIRONMENT,
+            ["TOOOOOOLONGGGGGGGGGGGG", "ALL"]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(output.status).toEqual(1);
+        expect(stderr).toContain("TOO LONG");
+    });
+
 });
