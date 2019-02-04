@@ -15,12 +15,7 @@ import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 // Test environment will be populated in the "beforeAll"
 let TEST_ENVIRONMENT: ITestEnvironment;
-// let regionName: string;
-// let host: string;
-// let port: number;
-// let user: string;
-// let password: string;
-
+let transactionName: string;
 describe("ims query transaction", () => {
 
     // Create the unique test environment
@@ -30,13 +25,11 @@ describe("ims query transaction", () => {
             installPlugin: true,
             tempProfileTypes: ["ims"]
         });
+        transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
     });
 
-    it("should display the query transaction help", async () => {
-        const response = await runCliScript(__dirname + "/__scripts__/query_transaction_help.sh", TEST_ENVIRONMENT);
-        expect(response.stderr.toString()).toBe("");
-        expect(response.status).toBe(0);
-        expect(response.stdout.toString()).toMatchSnapshot();
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
     });
 
     it("should be able to successfully query transactions", async () => {

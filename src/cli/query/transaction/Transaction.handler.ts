@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@brightside/imperative";
 import { IIMSApiResponse, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
@@ -54,6 +54,8 @@ export default class TransactionHandler extends ImsBaseHandler {
             fields: ["tran", "tmcr", "msgt", "mbr", "fp"],
             header: true
         });
+
+        Logger.getAppLogger().info("Messages from the query transaction API:\n" + JSON.stringify(response.messages, null, 2));
         return response;
     }
 }

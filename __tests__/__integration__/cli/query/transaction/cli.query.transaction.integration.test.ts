@@ -9,30 +9,33 @@
 *                                                                                 *
 */
 
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
+// Test environment will be populated in the "beforeAll"
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
+import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { runCliScript } from "../../../../__src__/TestUtils";
-import { join } from "path";
 
-let testEnvironment: ITestEnvironment;
-describe("Start region command", () => {
+let TEST_ENVIRONMENT: ITestEnvironment;
+let transactionName: string;
+describe("ims query transaction", () => {
 
+    // Create the unique test environment
     beforeAll(async () => {
-        testEnvironment = await TestEnvironment.setUp({
-            testName: "start_region_cli_integration",
+        TEST_ENVIRONMENT = await TestEnvironment.setUp({
+            testName: "query_transaction_command",
             installPlugin: true
         });
+        transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
     });
 
     afterAll(async () => {
-        await TestEnvironment.cleanUp(testEnvironment);
+        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
     });
 
     it("should display the help", async () => {
-        const result = runCliScript(join(__dirname, "__scripts__", "start_region_help.sh"), testEnvironment);
-        expect(result.stderr.toString()).toEqual("");
-        expect(result.status).toEqual(0);
-        expect(result.stdout.toString()).toMatchSnapshot();
+        const response = await runCliScript(__dirname + "/__scripts__/query_transaction_help.sh", TEST_ENVIRONMENT);
+        expect(response.stderr.toString()).toBe("");
+        expect(response.status).toBe(0);
+        expect(response.stdout.toString()).toMatchSnapshot();
     });
 
 });

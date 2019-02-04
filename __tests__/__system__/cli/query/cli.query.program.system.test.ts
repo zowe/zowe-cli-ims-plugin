@@ -32,6 +32,10 @@ describe("ims query program", () => {
         });
     });
 
+    afterAll(async () => {
+        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
+    });
+
     it("should display the query program help", async () => {
         const response = await runCliScript(__dirname + "/__scripts__/query_program_help.sh", TEST_ENVIRONMENT);
         expect(response.stderr.toString()).toBe("");

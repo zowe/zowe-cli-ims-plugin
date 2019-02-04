@@ -24,3 +24,5 @@ ims:
   imsConnectHost: my-ims-connect-host
   imsConnectPort: my-ims-connect-port
   plex: my-ims-plex
+  # a transaction that should exist when running query transaction command
+  expectedTransaction: IVPREXX
