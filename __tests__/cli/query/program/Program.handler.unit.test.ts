@@ -10,12 +10,12 @@
 */
 
 import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
-import { ImsSession, IIMSApiResponse } from "../../../src";
-import { ProgramDefinition } from "../../../src/cli/query/program/Program.definition";
-import ProgramHandler from "../../../src/cli/query/program/Program.handler";
+import { ImsSession, IIMSApiResponse } from "../../../../src";
+import { ProgramDefinition } from "../../../../src/cli/query/program/Program.definition";
+import ProgramHandler from "../../../../src/cli/query/program/Program.handler";
 
-jest.mock("../../../src/api/methods/query");
-const Get = require("../../../src/api/methods/query");
+jest.mock("../../../../src/api/methods/query");
+const Get = require("../../../../src/api/methods/query");
 
 const host = "somewhere.com";
 const port = "43443";

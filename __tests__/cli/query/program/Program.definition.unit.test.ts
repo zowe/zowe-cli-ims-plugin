@@ -12,13 +12,10 @@
 import { ICommandDefinition } from "@brightside/imperative";
 
 describe("ims query program", () => {
-    const DEFINE_RESOURCES = 2;
-
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../src/cli/query/Query.definition");
+        const definition: ICommandDefinition = require("../../../../src/cli/query/program/Program.definition").ProgramDefinition;
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DEFINE_RESOURCES);
-        delete definition.children;
+        delete definition.handler;
         expect(definition).toMatchSnapshot();
     });
 });

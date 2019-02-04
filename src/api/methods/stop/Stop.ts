@@ -83,6 +83,9 @@ export async function stopRegion(session: AbstractSession, parms: IStopRegionPar
     ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
         "Either region number or job name (but not both) must be specified.");
 
+    ImperativeExpect.toBeEqual(parms.regNum != null && parms.jobName != null, false,
+        "Either region number or job name (but not both) must be specified.");
+
     if (parms.regNum === undefined) {
         ImperativeExpect.toBeDefinedAndNonBlank(parms.jobName,"If job name is specified it must have a value.");
     }

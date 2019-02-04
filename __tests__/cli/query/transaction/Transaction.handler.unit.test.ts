@@ -10,12 +10,12 @@
 */
 
 import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
-import { ImsSession, IIMSApiResponse } from "../../../src";
-import { TransactionDefinition } from "../../../src/cli/query/transaction/Transaction.definition";
-import TransactionHandler from "../../../src/cli/query/transaction/Transaction.handler";
+import { ImsSession, IIMSApiResponse } from "../../../../src";
+import { TransactionDefinition } from "../../../../src/cli/query/transaction/Transaction.definition";
+import TransactionHandler from "../../../../src/cli/query/transaction/Transaction.handler";
 
-jest.mock("../../../src/api/methods/query");
-const Get = require("../../../src/api/methods/query");
+jest.mock("../../../../src/api/methods/query");
+const Get = require("../../../../src/api/methods/query");
 
 const host = "somewhere.com";
 const port = "43443";
