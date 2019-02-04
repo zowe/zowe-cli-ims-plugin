@@ -80,6 +80,9 @@ export async function startTransaction(session: AbstractSession, parms: IResourc
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function startRegion(session: AbstractSession, parms: IStartRegionParms): Promise<IIMSApiResponse> {
+
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.memberName, "IMS Member name", "IMS member name is required");
+
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));

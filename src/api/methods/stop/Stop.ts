@@ -82,6 +82,11 @@ export async function stopTransaction(session: AbstractSession, parms: IResource
 export async function stopRegion(session: AbstractSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
     ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
         "Either region number or job name (but not both) must be specified.");
+
+    if (parms.regNum === undefined) {
+        ImperativeExpect.toBeDefinedAndNonBlank(parms.jobName,"If job name is specified it must have a value.");
+    }
+
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
