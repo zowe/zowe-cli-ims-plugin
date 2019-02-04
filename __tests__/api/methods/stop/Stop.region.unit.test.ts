@@ -85,7 +85,7 @@ describe("IMS - Stop region", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        it("should be able to stop a region with all parameters specified", async () => {
+        it("should be able to stop a region with all parameters specified via jobName", async () => {
 
             stopRegionParms.regNum = undefined;
             stopRegionParms.jobName = jobName;
@@ -103,7 +103,7 @@ describe("IMS - Stop region", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        it("should be able to stop a region with all parameters specified", async () => {
+        it("should be able to stop a region with all parameters specified via regNum", async () => {
 
             stopRegionParms.regNum = regNum;
             stopRegionParms.jobName = undefined ;
@@ -167,6 +167,22 @@ describe("IMS - Stop region", () => {
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
             expect(error.message).toContain("Expect Error: Required parameter 'If job name is specified it must have a value.");
+        });
+
+        it("should fail if both regNum and jobName are provided", async () => {
+
+            stopRegionParms.regNum = [1];
+            stopRegionParms.jobName = "job1";
+
+            try {
+                response = await stopRegion(dummySession, stopRegionParms);
+            } catch (err) {
+                error = err;
+            }
+
+            expect(response).toBeUndefined();
+            expect(error).toBeDefined();
+            expect(error.message).toContain("Expect Error: Either region number or job name (but not both) must be specified.");
         });
     });
 });

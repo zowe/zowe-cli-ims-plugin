@@ -150,9 +150,9 @@ Object {
     "positionals": Array [
       Object {
         "description": "The name of the transaction(*) to query.",
-        "name": "name",
+        "name": "names...",
         "required": false,
-        "type": "array",
+        "type": "string",
       },
     ],
     "profile": Object {
