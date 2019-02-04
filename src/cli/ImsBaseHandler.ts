@@ -71,6 +71,8 @@ export abstract class ImsBaseHandler implements ICommandHandler {
         for (const messageID of Object.keys(response.messages)) {
             const message = response.messages[messageID];
             const BASE_TEN = 10;
+            // if the return code on the message is not zero
+            // the command did not succeed
             if (parseInt(message.rc, BASE_TEN) !== 0) {
                 succeeded = false;
                 failingMessages.push(message);
