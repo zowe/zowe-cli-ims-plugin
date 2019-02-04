@@ -28,7 +28,7 @@ exports[`ims query program should display the query program help 1`] = `
  OPTIONS
  -------
 
-   --attributes  (array)
+   --attributes  | --att (array)
 
       Specifies the application program output fields to be returned.
 
@@ -37,14 +37,14 @@ exports[`ims query program should display the query program help 1`] = `
       LANG, LOCAL, MODEL, RESIDENT, SCHDTYPE, STATUS, TIMESTAMP, TRANSTAT,
       EXPORTNEEDED, DB, RTC, TRAN, WORK
 
-   --status  (array)
+   --status  | --st (array)
 
       Selects programs for display that possess at least one of the specified program
       status.
 
       Allowed values: DB-NOTAVL, IOPREV, LOCK, NOTINIT, STOSCHD, TRACE
 
-   --route  (array)
+   --route  | --rt (array)
 
       Specifies the routes to be returned.
 
