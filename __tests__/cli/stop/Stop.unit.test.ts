@@ -11,11 +11,11 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 
-describe("ims query", () => {
-    const DEFINE_RESOURCES = 2;
+describe("ims stop", () => {
+    const DEFINE_RESOURCES = 3;
 
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/query/Query.definition");
+        const definition: ICommandDefinition = require("../../../src/cli/stop/Stop.definition");
         expect(definition).toBeDefined();
         expect(definition.children.length).toBe(DEFINE_RESOURCES);
         delete definition.children;

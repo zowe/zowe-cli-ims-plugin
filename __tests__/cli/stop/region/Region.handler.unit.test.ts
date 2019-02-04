@@ -11,11 +11,11 @@
 
 import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
-import { ProgramDefinition } from "../../../../src/cli/query/program/Program.definition";
-import ProgramHandler from "../../../../src/cli/query/program/Program.handler";
+import { RegionDefinition } from "../../../../src/cli/stop/region/Region.definition";
+import RegionHandler from "../../../../src/cli/stop/region/Region.handler";
 
-jest.mock("../../../../src/api/methods/query");
-const Query = require("../../../../src/api/methods/query");
+jest.mock("../../../../src/api/methods/stop");
+const Stop = require("../../../../src/api/methods/stop");
 
 const host = "somewhere.com";
 const port = "43443";
@@ -70,35 +70,42 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
             })
         }
     },
-    definition: ProgramDefinition,
-    fullDefinition: ProgramDefinition,
+    definition: RegionDefinition,
+    fullDefinition: RegionDefinition,
     profiles: PROFILES
 };
 
-describe("QueryProgramHandler", () => {
-    const names = "testProgram";
-    const attributes = "ALL";
+describe("StopRegionHandler", () => {
+    const regionIds = 1;
+    const regNum = regionIds;
+    const jobName = "jobName";
+    const abdump = "transaction1";
+    const transaction = "transaction";
+    const cancel = false;
 
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
       };
 
-    const functionSpy = jest.spyOn(Query, "queryProgram");
+    const functionSpy = jest.spyOn(Stop, "stopRegion");
 
     beforeEach(() => {
         functionSpy.mockClear();
-        // defaultReturn.response.records[programName.toLowerCase()] = [{prop:"test1"}, {prop:"test2"}];
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
-    it("should call the query program api", async () => {
-        const handler = new ProgramHandler();
+    it("should call the stop region api", async () => {
+        const handler = new RegionHandler();
 
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            regionIds,
+            jobName,
+            abdump,
+            transaction,
+            cancel,
             host,
             port,
             user,
@@ -126,8 +133,11 @@ describe("QueryProgramHandler", () => {
                 protocol: "http",
             }),
             {
-                attribute: undefined,
-                names
+                regNum,
+                jobName,
+                abdump,
+                transaction,
+                cancel
             }
         );
     });

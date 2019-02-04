@@ -11,11 +11,11 @@
 
 import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
-import { ProgramDefinition } from "../../../../src/cli/query/program/Program.definition";
-import ProgramHandler from "../../../../src/cli/query/program/Program.handler";
+import { RegionDefinition } from "../../../../src/cli/start/region/Region.definition";
+import RegionHandler from "../../../../src/cli/start/region/Region.handler";
 
-jest.mock("../../../../src/api/methods/query");
-const Query = require("../../../../src/api/methods/query");
+jest.mock("../../../../src/api/methods/start");
+const Start = require("../../../../src/api/methods/start");
 
 const host = "somewhere.com";
 const port = "43443";
@@ -70,35 +70,37 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
             })
         }
     },
-    definition: ProgramDefinition,
-    fullDefinition: ProgramDefinition,
+    definition: RegionDefinition,
+    fullDefinition: RegionDefinition,
     profiles: PROFILES
 };
 
-describe("QueryProgramHandler", () => {
-    const names = "testProgram";
-    const attributes = "ALL";
+describe("StartRegionHandler", () => {
+    const memberName = "member";
+    const jobName = "jobName";
+    const local = false;
 
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
       };
 
-    const functionSpy = jest.spyOn(Query, "queryProgram");
+    const functionSpy = jest.spyOn(Start, "startRegion");
 
     beforeEach(() => {
         functionSpy.mockClear();
-        // defaultReturn.response.records[programName.toLowerCase()] = [{prop:"test1"}, {prop:"test2"}];
         functionSpy.mockImplementation(async () => defaultReturn);
     });
 
-    it("should call the query program api", async () => {
-        const handler = new ProgramHandler();
+    it("should call the start region api", async () => {
+        const handler = new RegionHandler();
 
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            memberName,
+            jobName,
+            local,
             host,
             port,
             user,
@@ -126,8 +128,9 @@ describe("QueryProgramHandler", () => {
                 protocol: "http",
             }),
             {
-                attribute: undefined,
-                names
+                memberName,
+                jobName,
+                local
             }
         );
     });
