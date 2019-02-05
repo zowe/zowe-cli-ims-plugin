@@ -49,7 +49,7 @@ export default class TransactionHandler extends ImsBaseHandler {
         });
 
         this.checkReturnCode(response);
-        
+
         params.response.format.output({
             output: response.data,
             format: "table",
