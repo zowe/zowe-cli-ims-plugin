@@ -69,7 +69,7 @@ describe("IMS - Query transaction", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
         });
 
-        it("should be able to query all transactions without program name specified", async () => {
+        it("should be able to query all transactions without transaction name specified", async () => {
             endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
                 "?attributes=BMPTYPE";
 
