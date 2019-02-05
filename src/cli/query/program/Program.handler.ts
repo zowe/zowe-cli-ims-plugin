@@ -41,6 +41,8 @@ export default class ProgramHandler extends ImsBaseHandler {
             attributes: params.arguments.attributes
         });
 
+        this.checkReturnCode(response);
+
         params.response.format.output({
             header: true,
             output: response.data,

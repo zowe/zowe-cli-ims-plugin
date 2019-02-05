@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { stopProgram, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, stopProgram } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -40,6 +39,8 @@ export default class ProgramHandler extends ImsBaseHandler {
         const response = await stopProgram(session, {
             name: params.arguments.programName
         });
+
+        this.checkReturnCode(response);
 
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);
         return response;

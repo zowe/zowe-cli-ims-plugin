@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { stopTransaction, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, stopTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -41,6 +40,7 @@ export default class TransactionHandler extends ImsBaseHandler {
             name: params.arguments.transactionName
         });
 
+        this.checkReturnCode(response);
         params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.transactionName);
         return response;
     }
