@@ -12,8 +12,8 @@
 import { ICommandDefinition } from "@brightside/imperative";
 
 describe("ims query transaction", () => {
-    it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../../src/cli/query/transaction/Transaction.definition");
+    it("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../../src/cli/query/transaction/Transaction.definition").TransactionDefinition;
         expect(definition).toBeDefined();
         delete definition.handler;
         expect(definition).toMatchSnapshot();

@@ -6,7 +6,6 @@ Object {
     "**/cli/*/*.definition!(.d).*s",
   ],
   "name": "ims",
-  "pluginHealthCheck": "C:\\\\Users\\\\SWAWI03\\\\IdeaProjects\\\\zowe-cli-ims-plugin\\\\src/healthCheck",
   "productDisplayName": "CLI Plug-in for IBM IMS",
   "profiles": Array [
     Object {
