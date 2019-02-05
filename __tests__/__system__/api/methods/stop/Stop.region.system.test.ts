@@ -12,7 +12,7 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import {stopRegion, IStopRegionParms, ImsSession, startRegion, IStartRegionParms} from "../../../../../src";
+import { stopRegion, IStopRegionParms, ImsSession, startRegion, IStartRegionParms } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
@@ -80,7 +80,6 @@ describe("IMS Stop region", () => {
         startOptions.memberName = "IMJJPP1";
 
         try {
-            response = await startRegion(session, startOptions)
             response = await stopRegion(session, options);
         } catch (err) {
             error = err;
