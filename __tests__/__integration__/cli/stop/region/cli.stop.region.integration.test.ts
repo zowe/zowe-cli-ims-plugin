@@ -28,11 +28,19 @@ describe("Start region command", () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    it("Should start a region by specifying a member name", async () => {
+    it("should display the help", async () => {
         const result = runCliScript(join(__dirname, "__scripts__", "stop_region_help.sh"), testEnvironment);
         expect(result.stderr.toString()).toEqual("");
         expect(result.status).toEqual(0);
         expect(result.stdout.toString()).toMatchSnapshot();
     });
+
+    it("should reject mutually exclusive options --job-name and --region-ids", async () => {
+        const result = runCliScript(join(__dirname, "__scripts__", "stop_region_conflict.sh"), testEnvironment);
+        expect(result.status).toEqual(1);
+        expect(result.stderr.toString()).toContain("conflict");
+        expect(result.stderr.toString()).toMatchSnapshot();
+    });
+
 
 });
