@@ -36,13 +36,6 @@ describe("ims query program", () => {
         await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
     });
 
-    it("should display the query program help", async () => {
-        const response = await runCliScript(__dirname + "/__scripts__/query_program_help.sh", TEST_ENVIRONMENT);
-        expect(response.stderr.toString()).toBe("");
-        expect(response.status).toBe(0);
-        expect(response.stdout.toString()).toMatchSnapshot();
-    });
-
     it("should be able to successfully query programs", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_program.sh", TEST_ENVIRONMENT,
             ["D*", "ALL"]);

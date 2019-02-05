@@ -9,15 +9,17 @@
 *                                                                                 *
 */
 
+import { runCliScript } from "../../../__src__/TestUtils";
 import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 let testEnvironment: ITestEnvironment;
 describe("Start region command", () => {
 
+    // Create the unique test environment
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "start_region_cli",
+            testName: "start_region_command",
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
@@ -28,7 +30,30 @@ describe("Start region command", () => {
     });
 
     it("Should start a region by specifying a member name", async () => {
-        expect(true).toEqual(true); // insert real test
+        const output = runCliScript(__dirname + "/__scripts__/start_region.sh", testEnvironment,
+            ["IMJJPP1"]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("The region specified in member 'IMJJPP1' was started successfully.");
+    });
+
+    it("Should start a region by specifying a member name", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/start_region.sh", testEnvironment,
+            ["IMJJPP1",
+                testEnvironment.systemTestProperties.ims.host,
+                testEnvironment.systemTestProperties.ims.port,
+                testEnvironment.systemTestProperties.ims.user,
+                testEnvironment.systemTestProperties.ims.password,
+                testEnvironment.systemTestProperties.ims.imsConnectHost,
+                testEnvironment.systemTestProperties.ims.imsConnectPort,
+                testEnvironment.systemTestProperties.ims.plex]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("The region specified in member 'IMJJPP1' was started successfully.");
     });
 
 });

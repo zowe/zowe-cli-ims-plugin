@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StopRegionHandler should call the stop region api 1`] = `"The region(s) identified by '%s' stopped successfully."`;
+
+exports[`StopRegionHandler should call the stop region api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;
