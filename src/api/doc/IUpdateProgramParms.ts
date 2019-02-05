@@ -12,7 +12,7 @@
 /**
  * Interface representing parameters for the startProgram API
  */
-export interface IStartProgramParms {
+export interface IUpdateProgramParms {
     /**
      * Specifies the 1-8 character name of the program.
      * Wildcards can be specified in the name.
@@ -40,4 +40,40 @@ export interface IStartProgramParms {
      *
      */
     bmptype?: string[];
+    /**
+     *
+     */
+    dopt?: string;
+    /**
+     *
+     */
+    fp?: string;
+    /**
+     *
+     */
+    gpsb?: string;
+    /**
+     *
+     */
+    lang?: string;
+    /**
+     *
+     */
+    lock?: string;
+    /**
+     *
+     */
+    resident?: string;
+    /**
+     *
+     */
+    schdtype?: string;
+    /**
+     *
+     */
+    transtat?: string;
+    /**
+     *
+     */
+    option?: string;
 }

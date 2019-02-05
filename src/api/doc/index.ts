@@ -14,7 +14,6 @@ export * from "./IIMSResponseResultSummary";
 export * from "./IQueryProgramParms";
 export * from "./IQueryTransactionParms";
 export * from "./IResourceParms";
-export * from "./IStartProgramParms";
+export * from "./IUpdateProgramParms";
 export * from "./IStartRegionParms";
 export * from "./IStopRegionParms";
-export * from "./ITransactionParms";
