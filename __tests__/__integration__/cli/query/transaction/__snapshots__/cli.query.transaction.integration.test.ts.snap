@@ -42,7 +42,8 @@ exports[`ims query transaction should display the help 1`] = `
       Selects transactions for display that possess at least one of the specified
       transaction status.
 
-      Allowed values: DB-NOTAVL, IOPREV, LOCK, NOTINIT, STOSCHD, TRACE
+      Allowed values: AFFIN, BAL, CONV, CPIC, DYN, IOPREV, LCK, NOTINIT, QERR, QSTP,
+      SUSPEND, STOQ, STOSCHD, TRACE, USTO
 
    --route  | --rt (array)
 
