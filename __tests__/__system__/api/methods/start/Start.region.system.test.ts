@@ -65,7 +65,7 @@ describe("IMS Start region", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("START REGION IMJJPP1");
+        expect(response.messages["OM1OM   "].command).toContain("START REGION " + memberName);
     });
 
 
