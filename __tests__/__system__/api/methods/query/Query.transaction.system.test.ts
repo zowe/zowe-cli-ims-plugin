@@ -78,8 +78,11 @@ describe("IMS Query transaction", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages.IMJJ.rc).toBe("00000004");
-        expect(response.messages.IMJJ.command).toBe("QUERY TRAN NAME(*) STATUS(LCK) SHOW(ALL)");
+        for (const messageKey of Object.keys(response.messages)) {
+            // should have no results and have a warning RC of 4
+            expect(response.messages[messageKey].rc).toBe("00000004");
+            expect(response.messages[messageKey].command).toBe("QUERY TRAN NAME(*) STATUS(LCK) SHOW(ALL)");
+        }
     });
 
     it("should fail to query all transactions from IMS due to invalid attributes value", async () => {

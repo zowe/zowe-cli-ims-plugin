@@ -52,6 +52,11 @@ export interface ITestPropertiesSchema {
          * when running a query transaction command
          */
         expectedTransaction: string;
+
+        /**
+         * a dependent region that can be started and stopped
+         */
+        dependentRegionName: string;
     };
 
 }

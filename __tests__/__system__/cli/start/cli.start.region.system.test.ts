@@ -14,6 +14,7 @@ import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITes
 import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 let testEnvironment: ITestEnvironment;
+let memberName: string;
 describe("Start region command", () => {
 
     // Create the unique test environment
@@ -23,6 +24,7 @@ describe("Start region command", () => {
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
+        memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
     });
 
     afterAll(async () => {
@@ -31,17 +33,17 @@ describe("Start region command", () => {
 
     it("Should start a region by specifying a member name", async () => {
         const output = runCliScript(__dirname + "/__scripts__/start_region.sh", testEnvironment,
-            ["IMJJPP1"]);
+            [memberName]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region specified in member 'IMJJPP1' was started successfully.");
+        expect(stdout).toContain("The region specified in member '" + memberName + "' was started successfully.");
     });
 
     it("Should start a region by specifying a member name and profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/start_region.sh", testEnvironment,
-            ["IMJJPP1",
+            [memberName,
                 testEnvironment.systemTestProperties.ims.host,
                 testEnvironment.systemTestProperties.ims.port,
                 testEnvironment.systemTestProperties.ims.user,
@@ -53,7 +55,7 @@ describe("Start region command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region specified in member 'IMJJPP1' was started successfully.");
+        expect(stdout).toContain("The region specified in member '" + memberName + "' was started successfully.");
     });
 
 });

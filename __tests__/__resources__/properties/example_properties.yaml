@@ -26,3 +26,5 @@ ims:
   plex: my-ims-plex
   # a transaction that should exist when running query transaction command
   expectedTransaction: IVPREXX
+  # member name of a dependent region that can be started and stopped
+  dependentRegionName: IMJJPP1

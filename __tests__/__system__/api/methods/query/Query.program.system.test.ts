@@ -12,7 +12,7 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { queryProgram, IQueryProgramParms, ImsSession } from "../../../../../src";
+import { ImsSession, IQueryProgramParms, queryProgram } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
@@ -78,8 +78,11 @@ describe("IMS Query program", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages.IMSN.rc).toBe("00000004");
-        expect(response.messages.IMSN.command).toBe("QUERY PGM NAME(*) SHOW(ALL) STATUS(LOCK)");
+        for (const messageKey of Object.keys(response.messages)) {
+            // expect to get a rc 4 back which indicates no results
+            expect(response.messages[messageKey].rc).toBe("00000004");
+            expect(response.messages[messageKey].command).toBe("QUERY PGM NAME(*) SHOW(ALL) STATUS(LOCK)");
+        }
     });
 
     it("should fail to query all programs from IMS due to invalid attributes value", async () => {
