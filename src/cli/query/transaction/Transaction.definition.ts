@@ -47,7 +47,8 @@ export const TransactionDefinition: ICommandDefinition = {
             description: strings.OPTIONS.STATUS,
             type: "array",
             allowableValues: {
-                values: ["DB-NOTAVL", "IOPREV", "LOCK", "NOTINIT", "STOSCHD", "TRACE"],
+                values: ["AFFIN", "BAL", "CONV", "CPIC", "DYN", "IOPREV", "LCK", "NOTINIT",
+                    "QERR", "QSTP", "SUSPEND", "STOQ", "STOSCHD", "TRACE", "USTO"],
                 caseSensitive: true
             },
             aliases: ["st"],

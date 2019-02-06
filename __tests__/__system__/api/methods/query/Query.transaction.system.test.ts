@@ -12,7 +12,7 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { queryTransaction, IQueryTransactionParms, ImsSession } from "../../../../../src";
+import { ImsSession, IQueryTransactionParms, queryTransaction } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
@@ -23,8 +23,6 @@ describe("IMS Query transaction", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "ims_query_transaction",
-            installPlugin: true,
-            tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
@@ -71,7 +69,7 @@ describe("IMS Query transaction", () => {
 
         options.names = ["*"];
         options.attributes = ["ALL"];
-        options.status = ["LOCK"];
+        options.status = ["LCK"];
         try {
             response = await queryTransaction(session, options);
         } catch (err) {
@@ -80,8 +78,8 @@ describe("IMS Query transaction", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages.IMSN.rc).toBe("00000004");
-        expect(response.messages.IMSN.command).toBe("QUERY TRAN NAME(*) SHOW(ALL) STATUS(LOCK)");
+        expect(response.messages.IMJJ.rc).toBe("00000004");
+        expect(response.messages.IMJJ.command).toBe("QUERY TRAN NAME(*) STATUS(LCK) SHOW(ALL)");
     });
 
     it("should fail to query all transactions from IMS due to invalid attributes value", async () => {
@@ -90,7 +88,7 @@ describe("IMS Query transaction", () => {
 
         options.names = ["*"];
         options.attributes = ["A"];  // invalid value
-        options.status = ["LOCK"];
+        options.status = ["LCK"];
 
         try {
             response = await queryTransaction(session, options);

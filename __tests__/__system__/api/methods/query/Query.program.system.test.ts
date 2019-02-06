@@ -23,8 +23,6 @@ describe("IMS Query program", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "ims_query_program",
-            installPlugin: true,
-            tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;

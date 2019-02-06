@@ -10,7 +10,6 @@
 */
 
 export * from "./IIMSApiResponse";
-export * from "./IIMSResponseResultSummary";
 export * from "./IQueryProgramParms";
 export * from "./IQueryTransactionParms";
 export * from "./IResourceParms";

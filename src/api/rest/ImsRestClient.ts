@@ -10,7 +10,6 @@
 */
 
 import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
-import { Parser } from "xml2js";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -38,11 +37,6 @@ export class ImsRestClient extends RestClient {
      * Internal logger
      */
     private static mLogger: Logger;
-
-    /**
-     * Internal parser
-     */
-    private static mParser: Parser;
 
     /**
      * Use the Brightside logger instead of the imperative logger
