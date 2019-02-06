@@ -15,5 +15,6 @@ export * from "./IQueryProgramParms";
 export * from "./IQueryTransactionParms";
 export * from "./IResourceParms";
 export * from "./IUpdateProgramParms";
+export * from "./IUpdateTransactionParms";
 export * from "./IStartRegionParms";
 export * from "./IStopRegionParms";

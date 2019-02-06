@@ -10,16 +10,15 @@
 */
 
 /**
- * Interface representing parameters for the startProgram API
+ * Interface representing parameters for the update program API
  */
 export interface IUpdateProgramParms {
     /**
      * Specifies the 1-8 character name of the program.
      * Wildcards can be specified in the name.
-     * The name is a repeatable parameter.
-     * The default is NAME(*) which returns all program resources.
+     * names is a repeatable parameter.
      */
-    name: string[];
+    names: string[];
 
     /**
      *
@@ -40,18 +39,22 @@ export interface IUpdateProgramParms {
      *
      */
     bmptype?: string[];
+
     /**
      *
      */
     dopt?: string;
+
     /**
      *
      */
     fp?: string;
+
     /**
      *
      */
     gpsb?: string;
+
     /**
      *
      */
@@ -60,20 +63,25 @@ export interface IUpdateProgramParms {
      *
      */
     lock?: string;
+
     /**
      *
      */
     resident?: string;
+
     /**
      *
      */
     schdtype?: string;
+
     /**
      *
      */
     transtat?: string;
+
     /**
      *
      */
     option?: string;
+
 }

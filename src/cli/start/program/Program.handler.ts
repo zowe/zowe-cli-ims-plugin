@@ -37,7 +37,7 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await startProgram(session, {
-            name: params.arguments.programName
+            names: params.arguments.names
         });
 
         this.checkReturnCode(response);
