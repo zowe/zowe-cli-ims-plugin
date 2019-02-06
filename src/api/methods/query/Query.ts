@@ -23,7 +23,6 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function queryProgram(session: AbstractSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
-    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -111,7 +110,6 @@ export async function queryProgram(session: AbstractSession, parms?: IQueryProgr
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function queryTransaction(session: AbstractSession, parms?: IQueryTransactionParms): Promise<IIMSApiResponse> {
-    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 

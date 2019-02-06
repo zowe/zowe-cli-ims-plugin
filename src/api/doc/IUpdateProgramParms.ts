@@ -26,12 +26,14 @@ export interface IUpdateProgramParms {
     route?: string[];
 
     /**
-     *
+     * Use this option to start the program(s)
+     * Available values are SCHD, TRACE and REFRESH
      */
     start?: string[];
 
     /**
-     *
+     * Use this option to stop the program(s)
+     * Available values are SCHD and TRACE
      */
     stop?: string[];
 

@@ -41,12 +41,14 @@ export interface IUpdateTransactionParms {
     scope?: string[];
 
     /**
-     *
+     * Use this option to start the program(s)
+     * Available values are Q, SCHD, SUSPEND, and TRACE
      */
     start?: string[];
 
     /**
-     *
+     * Use this option to stop the program(s)
+     * Available values are Q, SCHD and TRACE
      */
     stop?: string[];
 

@@ -47,7 +47,21 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
         delimiter = "&";
     }
 
-    resource += delimiter + "start=SCHD";
+    if (parms.start !== undefined) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "start=";
+        for (let i = 0; i < parms.start.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.start[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.start[i]);
+            }
+        }
+        // delimiter = "&";
+    }
+    else {
+        resource += delimiter + "start=SCHD";
+    }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
@@ -62,6 +76,7 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function startTransaction(session: AbstractSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
+
     ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
@@ -84,7 +99,21 @@ export async function startTransaction(session: AbstractSession, parms: IUpdateT
         delimiter = "&";
     }
 
-    resource += delimiter + "start=SCHD";
+    if (parms.start !== undefined) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "start=";
+        for (let i = 0; i < parms.start.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.start[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.start[i]);
+            }
+        }
+        // delimiter = "&";
+    }
+    else {
+        resource += delimiter + "start=SCHD";
+    }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
