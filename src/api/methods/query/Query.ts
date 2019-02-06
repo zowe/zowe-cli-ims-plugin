@@ -17,13 +17,12 @@ import { ImsConstants } from "../../constants";
 /**
  * Query program in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IQueryProgramParms} parms - parameters for querying a program
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function queryProgram(session: AbstractSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
-    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -105,13 +104,12 @@ export async function queryProgram(session: AbstractSession, parms?: IQueryProgr
 /**
  * Query transaction in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a transaction
+ * @param {IQueryTransactionParms} parms - parameters for querying a transaction
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function queryTransaction(session: AbstractSession, parms?: IQueryTransactionParms): Promise<IIMSApiResponse> {
-    // ImperativeExpect.toBeDefinedAndNonBlank(parms.names, "IMS Transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 

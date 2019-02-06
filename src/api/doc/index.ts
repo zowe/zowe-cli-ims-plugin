@@ -10,9 +10,10 @@
 */
 
 export * from "./IIMSApiResponse";
+export * from "./IImsSession";
 export * from "./IQueryProgramParms";
 export * from "./IQueryTransactionParms";
-export * from "./IResourceParms";
-export * from "./IUpdateProgramParms";
 export * from "./IStartRegionParms";
 export * from "./IStopRegionParms";
+export * from "./IUpdateProgramParms";
+export * from "./IUpdateTransactionParms";
