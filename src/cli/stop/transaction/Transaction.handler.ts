@@ -37,7 +37,7 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await stopTransaction(session, {
-            name: params.arguments.transactionName
+            names: params.arguments.names
         });
 
         this.checkReturnCode(response);

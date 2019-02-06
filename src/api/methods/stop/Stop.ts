@@ -11,7 +11,7 @@
 
 import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
-import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { IStopRegionParms } from "../../doc/IStopRegionParms";
 import { ImsConstants } from "../../constants";
 
@@ -19,55 +19,48 @@ import { ImsConstants } from "../../constants";
 /**
  * Stop program in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IUpdateProgramParms} parms - parameters for stopping a program
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function stopProgram(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Program name", "IMS program name is required");
+export async function stopProgram(session: AbstractSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Program name", "IMS program name is required");
 
-    let delimiter = "?"; // initial delimiter
+    const delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to stop a program with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to stop programs(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let imsProgram = "/";
-
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
-        delimiter = "&";
-    }
-
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    const resource = ImsConstants.URL + ImsConstants.PROGRAM;
+    //
+    // if (parms.show != null) {
+    //     imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    //     delimiter = "&";
+    // }
+    //
+    return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
 
 /**
  * Stop transaction in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IUpdateTransactionParms} parms - parameters for stopping a transaction
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function stopTransaction(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Transaction name", "IMS transaction name is required");
+export async function stopTransaction(session: AbstractSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Transaction name", "IMS transaction name is required");
 
-    let delimiter = "?"; // initial delimiter
+    const delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to stop a transaction with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to start transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let imsProgram = "/";
+    const resource = ImsConstants.URL + ImsConstants.TRANSACTION;
 
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
-        delimiter = "&";
-    }
-
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
 
 /**

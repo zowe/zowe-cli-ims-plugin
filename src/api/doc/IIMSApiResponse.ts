@@ -10,7 +10,7 @@
 */
 
 /**
- * Interface representing API response from CMCI's web interface, parsed from XML to a javascript object
+ * Interface representing API response from IMS's web interface, parsed from XML to a javascript object
  * using the xml2js package.
  */
 
