@@ -12,11 +12,13 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { stopRegion, IStopRegionParms, ImsSession, startRegion, IStartRegionParms } from "../../../../../src";
+import { ImsSession, IStartRegionParms, IStopRegionParms, stopRegion } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: Session;
+let regionID: number;
+let memberName: string;
 
 describe("IMS Stop region", () => {
 
@@ -29,6 +31,8 @@ describe("IMS Stop region", () => {
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
 
+        regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
+        memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
         session = new ImsSession({
             user: imsProperties.user,
             password: imsProperties.password,
@@ -54,7 +58,7 @@ describe("IMS Stop region", () => {
         let error;
         let response;
 
-        options.regNum= [1];
+        options.regNum = [regionID];
 
         try {
             response = await stopRegion(session, options);
@@ -65,7 +69,7 @@ describe("IMS Stop region", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION 1");
+        expect(response.messages["OM1OM   "].command).toContain("STOP REGION " + regionID);
     });
 
     // NOTE: region must be started manually at this point
@@ -74,10 +78,10 @@ describe("IMS Stop region", () => {
         let response;
 
         options.regNum = undefined;
-        options.jobName = "IMJJPP1";
+        options.jobName = memberName;
 
         const startOptions: IStartRegionParms = {} as any;
-        startOptions.memberName = "IMJJPP1";
+        startOptions.memberName = memberName;
 
         try {
             response = await stopRegion(session, options);
@@ -88,7 +92,7 @@ describe("IMS Stop region", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME IMJJPP1");
+        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME ");
     });
 
     // TODO - IBM NEEDS TO EXPLAIN HOW JOBNAME WORKS
