@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
+import { AbstractSession, ImperativeError, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { IStopRegionParms } from "../../doc/IStopRegionParms";
@@ -26,19 +26,49 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function stopProgram(session: AbstractSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
+
+    if (parms.names === undefined) {
+        throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
+    }
+
     ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Program name", "IMS program name is required");
 
-    const delimiter = "?"; // initial delimiter
+    let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to stop programs(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const resource = ImsConstants.URL + ImsConstants.PROGRAM;
-    //
-    // if (parms.show != null) {
-    //     imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
-    //     delimiter = "&";
-    // }
-    //
+    let resource = ImsConstants.URL + ImsConstants.PROGRAM;
+
+    // names is required
+    if (parms.names.length > 0) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "names=";
+        for (let i = 0; i < parms.names.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.names[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.names[i]);
+            }
+        }
+        delimiter = "&";
+    }
+
+    if (parms.stop !== undefined) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "stop=";
+        for (let i = 0; i < parms.stop.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.stop[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.stop[i]);
+            }
+        }
+        // delimiter = "&";
+    }
+    else {
+        resource += delimiter + "stop=SCHD";
+    }
+
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
 
@@ -52,13 +82,48 @@ export async function stopProgram(session: AbstractSession, parms: IUpdateProgra
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function stopTransaction(session: AbstractSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
+
+    if (parms.names === undefined) {
+        throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});
+    }
+
     ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Transaction name", "IMS transaction name is required");
 
-    const delimiter = "?"; // initial delimiter
+    let delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to start transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to stop transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const resource = ImsConstants.URL + ImsConstants.TRANSACTION;
+    let resource = ImsConstants.URL + ImsConstants.TRANSACTION;
+
+    // names is required
+    if (parms.names.length > 0) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "names=";
+        for (let i = 0; i < parms.names.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.names[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.names[i]);
+            }
+        }
+        delimiter = "&";
+    }
+
+    if (parms.stop !== undefined) {
+        // 'names' text must be lower case
+        resource = resource + delimiter + "stop=";
+        for (let i = 0; i < parms.stop.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.stop[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.stop[i]);
+            }
+        }
+        // delimiter = "&";
+    }
+    else {
+        resource += delimiter + "stop=SCHD";
+    }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }

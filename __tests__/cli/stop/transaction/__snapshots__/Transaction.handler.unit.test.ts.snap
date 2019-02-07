@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartTransactionHandler should call the stop transaction api 1`] = `"The transaction '%s' was stopped successfully."`;
+
+exports[`StartTransactionHandler should call the stop transaction api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;
