@@ -42,5 +42,4 @@ describe("Start region command", () => {
         expect(result.stderr.toString()).toMatchSnapshot();
     });
 
-
 });

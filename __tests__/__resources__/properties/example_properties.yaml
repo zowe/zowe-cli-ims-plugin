@@ -28,3 +28,5 @@ ims:
   expectedTransaction: IVPREXX
   # member name of a dependent region that can be started and stopped
   dependentRegionName: IMJJPP1
+  # ID number of a dependent region that can be stopped
+  dependentRegionID: 1

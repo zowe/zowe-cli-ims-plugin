@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StartRegionHandler should call the start region api 1`] = `"The region specified in member '%s' was started successfully."`;
+exports[`StartRegionHandler should call the start region api 1`] = `
+"
+
+"
+`;
 
 exports[`StartRegionHandler should call the start region api 2`] = `
 Object {

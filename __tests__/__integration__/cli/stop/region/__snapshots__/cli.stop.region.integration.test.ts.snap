@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Start region command Should start a region by specifying a member name 1`] = `
+exports[`Start region command should display the help 1`] = `
 "
  COMMAND NAME
  ------------
@@ -149,7 +149,7 @@ exports[`Start region command Should start a region by specifying a member name 
 }"
 `;
 
-exports[`Start region command should reject mutually exclusive options 1`] = `
+exports[`Start region command should reject mutually exclusive options --job-name and --region-ids 1`] = `
 "
 Syntax Error:
 The following options conflict (mutually exclusive):
