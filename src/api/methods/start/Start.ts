@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
+import { AbstractSession, ImperativeError, ImperativeExpect, Logger } from "@brightside/imperative";
 import { ImsRestClient } from "../../rest";
 import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms, IStartRegionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
@@ -25,6 +25,10 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function startProgram(session: AbstractSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
+    if (parms.names === undefined) {
+        throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
+    }
+
     ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
@@ -76,6 +80,10 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function startTransaction(session: AbstractSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
+
+    if (parms.names === undefined) {
+        throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});
+    }
 
     ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Transaction name", "IMS transaction name is required");
 

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartProgramHandler should call the start program api 1`] = `"The application program named '%s' was started successfully."`;
+
+exports[`StartProgramHandler should call the start program api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;
