@@ -25,7 +25,6 @@ describe("IMS Start region", () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "ims_start_region",
             installPlugin: true,
-            tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;

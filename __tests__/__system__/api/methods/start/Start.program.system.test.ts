@@ -24,7 +24,6 @@ describe("IMS Start program", () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "ims_start_program",
             installPlugin: true,
-            tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
