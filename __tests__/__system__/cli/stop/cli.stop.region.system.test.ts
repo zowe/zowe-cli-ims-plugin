@@ -14,6 +14,8 @@ import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITes
 import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 let testEnvironment: ITestEnvironment;
+let regionID: number;
+let jobName: string;
 describe("Stop region command", () => {
 
     // Create the unique test environment
@@ -23,6 +25,8 @@ describe("Stop region command", () => {
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
+        regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
+        jobName = testEnvironment.systemTestProperties.ims.dependentRegionName;
     });
 
     afterAll(async () => {
@@ -31,17 +35,17 @@ describe("Stop region command", () => {
 
     it("Should stop a region by specifying a region ID", async () => {
         const output = runCliScript(__dirname + "/__scripts__/stop_region.sh", testEnvironment,
-            [1]);
+            [regionID]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region(s) identified by '--region_ids 1' stopped successfully.");
+        expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
     it("Should stop a region by specifying a job name and profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/stop_region_fully_qualified.sh", testEnvironment,
-            ["IMJJPP1",
+            [jobName,
                 testEnvironment.systemTestProperties.ims.host,
                 testEnvironment.systemTestProperties.ims.port,
                 testEnvironment.systemTestProperties.ims.user,
@@ -53,17 +57,7 @@ describe("Stop region command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region(s) identified by '--job-name IMJJPP1' stopped successfully.");
-    });
-
-    it("Should throw an error if both region ID and jobname specified", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/stop_region_error.sh", testEnvironment,
-            [1,"jobname"]);
-        const stderr = output.stderr.toString();
-        const stdout = output.stdout.toString();
-        expect(stdout).toEqual("");
-        expect(output.status).toEqual(1);
-        expect(stderr).toContain("The following options conflict (mutually exclusive)");
+        expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
 });

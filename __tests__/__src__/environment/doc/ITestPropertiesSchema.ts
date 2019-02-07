@@ -57,6 +57,11 @@ export interface ITestPropertiesSchema {
          * a dependent region that can be started and stopped
          */
         dependentRegionName: string;
+
+        /**
+         * ID used to stop a dependent region
+         */
+        dependentRegionID: number;
     };
 
 }

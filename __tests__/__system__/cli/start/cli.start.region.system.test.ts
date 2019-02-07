@@ -38,7 +38,7 @@ describe("Start region command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region specified in member '" + memberName + "' was started successfully.");
+        expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
     it("Should start a region by specifying a member name and profile options", async () => {
@@ -55,7 +55,7 @@ describe("Start region command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("The region specified in member '" + memberName + "' was started successfully.");
+        expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
 });
