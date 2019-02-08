@@ -28,13 +28,17 @@ export const TransactionDefinition: ICommandDefinition = {
         required: true
     }],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [{
+        name: "attributes",
+        description: strings.OPTIONS.ATTRIBUTES,
+        type: "array",
+        allowableValues: {
+            values: ["Q", "SCHD", "SUSPEND", "TRACE"],
+            caseSensitive: true
+        },
+        aliases: ["att"],
+        defaultValue: ["SCHD"]
+    }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
