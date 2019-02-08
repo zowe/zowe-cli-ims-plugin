@@ -22,7 +22,7 @@ export const ProgramDefinition: ICommandDefinition = {
     handler: __dirname + "/Program.handler",
     type: "command",
     positionals: [{
-        name: "name",
+        name: "names...",
         description: strings.POSITIONALS.NAMES,
         type: "string",
         required: true

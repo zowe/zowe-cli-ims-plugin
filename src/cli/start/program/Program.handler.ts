@@ -9,7 +9,15 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import {
+    AbstractSession,
+    ICommandHandler,
+    IHandlerParameters,
+    IProfile,
+    ITaskWithStatus, Logger,
+    TaskStage,
+    TextUtils
+} from "@brightside/imperative";
 import { IIMSApiResponse, startProgram } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
@@ -42,7 +50,10 @@ export default class ProgramHandler extends ImsBaseHandler {
 
         this.checkReturnCode(response);
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.programName);
+        params.response.console.log(TextUtils.prettyJson(response.data));
+
+        Logger.getAppLogger().info("Messages from the start program API:\n" + JSON.stringify(response.messages, null, 2));
         return response;
+
     }
 }

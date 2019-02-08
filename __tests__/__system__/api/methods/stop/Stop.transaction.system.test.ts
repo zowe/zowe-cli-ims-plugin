@@ -12,18 +12,19 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { startProgram, IUpdateProgramParms, ImsSession } from "../../../../../src";
+import { stopTransaction, IUpdateTransactionParms, ImsSession } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: Session;
 
-describe("IMS Start program", () => {
+describe("IMS Stop transaction", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "ims_start_program",
+            testName: "ims_stop_transaction",
             installPlugin: true,
+            tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
@@ -46,16 +47,16 @@ describe("IMS Start program", () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    const options: IUpdateProgramParms = {} as any;
+    const options: IUpdateTransactionParms = {} as any;
 
-    it("should start program* by program name and default to start option SCHD if undefined", async () => {
+    it("should stop transaction by transaction name and default to stop option SCHD if undefined", async () => {
         let error;
         let response;
 
         options.names = ["D*"];
 
         try {
-            response = await startProgram(session, options);
+            response = await stopTransaction(session, options);
         } catch (err) {
             error = err;
         }
@@ -63,18 +64,18 @@ describe("IMS Start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*) START(SCHD)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*) STOP(SCHD)");
     });
 
-    it("should start multiple programs by program name and use multiple start options", async () => {
+    it("should stop multiple transactions by transaction name and use multiple stop options", async () => {
         let error;
         let response;
 
         options.names = ["D*", "IV*"];
-        options.start = ["SCHD", "TRACE"];
+        options.stop = ["SCHD", "TRACE"];
 
         try {
-            response = await startProgram(session, options);
+            response = await stopTransaction(session, options);
         } catch (err) {
             error = err;
         }
@@ -82,7 +83,7 @@ describe("IMS Start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD, TRACE)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD, TRACE)");
     });
 
 });
