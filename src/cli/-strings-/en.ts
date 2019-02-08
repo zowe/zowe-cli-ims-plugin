@@ -13,8 +13,8 @@
 // TODO - needs updated for IMS
 export default {
     // CREATE: {
-    //     SUMMARY: "Create new resources to IMS",
-    //     DESCRIPTION: "Define new resources (for example, programs) to IMS.",
+    //     SUMMARY: "Create new IMS resources",
+    //     DESCRIPTION: "Define new resources (for example, programs) in IMS.",
     //     RESOURCES: {
     //         PROGRAM: {
     //             DESCRIPTION: "Create a new program to IMS.",
@@ -56,51 +56,51 @@ export default {
     // },
     QUERY: {
         SUMMARY: "Query resources from IMS",
-        DESCRIPTION: "Query application programs or transactions across the IMSplex. " +
-            "It displays information about application programs and transactions (for example, class, status, queue count, and others). " +
-            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
+        DESCRIPTION: "Query application programs or transactions across an IMSplex." +
+            "The query returns information about application programs and transactions (for example, class, status, queue count, and more). " +
+            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.", 
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program(s) to be queried.",
+                DESCRIPTION: "Query an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The names of the programs to query.",
+                    NAMES: "Specifies the names of the programs to query.",
                 },
                 OPTIONS: {
-                    ATTRIBUTES: "Specifies the application program output fields to be returned.",
-                    STATUS: "Selects programs for display that possess at least one of the specified program status.",
-                    ROUTE: "Specifies the routes to be returned."
+                    ATTRIBUTES: "Specifies the application program output fields to return.",
+                    STATUS: "Selects programs for display that possess at least one of the specified program statuses.",
+                    ROUTE: "Specifies the routes to return."
                 },
                 MESSAGES: {
-                    SUCCESS: "The information for '%s' were retrieved successfully."
+                    SUCCESS: "The information for '%s' was retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Query information for application program named PGM123",
+                    EX1: "Query information for an application program named PGM123",
                     EX2: "Query information for application programs named ABC and XYZ",
                     EX3: "Query information for application programs starting with PROG using the wild card character '*'",
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction(s) to be queried.",
+                DESCRIPTION: "Query an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The name of the transaction(*) to query.",
+                    NAMES: "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
                 },
                 OPTIONS: {
-                    ATTRIBUTES: "Specifies the transaction output fields to be returned.",
-                    STATUS: "Selects transactions for display that possess at least one of the specified transaction status.",
-                    ROUTE: "Specifies the routes to be returned.",
-                    CLASS: "Selects transactions by the classes specified.",
-                    QCNTCOMP: "The compare operator used to select transactions based on queue count.  Valid values: LT, LE, GT, GE, EQ or NE.",
+                    ATTRIBUTES: "Specifies the transaction output fields to return.",
+                    STATUS: "Selects transactions that possess at least one of the specified transaction statuses.",
+                    ROUTE: "Specifies the routes to return.",
+                    CLASS: "Selects transactions by the classes you specify.",
+                    QCNTCOMP: "The compare operator used to select transactions based on queue count. Valid values: LT, LE, GT, GE, EQ or NE.",
                     QCNTVAL: "The numeric value used with 'queue_count_operator' to select transactions based on queue count.",
-                    CONV: "Selects transactions by the conversational attributes specified.",
-                    FP: "Selects transactions by the Fast Path options specified.",
-                    REMOTE: "Selects transactions by the remote option specified.",
-                    RESP: "Selects transactions by the response mode option specified.",
+                    CONV: "Selects transactions by the conversational attributes you specify.",
+                    FP: "Selects transactions by the Fast Path options you specify.",
+                    REMOTE: "Selects transactions by the remote option you specify.",
+                    RESP: "Selects transactions by the response mode option you specify.",
                 },
                 MESSAGES: {
-                    SUCCESS: "The information for '%s' were retrieved successfully."
+                    SUCCESS: "The information for '%s' was retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Query transaction information for transaction TRN12",
+                    EX1: "Query transaction information for transaction named TRN12",
                     EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
                     EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
                 }
@@ -109,11 +109,11 @@ export default {
     },
     START: {
         SUMMARY: "Start resources in IMS",
-        DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
+        DESCRIPTION: "Start a region, application program, or transaction and make IMS resources available for reference and use. " +
             "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program to be started.",
+                DESCRIPTION: "Start an IMS application program.",
                 POSITIONALS: {
                     NAMES: "The name of the application program to start. The maximum length of the program name is eight characters.",
                 },
@@ -129,7 +129,7 @@ export default {
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction that is to be started.",
+                DESCRIPTION: "Start an IMS transaction.",
                 POSITIONALS: {
                     NAMES: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
                 },
@@ -145,9 +145,9 @@ export default {
                 }
             },
             REGION: {
-                DESCRIPTION: "Start an IMS region.",
+                DESCRIPTION: "Start an IMS region.", 
                 POSITIONALS: {
-                    MEMBERNAME: "The name of the member containing JCL for the region to start. " +
+                    MEMBERNAME: "The name of the member that contains JCL for the region to start. " +
                         " The maximum length of the member name is eight characters. " +
                         " If no member name is specified, the default " +
                         "member name is used\n",
@@ -157,7 +157,7 @@ export default {
                         "in the JCL of the default or specified member. --local is the default if you specify " +
                         "the --job-name option.",
                     JOBNAME: "Use this option to override the job name on the JOB statement of the " +
-                        "default or specified JCL member for a dependent region"
+                        "default or specified JCL member for a dependent region."
                 },
                 MESSAGES: {
                     SUCCESS: "The region specified in member '%s' was started successfully."
@@ -170,11 +170,11 @@ export default {
     },
     STOP: {
         SUMMARY: "Stop resources in IMS",
-        DESCRIPTION: "Stops a running region, application program or transaction. " +
+        DESCRIPTION: "Stops a running region, application program, or transaction. " +
             "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program to be stopped.",
+                DESCRIPTION: "Stop an IMS application program.",
                 POSITIONALS: {
                     NAMES: "The name of the program to stop. The maximum length of the program name is eight characters.",
                 },
@@ -190,7 +190,7 @@ export default {
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction that is to be stopped.",
+                DESCRIPTION: "Stop an IMS transaction.",
                 POSITIONALS: {
                     NAMES: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
                 },
@@ -210,12 +210,12 @@ export default {
                 POSITIONALS: {},
                 OPTIONS: {
                     JOBNAME: "The name of the job for the IMS region you want to stop. You must specify either this option or --region-ids.",
-                    REGIONIDS: "Region identifier numbers for the regions you would like to stop. You must specify either this option " +
+                    REGIONIDS: "Region identifier numbers for the regions you want to stop. You must specify either this option " +
                         "or --job-name.",
-                    ABDUMP: "Specify this option to cause abnormal termination of an application program. " +
+                    ABDUMP: "Specify this option to cause abnormal termination (ABEND) of an application program. " +
                         "If the transaction indicated by this argument is currently running in the specified region," +
                         " an error message is received at the master terminal, indicating an application " +
-                        "program abend. The region will remain active, but the transaction will be " +
+                        "program ABEND. The region will remain active, but the transaction will be " +
                         "stopped. The command is ignored if the transaction is not currently scheduled " +
                         "in the region.",
                     TRANSACTION: "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
