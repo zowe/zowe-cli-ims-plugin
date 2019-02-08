@@ -109,20 +109,19 @@ export default {
     },
     START: {
         SUMMARY: "Start resources in IMS",
-        DESCRIPTION: "Start a region, application program, or transaction and make IMS resources available for reference and use. " +
-            "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
+        DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
+            "This command submits a '/START REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Start an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The name of the application program to start. The maximum length of the program name is eight characters.",
+                    NAMES: "The names of the application programs to start. The maximum length of a program name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the program",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the program"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be started",
+                },
                 MESSAGES: {
-                    SUCCESS: "The application program named '%s' was started successfully."
+                    SUCCESS: "The application program(s) '%s' were started successfully."
                 },
                 EXAMPLES: {
                     EX1: "Start an application program named PGM123"
@@ -131,14 +130,13 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Start an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The names of the transactions to start. The maximum length of a transaction name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the transaction",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be started",
+                },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was started successfully."
+                    SUCCESS: "The transaction(s) '%s' were started successfully."
                 },
                 EXAMPLES: {
                     EX1: "Start a transaction named TRN1",
@@ -170,20 +168,19 @@ export default {
     },
     STOP: {
         SUMMARY: "Stop resources in IMS",
-        DESCRIPTION: "Stops a running region, application program, or transaction. " +
-            "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
+        DESCRIPTION: "Stops a running region, application program or transaction. " +
+            "This command submits a '/STOP REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.\",",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Stop an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The name of the program to stop. The maximum length of the program name is eight characters.",
+                    NAMES: "The names of the programs to stop. The maximum length of a program name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the program",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the program"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be stopped",
+                },
                 MESSAGES: {
-                    SUCCESS: "The application program '%s' was stopped successfully."
+                    SUCCESS: "The application program(s) '%s' were stopped successfully."
                 },
                 EXAMPLES: {
                     EX1: "Stop an application program named PGM123"
@@ -192,14 +189,13 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Stop an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the transaction",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be stopped",
+                },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was stopped successfully."
+                    SUCCESS: "The transaction(s) '%s' were stopped successfully."
                 },
                 EXAMPLES: {
                     EX1: "Stop a transaction named TRN1"

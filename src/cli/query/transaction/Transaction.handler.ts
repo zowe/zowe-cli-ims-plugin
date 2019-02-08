@@ -53,7 +53,7 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.format.output({
             output: response.data,
             format: "table",
-            fields: ["tran", "tmcr", "msgt", "mbr", "fp"],
+            fields: ["tran", "mbr", "fp", "llct", "conv", "cmtm"],
             header: true
         });
 

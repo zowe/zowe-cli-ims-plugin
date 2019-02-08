@@ -28,13 +28,17 @@ export const ProgramDefinition: ICommandDefinition = {
         required: true
     }],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [{
+        name: "attributes",
+        description: strings.OPTIONS.ATTRIBUTES,
+        type: "array",
+        allowableValues: {
+            values: ["SCHD", "TRACE", "REFRESH"],
+            caseSensitive: true
+        },
+        aliases: ["att"],
+        defaultValue: ["SCHD"]
+    }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
