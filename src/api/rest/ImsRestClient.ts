@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
+import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -57,7 +57,7 @@ export class ImsRestClient extends RestClient {
      * @param reqHeaders
      * @param writeData
      */
-    public performRest(resource: string, request: any /*TODO: HTTP_VERB*/, reqHeaders?: any[], writeData?: any): Promise<string> {
+    public performRest(resource: string, request: HTTP_VERB, reqHeaders?: any[], writeData?: any): Promise<string> {
 
         if (reqHeaders == null) {
             reqHeaders = [];
