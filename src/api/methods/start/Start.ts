@@ -61,10 +61,23 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
                 resource = resource + "," + encodeURIComponent(parms.start[i]);
             }
         }
-        // delimiter = "&";
+        delimiter = "&";
     }
     else {
         resource += delimiter + "start=SCHD";
+    }
+
+    if (parms.route !== undefined) {
+        // 'route' text must be lower case
+        resource = resource + delimiter + "route=";
+        for (let i = 0; i < parms.route.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.route[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.route[i]);
+            }
+        }
+        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
@@ -117,10 +130,23 @@ export async function startTransaction(session: AbstractSession, parms: IUpdateT
                 resource = resource + "," + encodeURIComponent(parms.start[i]);
             }
         }
-        // delimiter = "&";
+        delimiter = "&";
     }
     else {
         resource += delimiter + "start=SCHD";
+    }
+
+    if (parms.route !== undefined) {
+        // 'route' text must be lower case
+        resource = resource + delimiter + "route=";
+        for (let i = 0; i < parms.route.length; i++) {
+            if (i === 0) {
+                resource = resource + encodeURIComponent(parms.route[i]);
+            } else {
+                resource = resource + "," + encodeURIComponent(parms.route[i]);
+            }
+        }
+        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);

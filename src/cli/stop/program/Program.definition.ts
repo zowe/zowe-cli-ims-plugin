@@ -38,6 +38,12 @@ export const ProgramDefinition: ICommandDefinition = {
         },
         aliases: ["att"],
         defaultValue: ["SCHD"]
+    },
+    {
+        name: "route",
+        description: strings.OPTIONS.ROUTE,
+        type: "array",
+        aliases: ["rte"]
     }],
     profile: {optional: ["ims"]},
     examples: [{

@@ -119,6 +119,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
+                    ROUTE: "The region(s) to route the command",
                 },
                 MESSAGES: {
                     SUCCESS: "The application program(s) '%s' were started successfully."
@@ -134,6 +135,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
+                    ROUTE: "The region(s) to route the command",
                 },
                 MESSAGES: {
                     SUCCESS: "The transaction(s) '%s' were started successfully."
@@ -178,6 +180,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be stopped",
+                    ROUTE: "The region(s) to route the command",
                 },
                 MESSAGES: {
                     SUCCESS: "The application program(s) '%s' were stopped successfully."
@@ -193,6 +196,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be stopped",
+                    ROUTE: "The region(s) to route the command",
                 },
                 MESSAGES: {
                     SUCCESS: "The transaction(s) '%s' were stopped successfully."

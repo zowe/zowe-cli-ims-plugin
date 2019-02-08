@@ -35,9 +35,15 @@ export const ProgramDefinition: ICommandDefinition = {
         allowableValues: {
             values: ["SCHD", "TRACE", "REFRESH"],
             caseSensitive: true
-        },
+    },
         aliases: ["att"],
         defaultValue: ["SCHD"]
+    },
+    {
+        name: "route",
+        description: strings.OPTIONS.ROUTE,
+        type: "array",
+        aliases: ["rte"]
     }],
     profile: {optional: ["ims"]},
     examples: [{
