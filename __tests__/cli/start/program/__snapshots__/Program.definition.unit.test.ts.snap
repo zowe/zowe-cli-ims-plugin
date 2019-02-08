@@ -17,7 +17,7 @@ Object {
   "positionals": Array [
     Object {
       "description": "The name of the application program to start. The maximum length of the program name is eight characters.",
-      "name": "name",
+      "name": "names...",
       "required": true,
       "type": "string",
     },
