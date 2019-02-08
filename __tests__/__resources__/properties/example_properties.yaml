@@ -24,9 +24,15 @@ ims:
   imsConnectHost: my-ims-connect-host
   imsConnectPort: my-ims-connect-port
   plex: my-ims-plex
+  # a program that should exist when running query program command
+  expectedProgram: my-ims-expected-program
   # a transaction that should exist when running query transaction command
-  expectedTransaction: IVPREXX
+  expectedTransaction: my-ims-expected-transaction
   # member name of a dependent region that can be started and stopped
-  dependentRegionName: IMJJPP1
+  dependentRegionName: my-ims-dependent-region-name
   # ID number of a dependent region that can be stopped
   dependentRegionID: 1
+  # name of program running in dependent region
+  programName: my-ims-program
+  # name of transaction running in dependent region
+  transaction: my-ims-transaction
