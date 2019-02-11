@@ -170,11 +170,11 @@ export async function startRegion(session: ImsSession, parms: IStartRegionParms)
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START;
 
     if (parms.memberName != null) {
-        resource = resource + delimiter + "membername=" + encodeURIComponent(parms.memberName);
+        resource = resource + delimiter + "member_name=" + encodeURIComponent(parms.memberName);
         delimiter = "&";
     }
     if (parms.jobName != null) {
-        resource = resource + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
+        resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.jobName);
         delimiter = "&";
     }
     if (parms.local != null) {
