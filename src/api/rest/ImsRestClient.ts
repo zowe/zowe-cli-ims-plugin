@@ -70,9 +70,6 @@ export class ImsRestClient extends RestClient {
         if (imsSession.imsConnectPort != null) {
             reqHeaders.push({port: imsSession.imsConnectPort});
         }
-        if (imsSession.plex != null) {
-            reqHeaders.push({plex: imsSession.plex});
-        }
         return super.performRest(resource, request, reqHeaders, writeData);
     }
 

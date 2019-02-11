@@ -11,7 +11,7 @@ exports[`ims query transaction should display the query program help 1`] = `
  DESCRIPTION
  -----------
 
-   Command to specify the application program(s) to be queried.
+   Query an IMS application program.
 
  USAGE
  -----
@@ -23,14 +23,14 @@ exports[`ims query transaction should display the query program help 1`] = `
 
    names...		 (string)
 
-      The names of the programs to query.
+      Specifies the names of the programs to query.
 
  OPTIONS
  -------
 
    --attributes  | --att (array)
 
-      Specifies the application program output fields to be returned.
+      Specifies the application program output fields to return.
 
       Default value: ALL
       Allowed values: ALL, BMPTYPE, DEFN, DEFNTYPE, DOPT, FP, GLOBAL, IMSID, GPSB,
@@ -40,13 +40,13 @@ exports[`ims query transaction should display the query program help 1`] = `
    --status  | --st (array)
 
       Selects programs for display that possess at least one of the specified program
-      status.
+      statuses.
 
       Allowed values: DB-NOTAVL, IOPREV, LOCK, NOTINIT, STOSCHD, TRACE
 
    --route  | --rt (array)
 
-      Specifies the routes to be returned.
+      Specifies the routes to return.
 
  IMS CONNECTION OPTIONS
  ----------------------
@@ -139,7 +139,7 @@ exports[`ims query transaction should display the query program help 1`] = `
  EXAMPLES
  --------
 
-   - Query information for application program named PGM123:
+   - Query information for an application program named PGM123:
 
       $ zowe ims query program PGM123
 

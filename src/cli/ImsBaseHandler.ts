@@ -73,7 +73,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
             const HEXADECIMAL = 16;
             // if the return code on the message is not zero
             // the command did not succeed
-            if (parseInt(message.rc, HEXADECIMAL) !== 0) {
+            if (message.rc !== undefined && parseInt(message.rc, HEXADECIMAL) !== 0) {
                 succeeded = false;
                 failingMessages.push(message);
             }
