@@ -10,7 +10,7 @@
 */
 
 import { AbstractSession, ImperativeError, ImperativeExpect, Logger } from "@brightside/imperative";
-import { ImsRestClient } from "../../rest";
+import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { IStopRegionParms } from "../../doc/IStopRegionParms";
 import { ImsConstants } from "../../constants";
@@ -64,8 +64,7 @@ export async function stopProgram(session: AbstractSession, parms: IUpdateProgra
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource += delimiter + "stop=SCHD";
     }
 
@@ -133,8 +132,7 @@ export async function stopTransaction(session: AbstractSession, parms: IUpdateTr
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource += delimiter + "stop=SCHD";
     }
 
@@ -163,7 +161,7 @@ export async function stopTransaction(session: AbstractSession, parms: IUpdateTr
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function stopRegion(session: AbstractSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
+export async function stopRegion(session: ImsSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
     ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
         "Either region number or job name (but not both) must be specified.");
 
@@ -171,14 +169,14 @@ export async function stopRegion(session: AbstractSession, parms: IStopRegionPar
         "Either region number or job name (but not both) must be specified.");
 
     if (parms.regNum === undefined) {
-        ImperativeExpect.toBeDefinedAndNonBlank(parms.jobName,"If job name is specified it must have a value.");
+        ImperativeExpect.toBeDefinedAndNonBlank(parms.jobName, "If job name is specified it must have a value.");
     }
 
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
     if (parms.regNum != null) {
         resource = resource + delimiter + "regNum=" + encodeURIComponent(parms.regNum.join(","));

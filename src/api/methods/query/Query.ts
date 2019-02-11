@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
-import { ImsRestClient } from "../../rest";
+import { AbstractSession, Logger } from "@brightside/imperative";
+import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IQueryProgramParms, IQueryTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 
@@ -22,13 +22,13 @@ import { ImsConstants } from "../../constants";
  *                          when the request is complete
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryProgram(session: AbstractSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
+export async function queryProgram(session: ImsSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
 
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to query program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.PROGRAM;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
     // names is not required; defaults to all programs
     if ((parms !== undefined) && (parms.names !== undefined)) {
@@ -60,8 +60,7 @@ export async function queryProgram(session: AbstractSession, parms?: IQueryProgr
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
@@ -109,13 +108,14 @@ export async function queryProgram(session: AbstractSession, parms?: IQueryProgr
  *                          when the request is complete
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryTransaction(session: AbstractSession, parms?: IQueryTransactionParms): Promise<IIMSApiResponse> {
+export async function queryTransaction(session: ImsSession, parms?: IQueryTransactionParms): Promise<IIMSApiResponse> {
 
     let delimiter = "?"; // initial delimiter
 
+
     Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.TRANSACTION;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
 
     // names is not required; defaults to all transactions
     if ((parms !== undefined) && (parms.names !== undefined)) {
@@ -147,8 +147,7 @@ export async function queryTransaction(session: AbstractSession, parms?: IQueryT
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
@@ -252,4 +251,5 @@ export async function queryTransaction(session: AbstractSession, parms?: IQueryT
             resource = resource + delimiter + "resp=" + parms.resp;
         }
     }
-    return ImsRestClient.getExpectJSON(session, resource, []);}
+    return ImsRestClient.getExpectJSON(session, resource, []);
+}

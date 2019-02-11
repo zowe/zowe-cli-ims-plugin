@@ -10,8 +10,8 @@
 */
 
 import { AbstractSession, ImperativeError, ImperativeExpect, Logger } from "@brightside/imperative";
-import { ImsRestClient } from "../../rest";
-import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms, IStartRegionParms } from "../../doc";
+import { ImsRestClient, ImsSession } from "../../rest";
+import { IIMSApiResponse, IStartRegionParms, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 
 // TODO update to work with IMS REST API
@@ -62,8 +62,7 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource += delimiter + "start=SCHD";
     }
 
@@ -131,8 +130,7 @@ export async function startTransaction(session: AbstractSession, parms: IUpdateT
             }
         }
         delimiter = "&";
-    }
-    else {
+    } else {
         resource += delimiter + "start=SCHD";
     }
 
@@ -161,7 +159,7 @@ export async function startTransaction(session: AbstractSession, parms: IUpdateT
  * @throws {ImperativeError} IMS member name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function startRegion(session: AbstractSession, parms: IStartRegionParms): Promise<IIMSApiResponse> {
+export async function startRegion(session: ImsSession, parms: IStartRegionParms): Promise<IIMSApiResponse> {
 
     ImperativeExpect.toBeDefinedAndNonBlank(parms.memberName, "IMS Member name", "IMS member name is required");
 
@@ -169,7 +167,7 @@ export async function startRegion(session: AbstractSession, parms: IStartRegionP
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.START;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START;
 
     if (parms.memberName != null) {
         resource = resource + delimiter + "membername=" + encodeURIComponent(parms.memberName);

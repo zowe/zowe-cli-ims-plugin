@@ -12,6 +12,7 @@
 import { AbstractSession, ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@brightside/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
+import { ImsSession } from "../api/rest";
 
 /**
  * This class is used by the various ims handlers as the base class for their implementation.
@@ -57,7 +58,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: AbstractSession,
+        session: ImsSession,
         imsProfile: IProfile
     ): Promise<IIMSApiResponse>;
 
@@ -73,7 +74,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
             const HEXADECIMAL = 16;
             // if the return code on the message is not zero
             // the command did not succeed
-            if (parseInt(message.rc, HEXADECIMAL) !== 0) {
+            if (message.rc !== undefined && parseInt(message.rc, HEXADECIMAL) !== 0) {
                 succeeded = false;
                 failingMessages.push(message);
             }

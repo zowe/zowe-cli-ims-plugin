@@ -10,7 +10,7 @@
 */
 
 import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@brightside/imperative";
-import { IIMSApiResponse, queryTransaction } from "../../../api";
+import { IIMSApiResponse, ImsSession, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -25,7 +25,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
  * @implements {ICommandHandler}
  */
 export default class TransactionHandler extends ImsBaseHandler {
-    public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<IIMSApiResponse> {
+    public async processWithSession(params: IHandlerParameters, session: ImsSession, profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Querying resources from IMS",
@@ -53,7 +53,7 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.format.output({
             output: response.data,
             format: "table",
-            fields: ["tran", "mbr", "fp", "llct", "conv", "cmtm"],
+            fields: ["tran", "mbr", "fp", "lcls", "llct", "lstt", "conv", "cmtm", "qcnt"],
             header: true
         });
 
