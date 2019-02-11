@@ -43,6 +43,16 @@ describe("Stop region command", () => {
         expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
+    it("Should stop a multiple regions by specifying multiple region IDs", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/stop_multiple_regions.sh", testEnvironment,
+            [regionID, regionID + 1]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("STOP COMMAND IN PROGRESS");
+    });
+
     it("Should stop a region by specifying a job name and profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/stop_region_fully_qualified.sh", testEnvironment,
             [jobName,
