@@ -24,7 +24,7 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function startProgram(session: AbstractSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
+export async function startProgram(session: ImsSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
     if (parms.names === undefined) {
         throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
     }
@@ -91,7 +91,7 @@ export async function startProgram(session: AbstractSession, parms: IUpdateProgr
  * @throws {ImperativeError} IMS transaction name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function startTransaction(session: AbstractSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
+export async function startTransaction(session: ImsSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
 
     if (parms.names === undefined) {
         throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});

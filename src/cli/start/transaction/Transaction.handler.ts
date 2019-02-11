@@ -18,7 +18,7 @@ import {
     TaskStage,
     TextUtils
 } from "@brightside/imperative";
-import { IIMSApiResponse, startTransaction } from "../../../api";
+import { IIMSApiResponse, ImsSession, startTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -34,7 +34,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).ST
  */
 export default class TransactionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: AbstractSession,
+                                    session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
