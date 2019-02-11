@@ -21,6 +21,7 @@ import {
 describe("IMS - Start program", () => {
 
     const program = "program";
+    const route = "IMS1";
     const content = "This\nis\r\na\ntest";
 
     const startProgramParms: IUpdateProgramParms = {
@@ -55,7 +56,7 @@ describe("IMS - Start program", () => {
         it("should be able to start a program with name", async () => {
 
             endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?names=" + program +  "&" +  ImsConstants.START + "=SCHD";
+                "?" + ImsConstants.NAMES + "=" + program +  "&" +  ImsConstants.START + "=SCHD";
 
             response = await startProgram(dummySession, startProgramParms);
 
@@ -66,9 +67,11 @@ describe("IMS - Start program", () => {
         it("should be able to start a program with all parameters specified", async () => {
 
             startProgramParms.start = ["Q","SCHD","TRACE"];
+            startProgramParms.route = ["IMS1"];
 
             endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?names=" + program +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE";
+                "?" + ImsConstants.NAMES + "=" + program +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE" +
+                "&" +  ImsConstants.ROUTE + "=" + route;
 
             response = await startProgram(dummySession, startProgramParms);
 

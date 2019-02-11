@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "qry",
   ],
-  "description": "Query application programs or transactions across the IMSplex. It displays information about application programs and transactions (for example, class, status, queue count, and others). This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
+  "description": "Query application programs or transactions across an IMSplex.The query returns information about application programs and transactions (for example, class, status, queue count, and more). This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
   "name": "query",
   "passOn": Array [
     Object {

@@ -38,7 +38,8 @@ export default class ProgramHandler extends ImsBaseHandler {
 
         const response = await stopProgram(session, {
             names: params.arguments.names,
-            stop: params.arguments.attributes
+            stop: params.arguments.attributes,
+            route: params.arguments.route
         });
 
         this.checkReturnCode(response);

@@ -48,41 +48,59 @@ describe("IMS Start transaction", () => {
 
     const options: IUpdateTransactionParms = {} as any;
 
-    it("should start transaction by transaction name and default to start option SCHD if undefined", async () => {
-        let error;
-        let response;
-
-        options.names = ["D*"];
-
-        try {
-            response = await startTransaction(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeFalsy();
-        expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*) START(SCHD)");
-    });
-
-    it("should start multiple transactions by transaction name and use multiple start options", async () => {
-        let error;
-        let response;
-
-        options.names = ["D*", "IV*"];
-        options.start = ["SCHD", "TRACE"];
-
-        try {
-            response = await startTransaction(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeFalsy();
-        expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD, TRACE)");
-    });
-
+    // it("should start transaction by transaction name and default to start option SCHD if undefined", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*"];
+    //
+    //     try {
+    //         response = await startTransaction(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*) START(SCHD)");
+    // });
+    //
+    // it("should start multiple transactions by transaction name and use multiple start options", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*", "IV*"];
+    //     options.start = ["SCHD", "TRACE"];
+    //
+    //     try {
+    //         response = await startTransaction(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD, TRACE)");
+    // });
+    //
+    // it("should start multiple transactions by transaction name and use multiple regions", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*", "IV*"];
+    //     options.route = ["IMJJ", "IMPP"];
+    //
+    //     try {
+    //         response = await startTransaction(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD) ROUTE(IMJJ, IMPP");
+    // });
 });

@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "sta",
   ],
-  "description": "Starts a region, application program, or transaction and makes IMS resources available for reference and use. This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
+  "description": "Starts a region, application program, or transaction and makes IMS resources available for reference and use. This command submits a '/START REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.",
   "name": "start",
   "passOn": Array [
     Object {

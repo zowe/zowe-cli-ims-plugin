@@ -21,6 +21,7 @@ import {
 describe("IMS - Stop program", () => {
 
     const program = "program";
+    const route = ["IMS1"];
     const content = "This\nis\r\na\ntest";
 
     const stopProgramParms: IUpdateProgramParms = {
@@ -66,9 +67,11 @@ describe("IMS - Stop program", () => {
         it("should be able to stop a program with all parameters specified", async () => {
 
             stopProgramParms.stop = ["Q","SCHD","TRACE"];
+            stopProgramParms.route = route;
 
             endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?names=" + program +  "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE";
+                "?" + ImsConstants.NAMES + "=" + program + "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "&" +  ImsConstants.ROUTE + "=" + route;
 
             response = await stopProgram(dummySession, stopProgramParms);
 

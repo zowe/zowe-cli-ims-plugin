@@ -38,7 +38,8 @@ export default class TransactionHandler extends ImsBaseHandler {
 
         const response = await stopTransaction(session, {
             names: params.arguments.names,
-            stop: params.arguments.attributes
+            stop: params.arguments.attributes,
+            route: params.arguments.route
         });
 
         this.checkReturnCode(response);

@@ -2,6 +2,19 @@
 
 exports[`QueryProgramHandler should call the query program api 1`] = `
 Object {
+  "fields": Array [
+    "pgm",
+    "dopt",
+    "bmpt",
+    "dfnt",
+    "gpsb",
+    "fp",
+    "rgnt",
+    "schd",
+    "mbr",
+    "tmcr",
+    "lang",
+  ],
   "format": "table",
   "header": true,
   "output": Object {},

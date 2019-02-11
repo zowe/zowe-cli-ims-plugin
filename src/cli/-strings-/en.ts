@@ -58,7 +58,7 @@ export default {
         SUMMARY: "Query resources from IMS",
         DESCRIPTION: "Query application programs or transactions across an IMSplex." +
             "The query returns information about application programs and transactions (for example, class, status, queue count, and more). " +
-            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.", 
+            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Query an IMS application program.",
@@ -145,7 +145,7 @@ export default {
                 }
             },
             REGION: {
-                DESCRIPTION: "Start an IMS region.", 
+                DESCRIPTION: "Start an IMS region.",
                 POSITIONALS: {
                     MEMBERNAME: "The name of the member that contains JCL for the region to start. " +
                         " The maximum length of the member name is eight characters. " +

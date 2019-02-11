@@ -15,12 +15,13 @@ import {
     ImsRestClient,
     ImsSession,
     startTransaction,
-    IUpdateTransactionParms
+    IUpdateTransactionParms, startProgram
 } from "../../../../src";
 
 describe("IMS - Start transaction", () => {
 
     const transaction = "transaction";
+    const route = "IMS1";
     const content = "This\nis\r\na\ntest";
 
     const startTransactionParms: IUpdateTransactionParms = {
@@ -66,9 +67,11 @@ describe("IMS - Start transaction", () => {
         it("should be able to start a transaction with all parameters specified", async () => {
 
             startTransactionParms.start = ["Q","SCHD","TRACE"];
+            startTransactionParms.route = [route];
 
             endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?names=" + transaction +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE";
+                "?" + ImsConstants.NAMES + "=" + transaction +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE" +
+                "&" +  ImsConstants.ROUTE + "=" + route;
 
             response = await startTransaction(dummySession, startTransactionParms);
 

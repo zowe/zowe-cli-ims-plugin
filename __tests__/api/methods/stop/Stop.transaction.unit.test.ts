@@ -21,6 +21,7 @@ import {
 describe("IMS - Stop transaction", () => {
 
     const transaction = "transaction";
+    const route = ["IMS1"];
     const content = "This\nis\r\na\ntest";
 
     const stopTransactionParms: IUpdateTransactionParms = {
@@ -66,9 +67,11 @@ describe("IMS - Stop transaction", () => {
         it("should be able to stop a transaction with all parameters specified", async () => {
 
             stopTransactionParms.stop = ["Q","SCHD","TRACE"];
+            stopTransactionParms.route = route;
 
             endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?names=" + transaction +  "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE";
+                "?" + ImsConstants.NAMES + "=" + transaction +  "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "&" +  ImsConstants.ROUTE + "=" + route;
 
             response = await stopTransaction(dummySession, stopTransactionParms);
 

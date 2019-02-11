@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "sto",
   ],
-  "description": "Stops a running region, application program or transaction. This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\\",",
+  "description": "Stops a running region, application program or transaction. This command submits a '/STOP REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.\\",",
   "name": "stop",
   "passOn": Array [
     Object {

@@ -26,7 +26,7 @@ Object {
       "aliases": Array [
         "jn",
       ],
-      "description": "Use this option to override the job name on the JOB statement of the default or specified JCL member for a dependent region",
+      "description": "Use this option to override the job name on the JOB statement of the default or specified JCL member for a dependent region.",
       "name": "job-name",
       "type": "string",
     },
@@ -34,7 +34,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The name of the member containing JCL for the region to start.  The maximum length of the member name is eight characters.  If no member name is specified, the default member name is used
+      "description": "The name of the member that contains JCL for the region to start.  The maximum length of the member name is eight characters.  If no member name is specified, the default member name is used
 ",
       "name": "memberName",
       "type": "string",

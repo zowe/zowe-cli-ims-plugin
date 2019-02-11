@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "pgm",
   ],
-  "description": "Command to specify the application program to be stopped.",
+  "description": "Stop an IMS application program.",
   "examples": Array [
     Object {
       "description": "Stop an application program named PGM123",
@@ -13,11 +13,39 @@ Object {
     },
   ],
   "name": "program",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "att",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "SCHD",
+          "TRACE",
+        ],
+      },
+      "defaultValue": Array [
+        "SCHD",
+      ],
+      "description": "The attributes that are to be stopped",
+      "name": "attributes",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "The region(s) to route the command",
+      "name": "route",
+      "type": "array",
+    },
+  ],
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The name of the program to stop. The maximum length of the program name is eight characters.",
-      "name": "name",
+      "description": "The names of the programs to stop. The maximum length of a program name is eight characters.",
+      "name": "names...",
       "required": true,
       "type": "string",
     },

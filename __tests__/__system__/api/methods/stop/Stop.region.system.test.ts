@@ -80,9 +80,6 @@ describe("IMS Stop region", () => {
         options.regNum = undefined;
         options.jobName = memberName;
 
-        const startOptions: IStartRegionParms = {} as any;
-        startOptions.memberName = memberName;
-
         try {
             response = await stopRegion(session, options);
         } catch (err) {

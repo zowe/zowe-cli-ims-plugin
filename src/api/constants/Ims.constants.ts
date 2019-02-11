@@ -20,9 +20,19 @@ export const ImsConstants: { [key: string]: any } = {
     URL: "/ims/apis/v1/",
 
     /**
+     * NAMES
+     */
+    NAMES: "names",
+
+    /**
      * PROGRAM
      */
     PROGRAM: "program",
+
+    /**
+     * ROUTE
+     */
+    ROUTE: "route",
 
     /**
      * REGION

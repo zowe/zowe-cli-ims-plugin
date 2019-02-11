@@ -48,42 +48,60 @@ describe("IMS Stop program", () => {
     });
 
     const options: IUpdateProgramParms = {} as any;
-
-    it("should stop program* by program name and default to stop option SCHD if undefined", async () => {
-        let error;
-        let response;
-
-        options.names = ["D*"];
-
-        try {
-            response = await stopProgram(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeFalsy();
-        expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*) STOP(SCHD)");
-    });
-
-    it("should stop multiple programs by program name and use multiple stop options", async () => {
-        let error;
-        let response;
-
-        options.names = ["D*", "IV*"];
-        options.stop = ["SCHD", "TRACE"];
-
-        try {
-            response = await stopProgram(session, options);
-        } catch (err) {
-            error = err;
-        }
-
-        expect(error).toBeFalsy();
-        expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD, TRACE)");
-    });
-
+    //
+    // it("should stop program* by program name and default to stop option SCHD if undefined", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*"];
+    //
+    //     try {
+    //         response = await stopProgram(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*) STOP(SCHD)");
+    // });
+    //
+    // it("should stop multiple programs by program name and use multiple stop options", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*", "IV*"];
+    //     options.stop = ["SCHD", "TRACE"];
+    //
+    //     try {
+    //         response = await stopProgram(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD, TRACE)");
+    // });
+    //
+    // it("should stop multiple programs by program name and use multiple regions", async () => {
+    //     let error;
+    //     let response;
+    //
+    //     options.names = ["D*", "IV*"];
+    //     options.route = ["IMJJ", "IMPP"];
+    //
+    //     try {
+    //         response = await startProgram(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    //     expect(error).toBeFalsy();
+    //     expect(response).toBeTruthy();
+    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
+    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD) ROUTE(IMJJ, IMPP");
+    // });
 });

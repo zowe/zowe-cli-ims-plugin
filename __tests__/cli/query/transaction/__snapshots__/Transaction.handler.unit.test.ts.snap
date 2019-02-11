@@ -4,10 +4,11 @@ exports[`QueryTransactionHandler should call the query transaction api 1`] = `
 Object {
   "fields": Array [
     "tran",
-    "tmcr",
-    "msgt",
     "mbr",
     "fp",
+    "llct",
+    "conv",
+    "cmtm",
   ],
   "format": "table",
   "header": true,
