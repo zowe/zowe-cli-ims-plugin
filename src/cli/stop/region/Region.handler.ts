@@ -9,17 +9,8 @@
 *                                                                                 *
 */
 
-import {
-    AbstractSession,
-    ICommandHandler,
-    IHandlerParameters,
-    IProfile,
-    ITaskWithStatus,
-    Logger,
-    TaskStage,
-    TextUtils
-} from "@brightside/imperative";
-import { IIMSApiResponse, stopRegion } from "../../../api";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@brightside/imperative";
+import { IIMSApiResponse, ImsSession, stopRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -35,7 +26,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).ST
  */
 export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: AbstractSession,
+                                    session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {

@@ -161,7 +161,7 @@ export async function stopTransaction(session: AbstractSession, parms: IUpdateTr
  * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function stopRegion(session: AbstractSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
+export async function stopRegion(session: ImsSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
     ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
         "Either region number or job name (but not both) must be specified.");
 
@@ -175,8 +175,8 @@ export async function stopRegion(session: AbstractSession, parms: IStopRegionPar
     let delimiter = "?"; // initial delimiter
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
-    const imsSession = session as ImsSession;
-    let resource = ImsConstants.URL + imsSession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
+
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
     if (parms.regNum != null) {
         resource = resource + delimiter + "regNum=" + encodeURIComponent(parms.regNum.join(","));

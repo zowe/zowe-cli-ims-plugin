@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { IIMSApiResponse, queryProgram } from "../../../api";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, ImsSession, queryProgram } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -26,7 +26,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
  */
 export default class ProgramHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: AbstractSession,
+                                    session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
