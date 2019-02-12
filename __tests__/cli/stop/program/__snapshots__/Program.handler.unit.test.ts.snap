@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StartProgramHandler should call the stop program api 1`] = `"The application program(s) '%s' were stopped successfully."`;
+exports[`StartProgramHandler should call the stop program api 1`] = `
+"
+
+"
+`;
 
 exports[`StartProgramHandler should call the stop program api 2`] = `
 Object {
