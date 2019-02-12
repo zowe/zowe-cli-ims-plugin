@@ -9,14 +9,13 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { ImsSession, IStartRegionParms, startRegion } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
-let session: Session;
+let session: ImsSession;
 let memberName: string;
 
 describe("IMS Start region", () => {
@@ -63,18 +62,17 @@ describe("IMS Start region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
         expect(response.messages["OM1OM   "].command).toContain("START REGION " + memberName);
     });
 
 
     // TODO - IBM NEEDS TO EXPLAIN HOW JOBNAME WORKS
-    // it("should start region by memberName with jobName specified", async () => {
+    // it("should start region by memberName with job_name specified", async () => {
     //     let error;
     //     let response;
     //
     //     options.memberName = "IMJJPP1";
-    //     // options.jobName = "JOBNAME"
+    //     // options.job_name = "JOBNAME"
     //
     //     try {
     //         response = await startRegion(session, options);
@@ -84,7 +82,6 @@ describe("IMS Start region", () => {
     //
     //     expect(error).toBeFalsy();
     //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
     //     expect(response.messages["OM1OM   "].command).toContain("START REGION IMJJPP1");
     // });
 

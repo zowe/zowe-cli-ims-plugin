@@ -16,11 +16,11 @@ export interface IStopRegionParms {
     /**
      * Region Number Identifier. Can specify a Region Number or a Job Name, but NOT BOTH.
      */
-    regNum?: number[];
+    reg_num?: number[];
     /**
      * Can specify a Region Number or a Job Name, but NOT BOTH.
      */
-    jobName?: string;
+    job_name?: string;
     /**
      * If the transaction indicated by this parameter is running in the specified region to stop,
      * an error message is received at the master terminal, indicating an application

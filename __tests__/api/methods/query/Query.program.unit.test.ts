@@ -60,7 +60,7 @@ describe("IMS - Query program", () => {
 
             // if no parameters, then /ims/apis/v1/program?attributes=ALL which
             // returns all programs with all columns
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.PROGRAM +
                 "?attributes=" + attributes;
 
             response = await queryProgram(dummySession);
@@ -70,7 +70,7 @@ describe("IMS - Query program", () => {
         });
 
         it("should be able to query all programs without program name specified", async () => {
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
+            endPoint = ImsConstants.URL +  dummySession.plex + "/" + ImsConstants.PROGRAM +
                 "?attributes=BMPTYPE";
 
             queryProgramParms.names = undefined;

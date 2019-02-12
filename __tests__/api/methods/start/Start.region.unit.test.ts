@@ -27,7 +27,7 @@ describe("IMS - Start region", () => {
     const startRegionParms: IStartRegionParms = {
         memberName: member,
         local: undefined,
-        jobName: undefined
+        job_name: undefined
     };
 
     const dummySession = new ImsSession({
@@ -57,8 +57,8 @@ describe("IMS - Start region", () => {
 
         it("should be able to start a region with memberName", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.START +
-                "?membername=" + member;
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START +
+                "?member_name=" + member;
 
             response = await startRegion(dummySession, startRegionParms);
 
@@ -69,10 +69,10 @@ describe("IMS - Start region", () => {
         it("should be able to start a region with all parameters specified", async () => {
 
             startRegionParms.local = false;
-            startRegionParms.jobName = "job";
+            startRegionParms.job_name = "job";
 
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.START +
-                "?membername=" + member + "&jobname=job&local=false";
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START +
+                "?member_name=" + member + "&job_name=job&local=false";
 
             response = await startRegion(dummySession, startRegionParms);
 

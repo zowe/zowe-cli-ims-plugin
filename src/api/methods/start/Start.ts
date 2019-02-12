@@ -173,8 +173,8 @@ export async function startRegion(session: ImsSession, parms: IStartRegionParms)
         resource = resource + delimiter + "member_name=" + encodeURIComponent(parms.memberName);
         delimiter = "&";
     }
-    if (parms.jobName != null) {
-        resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.jobName);
+    if (parms.job_name != null) {
+        resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.job_name);
         delimiter = "&";
     }
     if (parms.local != null) {

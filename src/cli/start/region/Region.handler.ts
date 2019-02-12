@@ -38,7 +38,7 @@ export default class RegionHandler extends ImsBaseHandler {
 
         const response = await startRegion(session, {
             memberName: params.arguments.memberName,
-            jobName: params.arguments.jobName,
+            job_name: params.arguments.jobName,
             local: params.arguments.local
         });
 

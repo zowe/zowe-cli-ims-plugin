@@ -162,14 +162,14 @@ export async function stopTransaction(session: ImsSession, parms: IUpdateTransac
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function stopRegion(session: ImsSession, parms: IStopRegionParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeEqual(parms.regNum == null && parms.jobName == null, false,
+    ImperativeExpect.toBeEqual(parms.reg_num == null && parms.job_name == null, false,
         "Either region number or job name (but not both) must be specified.");
 
-    ImperativeExpect.toBeEqual(parms.regNum != null && parms.jobName != null, false,
+    ImperativeExpect.toBeEqual(parms.reg_num != null && parms.job_name != null, false,
         "Either region number or job name (but not both) must be specified.");
 
-    if (parms.regNum === undefined) {
-        ImperativeExpect.toBeDefinedAndNonBlank(parms.jobName, "If job name is specified it must have a value.");
+    if (parms.reg_num === undefined) {
+        ImperativeExpect.toBeDefinedAndNonBlank(parms.job_name, "If job name is specified it must have a value.");
     }
 
     let delimiter = "?"; // initial delimiter
@@ -178,12 +178,12 @@ export async function stopRegion(session: ImsSession, parms: IStopRegionParms): 
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
-    if (parms.regNum != null) {
-        resource = resource + delimiter + "regNum=" + encodeURIComponent(parms.regNum.join(","));
+    if (parms.reg_num != null) {
+        resource = resource + delimiter + "reg_num=" + encodeURIComponent(parms.reg_num.join(","));
         delimiter = "&";
     }
-    if (parms.jobName != null) {
-        resource = resource + delimiter + "jobname=" + encodeURIComponent(parms.jobName);
+    if (parms.job_name != null) {
+        resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.job_name);
         delimiter = "&";
     }
     if (parms.abdump != null) {

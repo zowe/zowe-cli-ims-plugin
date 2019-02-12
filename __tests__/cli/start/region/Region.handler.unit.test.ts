@@ -77,7 +77,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 
 describe("StartRegionHandler", () => {
     const memberName = "member";
-    const jobName = "jobName";
+    const jobName = "job";
     const local = false;
 
     const defaultReturn: IIMSApiResponse = {
@@ -129,7 +129,7 @@ describe("StartRegionHandler", () => {
             }),
             {
                 memberName,
-                jobName,
+                job_name: jobName,
                 local
             }
         );

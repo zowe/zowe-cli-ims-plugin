@@ -53,7 +53,7 @@ describe("IMS - Stop program", () => {
 
     describe("success scenarios", () => {
 
-        it("should be able to stop a program with regNum", async () => {
+        it("should be able to stop a program with reg_num", async () => {
 
             endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
                 "?names=" + program + "&" +  ImsConstants.STOP + "=SCHD";

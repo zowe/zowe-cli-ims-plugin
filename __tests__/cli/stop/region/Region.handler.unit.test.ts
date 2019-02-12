@@ -78,7 +78,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 describe("StopRegionHandler", () => {
     const regionIds = 1;
     const regNum = regionIds;
-    const jobName = "jobName";
+    const jobName = "job_name";
     const abdump = "transaction1";
     const transaction = "transaction";
     const cancel = false;
@@ -133,8 +133,8 @@ describe("StopRegionHandler", () => {
                 protocol: "http",
             }),
             {
-                regNum,
-                jobName,
+                reg_num: regNum,
+                job_name: jobName,
                 abdump,
                 transaction,
                 cancel

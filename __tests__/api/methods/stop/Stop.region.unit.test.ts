@@ -28,8 +28,8 @@ describe("IMS - Stop region", () => {
     const content = "This\nis\r\na\ntest";
 
     const stopRegionParms: IStopRegionParms = {
-        regNum: [1],
-        jobName: undefined,
+        reg_num: [1],
+        job_name: undefined,
         abdump: undefined,
         transaction: undefined,
         cancel: undefined
@@ -60,24 +60,10 @@ describe("IMS - Stop region", () => {
 
     describe("success scenarios", () => {
 
-        it("should be able to stop a region with regNum", async () => {
+        it("should be able to stop a region with reg_num", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP +
-                "?regNum=" + regNum[0];
-
-            response = await stopRegion(dummySession, stopRegionParms);
-
-            expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
-        });
-
-        it("should be able to stop a region with jobName", async () => {
-
-            stopRegionParms.regNum = undefined;
-            stopRegionParms.jobName = jobName;
-
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP +
-                "?jobname=" + jobName;
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
+                "/" + ImsConstants.STOP + "?reg_num=" + regNum[0];
 
             response = await stopRegion(dummySession, stopRegionParms);
 
@@ -85,16 +71,30 @@ describe("IMS - Stop region", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        it("should be able to stop a region with all parameters specified via jobName", async () => {
+        it("should be able to stop a region with job_name", async () => {
 
-            stopRegionParms.regNum = undefined;
-            stopRegionParms.jobName = jobName;
+            stopRegionParms.reg_num = undefined;
+            stopRegionParms.job_name = jobName;
+
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
+                "/" + ImsConstants.STOP + "?job_name=" + jobName;
+
+            response = await stopRegion(dummySession, stopRegionParms);
+
+            expect(response).toContain(content);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
+        });
+
+        it("should be able to stop a region with all parameters specified via job_name", async () => {
+
+            stopRegionParms.reg_num = undefined;
+            stopRegionParms.job_name = jobName;
             stopRegionParms.abdump = abdump;
             stopRegionParms.transaction = transaction;
             stopRegionParms.cancel = cancel;
 
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP +
-                "?jobname=" + jobName + "&abdump=" + abdump + "&transaction=" + transaction +
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
+                "/" + ImsConstants.STOP + "?job_name=" + jobName + "&abdump=" + abdump + "&transaction=" + transaction +
                 "&cancel=" + cancel;
 
             response = await stopRegion(dummySession, stopRegionParms);
@@ -103,17 +103,17 @@ describe("IMS - Stop region", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        it("should be able to stop a region with all parameters specified via regNum", async () => {
+        it("should be able to stop a region with all parameters specified via reg_num", async () => {
 
-            stopRegionParms.regNum = regNum;
-            stopRegionParms.jobName = undefined ;
+            stopRegionParms.reg_num = regNum;
+            stopRegionParms.job_name = undefined ;
             stopRegionParms.abdump = abdump;
             stopRegionParms.transaction = transaction;
             stopRegionParms.cancel = cancel;
 
-            endPoint = ImsConstants.URL + ImsConstants.REGION + "/" + ImsConstants.STOP +
-                "?regNum=" + regNum[0] + "&abdump=" + abdump + "&transaction=" + transaction +
-                "&cancel=" + cancel;
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
+                "/" + ImsConstants.STOP + "?reg_num=" + regNum[0] + "&abdump=" + abdump +
+                "&transaction=" + transaction + "&cancel=" + cancel;
 
             response = await stopRegion(dummySession, stopRegionParms);
 
@@ -134,13 +134,13 @@ describe("IMS - Stop region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'regNum' of undefined");
+            expect(error.message).toContain("Cannot read property 'reg_num' of undefined");
         });
 
-        it("should fail if regNum and jobName are not provided", async () => {
+        it("should fail if reg_num and job_name are not provided", async () => {
 
-            stopRegionParms.regNum = undefined;
-            stopRegionParms.jobName = undefined;
+            stopRegionParms.reg_num = undefined;
+            stopRegionParms.job_name = undefined;
 
             try {
                 response = await stopRegion(dummySession, stopRegionParms);
@@ -153,10 +153,10 @@ describe("IMS - Stop region", () => {
             expect(error.message).toContain("Expect Error: Either region number or job name (but not both) must be specified.");
         });
 
-        it("should fail if regNum and jobName are not provided", async () => {
+        it("should fail if reg_num and job_name are not provided", async () => {
 
-            stopRegionParms.regNum = undefined;
-            stopRegionParms.jobName = "";
+            stopRegionParms.reg_num = undefined;
+            stopRegionParms.job_name = "";
 
             try {
                 response = await stopRegion(dummySession, stopRegionParms);
@@ -169,10 +169,10 @@ describe("IMS - Stop region", () => {
             expect(error.message).toContain("Expect Error: Required parameter 'If job name is specified it must have a value.");
         });
 
-        it("should fail if both regNum and jobName are provided", async () => {
+        it("should fail if both reg_num and job_name are provided", async () => {
 
-            stopRegionParms.regNum = [1];
-            stopRegionParms.jobName = "job1";
+            stopRegionParms.reg_num = [1];
+            stopRegionParms.job_name = "job1";
 
             try {
                 response = await stopRegion(dummySession, stopRegionParms);

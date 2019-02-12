@@ -60,7 +60,7 @@ describe("IMS - Query transaction", () => {
 
             // if no parameters, then /ims/apis/v1/transaction?attributes=ALL which
             // returns all transactions with all columns
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
                 "?attributes=" + attributes;
 
             response = await queryTransaction(dummySession);
@@ -70,7 +70,7 @@ describe("IMS - Query transaction", () => {
         });
 
         it("should be able to query all transactions without transaction name specified", async () => {
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
                 "?attributes=BMPTYPE";
 
             queryTransactionParms.names = undefined;

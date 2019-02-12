@@ -33,5 +33,5 @@ export interface IStartRegionParms {
      * Use this option to override the job name on the JOB statement of the
      * default or specified JCL member for a dependent region
      */
-    jobName?: string;
+    job_name?: string;
 }
