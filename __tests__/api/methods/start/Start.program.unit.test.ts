@@ -9,21 +9,14 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
-import {
-    ImsConstants,
-    ImsRestClient,
-    ImsSession,
-    startProgram,
-    IUpdateProgramParms
-} from "../../../../src";
+import { ImsConstants, ImsRestClient, ImsSession, IUpdateProgramParms, startProgram } from "../../../../src";
 
 describe("IMS - Start program", () => {
 
     const program = "program";
     const route = "IMS1";
     const content = "This\nis\r\na\ntest";
-
+    const plexName = "fakePlex";
     const startProgramParms: IUpdateProgramParms = {
         names: [program]
     };
@@ -35,7 +28,7 @@ describe("IMS - Start program", () => {
         port: 8080,
         imsConnectHost: "fake",
         imsConnectPort: 9999,
-        plex: "fake"
+        plex: plexName
     });
 
     let error: any;
@@ -55,8 +48,8 @@ describe("IMS - Start program", () => {
 
         it("should be able to start a program with name", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program +  "&" +  ImsConstants.START + "=SCHD";
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
+                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.START + "=SCHD";
 
             response = await startProgram(dummySession, startProgramParms);
 
@@ -66,12 +59,12 @@ describe("IMS - Start program", () => {
 
         it("should be able to start a program with all parameters specified", async () => {
 
-            startProgramParms.start = ["Q","SCHD","TRACE"];
+            startProgramParms.start = ["Q", "SCHD", "TRACE"];
             startProgramParms.route = ["IMS1"];
 
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE" +
-                "&" +  ImsConstants.ROUTE + "=" + route;
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
+                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
+                "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await startProgram(dummySession, startProgramParms);
 

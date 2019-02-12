@@ -9,21 +9,15 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
-import {
-    ImsConstants,
-    ImsRestClient,
-    ImsSession,
-    stopProgram,
-    IUpdateProgramParms
-} from "../../../../src";
+import { ImsConstants, ImsRestClient, ImsSession, IUpdateProgramParms, stopProgram } from "../../../../src";
 
 describe("IMS - Stop program", () => {
 
     const program = "program";
     const route = ["IMS1"];
     const content = "This\nis\r\na\ntest";
-
+    const plexName = "fakePlex";
+    
     const stopProgramParms: IUpdateProgramParms = {
         names: [program]
     };
@@ -35,7 +29,7 @@ describe("IMS - Stop program", () => {
         port: 8080,
         imsConnectHost: "fake",
         imsConnectPort: 9999,
-        plex: "fake"
+        plex: plexName
     });
 
     let error: any;
@@ -55,8 +49,8 @@ describe("IMS - Stop program", () => {
 
         it("should be able to stop a program with reg_num", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?names=" + program + "&" +  ImsConstants.STOP + "=SCHD";
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
+                "?names=" + program + "&" + ImsConstants.STOP + "=SCHD";
 
             response = await stopProgram(dummySession, stopProgramParms);
 
@@ -66,12 +60,12 @@ describe("IMS - Stop program", () => {
 
         it("should be able to stop a program with all parameters specified", async () => {
 
-            stopProgramParms.stop = ["Q","SCHD","TRACE"];
+            stopProgramParms.stop = ["Q", "SCHD", "TRACE"];
             stopProgramParms.route = route;
 
-            endPoint = ImsConstants.URL + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE" +
-                "&" +  ImsConstants.ROUTE + "=" + route;
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
+                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await stopProgram(dummySession, stopProgramParms);
 

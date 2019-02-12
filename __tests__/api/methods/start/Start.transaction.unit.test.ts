@@ -9,21 +9,14 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
-import {
-    ImsConstants,
-    ImsRestClient,
-    ImsSession,
-    startTransaction,
-    IUpdateTransactionParms, startProgram
-} from "../../../../src";
+import { ImsConstants, ImsRestClient, ImsSession, IUpdateTransactionParms, startTransaction } from "../../../../src";
 
 describe("IMS - Start transaction", () => {
 
     const transaction = "transaction";
     const route = "IMS1";
     const content = "This\nis\r\na\ntest";
-
+    const plexName = "fakePlex";
     const startTransactionParms: IUpdateTransactionParms = {
         names: [transaction]
     };
@@ -35,7 +28,7 @@ describe("IMS - Start transaction", () => {
         port: 8080,
         imsConnectHost: "fake",
         imsConnectPort: 9999,
-        plex: "fake"
+        plex: plexName
     });
 
     let error: any;
@@ -55,8 +48,8 @@ describe("IMS - Start transaction", () => {
 
         it("should be able to start a transaction with name", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?names=" + transaction +  "&" +  ImsConstants.START + "=SCHD";
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
+                "?names=" + transaction + "&" + ImsConstants.START + "=SCHD";
 
             response = await startTransaction(dummySession, startTransactionParms);
 
@@ -66,12 +59,12 @@ describe("IMS - Start transaction", () => {
 
         it("should be able to start a transaction with all parameters specified", async () => {
 
-            startTransactionParms.start = ["Q","SCHD","TRACE"];
+            startTransactionParms.start = ["Q", "SCHD", "TRACE"];
             startTransactionParms.route = [route];
 
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction +  "&" +  ImsConstants.START + "=Q,SCHD,TRACE" +
-                "&" +  ImsConstants.ROUTE + "=" + route;
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
+                "?" + ImsConstants.NAMES + "=" + transaction + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
+                "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await startTransaction(dummySession, startTransactionParms);
 
