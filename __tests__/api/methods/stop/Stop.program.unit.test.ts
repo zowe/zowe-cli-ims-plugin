@@ -17,7 +17,7 @@ describe("IMS - Stop program", () => {
     const route = ["IMS1"];
     const content = "This\nis\r\na\ntest";
     const plexName = "fakePlex";
-    
+
     const stopProgramParms: IUpdateProgramParms = {
         names: [program]
     };
