@@ -35,7 +35,7 @@ export async function startProgram(session: ImsSession, parms: IUpdateProgramPar
 
     Logger.getAppLogger().debug("Attempting to start program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.PROGRAM;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
     // names is required
     if (parms.names.length > 0) {
@@ -103,7 +103,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
 
     Logger.getAppLogger().debug("Attempting to start transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.TRANSACTION;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
 
     // names is required
     if (parms.names.length > 0) {

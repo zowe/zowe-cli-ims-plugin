@@ -9,7 +9,14 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import {
+    ICommandHandler,
+    IHandlerParameters,
+    IProfile,
+    ITaskWithStatus, Logger,
+    TaskStage,
+    TextUtils
+} from "@brightside/imperative";
 import { IIMSApiResponse, ImsSession, stopTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
@@ -43,7 +50,9 @@ export default class TransactionHandler extends ImsBaseHandler {
         });
 
         this.checkReturnCode(response);
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.transactionName);
+
+        params.response.console.log(TextUtils.prettyJson(response.data));
+        Logger.getAppLogger().info("Messages from the stop region API:\n" + JSON.stringify(response.messages, null, 2));
         return response;
     }
 }

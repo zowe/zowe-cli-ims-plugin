@@ -37,7 +37,7 @@ export async function stopProgram(session: ImsSession, parms: IUpdateProgramParm
 
     Logger.getAppLogger().debug("Attempting to stop programs(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.PROGRAM;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
     // names is required
     if (parms.names.length > 0) {
@@ -105,7 +105,7 @@ export async function stopTransaction(session: ImsSession, parms: IUpdateTransac
 
     Logger.getAppLogger().debug("Attempting to stop transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + ImsConstants.TRANSACTION;
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
 
     // names is required
     if (parms.names.length > 0) {
