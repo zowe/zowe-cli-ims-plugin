@@ -9,14 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
-import {
-    ImsConstants,
-    ImsRestClient,
-    ImsSession,
-    stopRegion,
-    IStopRegionParms
-} from "../../../../src";
+import { ImsConstants, ImsRestClient, ImsSession, IStopRegionParms, stopRegion } from "../../../../src";
 
 describe("IMS - Stop region", () => {
 
@@ -26,7 +19,7 @@ describe("IMS - Stop region", () => {
     const transaction = "trans";
     const cancel = false;
     const content = "This\nis\r\na\ntest";
-
+    const plexName = "fakeplex";
     const stopRegionParms: IStopRegionParms = {
         reg_num: [1],
         job_name: undefined,
@@ -42,7 +35,7 @@ describe("IMS - Stop region", () => {
         port: 8080,
         imsConnectHost: "fake",
         imsConnectPort: 9999,
-        plex: "fake"
+        plex: plexName
     });
 
     let error: any;
@@ -106,7 +99,7 @@ describe("IMS - Stop region", () => {
         it("should be able to stop a region with all parameters specified via reg_num", async () => {
 
             stopRegionParms.reg_num = regNum;
-            stopRegionParms.job_name = undefined ;
+            stopRegionParms.job_name = undefined;
             stopRegionParms.abdump = abdump;
             stopRegionParms.transaction = transaction;
             stopRegionParms.cancel = cancel;

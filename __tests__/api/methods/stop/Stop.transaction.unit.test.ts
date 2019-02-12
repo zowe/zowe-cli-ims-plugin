@@ -9,21 +9,14 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
-import {
-    ImsConstants,
-    ImsRestClient,
-    ImsSession,
-    stopTransaction,
-    IUpdateTransactionParms
-} from "../../../../src";
+import { ImsConstants, ImsRestClient, ImsSession, IUpdateTransactionParms, stopTransaction } from "../../../../src";
 
 describe("IMS - Stop transaction", () => {
 
     const transaction = "transaction";
     const route = ["IMS1"];
     const content = "This\nis\r\na\ntest";
-
+    const plexName = "fake";
     const stopTransactionParms: IUpdateTransactionParms = {
         names: [transaction]
     };
@@ -35,7 +28,7 @@ describe("IMS - Stop transaction", () => {
         port: 8080,
         imsConnectHost: "fake",
         imsConnectPort: 9999,
-        plex: "fake"
+        plex: plexName
     });
 
     let error: any;
@@ -55,8 +48,8 @@ describe("IMS - Stop transaction", () => {
 
         it("should be able to stop a transaction with reg_num", async () => {
 
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?names=" + transaction + "&" +  ImsConstants.STOP + "=SCHD";
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
+                "?names=" + transaction + "&" + ImsConstants.STOP + "=SCHD";
 
             response = await stopTransaction(dummySession, stopTransactionParms);
 
@@ -66,12 +59,12 @@ describe("IMS - Stop transaction", () => {
 
         it("should be able to stop a transaction with all parameters specified", async () => {
 
-            stopTransactionParms.stop = ["Q","SCHD","TRACE"];
+            stopTransactionParms.stop = ["Q", "SCHD", "TRACE"];
             stopTransactionParms.route = route;
 
-            endPoint = ImsConstants.URL + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction +  "&" +  ImsConstants.STOP + "=Q,SCHD,TRACE" +
-                "&" +  ImsConstants.ROUTE + "=" + route;
+            endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
+                "?" + ImsConstants.NAMES + "=" + transaction + "&" + ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await stopTransaction(dummySession, stopTransactionParms);
 
