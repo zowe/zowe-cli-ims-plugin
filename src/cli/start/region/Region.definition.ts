@@ -29,6 +29,12 @@ export const RegionDefinition: ICommandDefinition = {
     outputFormatOptions: true,
     options: [
         {
+            name: "route",
+            description: strings.OPTIONS.ROUTE,
+            type: "array",
+            aliases: ["rte"]
+        },
+        {
             name: "local", aliases: ["l"],
             description: strings.OPTIONS.LOCAL,
             type: "boolean"

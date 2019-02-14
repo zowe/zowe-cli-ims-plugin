@@ -180,6 +180,9 @@ export async function startRegion(session: ImsSession, parms: IStartRegionParms)
     if (parms.local != null) {
         resource = resource + delimiter + "local=" + encodeURIComponent(parms.local + "");
     }
-
+    if (parms.route != null) {
+        resource = resource + delimiter + "route=";
+        resource = resource + encodeURIComponent(parms.route.join(","));
+    }
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }

@@ -34,4 +34,9 @@ export interface IStartRegionParms {
      * default or specified JCL member for a dependent region
      */
     job_name?: string;
+
+    /**
+     * Route the stop region command to specific IMS regions
+     */
+    route?: string[];
 }

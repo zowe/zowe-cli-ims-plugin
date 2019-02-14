@@ -41,7 +41,8 @@ export default class RegionHandler extends ImsBaseHandler {
             job_name: params.arguments.jobName,
             abdump: params.arguments.abdump,
             cancel: params.arguments.cancel,
-            transaction: params.arguments.transaction
+            transaction: params.arguments.transaction,
+            route: params.arguments.route
         });
 
         this.checkReturnCode(response);

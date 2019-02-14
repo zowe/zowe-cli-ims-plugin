@@ -37,6 +37,12 @@ export const RegionDefinition: ICommandDefinition = {
             conflictsWith: ["region-ids"],
         },
         {
+            name: "route",
+            description: strings.OPTIONS.ROUTE,
+            type: "array",
+            aliases: ["rte"]
+        },
+        {
             name: "abdump",
             description: strings.OPTIONS.ABDUMP,
             type: "string",

@@ -40,4 +40,9 @@ export interface IStopRegionParms {
      * command and must be preceded by a stop region --abdump command.
      */
     cancel?: boolean;
+
+    /**
+     * Route the stop region command to specific IMS regions
+     */
+    route?: string[];
 }

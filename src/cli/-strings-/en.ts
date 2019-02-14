@@ -119,7 +119,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
-                    ROUTE: "The region(s) to route the command",
+                    ROUTE: "The region(s) to route the command to",
                 },
                 MESSAGES: {
                     SUCCESS: "The application program(s) '%s' were started successfully."
@@ -135,7 +135,7 @@ export default {
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
-                    ROUTE: "The region(s) to route the command",
+                    ROUTE: "The region(s) to route the command to",
                 },
                 MESSAGES: {
                     SUCCESS: "The transaction(s) '%s' were started successfully."
@@ -157,7 +157,8 @@ export default {
                         "in the JCL of the default or specified member. --local is the default if you specify " +
                         "the --job-name option.",
                     JOBNAME: "Use this option to override the job name on the JOB statement of the " +
-                        "default or specified JCL member for a dependent region."
+                        "default or specified JCL member for a dependent region.",
+                    ROUTE: "The region(s) to route the command to",
                 },
                 MESSAGES: {
                     SUCCESS: "The region specified in member '%s' was started successfully."
@@ -220,7 +221,8 @@ export default {
                         "in the region.",
                     TRANSACTION: "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
                     CANCEL: "Use this option if the region cannot be stopped with a stop region --abdump" +
-                        " command. To use this option, you must have already submitted a stop region command using the --abdump option."
+                        " command. To use this option, you must have already submitted a stop region command using the --abdump option.",
+                    ROUTE: "The region(s) to route the command to",
                 },
                 MESSAGES: {
                     SUCCESS: "The region(s) identified by '%s' stopped successfully."

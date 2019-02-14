@@ -197,5 +197,10 @@ export async function stopRegion(session: ImsSession, parms: IStopRegionParms): 
     if (parms.cancel != null) {
         resource = resource + delimiter + "cancel=" + encodeURIComponent(parms.cancel + "");
     }
+
+    if (parms.route != null) {
+        resource = resource + delimiter + "route=";
+        resource = resource + encodeURIComponent(parms.route.join(","));
+    }
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
 }
