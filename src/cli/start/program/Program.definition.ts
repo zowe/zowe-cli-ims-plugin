@@ -25,7 +25,7 @@ export const ProgramDefinition: ICommandDefinition = {
         name: "names...",
         description: strings.POSITIONALS.NAMES,
         type: "string",
-        required: true
+        required: false
     }],
     outputFormatOptions: true,
     options: [{
