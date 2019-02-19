@@ -9,8 +9,7 @@
 *                                                                                 *
 */
 
-import { IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
-import { Parser } from "xml2js";
+import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -40,11 +39,6 @@ export class ImsRestClient extends RestClient {
     private static mLogger: Logger;
 
     /**
-     * Internal parser
-     */
-    private static mParser: Parser;
-
-    /**
      * Use the Brightside logger instead of the imperative logger
      * @return {Logger}
      */
@@ -63,7 +57,7 @@ export class ImsRestClient extends RestClient {
      * @param reqHeaders
      * @param writeData
      */
-    public performRest(resource: string, request: any /*TODO: HTTP_VERB*/, reqHeaders?: any[], writeData?: any): Promise<string> {
+    public performRest(resource: string, request: HTTP_VERB, reqHeaders?: any[], writeData?: any): Promise<string> {
 
         if (reqHeaders == null) {
             reqHeaders = [];
@@ -75,9 +69,6 @@ export class ImsRestClient extends RestClient {
         }
         if (imsSession.imsConnectPort != null) {
             reqHeaders.push({port: imsSession.imsConnectPort});
-        }
-        if (imsSession.plex != null) {
-            reqHeaders.push({plex: imsSession.plex});
         }
         return super.performRest(resource, request, reqHeaders, writeData);
     }
@@ -94,13 +85,14 @@ export class ImsRestClient extends RestClient {
             const jsonDetails = JSON.parse(details);
             // if we didn't get an error, make the parsed details part of the error
             details = TextUtils.prettyJson(jsonDetails, undefined, false);
+            original.msg += "\n" + details;    // add the data string which is the original error
+            return original;
         } catch (e) {
             // if there's an error, the causeErrors text is not json
             this.log.debug("Encountered an error trying to parse causeErrors as XML  - causeErrors is likely not JSON format");
+
+            original.msg += "\n" + details; // add the data string which is the original error
+            return original;
         }
-        original.msg += "\n" + details; // add the data string which is the original error
-        return original;
     }
-
-
 }

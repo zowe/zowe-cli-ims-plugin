@@ -22,19 +22,29 @@ export const TransactionDefinition: ICommandDefinition = {
     handler: __dirname + "/Transaction.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
+        name: "names...",
+        description: strings.POSITIONALS.NAMES,
         type: "string",
         required: true
     }],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [{
+        name: "attributes",
+        description: strings.OPTIONS.ATTRIBUTES,
+        type: "array",
+        allowableValues: {
+            values: ["Q", "SCHD", "TRACE"],
+            caseSensitive: true
+        },
+        aliases: ["att"],
+        defaultValue: ["SCHD"]
+    },
+    {
+        name: "route",
+        description: strings.OPTIONS.ROUTE,
+        type: "array",
+        aliases: ["rte"]
+    }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,

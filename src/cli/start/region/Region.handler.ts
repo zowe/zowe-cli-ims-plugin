@@ -9,9 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile,
-    ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { startRegion, IIMSApiResponse } from "../../../api";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@brightside/imperative";
+import { IIMSApiResponse, ImsSession, startRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -27,21 +26,28 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).ST
  */
 export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: AbstractSession,
+                                    session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Start region defined to IMS",
+            statusMessage: "Starting region defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
         const response = await startRegion(session, {
-            name: params.arguments.regionName
+            memberName: params.arguments.memberName,
+            job_name: params.arguments.jobName,
+            local: params.arguments.local,
+            route: params.arguments.route
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.regionName);
+        this.checkReturnCode(response);
+
+        params.response.console.log(TextUtils.prettyJson(response.data));
+
+        Logger.getAppLogger().info("Messages from the start region API:\n" + JSON.stringify(response.messages, null, 2));
         return response;
     }
 }

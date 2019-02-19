@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, ITaskWithStatus, TaskStage, IProfile } from "@brightside/imperative";
-import { queryTransaction, IIMSApiResponse } from "../../../api";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, ImsSession, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -25,7 +25,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
  * @implements {ICommandHandler}
  */
 export default class TransactionHandler extends ImsBaseHandler {
-    public async processWithSession(params: IHandlerParameters, session: AbstractSession, profile: IProfile): Promise<IIMSApiResponse> {
+    public async processWithSession(params: IHandlerParameters, session: ImsSession, profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Querying resources from IMS",
@@ -35,11 +35,29 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await queryTransaction(session, {
-            name: params.arguments.transactionName,
-            show: params.arguments.show
+            names: params.arguments.names,
+            attributes: params.arguments.attributes,
+            status: params.arguments.status,
+            route: params.arguments.route,
+            class: params.arguments.class,
+            qcntcomp: params.arguments.queueCountOperator,
+            qcntval: params.arguments.queueCountValue,
+            conv: params.arguments.converationAttributes,
+            fp: params.arguments.fastPathOptions,
+            remote: params.arguments.remoteOptionSpecified,
+            resp: params.arguments.responseModeOptionSpecified
         });
 
-        params.response.console.log(strings.MESSAGES.SUCCESS, params.arguments.transactionName);
+        this.checkReturnCode(response);
+
+        params.response.format.output({
+            output: response.data,
+            format: "table",
+            fields: ["tran", "mbr", "fp", "lcls", "llct", "lstt", "conv", "cmtm", "qcnt"],
+            header: true
+        });
+
+        Logger.getAppLogger().info("Messages from the query transaction API:\n" + JSON.stringify(response.messages, null, 2));
         return response;
     }
 }

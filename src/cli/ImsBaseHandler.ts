@@ -9,15 +9,22 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, Session } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@brightside/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
+import { ImsSession } from "../api/rest";
 
 /**
  * This class is used by the various ims handlers as the base class for their implementation.
  * All handlers should extend this class whenever possible
  */
 export abstract class ImsBaseHandler implements ICommandHandler {
+
+    /**
+     * Local reference to commandParameters for convenience
+     */
+    protected params: IHandlerParameters;
+
     /**
      * This will grab the ims profile and create a session before calling the subclass
      * {@link ImsBaseHandler#processWithSession} method.
@@ -27,6 +34,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      * @returns {Promise<void>}
      */
     public async process(commandParameters: IHandlerParameters) {
+        this.params = commandParameters;
         const profile = commandParameters.profiles.get("ims", false) || {};
         const session = ImsSessionUtils.createBasicImsSessionFromArguments(commandParameters.arguments);
 
@@ -50,7 +58,34 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: AbstractSession,
+        session: ImsSession,
         imsProfile: IProfile
     ): Promise<IIMSApiResponse>;
+
+    /**
+     * Check return codes for messages in case we don't receive a bad HTTP status code but
+     * do receive a bad RC in one of the messages returned by the API
+     */
+    protected checkReturnCode(response: IIMSApiResponse) {
+        let succeeded = true;
+        const failingMessages = [];
+        for (const messageID of Object.keys(response.messages)) {
+            const message = response.messages[messageID];
+            const HEXADECIMAL = 16;
+            // if the return code on the message is not zero
+            // the command did not succeed
+            if (message.rc !== undefined && parseInt(message.rc, HEXADECIMAL) !== 0) {
+                succeeded = false;
+                failingMessages.push(message);
+            }
+        }
+        if (!succeeded) {
+            this.params.response.console.error(TextUtils.prettyJson(response.data));
+            for (const failingMessage of failingMessages) {
+                this.params.response.console.error(TextUtils.prettyJson(failingMessage));
+            }
+            this.params.response.data.setObj(response);
+            throw new ImperativeError({msg: "Encountered a non-zero return code from IMS APIs", causeErrors: failingMessages});
+        }
+    }
 }

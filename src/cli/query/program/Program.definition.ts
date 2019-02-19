@@ -22,19 +22,43 @@ export const ProgramDefinition: ICommandDefinition = {
     handler: __dirname + "/Program.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
-        type: "array",
-        required: true
+        name: "names...",
+        description: strings.POSITIONALS.NAMES,
+        type: "string",
+        required: false
     }],
     outputFormatOptions: true,
     options: [
         {
-            name: "show",
-            description: strings.OPTIONS.SHOW,
-            type: "string",
-            defaultValue: "ALL"
-        }],
+            name: "attributes",
+            description: strings.OPTIONS.ATTRIBUTES,
+            type: "array",
+            allowableValues: {
+                values: ["ALL", "BMPTYPE", "DEFN", "DEFNTYPE", "DOPT", "FP", "GLOBAL", "IMSID", "GPSB", "LANG",
+                    "LOCAL", "MODEL", "RESIDENT", "SCHDTYPE", "STATUS", "TIMESTAMP", "TRANSTAT", "EXPORTNEEDED",
+                    "DB", "RTC", "TRAN", "WORK"],
+                caseSensitive: true
+            },
+            aliases: ["att"],
+            defaultValue: ["ALL"]
+        },
+        {
+            name: "status",
+            description: strings.OPTIONS.STATUS,
+            type: "array",
+            allowableValues: {
+                values: ["DB-NOTAVL", "IOPREV", "LOCK", "NOTINIT", "STOSCHD", "TRACE"],
+                caseSensitive: true
+            },
+            aliases: ["st"],
+        },
+        {
+            name: "route",
+            description: strings.OPTIONS.ROUTE,
+            type: "array",
+            aliases: ["rt"],
+        }
+    ],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,

@@ -22,19 +22,87 @@ export const TransactionDefinition: ICommandDefinition = {
     handler: __dirname + "/Transaction.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
-        type: "array",
-        required: true
+        name: "names...",
+        description: strings.POSITIONALS.NAMES,
+        type: "string",
+        required: false
     }],
     outputFormatOptions: true,
     options: [
         {
-            name: "show",
-            description: strings.OPTIONS.SHOW,
+            name: "attributes",
+            description: strings.OPTIONS.ATTRIBUTES,
+            type: "array",
+            allowableValues: {
+                values: ["ALL", "BMPTYPE", "DEFN", "DEFNTYPE", "DOPT", "FP", "GLOBAL", "IMSID", "GPSB", "LANG",
+                    "LOCAL", "MODEL", "RESIDENT", "SCHDTYPE", "STATUS", "TIMESTAMP", "TRANSTAT", "EXPORTNEEDED",
+                    "DB", "RTC", "TRAN", "WORK"],
+                caseSensitive: true
+            },
+            aliases: ["att"],
+            defaultValue: ["ALL"]
+        },
+        {
+            name: "status",
+            description: strings.OPTIONS.STATUS,
+            type: "array",
+            allowableValues: {
+                values: ["AFFIN", "BAL", "CONV", "CPIC", "DYN", "IOPREV", "LCK", "NOTINIT",
+                    "QERR", "QSTP", "SUSPEND", "STOQ", "STOSCHD", "TRACE", "USTO"],
+                caseSensitive: true
+            },
+            aliases: ["st"],
+        },
+        {
+            name: "route",
+            description: strings.OPTIONS.ROUTE,
+            type: "array",
+            aliases: ["rt"],
+        },
+        {
+            name: "class",
+            description: strings.OPTIONS.CLASS,
+            type: "array",
+            aliases: ["cl"],
+        },
+        {
+            name: "queue-count-operator",
+            description: strings.OPTIONS.QCNTCOMP,
+            type: "array",
+            aliases: ["qco"],
+        },
+        {
+            name: "queue-count-value",
+            description: strings.OPTIONS.QCNTVAL,
+            type: "number",
+            aliases: ["qcv"],
+        },
+        {
+            name: "conversation-attributes",
+            description: strings.OPTIONS.CONV,
             type: "string",
-            defaultValue: "ALL"
-        }],
+            aliases: ["ca"],
+        },
+        {
+            name: "fast-path-options",
+            description: strings.OPTIONS.FP,
+            type: "string",
+            aliases: ["fpo"],
+        },
+        {
+            name: "remote-option-specified",
+            description: strings.OPTIONS.REMOTE,
+            type: "string",
+            aliases: ["ros"],
+        },
+        {
+            name: "response-mode-option-specified",
+            description: strings.OPTIONS.RESP,
+            type: "string",
+            aliases: ["rmos"],
+        }
+
+    ],
     profile: {optional: ["ims"]},
     examples: [
         {

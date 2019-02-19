@@ -9,8 +9,8 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { IIMSApiResponse, queryProgram } from "../../../api";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
+import { IIMSApiResponse, ImsSession, queryProgram } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
@@ -26,7 +26,7 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
  */
 export default class ProgramHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: AbstractSession,
+                                    session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
@@ -37,14 +37,17 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await queryProgram(session, {
-            name: params.arguments.name,
-            show: params.arguments.show
+            names: params.arguments.names,
+            attributes: params.arguments.attributes
         });
+
+        this.checkReturnCode(response);
 
         params.response.format.output({
             header: true,
             output: response.data,
-            format: "table"
+            format: "table",
+            fields: ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
         });
 
         return response;

@@ -22,19 +22,29 @@ export const ProgramDefinition: ICommandDefinition = {
     handler: __dirname + "/Program.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
+        name: "names...",
+        description: strings.POSITIONALS.NAMES,
         type: "string",
-        required: true
+        required: false
     }],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [{
+        name: "attributes",
+        description: strings.OPTIONS.ATTRIBUTES,
+        type: "array",
+        allowableValues: {
+            values: ["SCHD", "TRACE", "REFRESH"],
+            caseSensitive: true
+    },
+        aliases: ["att"],
+        defaultValue: ["SCHD"]
+    },
+    {
+        name: "route",
+        description: strings.OPTIONS.ROUTE,
+        type: "array",
+        aliases: ["rte"]
+    }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,

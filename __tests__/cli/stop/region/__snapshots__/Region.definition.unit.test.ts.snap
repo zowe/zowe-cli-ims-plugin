@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims stop region should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "reg",
+  ],
+  "description": "Stop an IMS region.",
+  "examples": Array [
+    Object {
+      "description": "Stop a region with job name JOBNM1",
+      "options": "--job-name JOBNM1",
+    },
+  ],
+  "mustSpecifyOne": Array [
+    "job-name",
+    "region-ids",
+  ],
+  "name": "region",
+  "options": Array [
+    Object {
+      "conflictsWith": Array [
+        "job-name",
+      ],
+      "description": "Region identifier numbers for the regions you want to stop. You must specify either this option or --job-name.",
+      "name": "region-ids",
+      "type": "array",
+    },
+    Object {
+      "conflictsWith": Array [
+        "region-ids",
+      ],
+      "description": "The name of the job for the IMS region you want to stop. You must specify either this option or --region-ids.",
+      "name": "job-name",
+      "type": "string",
+    },
+    Object {
+      "description": "Specify this option to cause abnormal termination (ABEND) of an application program. If the transaction indicated by this argument is currently running in the specified region, an error message is received at the master terminal, indicating an application program ABEND. The region will remain active, but the transaction will be stopped. The command is ignored if the transaction is not currently scheduled in the region.",
+      "name": "abdump",
+      "type": "string",
+    },
+    Object {
+      "description": "Use this option if the region cannot be stopped with a stop region --abdump command. To use this option, you must have already submitted a stop region command using the --abdump option.",
+      "name": "cancel",
+      "type": "boolean",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

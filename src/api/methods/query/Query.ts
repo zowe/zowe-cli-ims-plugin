@@ -9,60 +9,247 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeExpect, Logger } from "@brightside/imperative";
-import { ImsRestClient } from "../../rest";
-import { IIMSApiResponse, IResourceParms } from "../../doc";
+import { AbstractSession, Logger } from "@brightside/imperative";
+import { ImsRestClient, ImsSession } from "../../rest";
+import { IIMSApiResponse, IQueryProgramParms, IQueryTransactionParms } from "../../doc";
+import { ImsConstants } from "../../constants";
 
 /**
  * Query program in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IQueryProgramParms} parms - parameters for querying a program
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
- * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryProgram(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Program name", "IMS program name is required");
+export async function queryProgram(session: ImsSession, parms?: IQueryProgramParms): Promise<IIMSApiResponse> {
 
     let delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
+    Logger.getAppLogger().debug("Attempting to query program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let resource = "/ims/apis/v1/program";
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
-    if (parms.show != null) {
-        resource = resource + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    // names is not required; defaults to all programs
+    if ((parms !== undefined) && (parms.names !== undefined)) {
+        if (parms.names.length > 0) {
+            // 'names' text must be lower case
+            resource = resource + delimiter + "names=";
+            for (let i = 0; i < parms.names.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.names[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.names[i]);
+                }
+            }
+            delimiter = "&";
+        }
+    }
+
+    // if no attributes default to ALL
+    if ((parms !== undefined) && (parms.attributes !== undefined)) {
+        if (parms.attributes.length > 0) {
+            // 'attributes' text must be lower case
+            resource = resource + delimiter + "attributes=";
+            for (let i = 0; i < parms.attributes.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.attributes[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.attributes[i]);
+                }
+            }
+        }
+        delimiter = "&";
+    } else {
+        resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
 
+    if (parms !== undefined) {
+        // if status specified, add
+        if (parms.status !== undefined) {
+            if (parms.status.length > 0) {
+                // 'status' text must be lower case
+                resource = resource + delimiter + "status=";
+                for (let i = 0; i < parms.status.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.status[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.status[i]);
+                    }
+                }
+            }
+            delimiter = "&";
+        }
+
+        // check if route specified
+        if (parms.route !== undefined) {
+            if (parms.route.length > 0) {
+                // 'route' text must be lower case
+                resource = resource + delimiter + "route=";
+                for (let i = 0; i < parms.route.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.route[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.route[i]);
+                    }
+                }
+            }
+        }
+    }
     return ImsRestClient.getExpectJSON(session, resource, []);
 }
 
 /**
- * Query program in IMS through REST API
+ * Query transaction in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
- * @param {IResourceParms} parms - parameters for querying a program
+ * @param {IQueryTransactionParms} parms - parameters for querying a transaction
  * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
  *                          when the request is complete
- * @throws {ImperativeError} IMS program name not defined or blank
  * @throws {ImperativeError} ImsRestClient request fails
  */
-export async function queryTransaction(session: AbstractSession, parms: IResourceParms): Promise<IIMSApiResponse> {
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.name, "IMS Transaction name", "IMS transaction name is required");
+export async function queryTransaction(session: ImsSession, parms?: IQueryTransactionParms): Promise<IIMSApiResponse> {
 
     let delimiter = "?"; // initial delimiter
 
-    Logger.getAppLogger().debug("Attempting to query resource(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    const imsPlex = "/";
-    let imsProgram = "/";
+    Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    if (parms.show != null) {
-        imsProgram = imsProgram + delimiter + "SHOW(" + encodeURIComponent(parms.show) + ")";
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
+
+    // names is not required; defaults to all transactions
+    if ((parms !== undefined) && (parms.names !== undefined)) {
+        if (parms.names.length > 0) {
+            // 'names' text must be lower case
+            resource = resource + delimiter + "names=";
+            for (let i = 0; i < parms.names.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.names[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.names[i]);
+                }
+            }
+            delimiter = "&";
+        }
+    }
+
+    // if no attributes default to ALL
+    if ((parms !== undefined) && (parms.attributes !== undefined)) {
+        if (parms.attributes.length > 0) {
+            // 'attributes' text must be lower case
+            resource = resource + delimiter + "attributes=";
+            for (let i = 0; i < parms.attributes.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.attributes[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.attributes[i]);
+                }
+            }
+        }
+        delimiter = "&";
+    } else {
+        resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
 
-    return ImsRestClient.getExpectJSON(session, imsProgram, []);
+    if (parms !== undefined) {
+        // if status specified, add
+        if (parms.status !== undefined) {
+            if (parms.status.length > 0) {
+                // 'status' text must be lower case
+                resource = resource + delimiter + "status=";
+                for (let i = 0; i < parms.status.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.status[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.status[i]);
+                    }
+                }
+            }
+            delimiter = "&";
+        }
+
+        // check if route specified
+        if (parms.route !== undefined) {
+            if (parms.route.length > 0) {
+                // 'route' text must be lower case
+                resource = resource + delimiter + "route=";
+                for (let i = 0; i < parms.route.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.route[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.route[i]);
+                    }
+                }
+                delimiter = "&";
+            }
+        }
+
+        // check if class specified
+        if (parms.class !== undefined) {
+            if (parms.class.length > 0) {
+                // 'class' text must be lower case
+                resource = resource + delimiter + "class=";
+                for (let i = 0; i < parms.class.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.class[i].toString());
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.class[i].toString());
+                    }
+                }
+                delimiter = "&";
+            }
+        }
+
+        // check if qcntcomp specified
+        if (parms.qcntcomp !== undefined) {
+            if (parms.qcntcomp.length > 0) {
+                // 'qcntcomp' text must be lower case
+                resource = resource + delimiter + "qcntcomp=";
+                for (let i = 0; i < parms.qcntcomp.length; i++) {
+                    if (i === 0) {
+                        resource = resource + encodeURIComponent(parms.qcntcomp[i]);
+                    } else {
+                        resource = resource + "," + encodeURIComponent(parms.qcntcomp[i]);
+                    }
+                }
+                delimiter = "&";
+            }
+        }
+
+        // check if qcntval specified
+        if (parms.qcntval !== undefined) {
+            // 'qcntval' text must be lower case
+            resource = resource + delimiter + "qcntval=" + parms.qcntval;
+            delimiter = "&";
+        }
+
+        // check if conv specified
+        if (parms.conv !== undefined) {
+            // 'conv' text must be lower case
+            resource = resource + delimiter + "conv=" + parms.conv;
+            delimiter = "&";
+        }
+
+        // check if fp specified
+        if (parms.fp !== undefined) {
+            // 'fp' text must be lower case
+            resource = resource + delimiter + "fp=" + parms.fp;
+            delimiter = "&";
+        }
+
+        // check if remote specified
+        if (parms.remote !== undefined) {
+            // 'remote' text must be lower case
+            resource = resource + delimiter + "remote=" + parms.remote;
+            delimiter = "&";
+        }
+
+        // check if resp specified
+        if (parms.resp !== undefined) {
+            // 'resp' text must be lower case
+            resource = resource + delimiter + "resp=" + parms.resp;
+        }
+    }
+    return ImsRestClient.getExpectJSON(session, resource, []);
 }

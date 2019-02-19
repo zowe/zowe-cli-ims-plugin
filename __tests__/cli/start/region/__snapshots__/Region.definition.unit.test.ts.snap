@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims start region should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "reg",
+  ],
+  "description": "Start an IMS region.",
+  "examples": Array [
+    Object {
+      "description": "Start a region stored in a member named MEM1",
+      "options": "MEM1",
+    },
+  ],
+  "name": "region",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "l",
+      ],
+      "description": "If you specify the --local option, IMS overrides the symbolic IMSID parameter in the JCL of the default or specified member. --local is the default if you specify the --job-name option.",
+      "name": "local",
+      "type": "boolean",
+    },
+    Object {
+      "aliases": Array [
+        "jn",
+      ],
+      "description": "Use this option to override the job name on the JOB statement of the default or specified JCL member for a dependent region.",
+      "name": "job-name",
+      "type": "string",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The name of the member that contains JCL for the region to start.  The maximum length of the member name is eight characters.  If no member name is specified, the default member name is used
+",
+      "name": "memberName",
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

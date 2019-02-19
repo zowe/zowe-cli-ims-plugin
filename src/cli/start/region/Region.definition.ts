@@ -22,22 +22,31 @@ export const RegionDefinition: ICommandDefinition = {
     handler: __dirname + "/Region.handler",
     type: "command",
     positionals: [{
-        name: "name",
-        description: strings.POSITIONALS.NAME,
+        name: "memberName",
+        description: strings.POSITIONALS.MEMBERNAME,
         type: "string",
-        required: true
     }],
     outputFormatOptions: true,
-    // options: [
-    //     {
-    //         name: "show",
-    //         description: strings.OPTIONS.SHOW,
-    //         type: "string",
-    //         defaultValue: "ALL"
-    //     }],
+    options: [
+        {
+            name: "route",
+            description: strings.OPTIONS.ROUTE,
+            type: "array",
+            aliases: ["rte"]
+        },
+        {
+            name: "local", aliases: ["l"],
+            description: strings.OPTIONS.LOCAL,
+            type: "boolean"
+        },
+        {
+            name: "job-name", aliases: ["jn"],
+            description: strings.OPTIONS.JOBNAME,
+            type: "string",
+        }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "REGION1"
+        options: "MEM1"
     }]
 };

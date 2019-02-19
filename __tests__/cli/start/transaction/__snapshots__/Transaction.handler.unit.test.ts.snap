@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StartTransactionHandler should call the start transaction api 1`] = `
+"
+
+"
+`;
+
+exports[`StartTransactionHandler should call the start transaction api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;

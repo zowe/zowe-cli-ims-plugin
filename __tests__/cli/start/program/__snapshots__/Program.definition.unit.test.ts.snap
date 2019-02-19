@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims start program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "pgm",
+  ],
+  "description": "Start an IMS application program.",
+  "examples": Array [
+    Object {
+      "description": "Start an application program named PGM123",
+      "options": "PGM123",
+    },
+  ],
+  "name": "program",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "att",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "SCHD",
+          "TRACE",
+          "REFRESH",
+        ],
+      },
+      "defaultValue": Array [
+        "SCHD",
+      ],
+      "description": "The attributes that are to be started",
+      "name": "attributes",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "The region(s) to route the command",
+      "name": "route",
+      "type": "array",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The names of the application programs to start. The maximum length of a program name is eight characters.",
+      "name": "names...",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

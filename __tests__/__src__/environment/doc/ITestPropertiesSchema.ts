@@ -47,6 +47,21 @@ export interface ITestPropertiesSchema {
          * The name of the IMS plex
          */
         plex: string;
+        /**
+         * The name of a transaction expected to be in the region
+         * when running a query transaction command
+         */
+        expectedTransaction: string;
+
+        /**
+         * a dependent region that can be started and stopped
+         */
+        dependentRegionName: string;
+
+        /**
+         * ID used to stop a dependent region
+         */
+        dependentRegionID: number;
     };
 
 }

@@ -102,7 +102,7 @@ export class TestEnvironment {
      * @returns  - The unique directory (within the results/data/ area).
      */
     public static createUniqueTestDataDir(testName: string): string {
-        const app = uuidv4() + "_" + testName + "/";
+        const app = testName + "_" + uuidv4() + "/";
         const path = nodePath.resolve(TEST_RESULT_DATA_DIR + "/" + app);
         mkdirpSync(path);
         return path;
@@ -166,9 +166,9 @@ export class TestEnvironment {
         if (output.status !== 0) {
             throw new ImperativeError({
                 msg: "Install of 'ims' plugin failed! You should delete the script: \n'" + scriptPath + "' " +
-                "after reviewing it to check for possible errors.\n Output of the plugin install command:\n" + output.stderr.toString() +
-                output.stdout.toString() +
-                TempTestProfiles.GLOBAL_INSTALL_NOTE
+                    "after reviewing it to check for possible errors.\n Output of the plugin install command:\n" + output.stderr.toString() +
+                    output.stdout.toString() +
+                    TempTestProfiles.GLOBAL_INSTALL_NOTE
             });
         }
         IO.deleteFile(scriptPath);

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims stop transaction should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "tran",
+  ],
+  "description": "Stop an IMS transaction.",
+  "examples": Array [
+    Object {
+      "description": "Stop a transaction named TRN1",
+      "options": "TRN1",
+    },
+  ],
+  "name": "transaction",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "att",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "Q",
+          "SCHD",
+          "TRACE",
+        ],
+      },
+      "defaultValue": Array [
+        "SCHD",
+      ],
+      "description": "The attributes that are to be stopped",
+      "name": "attributes",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "The region(s) to route the command",
+      "name": "route",
+      "type": "array",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
+      "name": "names...",
+      "required": true,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

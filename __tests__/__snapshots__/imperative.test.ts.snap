@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`imperative config should match the snapshot 1`] = `
+Object {
+  "commandModuleGlobs": Array [
+    "**/cli/*/*.definition!(.d).*s",
+  ],
+  "name": "ims",
+  "productDisplayName": "CLI Plug-in for IBM IMS",
+  "profiles": Array [
+    Object {
+      "createProfileExamples": Array [
+        Object {
+          "description": "Create a ims profile named 'ims123' to connect to IMS APIs at host zos123 and port 1490. The name of the IMS plex in this example is 'PLEX1' and the IMS region we want to communicate with has a host of zos124 and a port of 1491",
+          "options": "ims123 --host zos123 --port 1490 --user ibmuser --pass myp4ss --plex PLEX1 --ich zos124 --icp 1491",
+        },
+      ],
+      "schema": Object {
+        "description": "An ims profile is used to issue commands in the ims command group that interact with IMS regions. The ims profile contains your host, port, user name, and password for the IBM IMS server of your choice.",
+        "properties": Object {
+          "host": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "H",
+              ],
+              "description": "The IMS Command Services server host name.",
+              "group": "IMS Connection Options",
+              "name": "host",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "imsConnectHost": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "ich",
+              ],
+              "description": "The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.",
+              "group": "IMS Connection Options",
+              "name": "ims-connect-host",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "imsConnectPort": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "icp",
+              ],
+              "description": "The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.",
+              "group": "IMS Connection Options",
+              "name": "ims-connect-port",
+              "required": true,
+              "type": "number",
+            },
+            "type": "number",
+          },
+          "password": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "pass",
+              ],
+              "description": "Mainframe (IMS) password, which can be the same as your TSO password.",
+              "group": "IMS Connection Options",
+              "name": "password",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+          "plex": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "x",
+              ],
+              "description": "The name of the IMS plex.",
+              "group": "IMS Connection Options",
+              "name": "plex",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
+          "port": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "P",
+              ],
+              "description": "The IMS Command Services server port.",
+              "group": "IMS Connection Options",
+              "name": "port",
+              "required": true,
+              "type": "number",
+            },
+            "type": "number",
+          },
+          "user": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "u",
+              ],
+              "description": "Mainframe (IMS) user name, which can be the same as your TSO login.",
+              "group": "IMS Connection Options",
+              "name": "user",
+              "required": true,
+              "type": "string",
+            },
+            "secure": true,
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "host",
+        ],
+        "title": "IMS Profile",
+        "type": "object",
+      },
+      "type": "ims",
+    },
+  ],
+  "rootCommandDescription": "Interact with IBM IMS programs and transactions.",
+}
+`;

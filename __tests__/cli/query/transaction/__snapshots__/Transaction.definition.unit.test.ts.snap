@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims query transaction should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "tran",
+  ],
+  "description": "Query an IMS transaction.",
+  "examples": Array [
+    Object {
+      "description": "Query transaction information for transaction named TRN12",
+      "options": "TRN12",
+    },
+    Object {
+      "description": "Query transaction information for transactions named TRAN1 and TRAN2",
+      "options": "TRAN1 TRAN2",
+    },
+    Object {
+      "description": "Query transaction information for transactions starting with TRAN using the wild card character '*'",
+      "options": "TRAN*",
+    },
+  ],
+  "name": "transaction",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "att",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ALL",
+          "BMPTYPE",
+          "DEFN",
+          "DEFNTYPE",
+          "DOPT",
+          "FP",
+          "GLOBAL",
+          "IMSID",
+          "GPSB",
+          "LANG",
+          "LOCAL",
+          "MODEL",
+          "RESIDENT",
+          "SCHDTYPE",
+          "STATUS",
+          "TIMESTAMP",
+          "TRANSTAT",
+          "EXPORTNEEDED",
+          "DB",
+          "RTC",
+          "TRAN",
+          "WORK",
+        ],
+      },
+      "defaultValue": Array [
+        "ALL",
+      ],
+      "description": "Specifies the transaction output fields to return.",
+      "name": "attributes",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "st",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "AFFIN",
+          "BAL",
+          "CONV",
+          "CPIC",
+          "DYN",
+          "IOPREV",
+          "LCK",
+          "NOTINIT",
+          "QERR",
+          "QSTP",
+          "SUSPEND",
+          "STOQ",
+          "STOSCHD",
+          "TRACE",
+          "USTO",
+        ],
+      },
+      "description": "Selects transactions that possess at least one of the specified transaction statuses.",
+      "name": "status",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "rt",
+      ],
+      "description": "Specifies the routes to return.",
+      "name": "route",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "cl",
+      ],
+      "description": "Selects transactions by the classes you specify.",
+      "name": "class",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "qco",
+      ],
+      "description": "The compare operator used to select transactions based on queue count. Valid values: LT, LE, GT, GE, EQ or NE.",
+      "name": "queue-count-operator",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "qcv",
+      ],
+      "description": "The numeric value used with 'queue_count_operator' to select transactions based on queue count.",
+      "name": "queue-count-value",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "ca",
+      ],
+      "description": "Selects transactions by the conversational attributes you specify.",
+      "name": "conversation-attributes",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "fpo",
+      ],
+      "description": "Selects transactions by the Fast Path options you specify.",
+      "name": "fast-path-options",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "ros",
+      ],
+      "description": "Selects transactions by the remote option you specify.",
+      "name": "remote-option-specified",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "rmos",
+      ],
+      "description": "Selects transactions by the response mode option you specify.",
+      "name": "response-mode-option-specified",
+      "type": "string",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
+      "name": "names...",
+      "required": false,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

@@ -9,12 +9,12 @@
 *                                                                                 *
 */
 
-// ******* ATTENTION:  LEASE KEEP IN ALPHABETICAL ORDER
+// ******* ATTENTION:  PLEASE KEEP IN ALPHABETICAL ORDER
 // TODO - needs updated for IMS
 export default {
     // CREATE: {
-    //     SUMMARY: "Create new resources to IMS",
-    //     DESCRIPTION: "Define new resources (for example, programs) to IMS.",
+    //     SUMMARY: "Create new IMS resources",
+    //     DESCRIPTION: "Define new resources (for example, programs) in IMS.",
     //     RESOURCES: {
     //         PROGRAM: {
     //             DESCRIPTION: "Create a new program to IMS.",
@@ -56,40 +56,51 @@ export default {
     // },
     QUERY: {
         SUMMARY: "Query resources from IMS",
-        DESCRIPTION: "Query application programs or transactions across the IMSplex. " +
-            "It displays information about application programs and transactions (for example, class, status, queue count, and others). " +
+        DESCRIPTION: "Query application programs or transactions across an IMSplex." +
+            "The query returns information about application programs and transactions (for example, class, status, queue count, and more). " +
             "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program(s) to be queried.",
+                DESCRIPTION: "Query an IMS application program.",
                 POSITIONALS: {
-                    NAME: "The names of the programs to query.",
+                    NAMES: "Specifies the names of the programs to query.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the application program output fields to be returned."
+                    ATTRIBUTES: "Specifies the application program output fields to return.",
+                    STATUS: "Selects programs for display that possess at least one of the specified program statuses.",
+                    ROUTE: "Specifies the routes to return."
                 },
                 MESSAGES: {
-                    SUCCESS: "The information for '%s' were retrieved successfully."
+                    SUCCESS: "The information for '%s' was retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Query information for application program named PGM123",
+                    EX1: "Query information for an application program named PGM123",
                     EX2: "Query information for application programs named ABC and XYZ",
                     EX3: "Query information for application programs starting with PROG using the wild card character '*'",
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction(s) to be queried.",
+                DESCRIPTION: "Query an IMS transaction.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction(*) to query.",
+                    NAMES: "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
                 },
                 OPTIONS: {
-                    SHOW: "Specifies the transaction output fields to be returned."
+                    ATTRIBUTES: "Specifies the transaction output fields to return.",
+                    STATUS: "Selects transactions that possess at least one of the specified transaction statuses.",
+                    ROUTE: "Specifies the routes to return.",
+                    CLASS: "Selects transactions by the classes you specify.",
+                    QCNTCOMP: "The compare operator used to select transactions based on queue count. Valid values: LT, LE, GT, GE, EQ or NE.",
+                    QCNTVAL: "The numeric value used with 'queue_count_operator' to select transactions based on queue count.",
+                    CONV: "Selects transactions by the conversational attributes you specify.",
+                    FP: "Selects transactions by the Fast Path options you specify.",
+                    REMOTE: "Selects transactions by the remote option you specify.",
+                    RESP: "Selects transactions by the response mode option you specify.",
                 },
                 MESSAGES: {
-                    SUCCESS: "The information for '%s' were retrieved successfully."
+                    SUCCESS: "The information for '%s' was retrieved successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Query transaction information for transaction TRN12",
+                    EX1: "Query transaction information for transaction named TRN12",
                     EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
                     EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
                 }
@@ -99,54 +110,61 @@ export default {
     START: {
         SUMMARY: "Start resources in IMS",
         DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
-        "This command submits a '/START REGION', '/START PGM' or '/START TRAN' IMS command and returns the output.",
+            "This command submits a '/START REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program to be started.",
+                DESCRIPTION: "Start an IMS application program.",
                 POSITIONALS: {
-                    NAME: "The name of the application program to start. The maximum length of the program name is eight characters.",
+                    NAMES: "The names of the application programs to start. The maximum length of a program name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the program",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the program"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be started",
+                    ROUTE: "The region(s) to route the command to",
+                },
                 MESSAGES: {
-                    SUCCESS: "The application program named '%s' was started successfully."
+                    SUCCESS: "The application program(s) '%s' were started successfully."
                 },
                 EXAMPLES: {
                     EX1: "Start an application program named PGM123"
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction that is to be started.",
+                DESCRIPTION: "Start an IMS transaction.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction to start. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The names of the transactions to start. The maximum length of a transaction name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the transaction",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be started",
+                    ROUTE: "The region(s) to route the command to",
+                },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was started successfully."
+                    SUCCESS: "The transaction(s) '%s' were started successfully."
                 },
                 EXAMPLES: {
                     EX1: "Start a transaction named TRN1",
                 }
             },
             REGION: {
-                DESCRIPTION: "Command to specify the region that is to be started.",
+                DESCRIPTION: "Start an IMS region.",
                 POSITIONALS: {
-                    NAME: "The name of the region to start. The maximum length of the region name is eight characters.",
+                    MEMBERNAME: "The name of the member that contains JCL for the region to start. " +
+                        " The maximum length of the member name is eight characters. " +
+                        " If no member name is specified, the default " +
+                        "member name is used\n",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name to which to install the transaction",
-                //     IMSPLEX: "The name of the IMSPlex to which to install the transaction"
-                // },
+                OPTIONS: {
+                    LOCAL: "If you specify the --local option, IMS overrides the symbolic IMSID parameter " +
+                        "in the JCL of the default or specified member. --local is the default if you specify " +
+                        "the --job-name option.",
+                    JOBNAME: "Use this option to override the job name on the JOB statement of the " +
+                        "default or specified JCL member for a dependent region.",
+                    ROUTE: "The region(s) to route the command to",
+                },
                 MESSAGES: {
-                    SUCCESS: "The region '%s' was started successfully."
+                    SUCCESS: "The region specified in member '%s' was started successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Start a region named REGION",
+                    EX1: "Start a region stored in a member named MEM1",
                 }
             }
         }
@@ -154,55 +172,63 @@ export default {
     STOP: {
         SUMMARY: "Stop resources in IMS",
         DESCRIPTION: "Stops a running region, application program or transaction. " +
-        "This command submits a '/STOP REGION', '/STOP PGM' or '/STOP TRAN' IMS command and returns the output.\",",
+            "This command submits a '/STOP REGION', 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.\",",
         RESOURCES: {
             PROGRAM: {
-                DESCRIPTION: "Command to specify the application program to be stopped.",
+                DESCRIPTION: "Stop an IMS application program.",
                 POSITIONALS: {
-                    NAME: "The name of the program to stop. The maximum length of the program name is eight characters.",
+                    NAMES: "The names of the programs to stop. The maximum length of a program name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the program",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the program"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be stopped",
+                    ROUTE: "The region(s) to route the command",
+                },
                 MESSAGES: {
-                    SUCCESS: "The application program '%s' was stopped successfully."
+                    SUCCESS: "The application program(s) '%s' were stopped successfully."
                 },
                 EXAMPLES: {
                     EX1: "Stop an application program named PGM123"
                 }
             },
             TRANSACTION: {
-                DESCRIPTION: "Command to specify the transaction that is to be stopped.",
+                DESCRIPTION: "Stop an IMS transaction.",
                 POSITIONALS: {
-                    NAME: "The name of the transaction to stop. The maximum length of the transaction name is eight characters.",
+                    NAMES: "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the transaction",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
-                // },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be stopped",
+                    ROUTE: "The region(s) to route the command",
+                },
                 MESSAGES: {
-                    SUCCESS: "The transaction '%s' was stopped successfully."
+                    SUCCESS: "The transaction(s) '%s' were stopped successfully."
                 },
                 EXAMPLES: {
                     EX1: "Stop a transaction named TRN1"
                 }
             },
             REGION: {
-                DESCRIPTION: "Command to specify the IMS region to be stopped.",
-                POSITIONALS: {
-                    NAME: "The name of the region (job) to stop. The maximum length of the transaction name is four characters.",
+                DESCRIPTION: "Stop an IMS region.",
+                POSITIONALS: {},
+                OPTIONS: {
+                    JOBNAME: "The name of the job for the IMS region you want to stop. You must specify either this option or --region-ids.",
+                    REGIONIDS: "Region identifier numbers for the regions you want to stop. You must specify either this option " +
+                        "or --job-name.",
+                    ABDUMP: "Specify this option to cause abnormal termination (ABEND) of an application program. " +
+                        "If the transaction indicated by this argument is currently running in the specified region," +
+                        " an error message is received at the master terminal, indicating an application " +
+                        "program ABEND. The region will remain active, but the transaction will be " +
+                        "stopped. The command is ignored if the transaction is not currently scheduled " +
+                        "in the region.",
+                    TRANSACTION: "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
+                    CANCEL: "Use this option if the region cannot be stopped with a stop region --abdump" +
+                        " command. To use this option, you must have already submitted a stop region command using the --abdump option.",
+                    ROUTE: "The region(s) to route the command to",
                 },
-                // OPTIONS: {
-                //     REGIONNAME: "The IMS region name from which to delete the transaction",
-                //     IMSPLEX: "The name of the IMSPlex from which to delete the transaction"
-                // },
                 MESSAGES: {
-                    SUCCESS: "The region '%s' was stopped successfully."
+                    SUCCESS: "The region(s) identified by '%s' stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Stop a region named REGION1"
-
+                    EX1: "Stop a region with job name JOBNM1"
                 }
             }
         }

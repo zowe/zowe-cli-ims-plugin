@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims query transaction should display the help 1`] = `
+"===============IMS QUERY TRANSACTION HELP===============
+
+ COMMAND NAME
+ ------------
+
+   transaction | tran
+
+ DESCRIPTION
+ -----------
+
+   Query an IMS transaction.
+
+ USAGE
+ -----
+
+   zowe ims query transaction [names...] [options]
+
+ POSITIONAL ARGUMENTS
+ --------------------
+
+   names...		 (string)
+
+      Specifies the name of transaction(s) to query. You can use an * character as a
+      wildcard to select multiple transactions.
+
+ OPTIONS
+ -------
+
+   --attributes  | --att (array)
+
+      Specifies the transaction output fields to return.
+
+      Default value: ALL
+      Allowed values: ALL, BMPTYPE, DEFN, DEFNTYPE, DOPT, FP, GLOBAL, IMSID, GPSB,
+      LANG, LOCAL, MODEL, RESIDENT, SCHDTYPE, STATUS, TIMESTAMP, TRANSTAT,
+      EXPORTNEEDED, DB, RTC, TRAN, WORK
+
+   --status  | --st (array)
+
+      Selects transactions that possess at least one of the specified transaction
+      statuses.
+
+      Allowed values: AFFIN, BAL, CONV, CPIC, DYN, IOPREV, LCK, NOTINIT, QERR, QSTP,
+      SUSPEND, STOQ, STOSCHD, TRACE, USTO
+
+   --route  | --rt (array)
+
+      Specifies the routes to return.
+
+   --class  | --cl (array)
+
+      Selects transactions by the classes you specify.
+
+   --queue-count-operator  | --qco (array)
+
+      The compare operator used to select transactions based on queue count. Valid
+      values: LT, LE, GT, GE, EQ or NE.
+
+   --queue-count-value  | --qcv (number)
+
+      The numeric value used with 'queue_count_operator' to select transactions based
+      on queue count.
+
+   --conversation-attributes  | --ca (string)
+
+      Selects transactions by the conversational attributes you specify.
+
+   --fast-path-options  | --fpo (string)
+
+      Selects transactions by the Fast Path options you specify.
+
+   --remote-option-specified  | --ros (string)
+
+      Selects transactions by the remote option you specify.
+
+   --response-mode-option-specified  | --rmos (string)
+
+      Selects transactions by the response mode option you specify.
+
+ IMS CONNECTION OPTIONS
+ ----------------------
+
+   --host  | -H (string)
+
+      The IMS Command Services server host name.
+
+   --port  | -P (number)
+
+      The IMS Command Services server port.
+
+   --ims-connect-host  | --ich (string)
+
+      The hostname of your instance of IMS Connect. This is typically the hostname of
+      the mainframe LPAR where IMS Connect is running.
+
+   --ims-connect-port  | --icp (number)
+
+      The port of your instance of IMS Connect. This port can be found in your IMS
+      Connect configuration file on the mainframe.
+
+   --plex  | -x (string)
+
+      The name of the IMS plex.
+
+   --user  | -u (string)
+
+      Mainframe (IMS) user name, which can be the same as your TSO login.
+
+   --password  | --pass (string)
+
+      Mainframe (IMS) password, which can be the same as your TSO password.
+
+ PROFILE OPTIONS
+ ---------------
+
+   --ims-profile  | --ims-p (string)
+
+      The name of a (ims) profile to load for this command execution.
+
+ RESPONSE FORMAT OPTIONS
+ -----------------------
+
+   --response-format-filter  | --rff (array)
+
+      Filter (include) fields in the response. Accepts an array of field/property
+      names to include in the output response. You can filter JSON objects properties
+      OR table columns/fields. In addition, you can use this option in conjunction
+      with '--response-format-type' to reduce the output of a command to a single
+      field/property or a list of a single field/property.
+
+   --response-format-type  | --rft (string)
+
+      The command response output format type. Must be one of the following:
+
+      table: Formats output data as a table. Use this option when the output data is
+      an array of homogeneous JSON objects. Each property of the object will become a
+      column in the table.
+
+      list: Formats output data as a list of strings. Can be used on any data type
+      (JSON objects/arrays) are stringified and a new line is added after each entry
+      in an array.
+
+      object: Formats output data as a list of prettified objects (or single object).
+      Can be used in place of \\"table\\" to change from tabular output to a list of
+      prettified objects.
+
+      string: Formats output data as a string. JSON objects/arrays are stringified.
+
+      Allowed values: table, list, object, string
+
+   --response-format-header  | --rfh (boolean)
+
+      If \\"--response-format-type table\\" is specified, include the column headers in
+      the output.
+
+ GLOBAL OPTIONS
+ --------------
+
+   --response-format-json  | --rfj (boolean)
+
+      Produce JSON formatted data from a command
+
+   --help  | -h (boolean)
+
+      Display help text
+
+
+ EXAMPLES
+ --------
+
+   - Query transaction information for transaction named TRN12:
+
+      $ zowe ims query transaction TRN12
+
+   - Query transaction information for transactions named TRAN1
+   and TRAN2:
+
+      $ zowe ims query transaction TRAN1 TRAN2
+
+   - Query transaction information for transactions starting
+   with TRAN using the wild card character '*':
+
+      $ zowe ims query transaction TRAN*
+
+"
+`;
