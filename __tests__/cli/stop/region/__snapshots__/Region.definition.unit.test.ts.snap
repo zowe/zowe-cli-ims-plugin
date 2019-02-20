@@ -35,6 +35,14 @@ Object {
       "type": "string",
     },
     Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "The region(s) to route the command to",
+      "name": "route",
+      "type": "array",
+    },
+    Object {
       "description": "Specify this option to cause abnormal termination (ABEND) of an application program. If the transaction indicated by this argument is currently running in the specified region, an error message is received at the master terminal, indicating an application program ABEND. The region will remain active, but the transaction will be stopped. The command is ignored if the transaction is not currently scheduled in the region.",
       "name": "abdump",
       "type": "string",
