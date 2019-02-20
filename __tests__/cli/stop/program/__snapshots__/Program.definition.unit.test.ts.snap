@@ -46,7 +46,7 @@ Object {
     Object {
       "description": "The names of the programs to stop. The maximum length of a program name is eight characters.",
       "name": "names...",
-      "required": true,
+      "required": false,
       "type": "string",
     },
   ],

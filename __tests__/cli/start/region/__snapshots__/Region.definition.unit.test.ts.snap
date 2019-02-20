@@ -16,6 +16,14 @@ Object {
   "options": Array [
     Object {
       "aliases": Array [
+        "rte",
+      ],
+      "description": "The region(s) to route the command to",
+      "name": "route",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
         "l",
       ],
       "description": "If you specify the --local option, IMS overrides the symbolic IMSID parameter in the JCL of the default or specified member. --local is the default if you specify the --job-name option.",

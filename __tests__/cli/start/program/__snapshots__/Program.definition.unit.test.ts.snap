@@ -37,7 +37,7 @@ Object {
       "aliases": Array [
         "rte",
       ],
-      "description": "The region(s) to route the command",
+      "description": "The region(s) to route the command to",
       "name": "route",
       "type": "array",
     },
@@ -47,7 +47,7 @@ Object {
     Object {
       "description": "The names of the application programs to start. The maximum length of a program name is eight characters.",
       "name": "names...",
-      "required": true,
+      "required": false,
       "type": "string",
     },
   ],
