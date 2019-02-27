@@ -79,7 +79,7 @@ export class ImsRestClient extends RestClient {
      * @returns {IImperativeError} - the processed error with details added
      */
     protected processError(original: IImperativeError): IImperativeError {
-        original.msg = "IMS REST API Error:\n" + original.msg;
+        original.msg = "IMS Operations API Error:\n" + original.msg;
         let details = original.causeErrors;
         try {
             const jsonDetails = JSON.parse(details);

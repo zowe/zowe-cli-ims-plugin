@@ -17,6 +17,6 @@ import { IMessageDefinition } from "@brightside/imperative";
 export const ImsMessages: { [key: string]: IMessageDefinition } = {
 
     imsRequestFailed: {
-        message: "Did not receive the expected response from the IMS REST API. "
+        message: "Did not receive the expected response from the IMS Operations API. "
     }
 };

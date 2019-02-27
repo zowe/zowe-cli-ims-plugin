@@ -68,7 +68,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     protected checkReturnCode(response: IIMSApiResponse) {
         let succeeded = true;
-        const failingMessages = [];
+        const failingMessages: any = {};
         for (const messageID of Object.keys(response.messages)) {
             const message = response.messages[messageID];
             const HEXADECIMAL = 16;
@@ -76,16 +76,16 @@ export abstract class ImsBaseHandler implements ICommandHandler {
             // the command did not succeed
             if (message.rc !== undefined && parseInt(message.rc, HEXADECIMAL) !== 0) {
                 succeeded = false;
-                failingMessages.push(message);
+                failingMessages[messageID] = message;
             }
         }
         if (!succeeded) {
             this.params.response.console.error(TextUtils.prettyJson(response.data));
-            for (const failingMessage of failingMessages) {
-                this.params.response.console.error(TextUtils.prettyJson(failingMessage));
-            }
+
+            this.params.response.console.error(TextUtils.prettyJson(failingMessages));
+
             this.params.response.data.setObj(response);
-            throw new ImperativeError({msg: "Encountered a non-zero return code from IMS APIs", causeErrors: failingMessages});
+            throw new ImperativeError({msg: "Encountered a non-zero return code from IMS Operations APIs", causeErrors: failingMessages});
         }
     }
 }

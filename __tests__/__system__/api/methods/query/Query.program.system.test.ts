@@ -99,6 +99,6 @@ describe("IMS Query program", () => {
 
         expect(error).toBeTruthy();
         expect(response).toBeFalsy();
-        expect(error.mDetails.msg).toContain("IMS REST API Error");
+        expect(error.mDetails.msg).toContain("IMS Operations API Error");
     });
 });
