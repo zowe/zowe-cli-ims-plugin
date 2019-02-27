@@ -90,7 +90,6 @@ export class ImsSessionUtils {
         aliases: ["u"],
         description: "Mainframe (IMS) user name, which can be the same as your TSO login.",
         type: "string",
-        required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
@@ -103,7 +102,6 @@ export class ImsSessionUtils {
         description: "Mainframe (IMS) password, which can be the same as your TSO password.",
         type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP,
-        required: true
     };
 
     /**
@@ -129,7 +127,7 @@ export class ImsSessionUtils {
     public static createBasicImsSessionFromArguments(args: ICommandArguments): ImsSession {
         this.log.debug("Creating a IMS session from arguments");
         return new ImsSession({
-            type: "basic",
+            type: args.password && args.user? "basic": "none",
             hostname: args.host,
             port: args.port,
             user: args.user,

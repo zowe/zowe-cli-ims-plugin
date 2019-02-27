@@ -25,13 +25,13 @@ export const RegionDefinition: ICommandDefinition = {
     outputFormatOptions: true,
     options: [
         {
-            name: "region-ids",
+            name: "region-ids", aliases: ["ri"],
             description: strings.OPTIONS.REGIONIDS,
             type: "array",
             conflictsWith: ["job-name"]
         },
         {
-            name: "job-name",
+            name: "job-name", aliases: ["jn"],
             description: strings.OPTIONS.JOBNAME,
             type: "string",
             conflictsWith: ["region-ids"],
