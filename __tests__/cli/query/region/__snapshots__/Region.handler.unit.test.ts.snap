@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QueryRegionHandler should call the query region api 1`] = `
+Object {
+  "format": "table",
+  "header": true,
+  "output": Object {},
+}
+`;
+
+exports[`QueryRegionHandler should call the query region api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;

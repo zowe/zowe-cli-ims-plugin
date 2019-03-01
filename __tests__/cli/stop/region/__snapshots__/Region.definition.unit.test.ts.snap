@@ -19,6 +19,9 @@ Object {
   "name": "region",
   "options": Array [
     Object {
+      "aliases": Array [
+        "ri",
+      ],
       "conflictsWith": Array [
         "job-name",
       ],
@@ -27,6 +30,9 @@ Object {
       "type": "array",
     },
     Object {
+      "aliases": Array [
+        "jn",
+      ],
       "conflictsWith": Array [
         "region-ids",
       ],

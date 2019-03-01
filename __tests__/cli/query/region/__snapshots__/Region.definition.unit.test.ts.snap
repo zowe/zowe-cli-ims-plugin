@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims query region should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "reg",
+  ],
+  "description": "Query an IMS region.",
+  "examples": Array [
+    Object {
+      "description": "Query information for regions on route IMS1",
+      "options": "IMS1",
+    },
+    Object {
+      "description": "Query information for regions on routes IMS1 and IMS2",
+      "options": "IMS1 IMS2",
+    },
+  ],
+  "name": "region",
+  "options": Array [
+    Object {
+      "defaultValue": true,
+      "description": "TODO - what is a DC.",
+      "name": "dc",
+      "type": "boolean",
+    },
+    Object {
+      "defaultValue": true,
+      "description": "TODO - what is REGION.",
+      "name": "region",
+      "type": "boolean",
+    },
+    Object {
+      "aliases": Array [
+        "rt",
+      ],
+      "description": "Specifies the routes to return.",
+      "name": "route",
+      "type": "array",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;
