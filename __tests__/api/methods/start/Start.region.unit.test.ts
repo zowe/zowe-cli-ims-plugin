@@ -123,7 +123,7 @@ describe("IMS - Start region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Expect Error: Required parameter 'IMS Member name' must not be blank");
+            expect(error.message).toContain("Expect Error: Required parameter 'IMS member name' must not be blank");
         });
     });
 });

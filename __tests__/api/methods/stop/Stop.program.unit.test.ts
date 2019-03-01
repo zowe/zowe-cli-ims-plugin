@@ -116,7 +116,7 @@ describe("IMS - Stop program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Expect Error: Required parameter 'IMS Program name' must not be blank");
+            expect(error.message).toContain("Expect Error: Required parameter 'IMS program name' must not be blank");
         });
     });
 });

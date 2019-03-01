@@ -95,7 +95,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
         throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS tansaction name", "IMS transaction name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 
