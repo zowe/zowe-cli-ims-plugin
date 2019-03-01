@@ -48,6 +48,10 @@ export interface ITestPropertiesSchema {
          */
         plex: string;
         /**
+         * The name of the IMS route for testing
+         */
+        route: string;
+        /**
          * The name of a transaction expected to be in the region
          * when running a query transaction command
          */

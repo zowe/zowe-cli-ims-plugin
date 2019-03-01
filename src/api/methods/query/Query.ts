@@ -11,7 +11,7 @@
 
 import { AbstractSession, Logger } from "@brightside/imperative";
 import { ImsRestClient, ImsSession } from "../../rest";
-import { IIMSApiResponse, IQueryProgramParms, IQueryTransactionParms } from "../../doc";
+import { IIMSApiResponse, IQueryProgramParms, IQueryRegionParms, IQueryTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 
 /**
@@ -249,6 +249,61 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
         if (parms.resp !== undefined) {
             // 'resp' text must be lower case
             resource = resource + delimiter + "resp=" + parms.resp;
+        }
+    }
+    return ImsRestClient.getExpectJSON(session, resource, []);
+}
+
+/**
+ * Query region in IMS through REST API
+ * @param {AbstractSession} session - the session to connect to IMS with
+ * @param {IQueryTransactionParms} parms - parameters for querying a region
+ * @returns {Promise<IIMSApiResponse>} promise that resolves to the response (XML parsed into a javascript object)
+ *                          when the request is complete
+ * @throws {ImperativeError} ImsRestClient request fails
+ */
+export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms): Promise<IIMSApiResponse> {
+
+    let delimiter = "?"; // initial delimiter
+
+    Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
+
+    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION;
+
+    if (parms !== undefined) {
+        // dc value is not required; defaults to true
+        if (parms.dc !== undefined) {
+            // 'dc' text must be lower case
+            resource = resource + delimiter + "dc=";
+            resource = resource + (parms.dc === true ? "true" : "false");
+            delimiter = "&";
+        }
+
+        // dc value is not required; defaults to true
+        if (parms.region !== undefined) {
+            // 'dc' text must be lower case
+            resource = resource + delimiter + "region=";
+            resource = resource + (parms.region === true ? "true" : "false");
+            delimiter = "&";
+        }
+    }
+    else {
+        resource = resource + delimiter + "dc=true&region=true";
+        delimiter = "&";
+    }
+
+    // check if route specified
+    if ((parms !== undefined) && (parms.route !== undefined)) {
+        if (parms.route.length > 0) {
+            // 'route' text must be lower case
+            resource = resource + delimiter + "route=";
+            for (let i = 0; i < parms.route.length; i++) {
+                if (i === 0) {
+                    resource = resource + encodeURIComponent(parms.route[i]);
+                } else {
+                    resource = resource + "," + encodeURIComponent(parms.route[i]);
+                }
+            }
         }
     }
     return ImsRestClient.getExpectJSON(session, resource, []);

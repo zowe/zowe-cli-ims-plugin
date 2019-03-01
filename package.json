@@ -79,7 +79,8 @@
       "js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/__results__"
+      "<rootDir>/__tests__/__results__",
+      "./__tests__/setUpJest.js"
     ],
     "testEnvironment": "node",
     "collectCoverageFrom": [

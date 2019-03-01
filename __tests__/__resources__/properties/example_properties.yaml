@@ -24,6 +24,8 @@ ims:
   imsConnectHost: my-ims-connect-host
   imsConnectPort: my-ims-connect-port
   plex: my-ims-plex
+  # control region
+  route: my-ims-route
   # a program that should exist when running query program command
   expectedProgram: my-ims-expected-program
   # a transaction that should exist when running query transaction command

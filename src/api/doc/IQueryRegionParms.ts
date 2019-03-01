@@ -9,12 +9,25 @@
 *                                                                                 *
 */
 
-export * from "./IIMSApiResponse";
-export * from "./IImsSession";
-export * from "./IQueryProgramParms";
-export * from "./IQueryRegionParms";
-export * from "./IQueryTransactionParms";
-export * from "./IStartRegionParms";
-export * from "./IStopRegionParms";
-export * from "./IUpdateProgramParms";
-export * from "./IUpdateTransactionParms";
+/**
+ * Interface representing parameters for the queryRegion API
+ */
+export interface IQueryRegionParms {
+    /**
+     * TODO The swagger doc is missing the description info
+     * DC information
+     * Available values : TRUE, FALSE (default TRUE)
+     */
+    dc?: boolean;
+
+    /**
+     * Include region information
+     * Available values : TRUE, FALSE (default TRUE)
+     */
+    region?: boolean;
+
+    /**
+     *
+     */
+    route?: string[];
+}
