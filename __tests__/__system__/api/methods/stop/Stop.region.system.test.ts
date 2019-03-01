@@ -19,7 +19,7 @@ let session: ImsSession;
 let regionID: number;
 let memberName: string;
 
-describe("IMS Stop region", () => {
+describe("IMS stop region", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({

@@ -18,7 +18,7 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: Session;
 
-describe("IMS Start transaction", () => {
+describe("IMS start transaction", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({

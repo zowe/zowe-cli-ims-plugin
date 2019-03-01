@@ -11,14 +11,11 @@
 
 import { ICommandDefinition } from "@brightside/imperative";
 
-describe("ims query", () => {
-    const DEFINE_RESOURCES = 3;
-
+describe("ims query region", () => {
     it ("should not have changed", () => {
-        const definition: ICommandDefinition = require("../../../src/cli/query/Query.definition");
+        const definition: ICommandDefinition = require("../../../../src/cli/query/region/Region.definition").RegionDefinition;
         expect(definition).toBeDefined();
-        expect(definition.children.length).toBe(DEFINE_RESOURCES);
-        delete definition.children;
+        delete definition.handler;
         expect(definition).toMatchSnapshot();
     });
 });

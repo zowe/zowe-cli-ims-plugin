@@ -18,7 +18,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let memberName: string;
 
-describe("IMS Start region", () => {
+describe("IMS start region", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -117,6 +117,6 @@ describe("IMS Start region", () => {
 
         expect(error).toBeTruthy();
         expect(response).toBeFalsy();
-        expect(error.mDetails.msg).toContain("Required parameter 'IMS Member name' must not be blank");
+        expect(error.mDetails.msg).toContain("Required parameter 'IMS member name' must not be blank");
     });
 });

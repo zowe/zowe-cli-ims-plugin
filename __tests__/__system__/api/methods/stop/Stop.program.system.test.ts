@@ -18,7 +18,7 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: Session;
 
-describe("IMS Stop program", () => {
+describe("IMS stop program", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({

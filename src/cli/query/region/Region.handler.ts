@@ -38,7 +38,7 @@ export default class RegionHandler extends ImsBaseHandler {
 
         const response = await queryRegion(session, {
             dc: params.arguments.dc,
-            region: params.arguments.attributes,
+            region: params.arguments.region,
             route: params.arguments.route
         });
 

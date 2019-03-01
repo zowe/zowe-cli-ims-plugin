@@ -15,11 +15,6 @@ import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 // Test environment will be populated in the "beforeAll"
 let TEST_ENVIRONMENT: ITestEnvironment;
-// let regionName: string;
-// let host: string;
-// let port: number;
-// let user: string;
-// let password: string;
 
 describe("ims query region", () => {
 
@@ -37,19 +32,18 @@ describe("ims query region", () => {
     });
 
     it("should be able to successfully query regions", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/query_region.sh", TEST_ENVIRONMENT);
+        const output = runCliScript(__dirname + "/__scripts__/query_region.sh", TEST_ENVIRONMENT,
+        [true, true, TEST_ENVIRONMENT.systemTestProperties.ims.route]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("dopt");
+        expect(stdout).toContain("regid");
     });
 
-    it("should be able to successfully get resources using profile options", async () => {
+    it("should be able to successfully get regioins using all parameters", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_region_fully_qualified.sh", TEST_ENVIRONMENT,
-            ["D*",
-                "ALL",
-                TEST_ENVIRONMENT.systemTestProperties.ims.host,
+            [TEST_ENVIRONMENT.systemTestProperties.ims.host,
                 TEST_ENVIRONMENT.systemTestProperties.ims.port,
                 TEST_ENVIRONMENT.systemTestProperties.ims.user,
                 TEST_ENVIRONMENT.systemTestProperties.ims.password,
@@ -60,6 +54,22 @@ describe("ims query region", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("dopt");
+        expect(stdout).toContain("regid");
+    });
+
+    it("should be able to successfully get resources using profile options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/query_region_fully_qualified.sh", TEST_ENVIRONMENT,
+            [TEST_ENVIRONMENT.systemTestProperties.ims.host,
+                TEST_ENVIRONMENT.systemTestProperties.ims.port,
+                TEST_ENVIRONMENT.systemTestProperties.ims.user,
+                TEST_ENVIRONMENT.systemTestProperties.ims.password,
+                TEST_ENVIRONMENT.systemTestProperties.ims.imsConnectHost,
+                TEST_ENVIRONMENT.systemTestProperties.ims.imsConnectPort,
+                TEST_ENVIRONMENT.systemTestProperties.ims.plex]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("regid");
     });
 });
