@@ -10,50 +10,7 @@
 */
 
 // ******* ATTENTION:  PLEASE KEEP IN ALPHABETICAL ORDER
-// TODO - needs updated for IMS
 export default {
-    // CREATE: {
-    //     SUMMARY: "Create new IMS resources",
-    //     DESCRIPTION: "Define new resources (for example, programs) in IMS.",
-    //     RESOURCES: {
-    //         PROGRAM: {
-    //             DESCRIPTION: "Create a new program to IMS.",
-    //             POSITIONALS: {
-    //                 PROGRAMNAME: "The name of the new program to create.
-    //             },
-    //             OPTIONS: {
-    //                 REGIONNAME: "The IMS region name to which to define the new program",
-    //                 IMSPLEX: "The name of the IMSPlex to which to define the new program"
-    //             },
-    //             MESSAGES: {
-    //                 SUCCESS: "The program '%s' was defined successfully."
-    //             },
-    //             EXAMPLES: {
-    //                 EX1: "Create a program named PGM123 to the region name MYREGION in the CSD group MYGRP"
-    //             }
-    //         },
-    //         TRANSACTION: {
-    //             DESCRIPTION: "Define a new transaction to IMS.",
-    //             POSITIONALS: {
-    //                 TRANSACTIONNAME: "The name of the new transaction to define. The maximum length of the transaction name is four characters.",
-    //                 PROGRAMNAME: "The name of the program that the transaction uses. The maximum length of the program name is eight characters.",
-    //                 CSDGROUP: "The IMS system definition (CSD) Group for the new transaction that you want to define." +
-    //                     " The maximum length of the group name is eight characters."
-    //             },
-    //             OPTIONS: {
-    //                 REGIONNAME: "The IMS region name to which to define the new transaction",
-    //                 IMSPLEX: "The name of the IMSPlex to which to define the new transaction"
-    //             },
-    //             MESSAGES: {
-    //                 SUCCESS: "The transaction '%s' was defined successfully."
-    //             },
-    //             EXAMPLES: {
-    //                 EX1: "Define a transaction named TRN1 for the program named PGM123 to the region named MYREGION " +
-    //                     "in the CSD group MYGRP"
-    //             }
-    //         }
-    //     }
-    // },
     QUERY: {
         SUMMARY: "Query resources from IMS",
         DESCRIPTION: "Query application programs, regions or transactions across an IMSplex." +

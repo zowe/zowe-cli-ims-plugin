@@ -31,7 +31,7 @@ export async function stopProgram(session: ImsSession, parms: IUpdateProgramParm
         throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Program name", "IMS program name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -54,7 +54,7 @@ export async function stopProgram(session: ImsSession, parms: IUpdateProgramParm
     }
 
     if (parms.stop !== undefined) {
-        // 'names' text must be lower case
+        // 'stop' text must be lower case
         resource = resource + delimiter + "stop=";
         for (let i = 0; i < parms.stop.length; i++) {
             if (i === 0) {
@@ -78,7 +78,6 @@ export async function stopProgram(session: ImsSession, parms: IUpdateProgramParm
                 resource = resource + "," + encodeURIComponent(parms.route[i]);
             }
         }
-        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
@@ -122,7 +121,7 @@ export async function stopTransaction(session: ImsSession, parms: IUpdateTransac
     }
 
     if (parms.stop !== undefined) {
-        // 'names' text must be lower case
+        // 'stop' text must be lower case
         resource = resource + delimiter + "stop=";
         for (let i = 0; i < parms.stop.length; i++) {
             if (i === 0) {
@@ -146,7 +145,6 @@ export async function stopTransaction(session: ImsSession, parms: IUpdateTransac
                 resource = resource + "," + encodeURIComponent(parms.route[i]);
             }
         }
-        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
@@ -179,26 +177,31 @@ export async function stopRegion(session: ImsSession, parms: IStopRegionParms): 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
     if (parms.reg_num != null) {
+        // 'reg_num' text must be lower case
         resource = resource + delimiter + "reg_num=" + encodeURIComponent(parms.reg_num.join(","));
         delimiter = "&";
     }
     if (parms.job_name != null) {
+        // 'job_name' text must be lower case
         resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.job_name);
         delimiter = "&";
     }
     if (parms.abdump != null) {
+        // 'abdump' text must be lower case
         resource = resource + delimiter + "abdump=" + encodeURIComponent(parms.abdump);
         delimiter = "&";
     }
     if (parms.transaction != null) {
+        // 'transaction' text must be lower case
         resource = resource + delimiter + "transaction=" + encodeURIComponent(parms.transaction);
         delimiter = "&";
     }
     if (parms.cancel != null) {
+        // 'cancel' text must be lower case
         resource = resource + delimiter + "cancel=" + encodeURIComponent(parms.cancel + "");
     }
-
     if (parms.route != null) {
+        // 'route' text must be lower case
         resource = resource + delimiter + "route=";
         resource = resource + encodeURIComponent(parms.route.join(","));
     }

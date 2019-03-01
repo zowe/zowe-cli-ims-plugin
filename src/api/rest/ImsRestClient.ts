@@ -32,7 +32,6 @@ export class ImsRestClient extends RestClient {
      */
     public static readonly IMS_SUCCESS_RESPONSE_2 = "0";
 
-
     /**
      * Internal logger
      */
