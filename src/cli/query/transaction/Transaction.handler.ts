@@ -19,7 +19,7 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.TRANSACTION;
 
 /**
- * Command handler for defining IMS programs
+ * Command handler for querying IMS transactions
  * @export
  * @class TransactionHandler
  * @implements {ICommandHandler}

@@ -10,36 +10,35 @@
 */
 
 import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@brightside/imperative";
-import { IIMSApiResponse, ImsSession, queryProgram } from "../../../api";
+import { IIMSApiResponse, ImsSession, queryRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
 import i18nTypings from "../../-strings-/en";
 
 // Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
+const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.REGION;
 
 /**
- * Command handler for querying IMS programs
+ * Command handler for querying IMS regions
  * @export
- * @class ProgramHandler
+ * @class RegionHandler
  * @implements {ICommandHandler}
  */
-export default class ProgramHandler extends ImsBaseHandler {
+export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
                                     session: ImsSession,
                                     profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
-            statusMessage: "Querying program defined to IMS",
+            statusMessage: "Querying region defined to IMS",
             percentComplete: 0,
             stageName: TaskStage.IN_PROGRESS
         };
         params.response.progress.startBar({task: status});
 
-        const response = await queryProgram(session, {
-            names: params.arguments.names,
-            attributes: params.arguments.attributes,
-            status: params.arguments.status,
+        const response = await queryRegion(session, {
+            dc: params.arguments.dc,
+            region: params.arguments.attributes,
             route: params.arguments.route
         });
 
@@ -48,8 +47,7 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.format.output({
             header: true,
             output: response.data,
-            format: "table",
-            fields: ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
+            format: "table"
         });
 
         return response;

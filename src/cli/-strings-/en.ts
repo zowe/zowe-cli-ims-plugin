@@ -56,9 +56,9 @@ export default {
     // },
     QUERY: {
         SUMMARY: "Query resources from IMS",
-        DESCRIPTION: "Query application programs or transactions across an IMSplex." +
-            "The query returns information about application programs and transactions (for example, class, status, queue count, and more). " +
-            "This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
+        DESCRIPTION: "Query application programs, regions or transactions across an IMSplex." +
+            "The query returns information about application programs, regions and transactions. " +
+            "This command submits a 'QUERY PGM', 'DIS ACT' or 'QUERY TRAN' IMS command and returns the output.",
         RESOURCES: {
             PROGRAM: {
                 DESCRIPTION: "Query an IMS application program.",
@@ -77,6 +77,23 @@ export default {
                     EX1: "Query information for an application program named PGM123",
                     EX2: "Query information for application programs named ABC and XYZ",
                     EX3: "Query information for application programs starting with PROG using the wild card character '*'",
+                }
+            },
+            REGION: {
+                DESCRIPTION: "Query an IMS region.",
+                POSITIONALS: {
+                },
+                OPTIONS: {
+                    DC: "TODO - what is a DC.",
+                    REGION: "TODO - what is REGION.",
+                    ROUTE: "Specifies the routes to return."
+                },
+                MESSAGES: {
+                    SUCCESS: "The information for '%s' was retrieved successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Query information for regions on route IMS1",
+                    EX2: "Query information for regions on routes IMS1 and IMS2",
                 }
             },
             TRANSACTION: {
