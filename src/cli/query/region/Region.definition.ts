@@ -51,5 +51,13 @@ export const RegionDefinition: ICommandDefinition = {
     {
         description: strings.EXAMPLES.EX2,
         options: "IMS1 IMS2"
+    },
+    {
+        description: strings.EXAMPLES.EX3,
+        options: "--dc true --region true"
+    },
+    {
+        description: strings.EXAMPLES.EX4,
+        options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };

@@ -49,7 +49,8 @@ export default class ProgramHandler extends ImsBaseHandler {
             header: true,
             output: response.data,
             format: "table",
-            fields: ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
+            fields: params.arguments.attributes? undefined:
+                ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
         });
 
         return response;

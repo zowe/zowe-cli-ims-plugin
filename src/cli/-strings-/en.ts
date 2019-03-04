@@ -34,6 +34,9 @@ export default {
                     EX1: "Query information for an application program named PGM123",
                     EX2: "Query information for application programs named ABC and XYZ",
                     EX3: "Query information for application programs starting with PROG using the wild card character '*'",
+                    EX4: "Query information for all application programs (default is all)",
+                    EX5: "Query information for all application programs specifying optional parameters",
+                    EX6: "Query information for all application programs specifying connection optional parameters",
                 }
             },
             REGION: {
@@ -51,6 +54,8 @@ export default {
                 EXAMPLES: {
                     EX1: "Query information for regions on route IMS1",
                     EX2: "Query information for regions on routes IMS1 and IMS2",
+                    EX3: "Query DC and region information for regions on routes IMS1 and IMS2",
+                    EX4: "Query information for regions specifying connection optional parameters",
                 }
             },
             TRANSACTION: {
@@ -77,6 +82,9 @@ export default {
                     EX1: "Query transaction information for transaction named TRN12",
                     EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
                     EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
+                    EX4: "Query transaction information for all transactions(default is all)",
+                    EX5: "Query transaction information for all transactions specifying optional parameters",
+                    EX6: "Query transaction information for all transactions specifying connection optional parameters",
                 }
             }
         }
