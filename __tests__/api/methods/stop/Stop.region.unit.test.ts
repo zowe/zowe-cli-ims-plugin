@@ -85,10 +85,11 @@ describe("IMS - Stop region", () => {
             stopRegionParms.abdump = abdump;
             stopRegionParms.transaction = transaction;
             stopRegionParms.cancel = cancel;
+            stopRegionParms.route = ["route"];
 
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
                 "/" + ImsConstants.STOP + "?job_name=" + jobName + "&abdump=" + abdump + "&transaction=" + transaction +
-                "&cancel=" + cancel;
+                "&cancel=" + cancel + "&route=route";
 
             response = await stopRegion(dummySession, stopRegionParms);
 
@@ -106,7 +107,7 @@ describe("IMS - Stop region", () => {
 
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION +
                 "/" + ImsConstants.STOP + "?reg_num=" + regNum[0] + "&abdump=" + abdump +
-                "&transaction=" + transaction + "&cancel=" + cancel;
+                "&transaction=" + transaction + "&cancel=" + cancel + "&route=route";
 
             response = await stopRegion(dummySession, stopRegionParms);
 
@@ -130,7 +131,7 @@ describe("IMS - Stop region", () => {
             expect(error.message).toContain("Cannot read property 'reg_num' of undefined");
         });
 
-        it("should fail if reg_num and job_name are not provided", async () => {
+        it("should fail if reg_num and job_name are undefined", async () => {
 
             stopRegionParms.reg_num = undefined;
             stopRegionParms.job_name = undefined;
