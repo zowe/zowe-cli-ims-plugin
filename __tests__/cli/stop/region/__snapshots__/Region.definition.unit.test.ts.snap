@@ -11,6 +11,22 @@ Object {
       "description": "Stop a region with job name JOBNM1",
       "options": "--job-name JOBNM1",
     },
+    Object {
+      "description": "Stop multiple regions with region identifiers",
+      "options": "--region-ids 4 5",
+    },
+    Object {
+      "description": "Stop a region with region identifier and cause the abnormal termination (ABEND) of the application program",
+      "options": "--region-ids 4 --abdump TRAN1",
+    },
+    Object {
+      "description": "Stop a region with region identifier and specify 'cancel' because the 'abdump' option failed to stop the region",
+      "options": "--region-ids 4 --cancel true",
+    },
+    Object {
+      "description": "Stop a region with job name JOBNM4 specifying optional connection parameters",
+      "options": "--job-name JOBNM4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+    },
   ],
   "mustSpecifyOne": Array [
     "job-name",
@@ -57,6 +73,11 @@ Object {
       "description": "Use this option if the region cannot be stopped with a stop region --abdump command. To use this option, you must have already submitted a stop region command using the --abdump option.",
       "name": "cancel",
       "type": "boolean",
+    },
+    Object {
+      "description": "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
+      "name": "transaction",
+      "type": "string",
     },
   ],
   "outputFormatOptions": true,
