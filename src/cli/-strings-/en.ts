@@ -36,7 +36,7 @@ export default {
                     EX3: "Query information for application programs starting with PROG using the wild card character '*'",
                     EX4: "Query information for all application programs (default is all)",
                     EX5: "Query information for all application programs specifying optional parameters",
-                    EX6: "Query information for all application programs specifying connection optional parameters",
+                    EX6: "Query information for all application programs specifying optional connection parameters",
                 }
             },
             REGION: {
@@ -55,7 +55,7 @@ export default {
                     EX1: "Query information for regions on route IMS1",
                     EX2: "Query information for regions on routes IMS1 and IMS2",
                     EX3: "Query DC and region information for regions on routes IMS1 and IMS2",
-                    EX4: "Query information for regions specifying connection optional parameters",
+                    EX4: "Query information for regions specifying optional connection parameters",
                 }
             },
             TRANSACTION: {
@@ -84,7 +84,7 @@ export default {
                     EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
                     EX4: "Query transaction information for all transactions(default is all)",
                     EX5: "Query transaction information for all transactions specifying optional parameters",
-                    EX6: "Query transaction information for all transactions specifying connection optional parameters",
+                    EX6: "Query transaction information for all transactions specifying optional connection parameters",
                 }
             }
         }
@@ -107,23 +107,11 @@ export default {
                     SUCCESS: "The application program(s) '%s' were started successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Start an application program named PGM123"
-                }
-            },
-            TRANSACTION: {
-                DESCRIPTION: "Start an IMS transaction.",
-                POSITIONALS: {
-                    NAMES: "The names of the transactions to start. The maximum length of a transaction name is eight characters.",
-                },
-                OPTIONS: {
-                    ATTRIBUTES: "The attributes that are to be started",
-                    ROUTE: "The region(s) to route the command to",
-                },
-                MESSAGES: {
-                    SUCCESS: "The transaction(s) '%s' were started successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Start a transaction named TRN1",
+                    EX1: "Start an application program named PGM123",
+                    EX2: "Start all application programs beginning with ACC*",
+                    EX3: "Start an application program named PGM234 and start tracing",
+                    EX4: "Start an application program named PGM890 routing to control regions IMS1 and IMS2",
+                    EX5: "Start an application programs named XYZ1 specifying optional connection parameters"
                 }
             },
             REGION: {
@@ -147,6 +135,30 @@ export default {
                 },
                 EXAMPLES: {
                     EX1: "Start a region stored in a member named MEM1",
+                    EX2: "Start a region stored in a member named MEM2 specifying the region to route the command",
+                    EX3: "Start a region stored in a member named MEM3 and override the job name",
+                    EX4: "Start a region stored in a member named MEM4 routing to control regions IMS1 and IMS2",
+                    EX5: "Start a region stored in a member named MEM5 specifying optional connection parameters"
+                }
+            },
+            TRANSACTION: {
+                DESCRIPTION: "Start an IMS transaction.",
+                POSITIONALS: {
+                    NAMES: "The names of the transactions to start. The maximum length of a transaction name is eight characters.",
+                },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be started",
+                    ROUTE: "The region(s) to route the command to",
+                },
+                MESSAGES: {
+                    SUCCESS: "The transaction(s) '%s' were started successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Start a transaction named TRN1",
+                    EX2: "Start all transactions beginning with TRN*",
+                    EX3: "Start a transaction named TRN2 and start tracing",
+                    EX4: "Start a transaction named TRN3 routing to control regions IMS1 and IMS2",
+                    EX5: "Start a transaction named TRN4 specifying optional connection parameters"
                 }
             }
         }
@@ -169,23 +181,11 @@ export default {
                     SUCCESS: "The application program(s) '%s' were stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Stop an application program named PGM123"
-                }
-            },
-            TRANSACTION: {
-                DESCRIPTION: "Stop an IMS transaction.",
-                POSITIONALS: {
-                    NAMES: "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
-                },
-                OPTIONS: {
-                    ATTRIBUTES: "The attributes that are to be stopped",
-                    ROUTE: "The region(s) to route the command",
-                },
-                MESSAGES: {
-                    SUCCESS: "The transaction(s) '%s' were stopped successfully."
-                },
-                EXAMPLES: {
-                    EX1: "Stop a transaction named TRN1"
+                    EX1: "Stop an application program named PGM123",
+                    EX2: "Stop all application programs beginning with ACC*",
+                    EX3: "Stop tracing an application program named PGM234",
+                    EX4: "Stop an application program named PGM890 routing to control regions IMS1 and IMS2",
+                    EX5: "Stop an application programs named XYZ1 specifying optional connection parameters"
                 }
             },
             REGION: {
@@ -210,7 +210,31 @@ export default {
                     SUCCESS: "The region(s) identified by '%s' stopped successfully."
                 },
                 EXAMPLES: {
-                    EX1: "Stop a region with job name JOBNM1"
+                    EX1: "Stop a region with job name JOBNM1",
+                    EX2: "Stop multiple regions with region identifiers",
+                    EX3: "Stop a region with region identifier and cause the abnormal termination (ABEND) of the application program",
+                    EX4: "Stop a region with region identifier and specify 'cancel' because the 'abdump' option failed to stop the region",
+                    EX5: "Stop a region with job name JOBNM4 specifying optional connection parameters"
+                }
+            },
+            TRANSACTION: {
+                DESCRIPTION: "Stop an IMS transaction.",
+                POSITIONALS: {
+                    NAMES: "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
+                },
+                OPTIONS: {
+                    ATTRIBUTES: "The attributes that are to be stopped",
+                    ROUTE: "The region(s) to route the command",
+                },
+                MESSAGES: {
+                    SUCCESS: "The transaction(s) '%s' were stopped successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Stop a transaction named TRN1",
+                    EX2: "Stop all transactions beginning with TRN*",
+                    EX3: "Stop tracing a transaction named TRN2",
+                    EX4: "Stop a transaction named TRN3 routing to control regions IMS1 and IMS2",
+                    EX5: "Stop a transaction named TRN4 specifying optional connection parameters"
                 }
             }
         }
