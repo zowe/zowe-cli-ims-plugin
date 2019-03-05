@@ -51,6 +51,11 @@ export const RegionDefinition: ICommandDefinition = {
             name: "cancel",
             description: strings.OPTIONS.CANCEL,
             type: "boolean"
+        },
+        {
+            name: "transaction",
+            description: strings.OPTIONS.TRANSACTION,
+            type: "string"
         }],
     mustSpecifyOne: ["job-name", "region-ids"],
     profile: {optional: ["ims"]},
