@@ -71,10 +71,33 @@ describe("IMS - Query transaction", () => {
 
         it("should be able to query all transactions without transaction name specified", async () => {
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
-                "?attributes=BMPTYPE";
+                "?attributes=" + attributes;
 
             queryTransactionParms.names = undefined;
-            queryTransactionParms.attributes = ["BMPTYPE"];
+            // queryTransactionParms.attributes = ["BMPTYPE"];
+
+            response = await queryTransaction(dummySession, queryTransactionParms);
+
+            expect(response).toContain(content);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+        });
+
+        it("should be able to query a transaction with all optional parameters specified", async () => {
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
+                "?names=trans1&attributes=" + attributes + "&status=status&route=route&class=1&qcntcomp=qcnt&qcntval=1&conv=conv"
+                + "&fp=fp&remote=remote&resp=resp";
+
+            queryTransactionParms.names = ["trans1"];
+            queryTransactionParms.attributes = [attributes];
+            queryTransactionParms.class = [1];
+            queryTransactionParms.conv = "conv";
+            queryTransactionParms.fp = "fp";
+            queryTransactionParms.qcntcomp = ["qcnt"];
+            queryTransactionParms.qcntval = 1;
+            queryTransactionParms.remote = "remote";
+            queryTransactionParms.resp = "resp";
+            queryTransactionParms.route = ["route"];
+            queryTransactionParms.status = ["status"];
 
             response = await queryTransaction(dummySession, queryTransactionParms);
 
