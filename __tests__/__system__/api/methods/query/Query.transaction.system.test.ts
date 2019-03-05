@@ -101,4 +101,37 @@ describe("IMS query transaction", () => {
         expect(response).toBeFalsy();
         expect(error.mDetails.msg).toContain("IMS Operations API Error");
     });
+
+    it("should fail due to filter error", async () => {
+        let error;
+        let response;
+
+        options.names = ["*"];
+        options.attributes = ["ALL"];
+        options.status = ["LCK"];
+        options.qcntcomp = ["EQ"];
+        options.qcntval = 1;
+        options.class = [1];
+        options.conv = "N";
+        options.fp = "E";
+        options.remote = "N";
+        options.resp = "N";
+        options.route = ["IMJJ"];
+
+        try {
+            response = await queryTransaction(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        for (const messageKey of Object.keys(response.messages)) {
+            // should have no results and have a warning RC of 4
+            expect(response.messages[messageKey].rc).toBe("00000008");
+            expect(response.messages[messageKey].rsntxt) .toBe("No filter, an invalid filter, or insufficient # of filters specified");
+            expect(response.messages[messageKey].command).toBe("QUERY TRAN NAME(*) CLASS(1) " +
+                "QCNT(EQ,1) STATUS(LCK) SHOW(ALL) CONV(N) FP(E) REMOTE(N) RESP(N)");
+        }
+    });
 });

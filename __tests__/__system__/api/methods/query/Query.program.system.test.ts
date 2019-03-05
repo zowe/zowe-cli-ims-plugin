@@ -68,6 +68,7 @@ describe("IMS query program", () => {
         options.names = ["*"];
         options.attributes = ["ALL"];
         options.status = ["LOCK"];
+        options.route = ["IMJJ"];
         try {
             response = await queryProgram(session, options);
         } catch (err) {
