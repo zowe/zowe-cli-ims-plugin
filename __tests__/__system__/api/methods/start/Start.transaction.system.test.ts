@@ -17,6 +17,8 @@ import { startTransaction, IUpdateTransactionParms, ImsSession } from "../../../
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
+let route: string;
+let transaction: string;
 
 describe("IMS start transaction", () => {
 
@@ -27,6 +29,8 @@ describe("IMS start transaction", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        route = imsProperties.route;
+        transaction = imsProperties.transaction;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -52,7 +56,7 @@ describe("IMS start transaction", () => {
         let error;
         let response;
 
-        options.names = ["TEST01"];
+        options.names = [transaction];
 
         try {
             response = await startTransaction(session, options);
@@ -63,8 +67,7 @@ describe("IMS start transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        // expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(TEST01) START(SCHD)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transaction + ") START(SCHD)");
     });
 
     it("should start multiple transactions by transaction name and use multiple start options", async () => {
@@ -86,13 +89,13 @@ describe("IMS start transaction", () => {
         expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD, TRACE)");
     });
 
-    it("should start multiple transactions by transaction name and use multiple regions", async () => {
+    it("should start multiple transactions by transaction name and use route", async () => {
         let error;
         let response;
 
         options.names = ["D*", "IV*"];
         options.start = ["SCHD"];
-        options.route = ["IMJJ", "IMPP"];
+        options.route = [route];
 
         try {
             response = await startTransaction(session, options);
@@ -102,12 +105,7 @@ describe("IMS start transaction", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        for (const messageKey of Object.keys(response.messages)) {
-            // expect to get a rc 4 back which indicates no results
-            expect(response.messages[messageKey].rc).toBe("02000010");
-            expect(response.messages[messageKey].command).toBe("UPDATE TRAN NAME(D*, IV*) START(SCHD) SET()");
-        }
-        // expect(response.data[0].cc).toBe("0");
-        // expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD) ROUTE(IMJJ, IMPP");
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD)");
     });
 });

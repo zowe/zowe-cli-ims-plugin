@@ -64,6 +64,14 @@ export interface ITestPropertiesSchema {
          * ID used to stop a dependent region
          */
         dependentRegionID: number;
+        /**
+         * The name of program running in dependent region
+         */
+        programName: string;
+        /**
+         * The name of transaction running in dependent region
+         */
+        transaction: string;
     };
 
 }
