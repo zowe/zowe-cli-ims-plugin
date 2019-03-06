@@ -61,46 +61,48 @@ describe("IMS start program", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*) START(SCHD)");
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD)");
     });
 
-    // it("should start multiple programs by program name and use multiple start options", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.start = ["SCHD", "TRACE"];
-    //
-    //     try {
-    //         response = await startProgram(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD, TRACE)");
-    // });
-    //
-    // it("should start multiple programs by program name and use multiple regions", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.route = ["IMJJ"];
-    //
-    //     try {
-    //         response = await startProgram(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD)");
-    // });
+    it("should start program by program name and use multiple start options", async () => {
+        let error;
+        let response;
+
+        options.names = ["DFSIVP4"];
+        options.start = ["SCHD", "TRACE"];
+        options.route = ["IMJJ"];
+
+        try {
+            response = await startProgram(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD, TRACE)");
+    });
+
+    it("should start multiple programs by program name", async () => {
+        let error;
+        let response;
+
+        options.names = ["D*", "IV*"];
+        options.start = ["SCHD"];
+        options.route = ["IMJJ"];
+
+        try {
+            response = await startProgram(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD)");
+    });
 
 });
