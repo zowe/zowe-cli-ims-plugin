@@ -24,7 +24,7 @@ describe("Start transaction command", () => {
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
-        transactionName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+        transactionName = testEnvironment.systemTestProperties.ims.transaction;
     });
 
     afterAll(async () => {
@@ -38,7 +38,8 @@ describe("Start transaction command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("START COMMAND IN PROGRESS");
+        expect(stdout).toContain("- \n  cc:   0");
+        // expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
     it("Should start a transaction by specifying a name and profile options", async () => {
@@ -55,7 +56,8 @@ describe("Start transaction command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("START COMMAND IN PROGRESS");
+        expect(stdout).toContain("- \n  cc:   0");
+        // expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
 });
