@@ -153,5 +153,20 @@ exports[`ims query transaction should display the query program help 1`] = `
 
       $ zowe ims query program PROG*
 
+   - Query information for all application programs (default is
+   all):
+
+      $ zowe ims query program 
+
+   - Query information for all application programs specifying
+   optional parameters:
+
+      $ zowe ims query program --attributes BMPTYPE TIMESTAMP --status NOTINIT --route IMS1 IMS2
+
+   - Query information for all application programs specifying
+   optional connection parameters:
+
+      $ zowe ims query program --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1
+
 "
 `;
