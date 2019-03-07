@@ -68,7 +68,7 @@ describe("IMS stop region", () => {
 
     const options: IStopRegionParms = {} as any;
 
-    // NOTE: REGION MUST BE STARTED MANUALLY UNTIL TEST CAN START AND WAIT FOR COMPLETION OF START
+    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by reg_num (region id)", async () => {
         let error;
         let response;
@@ -86,7 +86,7 @@ describe("IMS stop region", () => {
         expect(response.messages["OM1OM   "].command).toContain("STOP REGION " + regionID);
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY UNTIL TEST CAN START AND WAIT FOR COMPLETION OF START
+    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by job_name", async () => {
         let error;
         let response;

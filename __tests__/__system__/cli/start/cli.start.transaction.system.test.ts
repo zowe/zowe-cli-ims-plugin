@@ -39,7 +39,6 @@ describe("Start transaction command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(stdout).toContain("- \n  cc:   0");
-        // expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
     it("Should start a transaction by specifying a name and profile options", async () => {
@@ -57,7 +56,6 @@ describe("Start transaction command", () => {
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
         expect(stdout).toContain("- \n  cc:   0");
-        // expect(stdout).toContain("START COMMAND IN PROGRESS");
     });
 
 });

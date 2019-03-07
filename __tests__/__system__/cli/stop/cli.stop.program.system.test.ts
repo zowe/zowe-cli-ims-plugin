@@ -24,7 +24,7 @@ describe("Stop program command", () => {
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
-        programName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+        programName = testEnvironment.systemTestProperties.ims.programName;
     });
 
     afterAll(async () => {
@@ -38,7 +38,7 @@ describe("Stop program command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("STOP COMMAND IN PROGRESS");
+        expect(stdout).toContain("- \n  cc:  0");
     });
 
     it("Should stop a program by specifying a name and profile options", async () => {
@@ -55,7 +55,6 @@ describe("Stop program command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
 });
