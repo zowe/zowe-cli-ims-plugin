@@ -41,25 +41,10 @@ describe("ims query region", () => {
         expect(stdout).toContain("regid");
     });
 
-    it("should be able to successfully get regioins using all parameters", async () => {
+    it("should be able to successfully get regions using all parameters", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_region_fully_qualified.sh", TEST_ENVIRONMENT,
-            [TEST_ENVIRONMENT.systemTestProperties.ims.host,
-                TEST_ENVIRONMENT.systemTestProperties.ims.port,
-                TEST_ENVIRONMENT.systemTestProperties.ims.user,
-                TEST_ENVIRONMENT.systemTestProperties.ims.password,
-                TEST_ENVIRONMENT.systemTestProperties.ims.imsConnectHost,
-                TEST_ENVIRONMENT.systemTestProperties.ims.imsConnectPort,
-                TEST_ENVIRONMENT.systemTestProperties.ims.plex]);
-        const stderr = output.stderr.toString();
-        const stdout = output.stdout.toString();
-        expect(stderr).toEqual("");
-        expect(output.status).toEqual(0);
-        expect(stdout).toContain("regid");
-    });
-
-    it("should be able to successfully get resources using profile options", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/query_region_fully_qualified.sh", TEST_ENVIRONMENT,
-            [TEST_ENVIRONMENT.systemTestProperties.ims.host,
+            [true, true, TEST_ENVIRONMENT.systemTestProperties.ims.route,
+                TEST_ENVIRONMENT.systemTestProperties.ims.host,
                 TEST_ENVIRONMENT.systemTestProperties.ims.port,
                 TEST_ENVIRONMENT.systemTestProperties.ims.user,
                 TEST_ENVIRONMENT.systemTestProperties.ims.password,

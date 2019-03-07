@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e # fail the script if we get a non zero exit code
 
-HOST=$1
-PORT=$2
-USER=$3
-PASSWORD=$4
-ims_connect_host=$5
-ims_connect_port=$6
-plex=$7
+DC=$1
+REGION=$2
+ROUTE=$3
+HOST=$4
+PORT=$5
+USER=$6
+PASSWORD=$7
+ims_connect_host=$8
+ims_connect_port=$9
+plex=$20
 
-zowe ims query region --host $1 --port $2 --user $3 --password $4 --ims-connect-host $5 --ims-connect-port $6 --plex $7
+zowe ims query region --dc $1 --region $2 --route $3 --host $4 --port $5 --user $6 --password $7 --ims-connect-host $8 --ims-connect-port $9 --plex ${10}

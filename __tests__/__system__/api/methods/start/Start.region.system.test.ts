@@ -71,7 +71,7 @@ describe("IMS start region", () => {
         let response;
 
         options.memberName = "IMJJPP1";
-        options.job_name = "JOBNAME"
+        options.job_name = "JOBNAME";
 
         try {
             response = await startRegion(session, options);

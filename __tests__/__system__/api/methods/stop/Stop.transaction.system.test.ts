@@ -12,7 +12,7 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import {stopTransaction, IUpdateTransactionParms, ImsSession, stopProgram} from "../../../../../src";
+import { stopTransaction, IUpdateTransactionParms, ImsSession, stopProgram } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;

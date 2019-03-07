@@ -15,11 +15,7 @@ import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 // Test environment will be populated in the "beforeAll"
 let TEST_ENVIRONMENT: ITestEnvironment;
-// let regionName: string;
-// let host: string;
-// let port: number;
-// let user: string;
-// let password: string;
+let route: string;
 
 describe("ims query program", () => {
 
@@ -30,6 +26,7 @@ describe("ims query program", () => {
             installPlugin: true,
             tempProfileTypes: ["ims"]
         });
+        route = TEST_ENVIRONMENT.systemTestProperties.ims.route;
     });
 
     afterAll(async () => {
@@ -38,7 +35,7 @@ describe("ims query program", () => {
 
     it("should be able to successfully query programs", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_program.sh", TEST_ENVIRONMENT,
-            ["D*", "ALL"]);
+            ["D*", "ALL", "NOTINIT", route]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
@@ -50,6 +47,8 @@ describe("ims query program", () => {
         const output = runCliScript(__dirname + "/__scripts__/query_program_fully_qualified.sh", TEST_ENVIRONMENT,
             ["D*",
                 "ALL",
+                "NOTINIT",
+                route,
                 TEST_ENVIRONMENT.systemTestProperties.ims.host,
                 TEST_ENVIRONMENT.systemTestProperties.ims.port,
                 TEST_ENVIRONMENT.systemTestProperties.ims.user,
@@ -63,4 +62,14 @@ describe("ims query program", () => {
         expect(output.status).toEqual(0);
         expect(stdout).toContain("dopt");
     });
+
+    it("should fail if a program name is too long", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/query_transaction.sh", TEST_ENVIRONMENT,
+            ["TOOOOOOLONGGGGGGGGGGGG", "ALL"]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(output.status).toEqual(1);
+        expect(stderr).toContain("TOO LONG");
+    });
+
 });

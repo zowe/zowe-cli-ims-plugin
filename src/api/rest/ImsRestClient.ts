@@ -62,6 +62,9 @@ export class ImsRestClient extends RestClient {
             reqHeaders = [];
         }
 
+        // Log the resource and request info
+        this.log.debug("\n\nResource: " + resource + "\nRequest: " + request + "\n");
+
         const imsSession = this.session as ImsSession;
         if (imsSession.imsConnectHost != null) {
             reqHeaders.push({hostname: imsSession.imsConnectHost});
