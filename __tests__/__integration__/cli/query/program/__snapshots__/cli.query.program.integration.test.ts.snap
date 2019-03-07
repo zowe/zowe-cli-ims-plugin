@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ims query transaction should display the query program help 1`] = `
+exports[`ims query program should display the query program help 1`] = `
 "===============IMS QUERY PROGRAM HELP===============
 
  COMMAND NAME

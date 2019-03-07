@@ -15,24 +15,24 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 import { runCliScript } from "../../../../__src__/TestUtils";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
-let programName: string;
-describe("ims query program", () => {
+let regionName: string;
+describe("ims query region", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
-            testName: "query_program_command",
+            testName: "query_region_command",
             installPlugin: true
         });
-        programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
+        regionName = TEST_ENVIRONMENT.systemTestProperties.ims.dependentRegionName;
     });
 
     afterAll(async () => {
         await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
     });
 
-    it("should display the query program help", async () => {
-        const response = await runCliScript(__dirname + "/__scripts__/query_program_help.sh", TEST_ENVIRONMENT);
+    it("should display the query region help", async () => {
+        const response = await runCliScript(__dirname + "/__scripts__/query_region_help.sh", TEST_ENVIRONMENT);
         expect(response.stderr.toString()).toBe("");
         expect(response.status).toBe(0);
         expect(response.stdout.toString()).toMatchSnapshot();

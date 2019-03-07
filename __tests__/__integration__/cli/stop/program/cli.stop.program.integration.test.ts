@@ -9,32 +9,30 @@
 *                                                                                 *
 */
 
-// Test environment will be populated in the "beforeAll"
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
+import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { runCliScript } from "../../../../__src__/TestUtils";
+import { join } from "path";
 
-let TEST_ENVIRONMENT: ITestEnvironment;
-let programName: string;
-describe("ims query program", () => {
+let testEnvironment: ITestEnvironment;
+describe("Start program command", () => {
 
-    // Create the unique test environment
     beforeAll(async () => {
-        TEST_ENVIRONMENT = await TestEnvironment.setUp({
-            testName: "query_program_command",
+        testEnvironment = await TestEnvironment.setUp({
+            testName: "start_program_cli_integration",
             installPlugin: true
         });
-        programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
     });
 
     afterAll(async () => {
-        await TestEnvironment.cleanUp(TEST_ENVIRONMENT);
+        await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    it("should display the query program help", async () => {
-        const response = await runCliScript(__dirname + "/__scripts__/query_program_help.sh", TEST_ENVIRONMENT);
-        expect(response.stderr.toString()).toBe("");
-        expect(response.status).toBe(0);
-        expect(response.stdout.toString()).toMatchSnapshot();
+    it("should display the help", async () => {
+        const result = runCliScript(join(__dirname, "__scripts__", "stop_program_help.sh"), testEnvironment);
+        expect(result.stderr.toString()).toEqual("");
+        expect(result.status).toEqual(0);
+        expect(result.stdout.toString()).toMatchSnapshot();
     });
+
 });
