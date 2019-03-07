@@ -19,6 +19,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let route: string;
 let program: string;
+let programWildCard: string;
 
 describe("IMS stop program", () => {
 
@@ -32,6 +33,7 @@ describe("IMS stop program", () => {
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         route = imsProperties.route;
         program = imsProperties.programName;
+        programWildCard = imsProperties.programWildCard;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -75,7 +77,7 @@ describe("IMS stop program", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.names = [programWildCard];
         options.stop = ["SCHD", "TRACE"];
 
         try {
@@ -87,14 +89,14 @@ describe("IMS stop program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD, TRACE)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + programWildCard + ") STOP(SCHD, TRACE)");
     });
 
     it("should stop multiple programs by program name and use route", async () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.names = [programWildCard];
         options.stop = ["SCHD"];
         options.route = [route];
 
@@ -107,6 +109,6 @@ describe("IMS stop program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + programWildCard + ") STOP(SCHD)");
     });
 });

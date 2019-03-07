@@ -19,6 +19,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let route: string;
 let transaction: string;
+let programWildCard: string;
 
 describe("IMS start transaction", () => {
 
@@ -31,6 +32,7 @@ describe("IMS start transaction", () => {
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         route = imsProperties.route;
         transaction = imsProperties.transaction;
+        programWildCard = imsProperties.programWildCard;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -93,7 +95,7 @@ describe("IMS start transaction", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.names = [programWildCard];
         options.start = ["SCHD"];
         options.route = [route];
 
@@ -106,6 +108,6 @@ describe("IMS start transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + programWildCard + ") START(SCHD)");
     });
 });

@@ -16,6 +16,7 @@ import { ImsSession, IQueryTransactionParms, queryTransaction } from "../../../.
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
+let route: string;
 
 describe("IMS query transaction", () => {
 
@@ -25,6 +26,7 @@ describe("IMS query transaction", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        route = imsProperties.route;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -116,7 +118,7 @@ describe("IMS query transaction", () => {
         options.fp = "E";
         options.remote = "N";
         options.resp = "N";
-        options.route = ["IMJJ"];
+        options.route = [route];
 
         try {
             response = await queryTransaction(session, options);

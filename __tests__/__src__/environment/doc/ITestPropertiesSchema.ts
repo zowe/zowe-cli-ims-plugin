@@ -69,6 +69,10 @@ export interface ITestPropertiesSchema {
          */
         programName: string;
         /**
+         * The wild card name of programs defined
+         */
+        programWildCard: string;
+        /**
          * The name of transaction running in dependent region
          */
         transaction: string;

@@ -16,6 +16,9 @@ import { startProgram, IUpdateProgramParms, ImsSession } from "../../../../../sr
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
+let program: string;
+let route: string;
+let programWildCard: string;
 
 describe("IMS start program", () => {
 
@@ -26,6 +29,9 @@ describe("IMS start program", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        program = imsProperties.programName;
+        route = imsProperties.route;
+        programWildCard = imsProperties.programWildCard;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -51,7 +57,7 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = ["DFSIVP4"];
+        options.names = [program];
 
         try {
             response = await startProgram(session, options);
@@ -69,9 +75,9 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = ["DFSIVP4"];
+        options.names = [program];
         options.start = ["SCHD", "TRACE"];
-        options.route = ["IMJJ"];
+        options.route = [route];
 
         try {
             response = await startProgram(session, options);
@@ -89,9 +95,9 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.names = [programWildCard];
         options.start = ["SCHD"];
-        options.route = ["IMJJ"];
+        options.route = [route];
 
         try {
             response = await startProgram(session, options);
@@ -102,7 +108,7 @@ describe("IMS start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD)");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + programWildCard + ") START(SCHD)");
     });
 
 });

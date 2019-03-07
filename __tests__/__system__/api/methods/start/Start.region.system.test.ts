@@ -70,7 +70,7 @@ describe("IMS start region", () => {
         let error;
         let response;
 
-        options.memberName = "IMJJPP1";
+        options.memberName = memberName;
         options.job_name = "JOBNAME";
 
         try {
@@ -84,7 +84,7 @@ describe("IMS start region", () => {
         for (const messageKey of Object.keys(response.messages)) {
             // expect to get a rc 4 back which indicates no results
             expect(response.messages[messageKey].rc).toBe("00000014");
-            expect(response.messages[messageKey].command).toBe("(START REGION IMJJPP1 JOBNAME JOBNAME ) OPTION=AOPOUTPUT");
+            expect(response.messages[messageKey].command).toBe("(START REGION " + memberName + " JOBNAME JOBNAME ) OPTION=AOPOUTPUT");
         }
     });
 
