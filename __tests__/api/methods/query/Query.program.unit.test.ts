@@ -71,10 +71,12 @@ describe("IMS - Query program", () => {
 
         it("should be able to query all programs without program name specified", async () => {
             endPoint = ImsConstants.URL +  dummySession.plex + "/" + ImsConstants.PROGRAM +
-                "?attributes=BMPTYPE";
+                "?attributes=BMPTYPE&status=lock&route=IMS1";
 
             queryProgramParms.names = undefined;
             queryProgramParms.attributes = ["BMPTYPE"];
+            queryProgramParms.status = ["lock"];
+            queryProgramParms.route = ["IMS1"];
 
             response = await queryProgram(dummySession, queryProgramParms);
 

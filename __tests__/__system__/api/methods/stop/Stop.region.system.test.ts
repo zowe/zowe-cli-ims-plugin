@@ -11,7 +11,7 @@
 
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ImsSession, IStartRegionParms, IStopRegionParms, stopRegion } from "../../../../../src";
+import { ImsSession, IStartRegionParms, startRegion, IStopRegionParms, stopRegion } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
@@ -19,7 +19,7 @@ let session: ImsSession;
 let regionID: number;
 let memberName: string;
 
-describe("IMS Stop region", () => {
+describe("IMS stop region", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -46,13 +46,29 @@ describe("IMS Stop region", () => {
         });
     });
 
+    // beforeEach(async () => {
+    //     let response;
+    //     let error;
+    //
+    //     const options: IStartRegionParms = {} as any;
+    //
+    //     options.memberName = "IMJJPP4";
+    //
+    //     try {
+    //         response = await startRegion(session, options);
+    //     } catch (err) {
+    //         error = err;
+    //     }
+    //
+    // });
+
     afterAll(async () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
     const options: IStopRegionParms = {} as any;
 
-    // NOTE: region must be started manually at this point
+    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by reg_num (region id)", async () => {
         let error;
         let response;
@@ -70,7 +86,7 @@ describe("IMS Stop region", () => {
         expect(response.messages["OM1OM   "].command).toContain("STOP REGION " + regionID);
     });
 
-    // NOTE: region must be started manually at this point
+    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by job_name", async () => {
         let error;
         let response;
@@ -86,28 +102,9 @@ describe("IMS Stop region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME ");
+        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME " + memberName);
+        expect(response.data[0].imjj).toContain("STOP COMMAND IN PROGRESS");
     });
-
-    // TODO - IBM NEEDS TO EXPLAIN HOW JOBNAME WORKS
-    // it("should start region by memberName with job_name specified", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.memberName = "IMJJPP1";
-    //     // options.job_name = "JOBNAME"
-    //
-    //     try {
-    //         response = await startRegion(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("START REGION IMJJPP1");
-    // });
 
     it("should fail to stop region due to neither reg_num nor job_name specified", async () => {
         let error;
@@ -124,6 +121,6 @@ describe("IMS Stop region", () => {
 
         expect(error).toBeTruthy();
         expect(response).toBeFalsy();
-        expect(error.mDetails.msg).toContain("");
+        expect(error.mDetails.msg).toContain("Either region number or job name (but not both) must be specified");
     });
 });

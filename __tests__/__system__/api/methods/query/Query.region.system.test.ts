@@ -18,7 +18,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let imsRoute: string;
 
-describe("IMS Query region", () => {
+describe("IMS query region", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({

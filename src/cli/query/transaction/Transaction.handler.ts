@@ -19,7 +19,7 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.TRANSACTION;
 
 /**
- * Command handler for defining IMS programs
+ * Command handler for querying IMS transactions
  * @export
  * @class TransactionHandler
  * @implements {ICommandHandler}
@@ -53,7 +53,8 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.format.output({
             output: response.data,
             format: "table",
-            fields: ["tran", "mbr", "fp", "lcls", "llct", "lstt", "conv", "cmtm", "qcnt"],
+            fields: params.arguments.attributes? undefined:
+                ["tran", "mbr", "fp", "lcls", "llct", "lstt", "conv", "cmtm", "qcnt"],
             header: true
         });
 

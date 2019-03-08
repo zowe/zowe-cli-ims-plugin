@@ -18,7 +18,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let memberName: string;
 
-describe("IMS Start region", () => {
+describe("IMS start region", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -65,26 +65,28 @@ describe("IMS Start region", () => {
         expect(response.messages["OM1OM   "].command).toContain("START REGION " + memberName);
     });
 
-
     // TODO - IBM NEEDS TO EXPLAIN HOW JOBNAME WORKS
-    // it("should start region by memberName with job_name specified", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.memberName = "IMJJPP1";
-    //     // options.job_name = "JOBNAME"
-    //
-    //     try {
-    //         response = await startRegion(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].command).toContain("START REGION IMJJPP1");
-    // });
+    it("should start region by memberName with job_name specified", async () => {
+        let error;
+        let response;
 
+        options.memberName = memberName;
+        options.job_name = "JOBNAME";
+
+        try {
+            response = await startRegion(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        for (const messageKey of Object.keys(response.messages)) {
+            // expect to get a rc 4 back which indicates no results
+            expect(response.messages[messageKey].rc).toBe("00000014");
+            expect(response.messages[messageKey].command).toBe("(START REGION " + memberName + " JOBNAME JOBNAME ) OPTION=AOPOUTPUT");
+        }
+    });
 
     it("should fail to start region due to invalid membername value", async () => {
         let error;
@@ -117,6 +119,6 @@ describe("IMS Start region", () => {
 
         expect(error).toBeTruthy();
         expect(response).toBeFalsy();
-        expect(error.mDetails.msg).toContain("Required parameter 'IMS Member name' must not be blank");
+        expect(error.mDetails.msg).toContain("Required parameter 'IMS member name' must not be blank");
     });
 });

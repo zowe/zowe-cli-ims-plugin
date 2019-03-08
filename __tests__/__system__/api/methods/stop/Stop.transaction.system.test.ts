@@ -12,13 +12,15 @@
 import { Session } from "@brightside/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { stopTransaction, IUpdateTransactionParms, ImsSession } from "../../../../../src";
+import { stopTransaction, IUpdateTransactionParms, ImsSession, stopProgram } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
-let session: Session;
+let session: ImsSession;
+let transactionName: string;
+let route: string;
 
-describe("IMS Stop transaction", () => {
+describe("IMS stop transaction", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -28,15 +30,17 @@ describe("IMS Stop transaction", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        transactionName = imsProperties.transaction;
+        route = imsProperties.route;
 
         session = new ImsSession({
             user: imsProperties.user,
             password: imsProperties.password,
             hostname: imsProperties.host,
             port: imsProperties.port,
-            imsConnectHost: testEnvironment.systemTestProperties.ims.imsConnectHost,
-            imsConnectPort: testEnvironment.systemTestProperties.ims.imsConnectPort,
-            plex: testEnvironment.systemTestProperties.ims.plex,
+            imsConnectHost: imsProperties.imsConnectHost,
+            imsConnectPort: imsProperties.imsConnectPort,
+            plex: imsProperties.plex,
             type: "basic",
             strictSSL: false,
             protocol: "http",
@@ -49,59 +53,61 @@ describe("IMS Stop transaction", () => {
 
     const options: IUpdateTransactionParms = {} as any;
 
-    // it("should stop transaction by transaction name and default to stop option SCHD if undefined", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*"];
-    //
-    //     try {
-    //         response = await stopTransaction(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*) STOP(SCHD)");
-    // });
-    //
-    // it("should stop multiple transactions by transaction name and use multiple stop options", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.stop = ["SCHD", "TRACE"];
-    //
-    //     try {
-    //         response = await stopTransaction(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD, TRACE)");
-    // });
-    //
-    // it("should stop multipletransactions by transaction name and use multiple regions", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.route = ["IMJJ", "IMPP"];
-    //
-    //     try {
-    //         response = await stopTransaction(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) STOP(SCHD) ROUTE(IMJJ, IMPP");
-    // });
+    it("should stop transaction by transaction name and default to stop option SCHD if undefined", async () => {
+        let error;
+        let response;
+
+        options.names = [transactionName];
+
+        try {
+            response = await stopTransaction(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transactionName + ") STOP(SCHD)");
+    });
+
+    it("should stop multiple transactions by transaction name and use multiple stop options", async () => {
+        let error;
+        let response;
+
+        options.names = ["D*", "IV*"];
+        options.stop = ["SCHD", "TRACE"];
+
+        try {
+            response = await stopTransaction(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD, TRACE)");
+    });
+
+    it("should stop multiple transaction by transaction name and use route", async () => {
+        let error;
+        let response;
+
+        options.names = ["D*", "IV*"];
+        options.stop = ["SCHD"];
+        options.route = [route];
+
+        try {
+            response = await stopTransaction(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD)");
+    });
+
 });

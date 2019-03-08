@@ -3,12 +3,13 @@ set -e # fail the script if we get a non zero exit code
 
 program_name=$1
 attributes=$2
-HOST=$3
-PORT=$4
-USER=$5
-PASSWORD=$6
-ims_connect_host=$7
-ims_connect_port=$8
-plex=$9
+route=$3
+HOST=$4
+PORT=$5
+USER=$6
+PASSWORD=$7
+ich=$8
+icp=$9
+plex=$10
 
-zowe ims query program $1 --attributes $2 --host $3 --port $4 --user $5 --password $6 --ims-connect-host $7 --ims-connect-port $8 --plex $9
+zowe ims query program $1 --route $3 --host $4 --port $5 --user $6 --password $7 --ich $8 --ims-connect-port $9 --plex ${10}

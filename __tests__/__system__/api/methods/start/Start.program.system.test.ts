@@ -16,8 +16,11 @@ import { startProgram, IUpdateProgramParms, ImsSession } from "../../../../../sr
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
+let program: string;
+let route: string;
+let programWildCard: string;
 
-describe("IMS Start program", () => {
+describe("IMS start program", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -26,6 +29,9 @@ describe("IMS Start program", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        program = imsProperties.programName;
+        route = imsProperties.route;
+        programWildCard = imsProperties.programWildCard;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -51,7 +57,7 @@ describe("IMS Start program", () => {
         let error;
         let response;
 
-        options.names = ["DFSIVP4"];
+        options.names = [program];
 
         try {
             response = await startProgram(session, options);
@@ -61,46 +67,48 @@ describe("IMS Start program", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].rc).toBe("00000000");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*) START(SCHD)");
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD)");
     });
 
-    // it("should start multiple programs by program name and use multiple start options", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.start = ["SCHD", "TRACE"];
-    //
-    //     try {
-    //         response = await startProgram(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD, TRACE)");
-    // });
-    //
-    // it("should start multiple programs by program name and use multiple regions", async () => {
-    //     let error;
-    //     let response;
-    //
-    //     options.names = ["D*", "IV*"];
-    //     options.route = ["IMJJ"];
-    //
-    //     try {
-    //         response = await startProgram(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    //     expect(error).toBeFalsy();
-    //     expect(response).toBeTruthy();
-    //     expect(response.messages["OM1OM   "].rc).toBe("00000000");
-    //     expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(D*, IV*) START(SCHD)");
-    // });
+    it("should start program by program name and use multiple start options", async () => {
+        let error;
+        let response;
+
+        options.names = [program];
+        options.start = ["SCHD", "TRACE"];
+        options.route = [route];
+
+        try {
+            response = await startProgram(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD, TRACE)");
+    });
+
+    it("should start multiple programs by program name", async () => {
+        let error;
+        let response;
+
+        options.names = [programWildCard];
+        options.start = ["SCHD"];
+        options.route = [route];
+
+        try {
+            response = await startProgram(session, options);
+        } catch (err) {
+            error = err;
+        }
+
+        expect(error).toBeFalsy();
+        expect(response).toBeTruthy();
+        expect(response.data[0].cc).toBe("0");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + programWildCard + ") START(SCHD)");
+    });
 
 });

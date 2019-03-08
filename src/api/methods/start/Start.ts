@@ -14,7 +14,6 @@ import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IStartRegionParms, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 
-// TODO update to work with IMS REST API
 /**
  * Start program in IMS through REST API
  * @param {AbstractSession} session - the session to connect to IMS with
@@ -29,7 +28,7 @@ export async function startProgram(session: ImsSession, parms: IUpdateProgramPar
         throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Program name", "IMS program name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -76,7 +75,6 @@ export async function startProgram(session: ImsSession, parms: IUpdateProgramPar
                 resource = resource + "," + encodeURIComponent(parms.route[i]);
             }
         }
-        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
@@ -97,7 +95,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
         throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS Transaction name", "IMS transaction name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -120,7 +118,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
     }
 
     if (parms.start !== undefined) {
-        // 'names' text must be lower case
+        // 'start' text must be lower case
         resource = resource + delimiter + "start=";
         for (let i = 0; i < parms.start.length; i++) {
             if (i === 0) {
@@ -144,7 +142,6 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
                 resource = resource + "," + encodeURIComponent(parms.route[i]);
             }
         }
-        // delimiter = "&";
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);
@@ -161,7 +158,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
  */
 export async function startRegion(session: ImsSession, parms: IStartRegionParms): Promise<IIMSApiResponse> {
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.memberName, "IMS Member name", "IMS member name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.memberName, "IMS member name", "IMS member name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -170,17 +167,21 @@ export async function startRegion(session: ImsSession, parms: IStartRegionParms)
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START;
 
     if (parms.memberName != null) {
+        // 'member_name' text must be lower case
         resource = resource + delimiter + "member_name=" + encodeURIComponent(parms.memberName);
         delimiter = "&";
     }
     if (parms.job_name != null) {
+        // 'job_name' text must be lower case
         resource = resource + delimiter + "job_name=" + encodeURIComponent(parms.job_name);
         delimiter = "&";
     }
     if (parms.local != null) {
+        // 'local' text must be lower case
         resource = resource + delimiter + "local=" + encodeURIComponent(parms.local + "");
     }
     if (parms.route != null) {
+        // 'route' text must be lower case
         resource = resource + delimiter + "route=";
         resource = resource + encodeURIComponent(parms.route.join(","));
     }

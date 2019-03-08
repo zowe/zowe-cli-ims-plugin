@@ -15,16 +15,16 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 import { runCliScript } from "../../../../__src__/TestUtils";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
-let transactionName: string;
-describe("ims query transaction", () => {
+let programName: string;
+describe("ims query program", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
-            testName: "query_transaction_command",
+            testName: "query_program_command",
             installPlugin: true
         });
-        transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
+        programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
     });
 
     afterAll(async () => {

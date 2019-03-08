@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "qry",
   ],
-  "description": "Query application programs or transactions across an IMSplex.The query returns information about application programs and transactions (for example, class, status, queue count, and more). This command submits a 'QUERY PGM' or 'QUERY TRAN' IMS command and returns the output.",
+  "description": "Query application programs, regions or transactions across an IMSplex.The query returns information about application programs, regions and transactions. This command submits a 'QUERY PGM', 'DIS ACT' or 'QUERY TRAN' IMS command and returns the output.",
   "name": "query",
   "passOn": Array [
     Object {
@@ -74,7 +74,6 @@ Object {
           "description": "Mainframe (IMS) user name, which can be the same as your TSO login.",
           "group": "IMS Connection Options",
           "name": "user",
-          "required": true,
           "type": "string",
         },
         Object {
@@ -84,7 +83,6 @@ Object {
           "description": "Mainframe (IMS) password, which can be the same as your TSO password.",
           "group": "IMS Connection Options",
           "name": "password",
-          "required": true,
           "type": "string",
         },
       ],

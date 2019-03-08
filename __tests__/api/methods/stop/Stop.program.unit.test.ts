@@ -47,7 +47,7 @@ describe("IMS - Stop program", () => {
 
     describe("success scenarios", () => {
 
-        it("should be able to stop a program with reg_num", async () => {
+        it("should be able to stop a program with name specified", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
                 "?names=" + program + "&" + ImsConstants.STOP + "=SCHD";
@@ -60,11 +60,11 @@ describe("IMS - Stop program", () => {
 
         it("should be able to stop a program with all parameters specified", async () => {
 
-            stopProgramParms.stop = ["Q", "SCHD", "TRACE"];
+            stopProgramParms.stop = ["SCHD", "TRACE"];
             stopProgramParms.route = route;
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.STOP + "=SCHD,TRACE" +
                 "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await stopProgram(dummySession, stopProgramParms);
@@ -116,7 +116,7 @@ describe("IMS - Stop program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Expect Error: Required parameter 'IMS Program name' must not be blank");
+            expect(error.message).toContain("Expect Error: Required parameter 'IMS program name' must not be blank");
         });
     });
 });

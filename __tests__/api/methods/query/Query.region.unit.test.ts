@@ -84,9 +84,9 @@ describe("IMS - Query region", () => {
 
         it("should be able to query regions with multiple route names specified", async () => {
             endPoint = ImsConstants.URL +  dummySession.plex + "/" + ImsConstants.REGION +
-                "?dc=true&region=true&route=IMS1,IMS2";
+                "?dc=false&region=true&route=IMS1,IMS2";
 
-            queryRegionParms.dc = true;
+            queryRegionParms.dc = false;
             queryRegionParms.region = true;
             queryRegionParms.route = ["IMS1","IMS2"];
 

@@ -19,7 +19,7 @@ import i18nTypings from "../../-strings-/en";
 const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.PROGRAM;
 
 /**
- * Command handler for defining CICS programs via CMCI
+ * Command handler for querying IMS programs
  * @export
  * @class ProgramHandler
  * @implements {ICommandHandler}
@@ -38,7 +38,9 @@ export default class ProgramHandler extends ImsBaseHandler {
 
         const response = await queryProgram(session, {
             names: params.arguments.names,
-            attributes: params.arguments.attributes
+            attributes: params.arguments.attributes,
+            status: params.arguments.status,
+            route: params.arguments.route
         });
 
         this.checkReturnCode(response);
@@ -47,7 +49,8 @@ export default class ProgramHandler extends ImsBaseHandler {
             header: true,
             output: response.data,
             format: "table",
-            fields: ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
+            fields: params.arguments.attributes? undefined:
+                ["pgm", "dopt", "bmpt", "dfnt", "gpsb", "fp", "rgnt", "schd", "mbr", "tmac", "lstt", "lang"]
         });
 
         return response;

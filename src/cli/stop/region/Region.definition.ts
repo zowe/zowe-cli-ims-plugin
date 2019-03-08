@@ -51,11 +51,32 @@ export const RegionDefinition: ICommandDefinition = {
             name: "cancel",
             description: strings.OPTIONS.CANCEL,
             type: "boolean"
+        },
+        {
+            name: "transaction",
+            description: strings.OPTIONS.TRANSACTION,
+            type: "string"
         }],
     mustSpecifyOne: ["job-name", "region-ids"],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
         options: "--job-name JOBNM1"
+    },
+    {
+        description: strings.EXAMPLES.EX2,
+        options: "--region-ids 4 5"
+    },
+    {
+        description: strings.EXAMPLES.EX3,
+        options: "--region-ids 4 --abdump TRAN1"
+    },
+    {
+        description: strings.EXAMPLES.EX4,
+        options: "--region-ids 4 --cancel true"
+    },
+    {
+        description: strings.EXAMPLES.EX5,
+        options: "--job-name JOBNM4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };

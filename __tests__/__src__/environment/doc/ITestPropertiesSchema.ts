@@ -56,16 +56,26 @@ export interface ITestPropertiesSchema {
          * when running a query transaction command
          */
         expectedTransaction: string;
-
         /**
          * a dependent region that can be started and stopped
          */
         dependentRegionName: string;
-
         /**
          * ID used to stop a dependent region
          */
         dependentRegionID: number;
+        /**
+         * The name of program running in dependent region
+         */
+        programName: string;
+        /**
+         * The wild card name of programs defined
+         */
+        programWildCard: string;
+        /**
+         * The name of transaction running in dependent region
+         */
+        transaction: string;
     };
 
 }

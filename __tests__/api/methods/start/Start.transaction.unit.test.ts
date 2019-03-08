@@ -115,7 +115,7 @@ describe("IMS - Start transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Expect Error: Required parameter 'IMS Transaction name' must not be blank");
+            expect(error.message).toContain("Expect Error: Required parameter 'IMS transaction name' must not be blank");
         });
     });
 });
