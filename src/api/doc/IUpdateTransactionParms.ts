@@ -95,7 +95,7 @@ export interface IUpdateTransactionParms {
     /**
      *
      */
-    editruc?: string;
+    edituc?: string;
 
     /**
      *
@@ -170,7 +170,7 @@ export interface IUpdateTransactionParms {
     /**
      *
      */
-    plctime?: number;
+    plcttime?: number;
 
     /**
      *
@@ -230,5 +230,5 @@ export interface IUpdateTransactionParms {
     /**
      *
      */
-    wifi?: string;
+    wfi?: string;
 }

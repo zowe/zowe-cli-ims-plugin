@@ -89,6 +89,100 @@ export default {
             }
         }
     },
+    SET: {
+        SUMMARY: "Update resources in IMS",
+        DESCRIPTION: "Updates an application program or transaction and makes IMS resources available for reference and use. " +
+            "This command submits a 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.",
+        RESOURCES: {
+            PROGRAM: {
+                DESCRIPTION: "Update an IMS application program.",
+                POSITIONALS: {
+                    NAMES: "The names of the application programs to update. The maximum length of a program name is eight characters.",
+                },
+                OPTIONS: {
+                    BMPTYPE: "TODO (N or Y)",
+                    DOPT: "TODO Specifies the dynamic option (N or Y)",
+                    FP: "TODO Specifies the dynamic option (E or N)",
+                    GPSB: "TODO Specifies the dynamic option (N or Y)",
+                    LANG: "Specifies the language (ASSEM, COBOL, JAVA, PASCAL, PLI)",
+                    LOCK: "Specifies the dynamic option (ON or OFF)",
+                    OPTION: "Specifies the dynamic option (ALLRSP)",
+                    RESIDENT: "Specifies the dynamic option (N or Y)",
+                    ROUTE: "The region(s) to route the command to",
+                    SCHDTYPE: "Specifies the dynamic option (PARALLEL or SERIAL)",
+                    TRANSTAT: "Specifies the dynamic option (N or Y)",
+                },
+                MESSAGES: {
+                    SUCCESS: "The application program(s) '%s' were updated successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Start an application program named PGM123",
+                    EX2: "Start all application programs beginning with ACC*",
+                    EX3: "Start an application program named PGM234 and start tracing",
+                    EX4: "Start an application program named PGM890 routing to control regions IMS1 and IMS2",
+                    EX5: "Start an application programs named XYZ1 specifying optional connection parameters"
+                }
+            },
+            TRANSACTION: {
+                DESCRIPTION: "Update an IMS transaction.",
+                POSITIONALS: {
+                    NAMES: "The names of the transactions to update. The maximum length of a transaction name is eight characters.",
+                },
+                OPTIONS: {
+                    AOCMD: "TODO (N, CMD, TRAN, Y)",
+                    CLASS: "TODO Array of integer",
+                    CMTMODE: "(SNGL, MULT)",
+                    CONV: "(N or Y)",
+                    CPRI: "TODO integer",
+                    DCLWA: "(N or Y)",
+                    DIRROUTE: "(N or Y)",
+                    EDITRTN: "TODO STRING",
+                    EDITUC: "TODO (N or Y)",
+                    EMHBSZ: "TODO integer",
+                    EXPRTIME: "TODO integer",
+                    FP: "(E, N, P)",
+                    INQ: "(N or Y)",
+                    LCT: "Integer",
+                    LPRI: "integer",
+                    LOCK: "(ON or OFF)",
+                    MAXRGN: "integer",
+                    MSGTYPE: "TODO (MULTSEG or SNGLSEG)",
+                    MSNAME: "TODO string",
+                    NPRI: "TODO integer",
+                    OPTION: "(ALLRSP)",
+                    PARLIM: "TODO integer",
+                    PGM: "TODO string",
+                    PLCT: "TODO integer",
+                    PLCTTIME: "TODO integer",
+                    RECOVER: "TODO (N or Y)",
+                    REMOTE: "TODO (N or Y)",
+                    RESP: "TODO (N or Y)",
+                    ROUTE: "The region(s) to route the command to",
+                    SCOPE: "TODO (ALL or ACTIVE)",
+                    SEGNO: "TODO integer",
+                    SEGSZ: "TODO integer",
+                    SERIAL: "TODO (N or Y)",
+                    SETCLASS: "TODO integer",
+                    SIDL: "TODO integer",
+                    SIDR: "TODO integer",
+                    SPASZ: "TODO integer",
+                    SPATRUNC: "TODO (S or R)",
+                    TRANSTAT: "TODO (N or Y)",
+                    WFI: "TODO (N or Y)",
+                },
+                MESSAGES: {
+                    SUCCESS: "The transaction(s) '%s' were updated successfully."
+                },
+                EXAMPLES: {
+                    EX1: "Start a transaction named TRN1",
+                    EX2: "Start all transactions beginning with TRN*",
+                    EX3: "Start a transaction named TRN2 and start tracing",
+                    EX4: "Start a transaction named TRN3 routing to control regions IMS1 and IMS2",
+                    EX5: "Start a transaction named TRN4 specifying optional connection parameters"
+                }
+            }
+        }
+    },
     START: {
         SUMMARY: "Start resources in IMS",
         DESCRIPTION: "Starts a region, application program, or transaction and makes IMS resources available for reference and use. " +
