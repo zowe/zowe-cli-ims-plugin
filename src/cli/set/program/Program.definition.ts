@@ -87,6 +87,16 @@ export const ProgramDefinition: ICommandDefinition = {
         aliases: ["lo"],
     },
     {
+        name: "option",
+        description: strings.OPTIONS.OPTION,
+        type: "string",
+        allowableValues: {
+            values: ["ALLRSP"],
+            caseSensitive: true
+        },
+        aliases: ["o"],
+    },
+    {
         name: "resident",
         description: strings.OPTIONS.RESIDENT,
         type: "string",
@@ -95,6 +105,12 @@ export const ProgramDefinition: ICommandDefinition = {
             caseSensitive: true
         },
         aliases: ["r"],
+    },
+    {
+        name: "route",
+        description: strings.OPTIONS.ROUTE,
+        type: "array",
+        aliases: ["rte"]
     },
     {
         name: "schdtype",
@@ -115,22 +131,6 @@ export const ProgramDefinition: ICommandDefinition = {
             caseSensitive: true
         },
         aliases: ["ts"],
-    },
-    {
-        name: "option",
-        description: strings.OPTIONS.OPTION,
-        type: "string",
-        allowableValues: {
-            values: ["ALLRSP"],
-            caseSensitive: true
-        },
-        aliases: ["o"],
-    },
-    {
-        name: "route",
-        description: strings.OPTIONS.ROUTE,
-        type: "array",
-        aliases: ["rte"]
     }],
     profile: {optional: ["ims"]},
     examples: [{
