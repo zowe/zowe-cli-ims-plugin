@@ -29,14 +29,14 @@ export const TransactionDefinition: ICommandDefinition = {
     }],
     outputFormatOptions: true,
     options: [{
-        name: "aocmd",
+        name: "aoi-cmd",
         description: strings.OPTIONS.AOCMD,
         type: "string",
         allowableValues: {
             values: ["N", "CMD", "TRAN", "Y"],
             caseSensitive: true
         },
-        aliases: ["a"],
+        aliases: ["aocmd"],
     },
     {
         name: "class",
@@ -45,106 +45,100 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["c"]
     },
     {
-        name: "cmtmode",
+        name: "commit-mode",
         description: strings.OPTIONS.CMTMODE,
         type: "string",
         allowableValues: {
             values: ["SINGLE", "MODE"],
             caseSensitive: true
         },
-        aliases: ["cm"],
+        aliases: ["cmtmode"],
     },
     {
-        name: "conv",
+        name: "conversation",
         description: strings.OPTIONS.CONV,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["cv"],
+        aliases: ["conv"],
     },
     {
-        name: "cpri",
+        name: "current-priority",
         description: strings.OPTIONS.CPRI,
         type: "number",
-        aliases: ["cp"],
+        aliases: ["cpri"],
     },
     {
-        name: "dclwa",
-        description: strings.OPTIONS.DCLWA,
+        name: "directed-routing",
+        description: strings.OPTIONS.DIRROUTE,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["dc"],
+        aliases: ["dirroute"],
     },
     {
-        name: "dirroute",
-        description: strings.OPTIONS.DCLWA,
-        type: "string",
-        allowableValues: {
-            values: ["N", "Y"],
-            caseSensitive: true
-        },
-        aliases: ["dr"],
-    },
-    {
-        name: "editrtn",
+        name: "edit-routine",
         description: strings.OPTIONS.EDITRTN,
         type: "string",
-        aliases: ["er"],
+        aliases: ["editrtn"],
     },
     {
-        name: "edituc",
+        name: "edit-uppercase",
         description: strings.OPTIONS.EDITUC,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["eu"],
+        aliases: ["edituc"],
     },
     {
-        name: "emhbsz",
+        name: "emh-buffer-size",
         description: strings.OPTIONS.EMHBSZ,
         type: "number",
-        aliases: ["em"],
+        aliases: ["emhbsz"],
     },
     {
-        name: "exprtime",
+        name: "expiration-time",
         description: strings.OPTIONS.EXPRTIME,
         type: "number",
-        aliases: ["et"],
+        aliases: ["exprtime"],
     },
     {
-        name: "fp",
+        name: "fast-path",
         description: strings.OPTIONS.FP,
         type: "string",
         allowableValues: {
             values: ["E", "N", "P"],
             caseSensitive: true
-        }
+        },
+        aliases: ["fp"],
     },
     {
-        name: "inq",
+        name: "inquiry",
         description: strings.OPTIONS.INQ,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
+        aliases: ["inq"],
     },
     {
-        name: "lct",
+        name: "limit-count",
         description: strings.OPTIONS.LCT,
         type: "number",
+        aliases: ["lct"],
     },
     {
-        name: "lpri",
+        name: "limit-priority",
         description: strings.OPTIONS.LPRI,
         type: "number",
+        aliases: ["lpri"],
     },
     {
         name: "lock",
@@ -157,20 +151,30 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["l"],
     },
     {
-        name: "maxrgn",
-        description: strings.OPTIONS.MAXRGN,
-        type: "number",
-        aliases: ["mx"],
+        name: "log-write-ahead",
+        description: strings.OPTIONS.DCLWA,
+        type: "string",
+        allowableValues: {
+            values: ["N", "Y"],
+            caseSensitive: true
+        },
+        aliases: ["dclwa"],
     },
     {
-        name: "msgtype",
+        name: "maximum-regions",
+        description: strings.OPTIONS.MAXRGN,
+        type: "number",
+        aliases: ["maxrgn"],
+    },
+    {
+        name: "message-type",
         description: strings.OPTIONS.MSGTYPE,
         type: "string",
         allowableValues: {
             values: ["MULTSEG", "SNGLSEG"],
             caseSensitive: true
         },
-        aliases: ["mt"],
+        aliases: ["msgtype"],
     },
     {
         name: "msname",
@@ -179,9 +183,10 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["mn"],
     },
     {
-        name: "npri",
+        name: "normal-scheduling-priority",
         description: strings.OPTIONS.NPRI,
         type: "number",
+        aliases: ["npri"],
     },
     {
         name: "option",
@@ -194,26 +199,28 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["o"],
     },
     {
-        name: "parlim",
+        name: "parallel-processing-limit",
         description: strings.OPTIONS.PARLIM,
         type: "number",
-        aliases: ["pl"],
+        aliases: ["parlim"],
     },
     {
-        name: "pgm",
+        name: "program",
         description: strings.OPTIONS.PGM,
         type: "string",
+        aliases: ["pgm"],
     },
     {
-        name: "plct",
+        name: "processing-limit-count",
         description: strings.OPTIONS.PLCT,
         type: "number",
+        aliases: ["plct"],
     },
     {
-        name: "plcttime",
+        name: "processing-limit-count-time",
         description: strings.OPTIONS.PLCTTIME,
         type: "number",
-        aliases: ["pt"],
+        aliases: ["plcttime"],
     },
     {
         name: "recover",
@@ -236,13 +243,14 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["re"],
     },
     {
-        name: "resp",
+        name: "response-mode",
         description: strings.OPTIONS.RESP,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
+        aliases: ["resp"],
     },
     {
         name: "route",
@@ -251,16 +259,16 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["rte"]
     },
     {
-        name: "segno",
+        name: "segment-number",
         description: strings.OPTIONS.SEGNO,
         type: "number",
-        aliases: ["sn"],
+        aliases: ["segno"],
     },
     {
-        name: "segsz",
+        name: "segment-size",
         description: strings.OPTIONS.SEGSZ,
         type: "number",
-        aliases: ["sz"],
+        aliases: ["segsz"],
     },
     {
         name: "serial",
@@ -273,75 +281,78 @@ export const TransactionDefinition: ICommandDefinition = {
         aliases: ["sr"],
     },
     {
-        name: "setclass",
+        name: "set-class",
         description: strings.OPTIONS.SETCLASS,
         type: "number",
         aliases: ["sc"],
     },
     {
-        name: "sidl",
+        name: "system-identification-local",
         description: strings.OPTIONS.SIDL,
         type: "number",
+        aliases: ["sidl"],
     },
     {
-        name: "sidr",
+        name: "system-identification-remote",
         description: strings.OPTIONS.SIDR,
         type: "number",
+        aliases: ["sidr"],
     },
     {
-        name: "spasz",
+        name: "scratchpad-area-size",
         description: strings.OPTIONS.SPASZ,
         type: "number",
-        aliases: ["sp"],
+        aliases: ["spasz"],
     },
     {
-        name: "spatrunc",
+        name: "scratchpad-area-truncation",
         description: strings.OPTIONS.SPATRUNC,
         type: "string",
         allowableValues: {
             values: ["S", "R"],
             caseSensitive: true
         },
-        aliases: ["st"],
+        aliases: ["spatrunc"],
     },
     {
-        name: "transtat",
+        name: "transaction-level-stat",
         description: strings.OPTIONS.TRANSTAT,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["ts"],
+        aliases: ["transtat"],
     },
     {
-        name: "wfi",
+        name: "wait-for-input",
         description: strings.OPTIONS.WFI,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
+        aliases: ["wfi"],
     }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "TRN1"
+        options: "TRN1 --fp E"
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "TRN"
+        options: "TRN* --class CLASSA --lock OFF"
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "TRN2 --attributes SCHD TRACE"
+        options: "TRN2 --class CLASS1 CLASS2 --resp Y"
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "TRN3 --route IMS1 IMS2"
+        options: "TRN3 -fp E --route IMS1 IMS2"
     },
     {
-        description: strings.EXAMPLES.EX4,
-        options: "TRN4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        description: strings.EXAMPLES.EX5,
+        options: "TRN4 --pgm PGM1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };

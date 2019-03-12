@@ -29,52 +29,54 @@ export const ProgramDefinition: ICommandDefinition = {
     }],
     outputFormatOptions: true,
     options: [{
-        name: "bmptype",
+        name: "bmp-type",
         description: strings.OPTIONS.BMPTYPE,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["bmp"]
+        aliases: ["bmptype"]
     },
     {
-        name: "dopt",
+        name: "dynamic",
         description: strings.OPTIONS.DOPT,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["d"],
+        aliases: ["dopt"],
     },
     {
-        name: "fp",
+        name: "fast-path",
         description: strings.OPTIONS.FP,
         type: "string",
         allowableValues: {
             values: ["E", "N"],
             caseSensitive: true
-        }
+        },
+        aliases: ["fp"],
     },
     {
-        name: "gpsb",
+        name: "generated-psb",
         description: strings.OPTIONS.GPSB,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
-        }
+        },
+        aliases: ["gpsb"],
     },
     {
-        name: "lang",
+        name: "language",
         description: strings.OPTIONS.LANG,
         type: "string",
         allowableValues: {
             values: ["ASSEM", "COBOL", "JAVA", "PASCAL", "PLI"],
             caseSensitive: true
         },
-        aliases: ["l"],
+        aliases: ["lang"],
     },
     {
         name: "lock",
@@ -84,7 +86,7 @@ export const ProgramDefinition: ICommandDefinition = {
             values: ["ON", "OFF"],
             caseSensitive: true
         },
-        aliases: ["lo"],
+        aliases: ["l"],
     },
     {
         name: "option",
@@ -113,44 +115,44 @@ export const ProgramDefinition: ICommandDefinition = {
         aliases: ["rte"]
     },
     {
-        name: "schdtype",
+        name: "schedule-type",
         description: strings.OPTIONS.SCHDTYPE,
         type: "string",
         allowableValues: {
             values: ["PARALLEL", "SERIAL"],
             caseSensitive: true
         },
-        aliases: ["st"],
+        aliases: ["schdtype"],
     },
     {
-        name: "transtat",
+        name: "transaction-level-stat",
         description: strings.OPTIONS.TRANSTAT,
         type: "string",
         allowableValues: {
             values: ["N", "Y"],
             caseSensitive: true
         },
-        aliases: ["ts"],
+        aliases: ["transtat"],
     }],
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "PGM123"
+        options: "PGM123 --fp E"
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "ACC*"
+        options: "ACC* --bmptype N"
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "PGM234 --attributes SCHD TRACE"
+        options: "PGM234 --lock ON"
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "PGM890 --route IMS1 IMS2"
+        options: "PGM890 --fp E --route IMS1 IMS2"
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "XYZ1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "XYZ1 --lock ON --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };
