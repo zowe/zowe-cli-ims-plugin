@@ -92,10 +92,10 @@ describe("IMS - Update transaction", () => {
             updateTransactionParms.route = ["IMS1", "IMS2"];
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction + "&class=1&scope=ALL&aocmd=N&setClass=1&cmtmode=MULT&conv=Y" +
-                "&cpri=1&dclwa=N&dirroute=N&editrtn=A&edituc=N&emhbsz=1&exprtime=2&fp=E&inq=N&lct=2&lpri=2&lock=ON&maxrgn=1" +
-                "&msgtype=MULTSEG&msname=name&npri=3&option=ALLRSP&parlim=3&pgm=pgm&plct=3&plcttime=4&recover=Y&remote=N" +
-                "&segno=3&segsz=3&pgm=N&sidl=9&sidr=9&spasz=7&spatrunc=S&transtat=N&wfi=Y&route=IMS1,IMS2";
+                "?" + ImsConstants.NAMES + "=" + transaction + "&class=3&scope=ALL&aocmd=N&setClass=3&cmtmode=MULT&conv=Y" +
+                "&cpri=3&dclwa=N&dirroute=N&editrtn=A&edituc=N&emhbsz=3&exprtime=3&fp=E&inq=N&lct=3&lpri=3&lock=ON&maxrgn=3" +
+                "&msgtype=MULTSEG&msname=name&npri=3&option=ALLRSP&parlim=3&pgm=pgm&plct=3&plcttime=3&recover=Y&remote=N" +
+                "&segno=3&segsz=3&pgm=N&sidl=3&sidr=3&spasz=3&spatrunc=S&transtat=N&wfi=Y&route=IMS1,IMS2";
             response = await updateTransaction(dummySession, updateTransactionParms);
 
             expect(response).toContain(content);
