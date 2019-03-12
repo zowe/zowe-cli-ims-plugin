@@ -14,19 +14,20 @@ import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITes
 import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
 
 let testEnvironment: ITestEnvironment;
-let programName: string;
+let transactionName: string;
 let route: string;
+const sixteen = 16;
 
-describe("Set program command", () => {
+describe("Update transaction command", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
-            testName: "set_program_command",
+            testName: "set_transaction_command",
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
-        programName = testEnvironment.systemTestProperties.ims.programName;
+        transactionName = testEnvironment.systemTestProperties.ims.transaction;
         route = testEnvironment.systemTestProperties.ims.route;
     });
 
@@ -34,30 +35,48 @@ describe("Set program command", () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    it("Should update a program by specifying its name and some options", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/set_program.sh", testEnvironment,
-            [programName,
-                  "Y",
-                  "N",
-                  "N",
-                  route,
-                  "SERIAL",
-                  "N"]);
+    it("Should update a transaction by specifying its name and some options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/set_transaction.sh", testEnvironment,
+            [transactionName,
+                "Y",
+                1,
+                "N",
+                route,
+                1,
+                "N"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("- \n  cc:  0");
+        expect(stdout).toContain("- \n  cc:   0");
     });
 
-    it("Should update a program by specifying its name, some options and profile options", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/set_program.sh", testEnvironment,
-            [programName,
+    it("Should update a transaction by specifying its name and some other options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/set_transaction_error.sh", testEnvironment,
+            [transactionName,
+                "Y",
                 "Y",
                 "N",
+                route,
+                1,
+                "N",
+                sixteen,
+                "S"]);
+        const stderr = output.stderr.toString();
+        const stdout = output.stdout.toString();
+        expect(stderr).toEqual("");
+        expect(output.status).toEqual(0);
+        expect(stdout).toContain("- \n  cc:   0");
+    });
+
+    it("Should update a transaction by specifying a name, some options and profile options", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/set_transaction_fully_qualified.sh", testEnvironment,
+            [transactionName,
+                "Y",
+                1,
                 "N",
                 route,
-                "SERIAL",
+                1,
                 "N",
                 testEnvironment.systemTestProperties.ims.host,
                 testEnvironment.systemTestProperties.ims.port,
@@ -70,25 +89,23 @@ describe("Set program command", () => {
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
         expect(output.status).toEqual(0);
-        expect(stdout).toContain("- \n  cc:  0");
+        expect(stdout).toContain("- \n  cc:   0");
     });
 
-    it("Should return an error concerning filters", async () => {
-        const output = runCliScript(__dirname + "/__scripts__/set_program_all.sh", testEnvironment,
-            [programName,
-                "N",
-                "N",
-                "N",
+    it("Should return an error concerning fastpath", async () => {
+        const output = runCliScript(__dirname + "/__scripts__/set_transaction_error.sh", testEnvironment,
+            [transactionName,
                 "Y",
-                "COBOL",
-                "OFF",
-                "N",
+                "Y",
+                "E",
                 route,
-                "SERIAL",
-                "N"]);
+                1,
+                "N",
+                sixteen,
+                "S"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
-        expect(stderr).toContain("No filter, an invalid filter, or insufficient # of filters specified");
+        expect(stderr).toContain("No fastpath");
     });
 
 });
