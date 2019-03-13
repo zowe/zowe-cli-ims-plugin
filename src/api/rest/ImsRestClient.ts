@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@brightside/imperative";
+import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -39,7 +39,7 @@ export class ImsRestClient extends RestClient {
     private static mLogger: Logger;
 
     /**
-     * Use the Brightside logger instead of the imperative logger
+     * Use the Zowe logger instead of the imperative logger
      * @return {Logger}
      */
     private static get log(): Logger {

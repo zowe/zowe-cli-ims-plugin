@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { Session } from "@brightside/imperative";
+import { Session } from "@zowe/imperative";
 import { IImsSession } from "../doc/IImsSession";
 
 export class ImsSession extends Session {

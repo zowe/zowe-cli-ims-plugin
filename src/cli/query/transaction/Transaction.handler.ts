@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@brightside/imperative";
+import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 

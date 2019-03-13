@@ -17,7 +17,7 @@ import {
     ITaskWithStatus, Logger,
     TaskStage,
     TextUtils
-} from "@brightside/imperative";
+} from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, startTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 

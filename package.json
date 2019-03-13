@@ -1,10 +1,10 @@
 {
   "name": "@zowe/ims",
-  "version": "1.1.0-next.201812171711",
+  "version": "1.2.1-next.201903120000",
   "description": "CLI Plug-in for IBM IMS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gizafoundation/zowe-cli-ims-plugin.git"
+    "url": "https://github.com/zowe/zowe-cli-ims-plugin.git"
   },
   "main": "lib/index.js",
   "files": [
@@ -12,9 +12,6 @@
   ],
   "publishConfig": {
     "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
-  },
-  "bin": {
-    "ims": "./lib/main.js"
   },
   "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
@@ -37,7 +34,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@brightside/imperative": ">=2.0.0-0",
+    "@zowe/imperative": "file:../imperative",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
     "@types/xml2js": "^0.4.3",
@@ -122,7 +119,7 @@
   "author": "Darkside",
   "license": "EPL-2.0",
   "peerDependencies": {
-    "@brightside/core": ">=2.0.0-0",
-    "@brightside/imperative": ">=2.0.0-0"
+    "@zowe/cli": "file:../zowe-cli",
+    "@zowe/imperative": "file:../imperative"
   }
 }
