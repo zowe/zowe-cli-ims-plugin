@@ -32,7 +32,6 @@ export class ImsRestClient extends RestClient {
      */
     public static readonly IMS_SUCCESS_RESPONSE_2 = "0";
 
-
     /**
      * Internal logger
      */
@@ -62,6 +61,9 @@ export class ImsRestClient extends RestClient {
         if (reqHeaders == null) {
             reqHeaders = [];
         }
+
+        // Log the resource and request info
+        this.log.debug("\n\nResource: " + resource + "\nRequest: " + request + "\n");
 
         const imsSession = this.session as ImsSession;
         if (imsSession.imsConnectHost != null) {

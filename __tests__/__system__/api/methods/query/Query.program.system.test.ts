@@ -16,8 +16,9 @@ import { ImsSession, IQueryProgramParms, queryProgram } from "../../../../../src
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
+let route: string;
 
-describe("IMS Query program", () => {
+describe("IMS query program", () => {
 
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
@@ -25,6 +26,7 @@ describe("IMS Query program", () => {
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
+        route = imsProperties.route;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -68,6 +70,7 @@ describe("IMS Query program", () => {
         options.names = ["*"];
         options.attributes = ["ALL"];
         options.status = ["LOCK"];
+        options.route = [route];
         try {
             response = await queryProgram(session, options);
         } catch (err) {

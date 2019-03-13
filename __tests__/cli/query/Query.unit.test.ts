@@ -12,7 +12,7 @@
 import { ICommandDefinition } from "@brightside/imperative";
 
 describe("ims query", () => {
-    const DEFINE_RESOURCES = 2;
+    const DEFINE_RESOURCES = 3;
 
     it ("should not have changed", () => {
         const definition: ICommandDefinition = require("../../../src/cli/query/Query.definition");

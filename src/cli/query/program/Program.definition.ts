@@ -71,5 +71,17 @@ export const ProgramDefinition: ICommandDefinition = {
     {
         description: strings.EXAMPLES.EX3,
         options: "PROG*"
+    },
+    {
+        description: strings.EXAMPLES.EX4,
+        options: ""
+    },
+    {
+        description: strings.EXAMPLES.EX5,
+        options: "--attributes BMPTYPE TIMESTAMP --status NOTINIT --route IMS1 IMS2"
+    },
+    {
+        description: strings.EXAMPLES.EX6,
+        options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };

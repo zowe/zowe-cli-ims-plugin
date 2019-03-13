@@ -19,6 +19,18 @@ Object {
       "description": "Query information for application programs starting with PROG using the wild card character '*'",
       "options": "PROG*",
     },
+    Object {
+      "description": "Query information for all application programs (default is all)",
+      "options": "",
+    },
+    Object {
+      "description": "Query information for all application programs specifying optional parameters",
+      "options": "--attributes BMPTYPE TIMESTAMP --status NOTINIT --route IMS1 IMS2",
+    },
+    Object {
+      "description": "Query information for all application programs specifying optional connection parameters",
+      "options": "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+    },
   ],
   "name": "program",
   "options": Array [

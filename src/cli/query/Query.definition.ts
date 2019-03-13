@@ -12,6 +12,7 @@
 import { ImsSessionUtils } from "../ImsSessionUtils";
 import { ICommandDefinition } from "@zowe/imperative";
 import { ProgramDefinition } from "./program/Program.definition";
+import { RegionDefinition } from "./region/Region.definition";
 import { TransactionDefinition } from "./transaction/Transaction.definition";
 
 import i18nTypings from "../-strings-/en";
@@ -28,6 +29,7 @@ const definition: ICommandDefinition = {
     description: strings.DESCRIPTION,
     type: "group",
     children: [ProgramDefinition,
+        RegionDefinition,
         TransactionDefinition],
     passOn: [
         {

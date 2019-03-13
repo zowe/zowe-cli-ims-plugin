@@ -116,6 +116,18 @@ export const TransactionDefinition: ICommandDefinition = {
         {
             description: strings.EXAMPLES.EX3,
             options: "TRAN*"
+        },
+        {
+            description: strings.EXAMPLES.EX4,
+            options: ""
+        },
+        {
+            description: strings.EXAMPLES.EX5,
+            options: "--attributes AFFIN TIMESTAMP --status NOTINIT --route IMS1 IMS2"
+        },
+        {
+            description: strings.EXAMPLES.EX6,
+            options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
         }]
 };
 

@@ -112,7 +112,6 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
 
     let delimiter = "?"; // initial delimiter
 
-
     Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
@@ -279,9 +278,9 @@ export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms
             delimiter = "&";
         }
 
-        // dc value is not required; defaults to true
+        // region value is not required; defaults to true
         if (parms.region !== undefined) {
-            // 'dc' text must be lower case
+            // 'region' text must be lower case
             resource = resource + delimiter + "region=";
             resource = resource + (parms.region === true ? "true" : "false");
             delimiter = "&";

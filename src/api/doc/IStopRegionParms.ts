@@ -17,10 +17,12 @@ export interface IStopRegionParms {
      * Region Number Identifier. Can specify a Region Number or a Job Name, but NOT BOTH.
      */
     reg_num?: number[];
+
     /**
      * Can specify a Region Number or a Job Name, but NOT BOTH.
      */
     job_name?: string;
+
     /**
      * If the transaction indicated by this parameter is running in the specified region to stop,
      * an error message is received at the master terminal, indicating an application
@@ -31,10 +33,12 @@ export interface IStopRegionParms {
      * Specify a transaction to abnormally terminate
      */
     abdump?: string;
+
     /**
      * Specify a transaction in wait-for-input (WFI) mode to stop its message processing within the specified region
      */
     transaction?: string;
+
     /**
      * Is used if the region cannot be stopped with a stop region --abdump
      * command and must be preceded by a stop region --abdump command.

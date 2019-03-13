@@ -46,7 +46,7 @@ describe("IMS - Stop transaction", () => {
 
     describe("success scenarios", () => {
 
-        it("should be able to stop a transaction with reg_num", async () => {
+        it("should be able to stop a transaction with name specified", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
                 "?names=" + transaction + "&" + ImsConstants.STOP + "=SCHD";

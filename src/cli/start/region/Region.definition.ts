@@ -46,7 +46,23 @@ export const RegionDefinition: ICommandDefinition = {
         }],
     profile: {optional: ["ims"]},
     examples: [{
-        description: strings.EXAMPLES.EX1,
-        options: "MEM1"
-    }]
+            description: strings.EXAMPLES.EX1,
+            options: "MEM1"
+        },
+        {
+            description: strings.EXAMPLES.EX2,
+            options: "MEM2 --route IMS1"
+        },
+        {
+            description: strings.EXAMPLES.EX3,
+            options: "MEM3 --job-name JOB9"
+        },
+        {
+            description: strings.EXAMPLES.EX4,
+            options: "MEM4 --route IMS1 IMS2"
+        },
+        {
+            description: strings.EXAMPLES.EX4,
+            options: "MEM5 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        }]
 };

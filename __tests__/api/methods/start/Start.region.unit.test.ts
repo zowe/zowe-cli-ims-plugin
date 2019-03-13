@@ -70,9 +70,10 @@ describe("IMS - Start region", () => {
 
             startRegionParms.local = false;
             startRegionParms.job_name = "job";
+            startRegionParms.route = ["route"];
 
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START +
-                "?member_name=" + member + "&job_name=job&local=false";
+                "?member_name=" + member + "&job_name=job&local=false&route=route";
 
             response = await startRegion(dummySession, startRegionParms);
 
@@ -123,7 +124,7 @@ describe("IMS - Start region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Expect Error: Required parameter 'IMS Member name' must not be blank");
+            expect(error.message).toContain("Expect Error: Required parameter 'IMS member name' must not be blank");
         });
     });
 });

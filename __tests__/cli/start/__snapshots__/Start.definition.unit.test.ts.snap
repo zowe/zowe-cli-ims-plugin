@@ -74,7 +74,6 @@ Object {
           "description": "Mainframe (IMS) user name, which can be the same as your TSO login.",
           "group": "IMS Connection Options",
           "name": "user",
-          "required": true,
           "type": "string",
         },
         Object {
@@ -84,7 +83,6 @@ Object {
           "description": "Mainframe (IMS) password, which can be the same as your TSO password.",
           "group": "IMS Connection Options",
           "name": "password",
-          "required": true,
           "type": "string",
         },
       ],
