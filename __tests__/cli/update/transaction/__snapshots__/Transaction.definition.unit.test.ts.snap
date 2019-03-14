@@ -1,0 +1,490 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims update transaction should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "tran",
+  ],
+  "description": "Update an IMS transaction.",
+  "examples": Array [
+    Object {
+      "description": "Update a transaction named TRN1 to process exclusively as Fast Path",
+      "options": "TRN1 --fp E",
+    },
+    Object {
+      "description": "Unlock to allow scheduling all transactions beginning with TRN* and associated with class CLASSA",
+      "options": "TRN* --class CLASSA --lock OFF",
+    },
+    Object {
+      "description": "Set response mode on for transaction named TRN2 and associated with classes CLASS1 and CLASS2",
+      "options": "TRN2 --class CLASS1 CLASS2 --resp Y",
+    },
+    Object {
+      "description": "Update a transaction named TRN3 to process exclusively as Fast Path routing to control regions IMS1 and IMS2",
+      "options": "TRN3 -fp E --route IMS1 IMS2",
+    },
+    Object {
+      "description": "Associate PGM1 with transaction named TRN4 specifying optional connection parameters",
+      "options": "TRN4 --pgm PGM1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+    },
+  ],
+  "name": "transaction",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "aocmd",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "CMD",
+          "TRAN",
+          "Y",
+        ],
+      },
+      "description": "Specifies the AOI option that you want to change (N, CMD, TRAN, Y).",
+      "name": "aoi-cmd",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "c",
+      ],
+      "description": "Selects the transactions associated with the specified class or classes to be updated.",
+      "name": "class",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "cmtmode",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "SINGLE",
+          "MODE",
+        ],
+      },
+      "description": "Specifies when database updates and non-express output messages are committed (SNGL, MULT).",
+      "name": "commit-mode",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "conv",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the conversation option (N or Y).",
+      "name": "conversation",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "cpri",
+      ],
+      "description": "Specifies a new value for the current priority of a transaction.",
+      "name": "current-priority",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "dirroute",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the MSC directed routing option (N or Y).",
+      "name": "directed-routing",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "editrtn",
+      ],
+      "description": "Specifies the 1- to 8-character name of your transaction input edit routine that edits messages before the program receives the message.",
+      "name": "edit-routine",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "edituc",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the edit to uppercase option (N or Y).",
+      "name": "edit-uppercase",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "emhbsz",
+      ],
+      "description": "Specifies the EMH buffer size required to run the Fast Path transaction.",
+      "name": "emh-buffer-size",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "exprtime",
+      ],
+      "description": "Specifies the elapsed time in seconds that IMS can use to cancel the input transaction.",
+      "name": "expiration-time",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "fp",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "E",
+          "N",
+          "P",
+        ],
+      },
+      "description": "Specifies the Fast Path option (E, N, P).",
+      "name": "fast-path",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "inq",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the inquiry option (N or Y).",
+      "name": "inquiry",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "lct",
+      ],
+      "description": "Specifies the limit count.",
+      "name": "limit-count",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "lpri",
+      ],
+      "description": "Specifies the limit priority.",
+      "name": "limit-priority",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "l",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ON",
+          "OFF",
+        ],
+      },
+      "description": "Specifies that the LOCK status is to be set on or off. Cannot be specified with any other SET attribute(ON or OFF).",
+      "name": "lock",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "dclwa",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the log write-ahead option (N or Y).",
+      "name": "log-write-ahead",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "maxrgn",
+      ],
+      "description": "Specifies a new value for the maximum number of regions that can be simultaneously scheduled for a given transaction.",
+      "name": "maximum-regions",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "msgtype",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "MULTSEG",
+          "SNGLSEG",
+        ],
+      },
+      "description": "Specifies the message type (single segment or multiple segment) (MULTSEG or SNGLSEG).",
+      "name": "message-type",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "mn",
+      ],
+      "description": "Specifies the one- to eight-character name of the logical link path in a multiple IMS system configuration (MSC).",
+      "name": "msname",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "npri",
+      ],
+      "description": "Specifies the normal scheduling priority.",
+      "name": "normal-scheduling-priority",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "o",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ALLRSP",
+        ],
+      },
+      "description": "Specifies functions to be performed along with the command (AFFIN or ALLRSP).",
+      "name": "option",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "parlim",
+      ],
+      "description": "Specifies the parallel processing limit count.",
+      "name": "parallel-processing-limit",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "pgm",
+      ],
+      "description": "Specifies the name of the application program associated with the transaction.",
+      "name": "program",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "plct",
+      ],
+      "description": "Specifies the processing limit count.",
+      "name": "processing-limit-count",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "plcttime",
+      ],
+      "description": "Specifies the processing limit count time.",
+      "name": "processing-limit-count-time",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "r",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the recovery option (N or Y).",
+      "name": "recover",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "re",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the remote option (N or Y).",
+      "name": "remote",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "resp",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the response mode option (N or Y).",
+      "name": "response-mode",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "Specifies the region(s) to route the command.",
+      "name": "route",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "segno",
+      ],
+      "description": "Specifies the segment number.",
+      "name": "segment-number",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "segsz",
+      ],
+      "description": "Specifies the segment size.",
+      "name": "segment-size",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "sr",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the serial option (N or Y).",
+      "name": "serial",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "sc",
+      ],
+      "description": "Specifies the transaction class, which is an attribute used to select a transaction for scheduling.",
+      "name": "set-class",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "sidl",
+      ],
+      "description": "Specifies the system identification (SYSID) of the local system in a multiple-IMS system (MSC) configuration.",
+      "name": "system-identification-local",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "sidr",
+      ],
+      "description": "Specifies the system identification (SYSID) of the remote system in a multiple-IMS system (MSC) configuration.",
+      "name": "system-identification-remote",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "spasz",
+      ],
+      "description": "Specifies the scratchpad area (SPA) size, in bytes, for a conversational transaction. The value can be a number from 16 and 32767.",
+      "name": "scratchpad-area-size",
+      "type": "number",
+    },
+    Object {
+      "aliases": Array [
+        "spatrunc",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "S",
+          "R",
+        ],
+      },
+      "description": "Specifies the scratchpad area (SPA) truncation option of a conversational transaction (S or R).",
+      "name": "scratchpad-area-truncation",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "transtat",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies whether transaction level statistics should be logged for message driven programs (N or Y).",
+      "name": "transaction-level-stat",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "wfi",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the wait-for input option (N or Y).",
+      "name": "wait-for-input",
+      "type": "string",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The names of the transactions to update. The maximum length of a transaction name is eight characters.",
+      "name": "names...",
+      "required": false,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

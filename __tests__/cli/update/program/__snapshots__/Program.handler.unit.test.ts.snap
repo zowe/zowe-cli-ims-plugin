@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateProgramHandler should call the update program api 1`] = `
+"
+
+"
+`;
+
+exports[`UpdateProgramHandler should call the update program api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;
