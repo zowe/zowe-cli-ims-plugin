@@ -4,7 +4,7 @@
   "description": "CLI Plug-in for IBM IMS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gizafoundation/zowe-cli-ims-plugin.git"
+    "url": "https://github.com/zowe/zowe-cli-ims-plugin.git"
   },
   "main": "lib/index.js",
   "files": [
