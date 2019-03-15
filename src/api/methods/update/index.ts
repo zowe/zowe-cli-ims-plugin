@@ -9,8 +9,4 @@
 *                                                                                 *
 */
 
-export * from "./query";
-export * from "./update";
-export * from "./start";
-export * from "./stop";
-
+export * from "./Update";

@@ -23,13 +23,14 @@ exports[`ims query region should display the query region help 1`] = `
 
    --dc  (boolean)
 
-      TODO - what is a DC.
+      Displays only the DC subset of the output
 
       Default value: true
 
    --region  (boolean)
 
-      TODO - what is REGION.
+      Displays only the REGION subset of the output. The display consists of active
+      regions
 
       Default value: true
 

@@ -9,8 +9,16 @@
 *                                                                                 *
 */
 
-export * from "./query";
-export * from "./update";
-export * from "./start";
-export * from "./stop";
+import { ICommandDefinition } from "@brightside/imperative";
 
+describe("ims update", () => {
+    const DEFINE_RESOURCES = 2;
+
+    it ("should not have changed", () => {
+        const definition: ICommandDefinition = require("../../../src/cli/update/Update.definition");
+        expect(definition).toBeDefined();
+        expect(definition.children.length).toBe(DEFINE_RESOURCES);
+        delete definition.children;
+        expect(definition).toMatchSnapshot();
+    });
+});

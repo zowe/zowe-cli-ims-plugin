@@ -1,4 +1,4 @@
-# Contribution Guidelines
+    # Contribution Guidelines
 This document is intended to be a living summary of conventions & best practices for development within Zowe CLI Plug-in for IBM IMS.
 
 ## Primary Contribution Guidelines

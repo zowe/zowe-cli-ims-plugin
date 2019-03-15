@@ -40,7 +40,7 @@ export interface IUpdateProgramParms {
     /**
      *
      */
-    bmptype?: string[];
+    bmptype?: string;
 
     /**
      *
