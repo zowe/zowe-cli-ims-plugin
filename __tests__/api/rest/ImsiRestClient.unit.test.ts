@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IImperativeError, RestClient, Session } from "@brightside/imperative";
+import { IImperativeError, RestClient, Session } from "@zowe/imperative";
 import { ImsRestClient } from "../../../src";
 
 describe("ImsRestClient tests", () => {
