@@ -70,7 +70,7 @@ describe("IMS update transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transaction + ") SET(LOCK(OFF))");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transaction.toUpperCase() + ") SET(LOCK(OFF))");
     });
 
     it("should update multiple transactions by transaction name and use multiple update options", async () => {
@@ -109,6 +109,6 @@ describe("IMS update transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + programWildCard + ") SET(LOCK(OFF))");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + programWildCard.toUpperCase() + ") SET(LOCK(OFF))");
     });
 });

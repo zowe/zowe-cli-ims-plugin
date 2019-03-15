@@ -313,13 +313,7 @@ export async function updateTransaction(session: ImsSession, parms: IUpdateTrans
     if (parms.route !== undefined) {
         // 'route' text must be lower case
         resource = resource + delimiter + "route=";
-        for (let i = 0; i < parms.route.length; i++) {
-            if (i === 0) {
-                resource = resource + encodeURIComponent(parms.route[i]);
-            } else {
-                resource = resource + "," + encodeURIComponent(parms.route[i]);
-            }
-        }
+        resource = resource + parms.route.map(encodeURIComponent).join(",");
     }
 
     return ImsRestClient.putExpectJSON(session, resource, [], undefined);

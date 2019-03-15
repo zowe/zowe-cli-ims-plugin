@@ -69,7 +69,7 @@ describe("IMS update program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) SET(LOCK(OFF))");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + program.toUpperCase() + ") SET(LOCK(OFF))");
     });
 
     it("should update program by program name and set 'lock' OFF and route command", async () => {
@@ -89,7 +89,7 @@ describe("IMS update program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) SET(LOCK(OFF))");
+        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + program.toUpperCase() + ") SET(LOCK(OFF))");
     });
 
     it("should update multiple programs by program name and set 'lock' OFF and route command", async () => {
