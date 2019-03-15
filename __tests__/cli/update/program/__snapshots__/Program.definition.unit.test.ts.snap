@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims update program should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "pgm",
+  ],
+  "description": "Update an IMS application program.",
+  "examples": Array [
+    Object {
+      "description": "Update an application program named PGM123 to execute exclusively as Fast Path",
+      "options": "PGM123 --fp E",
+    },
+    Object {
+      "description": "Update all application programs beginning with ACC* to not run in a BMP type region",
+      "options": "ACC* --bmptype N",
+    },
+    Object {
+      "description": "Unlock all programs beginning with PGM* to allow scheduling",
+      "options": "PGM234 --lock ON",
+    },
+    Object {
+      "description": "Update an application program named PGM890 to execute as Fast Path routing to control regions IMS1 and IMS2",
+      "options": "PGM890 --fp E --route IMS1 IMS2",
+    },
+    Object {
+      "description": "Unlock an application programs named XYZ1 to allow scheduling specifying optional connection parameters",
+      "options": "XYZ1 --lock ON --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+    },
+  ],
+  "name": "program",
+  "options": Array [
+    Object {
+      "aliases": Array [
+        "bmptype",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies whether the program runs in a BMP type region or not. (N or Y).",
+      "name": "bmp-type",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "dopt",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the dynamic option (N or Y).",
+      "name": "dynamic",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "fp",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "E",
+          "N",
+        ],
+      },
+      "description": "Specifies the Fast Path option (E or N).",
+      "name": "fast-path",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "gpsb",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the generated PSB option (N or Y).",
+      "name": "generated-psb",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "lang",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ASSEM",
+          "COBOL",
+          "JAVA",
+          "PASCAL",
+          "PLI",
+        ],
+      },
+      "description": "Specifies the language interface of the program or a GPSB or defined a DOPT(Y) program as using the JAVA language (ASSEM, COBOL, JAVA, PASCAL, PLI).",
+      "name": "language",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "l",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ON",
+          "OFF",
+        ],
+      },
+      "description": "Specifies the LOCK status is to be set (ON or OFF).",
+      "name": "lock",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "o",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "ALLRSP",
+        ],
+      },
+      "description": "Specifies to return response lines for all resources that are processed.  It is only valid with --names * (ALLRSP).",
+      "name": "option",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "r",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies the resident option (N or Y).",
+      "name": "resident",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "rte",
+      ],
+      "description": "Specifies the region(s) to route the command.",
+      "name": "route",
+      "type": "array",
+    },
+    Object {
+      "aliases": Array [
+        "schdtype",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "PARALLEL",
+          "SERIAL",
+        ],
+      },
+      "description": "Specifies whether this application program can be scheduled into more than one message region or batch message region simultaneously (PARALLEL or SERIAL).",
+      "name": "schedule-type",
+      "type": "string",
+    },
+    Object {
+      "aliases": Array [
+        "transtat",
+      ],
+      "allowableValues": Object {
+        "caseSensitive": true,
+        "values": Array [
+          "N",
+          "Y",
+        ],
+      },
+      "description": "Specifies whether transaction level statistics should be logged (N or Y).",
+      "name": "transaction-level-stat",
+      "type": "string",
+    },
+  ],
+  "outputFormatOptions": true,
+  "positionals": Array [
+    Object {
+      "description": "The names of the application programs to update. The maximum length of a program name is eight characters.",
+      "name": "names...",
+      "required": false,
+      "type": "string",
+    },
+  ],
+  "profile": Object {
+    "optional": Array [
+      "ims",
+    ],
+  },
+  "type": "command",
+}
+`;

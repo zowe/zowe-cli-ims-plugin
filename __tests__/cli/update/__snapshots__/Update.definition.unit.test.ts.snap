@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ims update should not have changed 1`] = `
+Object {
+  "aliases": Array [
+    "upd",
+  ],
+  "description": "Updates the setting(s) for application program or transaction. This command submits a 'UPDATE PGM' or 'UPDATE TRAN' IMS command and returns the output.",
+  "name": "update",
+  "passOn": Array [
+    Object {
+      "ignoreNodes": Array [
+        Object {
+          "type": "group",
+        },
+      ],
+      "merge": true,
+      "property": "options",
+      "value": Array [
+        Object {
+          "aliases": Array [
+            "H",
+          ],
+          "description": "The IMS Command Services server host name.",
+          "group": "IMS Connection Options",
+          "name": "host",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "P",
+          ],
+          "description": "The IMS Command Services server port.",
+          "group": "IMS Connection Options",
+          "name": "port",
+          "required": true,
+          "type": "number",
+        },
+        Object {
+          "aliases": Array [
+            "ich",
+          ],
+          "description": "The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.",
+          "group": "IMS Connection Options",
+          "name": "ims-connect-host",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "icp",
+          ],
+          "description": "The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.",
+          "group": "IMS Connection Options",
+          "name": "ims-connect-port",
+          "required": true,
+          "type": "number",
+        },
+        Object {
+          "aliases": Array [
+            "x",
+          ],
+          "description": "The name of the IMS plex.",
+          "group": "IMS Connection Options",
+          "name": "plex",
+          "required": true,
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "u",
+          ],
+          "description": "Mainframe (IMS) user name, which can be the same as your TSO login.",
+          "group": "IMS Connection Options",
+          "name": "user",
+          "type": "string",
+        },
+        Object {
+          "aliases": Array [
+            "pass",
+          ],
+          "description": "Mainframe (IMS) password, which can be the same as your TSO password.",
+          "group": "IMS Connection Options",
+          "name": "password",
+          "type": "string",
+        },
+      ],
+    },
+  ],
+  "summary": "Update resources in IMS",
+  "type": "group",
+}
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateTransactionHandler should call the update transaction api 1`] = `
+"
+
+"
+`;
+
+exports[`UpdateTransactionHandler should call the update transaction api 2`] = `
+Object {
+  "data": Object {},
+  "messages": Object {},
+}
+`;

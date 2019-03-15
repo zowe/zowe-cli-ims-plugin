@@ -28,13 +28,13 @@ Object {
   "options": Array [
     Object {
       "defaultValue": true,
-      "description": "TODO - what is a DC.",
+      "description": "Displays only the DC subset of the output",
       "name": "dc",
       "type": "boolean",
     },
     Object {
       "defaultValue": true,
-      "description": "TODO - what is REGION.",
+      "description": "Displays only the REGION subset of the output. The display consists of active regions",
       "name": "region",
       "type": "boolean",
     },
