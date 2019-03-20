@@ -16,7 +16,7 @@ exports[`ims query transaction should display the help 1`] = `
  USAGE
  -----
 
-   zowe ims query transaction [names...] [options]
+   bright ims query transaction [names...] [options]
 
  POSITIONAL ARGUMENTS
  --------------------
@@ -173,32 +173,32 @@ exports[`ims query transaction should display the help 1`] = `
 
    - Query transaction information for transaction named TRN12:
 
-      $ zowe ims query transaction TRN12
+      $ bright ims query transaction TRN12
 
    - Query transaction information for transactions named TRAN1
    and TRAN2:
 
-      $ zowe ims query transaction TRAN1 TRAN2
+      $ bright ims query transaction TRAN1 TRAN2
 
    - Query transaction information for transactions starting
    with TRAN using the wild card character '*':
 
-      $ zowe ims query transaction TRAN*
+      $ bright ims query transaction TRAN*
 
    - Query transaction information for all transactions(default
    is all):
 
-      $ zowe ims query transaction 
+      $ bright ims query transaction 
 
    - Query transaction information for all transactions
    specifying optional parameters:
 
-      $ zowe ims query transaction --attributes AFFIN TIMESTAMP --status NOTINIT --route IMS1 IMS2
+      $ bright ims query transaction --attributes AFFIN TIMESTAMP --status NOTINIT --route IMS1 IMS2
 
    - Query transaction information for all transactions
    specifying optional connection parameters:
 
-      $ zowe ims query transaction --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1
+      $ bright ims query transaction --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1
 
 "
 `;
