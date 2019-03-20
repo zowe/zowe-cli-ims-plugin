@@ -334,7 +334,7 @@ pipeline {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo 'Build'
-                    sh "echo '${ZOWE_DIR}' | npm run build"
+                    sh "npm run build"
 
                     sh 'tar -czvf BuildArchive.tar.gz ./lib/'
                     archiveArtifacts 'BuildArchive.tar.gz'
