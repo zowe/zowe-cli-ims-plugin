@@ -58,12 +58,12 @@ def rmProt(String url) {
 /**
 * Targeted scope
 */
-def TARGET_SCOPE = "@brightside"
+def TARGET_SCOPE = "@zowe"
 
 /**
-* Brightside tag to be installed
+* zowe tag to be installed
 */
-def BRIGHTSIDE_TAG_VERSION = "@next"
+def ZOWE_TAG_VERSION = "@daily"
 
 /**
  * Test npm registry using for smoke test
@@ -137,11 +137,6 @@ def ARTIFACTORY_EMAIL = GIT_USER_EMAIL
  * the builds
  */
 def PRODUCT_NAME = "zowe-ims-plugin"
-
-/**
- * This is where the brightside project needed to be install
- */
-def BRIGHTSIDE_DIR = "/.npm-global/lib/node_modules/${TARGET_SCOPE}/core"
 
 // Setup conditional build options. Would have done this in the options of the declarative pipeline, but it is pretty
 // much impossible to have conditional options based on the branch :/
@@ -255,7 +250,7 @@ pipeline {
             steps('Install Zowe CLI') {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo "Install Zowe CLI globally"
-                    sh "npm install -g ${TARGET_SCOPE}/core${BRIGHTSIDE_TAG_VERSION} --${TARGET_SCOPE}:registry=${DL_URL.bintray}"
+                    sh "npm install -g ${TARGET_SCOPE}/cli${ZOWE_TAG_VERSION} --${TARGET_SCOPE}:registry=${DL_URL.bintray}"
                     sh "zowe --version"
                     sh "zowe"
                 }
@@ -339,7 +334,7 @@ pipeline {
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
                     echo 'Build'
-                    sh "echo '${BRIGHTSIDE_DIR}' | npm run build"
+                    sh "npm run build"
 
                     sh 'tar -czvf BuildArchive.tar.gz ./lib/'
                     archiveArtifacts 'BuildArchive.tar.gz'

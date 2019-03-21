@@ -40,7 +40,7 @@ Before you install the plug-in, meet the following prerequisites:
     npm run build
     ```
 
-    The first time you build your code changes, you will be prompted for the location of the Imperative CLI Framework package, which is located in the `node_modules/@brightside` folder in the directory where Zowe CLI was installed.
+    The first time you build your code changes, you will be prompted for the location of the Imperative CLI Framework package, which is located in the `node_modules/@zowe` folder in the directory where Zowe CLI was installed.
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 

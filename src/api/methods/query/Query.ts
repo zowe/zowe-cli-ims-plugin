@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, Logger } from "@brightside/imperative";
+import { AbstractSession, Logger } from "@zowe/imperative";
 import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IQueryProgramParms, IQueryRegionParms, IQueryTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";

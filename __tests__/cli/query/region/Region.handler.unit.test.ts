@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
+import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { RegionDefinition } from "../../../../src/cli/query/region/Region.definition";
 import RegionHandler from "../../../../src/cli/query/region/Region.handler";

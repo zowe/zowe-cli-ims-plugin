@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ISession } from "@brightside/imperative";
+import { ISession } from "@zowe/imperative";
 
 export interface IImsSession extends ISession {
     /**

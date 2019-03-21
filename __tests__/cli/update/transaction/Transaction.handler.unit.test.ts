@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@brightside/imperative";
+import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { TransactionDefinition } from "../../../../src/cli/update/transaction/Transaction.definition";
 import TransactionHandler from "../../../../src/cli/update/transaction/Transaction.handler";

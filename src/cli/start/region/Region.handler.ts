@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@brightside/imperative";
+import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, startRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
