@@ -113,7 +113,7 @@ node('ca-jenkins-agent') {
         pipeline.test(
             name: "Integration",
             operation: {
-                sh "npm i -g @zowe/cli@daily --zowe:registry=${pipeline.registryConfig.url}"
+                sh "npm i -g @zowe/cli@daily --zowe:registry=${pipeline.registryConfig[0].url}"
                 // create the custom properties file. contents don't matter for integration tests
                 sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
                 sh "npm run test:integration"
