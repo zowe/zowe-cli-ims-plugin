@@ -2,14 +2,18 @@
   "name": "@zowe/ims",
   "version": "1.2.1-alpha.201903251448",
   "description": "CLI Plug-in for IBM IMS",
-  "repository":   {
+  "repository": {
     "type": "git",
     "url": "https://github.com/zowe/zowe-cli-ims-plugin.git"
   },
   "main": "lib/index.js",
-  "files": ["lib"],
-  "publishConfig": {"registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"},
-  "scripts":   {
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-local-release/"
+  },
+  "scripts": {
     "build": "node scripts/updateLicense.js && tsc --pretty && npm run checkTestsCompile",
     "checkTestsCompile": "echo \"Checking that test source compiles...\" && tsc --project __tests__/test-tsconfig.json --noEmit ",
     "prebuild": "npm run clean && npm run lint && echo Using TypeScript && tsc --version",
@@ -25,9 +29,11 @@
     "test:unit": "env-cmd __tests__/__resources__/env/unit.env jest --coverage --testPathIgnorePatterns \".*/__system__/.*\" \"__integration__\"",
     "installPlugin": "npm install && npm run clean && npm run build && zowe plugins install ."
   },
-  "imperative": {"configurationModule": "lib/imperative.js"},
+  "imperative": {
+    "configurationModule": "lib/imperative.js"
+  },
   "dependencies": {},
-  "devDependencies":   {
+  "devDependencies": {
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
     "@types/yargs": "8.0.2",
@@ -52,40 +58,50 @@
     "typescript": "3.2.2",
     "uuid": "^3.2.1"
   },
-  "jest":   {
-    "setupFilesAfterEnv": ["./__tests__/setUpJest.js"],
-    "modulePathIgnorePatterns": ["__tests__/__snapshots__/"],
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./__tests__/setUpJest.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "__tests__/__snapshots__/"
+    ],
     "testResultsProcessor": "jest-stare",
-    "transform": {".(ts)": "ts-jest"},
+    "transform": {
+      ".(ts)": "ts-jest"
+    },
     "testRegex": "(test|spec)\\.ts$",
-    "moduleFileExtensions":     [
+    "moduleFileExtensions": [
       "ts",
       "js"
     ],
-    "testPathIgnorePatterns":     [
+    "testPathIgnorePatterns": [
       "<rootDir>/__tests__/__results__",
       "./__tests__/setUpJest.js"
     ],
     "testEnvironment": "node",
-    "collectCoverageFrom":     [
+    "collectCoverageFrom": [
       "src/**/*.ts",
       "!**/__tests__/**",
       "!**/index.ts",
       "!**/main.ts"
     ],
     "collectCoverage": false,
-    "coverageReporters":     [
+    "coverageReporters": [
       "json",
       "lcov",
       "text",
       "cobertura"
     ],
     "coverageDirectory": "<rootDir>/__tests__/__results__/unit/coverage",
-    "globals": {"ts-jest": {"diagnostics": false}}
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    }
   },
-  "jest-stare":   {
+  "jest-stare": {
     "resultDir": "__tests__/__results__/jest-stare",
-    "additionalResultsProcessors":     [
+    "additionalResultsProcessors": [
       "jest-junit",
       "jest-html-reporter"
     ],
