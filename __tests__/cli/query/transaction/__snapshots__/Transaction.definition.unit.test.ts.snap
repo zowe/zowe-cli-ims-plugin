@@ -65,9 +65,6 @@ Object {
           "WORK",
         ],
       },
-      "defaultValue": Array [
-        "ALL",
-      ],
       "description": "Specifies the transaction output fields to return.",
       "name": "attributes",
       "type": "array",

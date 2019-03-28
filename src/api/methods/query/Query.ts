@@ -132,7 +132,7 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
         }
     }
 
-    // if no attributes default to ALL
+    // if no attributes take no default; default will be determined in 'Transaction.handler.ts'
     if ((parms !== undefined) && (parms.attributes !== undefined)) {
         if (parms.attributes.length > 0) {
             // 'attributes' text must be lower case
@@ -145,9 +145,6 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
                 }
             }
         }
-        delimiter = "&";
-    } else {
-        resource = resource + delimiter + "attributes=ALL";
         delimiter = "&";
     }
 
