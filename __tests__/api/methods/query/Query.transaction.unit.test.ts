@@ -60,7 +60,7 @@ describe("IMS - Query transaction", () => {
 
             // if no parameters, then /ims/apis/v1/transaction which
             // returns all transactions with all columns
-            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION
+            endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION;
 
             response = await queryTransaction(dummySession);
 
