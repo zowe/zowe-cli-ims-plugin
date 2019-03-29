@@ -17,7 +17,7 @@ Object {
     },
     Object {
       "description": "Unlock all programs beginning with PGM* to allow scheduling",
-      "options": "PGM234 --lock ON",
+      "options": "PGM234 --lock OFF",
     },
     Object {
       "description": "Update an application program named PGM890 to execute as Fast Path routing to control regions IMS1 and IMS2",
@@ -25,7 +25,7 @@ Object {
     },
     Object {
       "description": "Unlock an application programs named XYZ1 to allow scheduling specifying optional connection parameters",
-      "options": "XYZ1 --lock ON --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "XYZ1 --lock OFF --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
     },
   ],
   "name": "program",
