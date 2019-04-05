@@ -33,6 +33,10 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {},
+  "peerDependencies": {
+    "@zowe/cli": "^3.0.0",
+    "@zowe/imperative": "^3.0.0"
+  },
   "devDependencies": {
     "@types/jest": "^20.0.5",
     "@types/node": "^8.0.0",
