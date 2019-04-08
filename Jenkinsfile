@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-@Library('shared-pipelines@v1.2.0') import org.zowe.pipelines.nodejs.NodeJSPipeline
+@Library('shared-pipelines@v1.2.2') import org.zowe.pipelines.nodejs.NodeJSPipeline
 
 import org.zowe.pipelines.nodejs.models.SemverLevel
 
@@ -30,7 +30,7 @@ node('ca-jenkins-agent') {
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
         [name: "master", tag: "daily", prerelease: "alpha", dependencies: ["@zowe/imperative": "daily"]],
-        [name: "latest", tag: "latest", dependencies: ["@zowe/imperative": "latest"]],
+        [name: "latest", tag: "latest", dependencies: ["@zowe/imperative": "latest"], autoDeploy: true],
         [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.MINOR, dependencies: ["@brightside/imperative": "lts-incremental"]]
     ])
 
