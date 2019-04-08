@@ -145,7 +145,7 @@ export const ProgramDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "PGM234 --lock ON"
+        options: "PGM234 --lock OFF"
     },
     {
         description: strings.EXAMPLES.EX4,
@@ -153,6 +153,6 @@ export const ProgramDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "XYZ1 --lock ON --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "XYZ1 --lock OFF --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
     }]
 };

@@ -39,8 +39,7 @@ export const TransactionDefinition: ICommandDefinition = {
                     "DB", "RTC", "TRAN", "WORK"],
                 caseSensitive: true
             },
-            aliases: ["att"],
-            defaultValue: ["ALL"]
+            aliases: ["att"]
         },
         {
             name: "status",
