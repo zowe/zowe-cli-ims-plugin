@@ -103,7 +103,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "Specifies the names of the programs to query.",
+      "description": "Specifies the name of the program(s) to query.",
       "name": "names...",
       "required": false,
       "type": "string",

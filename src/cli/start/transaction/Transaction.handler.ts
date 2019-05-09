@@ -45,7 +45,7 @@ export default class TransactionHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await startTransaction(session, {
-            names: params.arguments.names,
+            name: params.arguments.name,
             start: params.arguments.attributes,
             route: params.arguments.route
         });

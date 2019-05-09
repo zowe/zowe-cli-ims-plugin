@@ -58,7 +58,7 @@ describe("IMS update transaction", () => {
         let error;
         let response;
 
-        options.names = [transaction];
+        options.name = [transaction];
         options.lock = "OFF";
 
         try {
@@ -77,7 +77,7 @@ describe("IMS update transaction", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.name = ["D*", "IV*"];
         options.lock = "OFF";
 
         try {
@@ -96,7 +96,7 @@ describe("IMS update transaction", () => {
         let error;
         let response;
 
-        options.names = [programWildCard];
+        options.name = [programWildCard];
         options.lock = "OFF";
         options.route = [route];
 

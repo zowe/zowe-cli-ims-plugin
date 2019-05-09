@@ -77,7 +77,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 };
 
 describe("QueryTransactionHandler", () => {
-    const names = "testTransaction";
+    const name = "testTransaction";
     const attributes = "ALL";
 
     const defaultReturn: IIMSApiResponse = {
@@ -99,7 +99,7 @@ describe("QueryTransactionHandler", () => {
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            name,
             host,
             port,
             user,
@@ -128,7 +128,7 @@ describe("QueryTransactionHandler", () => {
             }),
             {
                 attribute: undefined,
-                names
+                name
             }
         );
     });

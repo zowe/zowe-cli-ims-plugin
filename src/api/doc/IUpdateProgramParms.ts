@@ -16,9 +16,9 @@ export interface IUpdateProgramParms {
     /**
      * Specifies the 1-8 character name of the program.
      * Wildcards can be specified in the name.
-     * names is a repeatable parameter.
+     * name is a repeatable parameter.
      */
-    names: string[];
+    name: string[];
 
     /**
      *

@@ -474,7 +474,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The names of the transactions to update. The maximum length of a transaction name is eight characters.",
+      "description": "The name of the transaction(s) to update. The maximum length of a transaction name is eight characters.",
       "name": "names...",
       "required": false,
       "type": "string",

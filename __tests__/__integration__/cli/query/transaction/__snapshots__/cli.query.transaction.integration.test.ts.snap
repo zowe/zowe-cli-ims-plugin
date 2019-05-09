@@ -33,7 +33,6 @@ exports[`ims query transaction should display the help 1`] = `
 
       Specifies the transaction output fields to return.
 
-      Default value: ALL
       Allowed values: ALL, BMPTYPE, DEFN, DEFNTYPE, DOPT, FP, GLOBAL, IMSID, GPSB,
       LANG, LOCAL, MODEL, RESIDENT, SCHDTYPE, STATUS, TIMESTAMP, TRANSTAT,
       EXPORTNEEDED, DB, RTC, TRAN, WORK

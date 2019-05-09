@@ -61,7 +61,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The names of the application programs to start. The maximum length of a program name is eight characters.",
+      "description": "The name of the application program(s) to start. The maximum length of a program name is eight characters.",
       "name": "names...",
       "required": false,
       "type": "string",

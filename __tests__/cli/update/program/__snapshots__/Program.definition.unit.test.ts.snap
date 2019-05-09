@@ -133,7 +133,7 @@ Object {
           "ALLRSP",
         ],
       },
-      "description": "Specifies to return response lines for all resources that are processed.  It is only valid with --names * (ALLRSP).",
+      "description": "Specifies to return response lines for all resources that are processed.  It is only valid with --name * (ALLRSP).",
       "name": "option",
       "type": "string",
     },
@@ -194,7 +194,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The names of the application programs to update. The maximum length of a program name is eight characters.",
+      "description": "The name of the application program(s) to update. The maximum length of a program name is eight characters.",
       "name": "names...",
       "required": false,
       "type": "string",

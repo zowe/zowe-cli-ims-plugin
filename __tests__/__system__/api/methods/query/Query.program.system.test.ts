@@ -67,7 +67,7 @@ describe("IMS query program", () => {
         let error;
         let response;
 
-        options.names = ["*"];
+        options.name = ["*"];
         options.attributes = ["ALL"];
         options.status = ["LOCK"];
         options.route = [route];
@@ -90,7 +90,7 @@ describe("IMS query program", () => {
         let error;
         let response;
 
-        options.names = ["*"];
+        options.name = ["*"];
         options.attributes = ["A"];  // invalid value
         options.status = ["LOCK"];
 

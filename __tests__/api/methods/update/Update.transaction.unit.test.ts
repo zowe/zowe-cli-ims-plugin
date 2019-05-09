@@ -18,7 +18,7 @@ describe("IMS - Update transaction", () => {
     const content = "This\nis\r\na\ntest";
     const plexName = "fakePlex";
     const updateTransactionParms: IUpdateTransactionParms = {
-        names: [transaction]
+        name: [transaction]
     };
 
     const dummySession = new ImsSession({
@@ -92,7 +92,7 @@ describe("IMS - Update transaction", () => {
             updateTransactionParms.route = ["IMS1", "IMS2"];
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction + "&class=3&scope=ALL&aocmd=N&setClass=3&cmtmode=MULT&conv=Y" +
+                "?" + ImsConstants.NAME + "=" + transaction + "&class=3&scope=ALL&aocmd=N&setClass=3&cmtmode=MULT&conv=Y" +
                 "&cpri=3&dclwa=N&dirroute=N&editrtn=A&edituc=N&emhbsz=3&exprtime=3&fp=E&inq=N&lct=3&lpri=3&lock=ON&maxrgn=3" +
                 "&msgtype=MULTSEG&msname=name&npri=3&option=ALLRSP&parlim=3&pgm=pgm&plct=3&plcttime=3&recover=Y&remote=N" +
                 "&segno=3&segsz=3&pgm=N&sidl=3&sidr=3&spasz=3&spatrunc=S&transtat=N&wfi=Y&route=IMS1,IMS2";
@@ -102,9 +102,9 @@ describe("IMS - Update transaction", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        // it("should be able to update a transaction with all parameters specified but names", async () => {
+        // it("should be able to update a transaction with all parameters specified but name", async () => {
         //
-        //     updateTransactionParms.names = undefined;
+        //     updateTransactionParms.name = undefined;
         //     updateTransactionParms.bmptype = "N";
         //     updateTransactionParms.dopt = "N";
         //     updateTransactionParms.fp = "E";
@@ -118,7 +118,7 @@ describe("IMS - Update transaction", () => {
         //     updateTransactionParms.route = ["IMS1", "IMS2"];
         //
         //     endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-        //         "?" + ImsConstants.NAMES + "=" + transaction + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
+        //         "?" + ImsConstants.NAME + "=" + transaction + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
         //         "&resident=N&schdtype=SERIAL&transtat=N&option=ALLRSP&route=IMS1,IMS2";
         //
         //     response = await updateTransaction(dummySession, updateTransactionParms);
@@ -141,12 +141,12 @@ describe("IMS - Update transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
         it("should fail if names is not defined", async () => {
 
-            updateTransactionParms.names = undefined;
+            updateTransactionParms.name = undefined;
 
             try {
                 response = await updateTransaction(dummySession, updateTransactionParms);
@@ -161,7 +161,7 @@ describe("IMS - Update transaction", () => {
 
         it("should fail if names is not provided", async () => {
 
-            updateTransactionParms.names = [""];
+            updateTransactionParms.name = [""];
 
             try {
                 response = await updateTransaction(dummySession, updateTransactionParms);

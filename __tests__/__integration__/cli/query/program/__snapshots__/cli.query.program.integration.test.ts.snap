@@ -23,7 +23,7 @@ exports[`ims query program should display the query program help 1`] = `
 
    names...		 (string)
 
-      Specifies the names of the programs to query.
+      Specifies the name of the program(s) to query.
 
  OPTIONS
  -------

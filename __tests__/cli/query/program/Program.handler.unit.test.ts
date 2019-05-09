@@ -77,7 +77,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 };
 
 describe("QueryProgramHandler", () => {
-    const names = "testProgram";
+    const name = "testProgram";
     const attributes = "ALL";
 
     const defaultReturn: IIMSApiResponse = {
@@ -99,7 +99,7 @@ describe("QueryProgramHandler", () => {
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            name,
             host,
             port,
             user,
@@ -128,7 +128,7 @@ describe("QueryProgramHandler", () => {
             }),
             {
                 attribute: undefined,
-                names
+                name
             }
         );
     });

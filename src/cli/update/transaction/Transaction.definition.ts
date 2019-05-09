@@ -23,7 +23,7 @@ export const TransactionDefinition: ICommandDefinition = {
     type: "command",
     positionals: [{
         name: "names...",
-        description: strings.POSITIONALS.NAMES,
+        description: strings.POSITIONALS.NAME,
         type: "string",
         required: false
     }],

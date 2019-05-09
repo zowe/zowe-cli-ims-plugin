@@ -57,7 +57,7 @@ describe("IMS update program", () => {
         let error;
         let response;
 
-        options.names = [program];
+        options.name = [program];
         options.lock = "OFF";
 
         try {
@@ -76,7 +76,7 @@ describe("IMS update program", () => {
         let error;
         let response;
 
-        options.names = [program];
+        options.name = [program];
         options.lock = "OFF";
         options.route = [route];
 
@@ -96,7 +96,7 @@ describe("IMS update program", () => {
         let error;
         let response;
 
-        options.names = [programWildCard];
+        options.name = [programWildCard];
         options.lock = "OFF";
         options.route = [route];
 
