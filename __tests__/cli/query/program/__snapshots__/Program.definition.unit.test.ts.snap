@@ -104,7 +104,7 @@ Object {
   "positionals": Array [
     Object {
       "description": "Specifies the name of the program(s) to query.",
-      "name": "names...",
+      "name": "name...",
       "required": false,
       "type": "string",
     },

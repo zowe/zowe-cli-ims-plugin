@@ -16,12 +16,12 @@ exports[`ims query transaction should display the help 1`] = `
  USAGE
  -----
 
-   zowe ims query transaction [names...] [options]
+   zowe ims query transaction [name...] [options]
 
  POSITIONAL ARGUMENTS
  --------------------
 
-   names...		 (string)
+   name...		 (string)
 
       Specifies the name of transaction(s) to query. You can use an * character as a
       wildcard to select multiple transactions.

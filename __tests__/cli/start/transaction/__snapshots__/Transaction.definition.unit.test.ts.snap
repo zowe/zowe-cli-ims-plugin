@@ -63,7 +63,7 @@ Object {
   "positionals": Array [
     Object {
       "description": "The name of the transaction(s) to start. The maximum length of a transaction name is eight characters.",
-      "name": "names...",
+      "name": "name...",
       "required": false,
       "type": "string",
     },
