@@ -23,9 +23,9 @@ node('ca-jenkins-agent') {
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
-    // Build admins, users that can approve the build and receieve emails for
+    // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "mikebauerca", "markackert", "dkelosky")
+    pipeline.admins.add("zfernand0", "markackert")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
@@ -37,7 +37,8 @@ node('ca-jenkins-agent') {
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',
-        credentialsId: 'zowe-robot-github'
+        credentialsId: 'zowe-robot-github',
+        githubAPIEndpoint: 'https://api.github.com/'
     ]
 
     // npm publish configuration
