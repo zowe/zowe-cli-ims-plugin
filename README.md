@@ -23,7 +23,7 @@ Before you install the plug-in, meet the following prerequisites:
 
 * Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.htm). IMS Connect is required so that IBM IMS Command Services can function. 
 
-* Configure IBM® IMS™ Command Services. IMS Command Services are APIs that enable communication between the CLI and the IMS instance. 
+* Configure [IBM® IMS™ Operations APIs](https://github.com/zowe/ims-operations-api). The APIs enable communication between the CLI and the IMS instance.
 
 ## Build the Plug-in from Source
 **Follow these steps:**
