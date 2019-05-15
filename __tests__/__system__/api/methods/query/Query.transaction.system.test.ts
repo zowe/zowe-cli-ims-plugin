@@ -67,7 +67,7 @@ describe("IMS query transaction", () => {
         let error;
         let response;
 
-        options.names = ["*"];
+        options.name = ["*"];
         options.attributes = ["ALL"];
         options.status = ["LCK"];
         try {
@@ -89,7 +89,7 @@ describe("IMS query transaction", () => {
         let error;
         let response;
 
-        options.names = ["*"];
+        options.name = ["*"];
         options.attributes = ["A"];  // invalid value
         options.status = ["LCK"];
 
@@ -108,7 +108,7 @@ describe("IMS query transaction", () => {
         let error;
         let response;
 
-        options.names = ["*"];
+        options.name = ["*"];
         options.attributes = ["ALL"];
         options.status = ["LCK"];
         options.qcntcomp = ["EQ"];

@@ -77,7 +77,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 };
 
 describe("UpdateProgramHandler", () => {
-    const names = "program";
+    const name = "program";
     const route = "IMS1";
 
     const defaultReturn: IIMSApiResponse = {
@@ -98,7 +98,7 @@ describe("UpdateProgramHandler", () => {
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            name,
             route,
             host,
             port,
@@ -127,7 +127,7 @@ describe("UpdateProgramHandler", () => {
                 protocol: "http",
             }),
             {
-                names,
+                name,
                 route
             }
         );

@@ -19,7 +19,7 @@ describe("IMS - Stop program", () => {
     const plexName = "fakePlex";
 
     const stopProgramParms: IUpdateProgramParms = {
-        names: [program]
+        name: [program]
     };
 
     const dummySession = new ImsSession({
@@ -50,7 +50,7 @@ describe("IMS - Stop program", () => {
         it("should be able to stop a program with name specified", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?names=" + program + "&" + ImsConstants.STOP + "=SCHD";
+                "?name=" + program + "&" + ImsConstants.STOP + "=SCHD";
 
             response = await stopProgram(dummySession, stopProgramParms);
 
@@ -64,7 +64,7 @@ describe("IMS - Stop program", () => {
             stopProgramParms.route = route;
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.STOP + "=SCHD,TRACE" +
+                "?" + ImsConstants.NAME + "=" + program + "&" + ImsConstants.STOP + "=SCHD,TRACE" +
                 "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await stopProgram(dummySession, stopProgramParms);
@@ -86,12 +86,12 @@ describe("IMS - Stop program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
         it("should fail if names is not defined", async () => {
 
-            stopProgramParms.names = undefined;
+            stopProgramParms.name = undefined;
 
             try {
                 response = await stopProgram(dummySession, stopProgramParms);
@@ -106,7 +106,7 @@ describe("IMS - Stop program", () => {
 
         it("should fail if names is not provided", async () => {
 
-            stopProgramParms.names = [""];
+            stopProgramParms.name = [""];
 
             try {
                 response = await stopProgram(dummySession, stopProgramParms);

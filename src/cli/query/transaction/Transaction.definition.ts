@@ -22,8 +22,8 @@ export const TransactionDefinition: ICommandDefinition = {
     handler: __dirname + "/Transaction.handler",
     type: "command",
     positionals: [{
-        name: "names...",
-        description: strings.POSITIONALS.NAMES,
+        name: "name...",
+        description: strings.POSITIONALS.NAME,
         type: "string",
         required: false
     }],

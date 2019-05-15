@@ -25,7 +25,7 @@ describe("IMS - Query program", () => {
     const content = "This\nis\r\na\ntest";
 
     const queryProgramParms: IQueryProgramParms = {
-        names: [program],
+        name: [program],
         attributes: [attributes],
         status: undefined,
         route: undefined
@@ -73,7 +73,7 @@ describe("IMS - Query program", () => {
             endPoint = ImsConstants.URL +  dummySession.plex + "/" + ImsConstants.PROGRAM +
                 "?attributes=BMPTYPE&status=lock&route=IMS1";
 
-            queryProgramParms.names = undefined;
+            queryProgramParms.name = undefined;
             queryProgramParms.attributes = ["BMPTYPE"];
             queryProgramParms.status = ["lock"];
             queryProgramParms.route = ["IMS1"];

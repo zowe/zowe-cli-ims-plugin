@@ -60,8 +60,8 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The names of the programs to stop. The maximum length of a program name is eight characters.",
-      "name": "names...",
+      "description": "The name( of the program(s) to stop. The maximum length of a program name is eight characters.",
+      "name": "name...",
       "required": false,
       "type": "string",
     },

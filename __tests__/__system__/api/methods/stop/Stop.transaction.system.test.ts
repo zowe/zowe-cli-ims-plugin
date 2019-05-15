@@ -57,7 +57,7 @@ describe("IMS stop transaction", () => {
         let error;
         let response;
 
-        options.names = [transactionName];
+        options.name = [transactionName];
 
         try {
             response = await stopTransaction(session, options);
@@ -75,7 +75,7 @@ describe("IMS stop transaction", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.name = ["D*", "IV*"];
         options.stop = ["SCHD", "TRACE"];
 
         try {
@@ -94,7 +94,7 @@ describe("IMS stop transaction", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.name = ["D*", "IV*"];
         options.stop = ["SCHD"];
         options.route = [route];
 
