@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-@Library('shared-pipelines@v1.2.2') import org.zowe.pipelines.nodejs.NodeJSPipeline
+@Library('shared-pipelines') import org.zowe.pipelines.nodejs.NodeJSPipeline
 
 import org.zowe.pipelines.nodejs.models.SemverLevel
 
@@ -77,14 +77,6 @@ node('ca-jenkins-agent') {
         time: 5,
         unit: 'MINUTES'
     ])
-
-    pipeline.createStage(
-        name: "Check for vulnerabilities",
-        stage: {
-            sh "npm audit"
-        },
-        timeout: [time: 5, unit: 'MINUTES']
-    )
 
     def TEST_ROOT = "__tests__/__results__"
     def UNIT_TEST_ROOT = "$TEST_ROOT/unit"
