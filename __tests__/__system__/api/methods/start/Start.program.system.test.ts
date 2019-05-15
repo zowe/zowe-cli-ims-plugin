@@ -57,7 +57,7 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = [program];
+        options.name = [program];
 
         try {
             response = await startProgram(session, options);
@@ -75,7 +75,7 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = [program];
+        options.name = [program];
         options.start = ["SCHD", "TRACE"];
         options.route = [route];
 
@@ -95,7 +95,7 @@ describe("IMS start program", () => {
         let error;
         let response;
 
-        options.names = [programWildCard];
+        options.name = [programWildCard];
         options.start = ["SCHD"];
         options.route = [route];
 

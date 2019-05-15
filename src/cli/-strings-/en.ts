@@ -20,7 +20,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Query an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "Specifies the names of the programs to query.",
+                    NAME: "Specifies the name of the program(s) to query.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "Specifies the application program output fields to return.",
@@ -61,7 +61,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Query an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
+                    NAME: "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "Specifies the transaction output fields to return.",
@@ -97,7 +97,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Start an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The names of the application programs to start. The maximum length of a program name is eight characters.",
+                    NAME: "The name of the application program(s) to start. The maximum length of a program name is eight characters.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
@@ -144,7 +144,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Start an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The names of the transactions to start. The maximum length of a transaction name is eight characters.",
+                    NAME: "The name of the transaction(s) to start. The maximum length of a transaction name is eight characters.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be started",
@@ -171,7 +171,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Stop an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The names of the programs to stop. The maximum length of a program name is eight characters.",
+                    NAME: "The name( of the program(s) to stop. The maximum length of a program name is eight characters.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be stopped",
@@ -220,7 +220,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Stop an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The names of the transactions to stop. The maximum length of a transaction name is eight characters.",
+                    NAME: "The name of the transaction(s) to stop. The maximum length of a transaction name is eight characters.",
                 },
                 OPTIONS: {
                     ATTRIBUTES: "The attributes that are to be stopped",
@@ -247,7 +247,7 @@ export default {
             PROGRAM: {
                 DESCRIPTION: "Update an IMS application program.",
                 POSITIONALS: {
-                    NAMES: "The names of the application programs to update. The maximum length of a program name is eight characters.",
+                    NAME: "The name of the application program(s) to update. The maximum length of a program name is eight characters.",
                 },
                 OPTIONS: {
                     BMPTYPE: "Specifies whether the program runs in a BMP type region or not. (N or Y).",
@@ -257,7 +257,7 @@ export default {
                     LANG: "Specifies the language interface of the program or a GPSB or defined a DOPT(Y) " +
                         "program as using the JAVA language (ASSEM, COBOL, JAVA, PASCAL, PLI).",
                     LOCK: "Specifies the LOCK status is to be set (ON or OFF).",
-                    OPTION: "Specifies to return response lines for all resources that are processed.  It is only valid with --names * (ALLRSP).",
+                    OPTION: "Specifies to return response lines for all resources that are processed.  It is only valid with --name * (ALLRSP).",
                     RESIDENT: "Specifies the resident option (N or Y).",
                     ROUTE: "Specifies the region(s) to route the command.",
                     SCHDTYPE: "Specifies whether this application program can be scheduled into more than " +
@@ -278,7 +278,7 @@ export default {
             TRANSACTION: {
                 DESCRIPTION: "Update an IMS transaction.",
                 POSITIONALS: {
-                    NAMES: "The names of the transactions to update. The maximum length of a transaction name is eight characters.",
+                    NAME: "The name of the transaction(s) to update. The maximum length of a transaction name is eight characters.",
                 },
                 OPTIONS: {
                     AOCMD: "Specifies the AOI option that you want to change (N, CMD, TRAN, Y).",

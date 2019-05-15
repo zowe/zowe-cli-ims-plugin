@@ -20,7 +20,7 @@ export interface IQueryTransactionParms {
      * The name is a repeatable parameter.
      * The default is NAME(*) which returns all program resources.
      */
-    names?: string[];
+    name?: string[];
 
     /**
      * Specifies the transaction output fields to be returned.

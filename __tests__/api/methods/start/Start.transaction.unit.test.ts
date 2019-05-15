@@ -18,7 +18,7 @@ describe("IMS - Start transaction", () => {
     const content = "This\nis\r\na\ntest";
     const plexName = "fakePlex";
     const startTransactionParms: IUpdateTransactionParms = {
-        names: [transaction]
+        name: [transaction]
     };
 
     const dummySession = new ImsSession({
@@ -49,7 +49,7 @@ describe("IMS - Start transaction", () => {
         it("should be able to start a transaction with name", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?names=" + transaction + "&" + ImsConstants.START + "=SCHD";
+                "?name=" + transaction + "&" + ImsConstants.START + "=SCHD";
 
             response = await startTransaction(dummySession, startTransactionParms);
 
@@ -63,7 +63,7 @@ describe("IMS - Start transaction", () => {
             startTransactionParms.route = [route];
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
+                "?" + ImsConstants.NAME + "=" + transaction + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
                 "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await startTransaction(dummySession, startTransactionParms);
@@ -85,12 +85,12 @@ describe("IMS - Start transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
-        it("should fail if names is not defined", async () => {
+        it("should fail if name is not defined", async () => {
 
-            startTransactionParms.names = undefined;
+            startTransactionParms.name = undefined;
 
             try {
                 response = await startTransaction(dummySession, startTransactionParms);
@@ -105,7 +105,7 @@ describe("IMS - Start transaction", () => {
 
         it("should fail if names is not provided", async () => {
 
-            startTransactionParms.names = [""];
+            startTransactionParms.name = [""];
 
             try {
                 response = await startTransaction(dummySession, startTransactionParms);

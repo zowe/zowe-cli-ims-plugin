@@ -16,14 +16,14 @@ exports[`ims query program should display the query program help 1`] = `
  USAGE
  -----
 
-   zowe ims query program [names...] [options]
+   zowe ims query program [name...] [options]
 
  POSITIONAL ARGUMENTS
  --------------------
 
-   names...		 (string)
+   name...		 (string)
 
-      Specifies the names of the programs to query.
+      Specifies the name of the program(s) to query.
 
  OPTIONS
  -------

@@ -16,9 +16,9 @@ export interface IUpdateTransactionParms {
     /**
      * Specifies the 1-8 character name of the transaction.
      * Wildcards can be specified in the name.
-     * names is a repeatable parameter.
+     * name is a repeatable parameter.
      */
-    names: string[];
+    name: string[];
 
     /**
      *

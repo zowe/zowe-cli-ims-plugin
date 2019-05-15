@@ -44,7 +44,7 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await stopProgram(session, {
-            names: params.arguments.names,
+            name: params.arguments.name,
             stop: params.arguments.attributes,
             route: params.arguments.route
         });

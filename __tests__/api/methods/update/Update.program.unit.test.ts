@@ -18,7 +18,7 @@ describe("IMS - Update program", () => {
     const content = "This\nis\r\na\ntest";
     const plexName = "fakePlex";
     const updateProgramParms: IUpdateProgramParms = {
-        names: [program]
+        name: [program]
     };
 
     const dummySession = new ImsSession({
@@ -61,7 +61,7 @@ describe("IMS - Update program", () => {
             updateProgramParms.route = ["IMS1", "IMS2"];
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
+                "?" + ImsConstants.NAME + "=" + program + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
                 "&resident=N&schdtype=SERIAL&transtat=N&option=ALLRSP&route=IMS1,IMS2";
 
             response = await updateProgram(dummySession, updateProgramParms);
@@ -70,9 +70,9 @@ describe("IMS - Update program", () => {
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
 
-        // it("should be able to update a program with all parameters specified but names", async () => {
+        // it("should be able to update a program with all parameters specified but name", async () => {
         //
-        //     updateProgramParms.names = undefined;
+        //     updateProgramParms.name = undefined;
         //     updateProgramParms.bmptype = "N";
         //     updateProgramParms.dopt = "N";
         //     updateProgramParms.fp = "E";
@@ -86,7 +86,7 @@ describe("IMS - Update program", () => {
         //     updateProgramParms.route = ["IMS1", "IMS2"];
         //
         //     endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-        //         "?" + ImsConstants.NAMES + "=" + program + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
+        //         "?" + ImsConstants.NAME + "=" + program + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
         //         "&resident=N&schdtype=SERIAL&transtat=N&option=ALLRSP&route=IMS1,IMS2";
         //
         //     response = await updateProgram(dummySession, updateProgramParms);
@@ -109,12 +109,12 @@ describe("IMS - Update program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
-        it("should fail if names is not defined", async () => {
+        it("should fail if name is not defined", async () => {
 
-            updateProgramParms.names = undefined;
+            updateProgramParms.name = undefined;
 
             try {
                 response = await updateProgram(dummySession, updateProgramParms);
@@ -127,9 +127,9 @@ describe("IMS - Update program", () => {
             expect(error.message).toContain("Expect Error: IMS program name is required");
         });
 
-        it("should fail if names is not provided", async () => {
+        it("should fail if name is not provided", async () => {
 
-            updateProgramParms.names = [""];
+            updateProgramParms.name = [""];
 
             try {
                 response = await updateProgram(dummySession, updateProgramParms);

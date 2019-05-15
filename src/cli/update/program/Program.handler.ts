@@ -37,7 +37,7 @@ export default class ProgramHandler extends ImsBaseHandler {
         params.response.progress.startBar({task: status});
 
         const response = await updateProgram(session, {
-            names: params.arguments.names,
+            name: params.arguments.name,
             bmptype: params.arguments.bmptype,
             dopt: params.arguments.dopt,
             fp: params.arguments.fp,

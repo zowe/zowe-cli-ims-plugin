@@ -25,7 +25,7 @@ describe("IMS - Query transaction", () => {
     const content = "This\nis\r\na\ntest";
 
     const queryTransactionParms: IQueryTransactionParms = {
-        names: [transaction],
+        name: [transaction],
         attributes: [attributes],
         status: undefined,
         route: undefined
@@ -72,7 +72,7 @@ describe("IMS - Query transaction", () => {
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
                 "?attributes=" + attributes;
 
-            queryTransactionParms.names = undefined;
+            queryTransactionParms.name = undefined;
             // queryTransactionParms.attributes = ["BMPTYPE"];
 
             response = await queryTransaction(dummySession, queryTransactionParms);
@@ -83,10 +83,10 @@ describe("IMS - Query transaction", () => {
 
         it("should be able to query a transaction with all optional parameters specified", async () => {
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
-                "?names=trans1&attributes=" + attributes + "&status=status&route=route&class=1&qcntcomp=qcnt&qcntval=1&conv=conv"
+                "?name=trans1&attributes=" + attributes + "&status=status&route=route&class=1&qcntcomp=qcnt&qcntval=1&conv=conv"
                 + "&fp=fp&remote=remote&resp=resp";
 
-            queryTransactionParms.names = ["trans1"];
+            queryTransactionParms.name = ["trans1"];
             queryTransactionParms.attributes = [attributes];
             queryTransactionParms.class = [1];
             queryTransactionParms.conv = "conv";

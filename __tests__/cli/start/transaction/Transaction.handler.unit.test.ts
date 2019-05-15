@@ -77,7 +77,7 @@ const DEFAULT_PARAMETERS: IHandlerParameters = {
 };
 
 describe("StartTransactionHandler", () => {
-    const names = "transaction";
+    const name = "transaction";
     const route = "IMS1";
 
     const defaultReturn: IIMSApiResponse = {
@@ -98,7 +98,7 @@ describe("StartTransactionHandler", () => {
         const commandParameters = {...DEFAULT_PARAMETERS};
         commandParameters.arguments = {
             ...commandParameters.arguments,
-            names,
+            name,
             route,
             host,
             port,
@@ -127,7 +127,7 @@ describe("StartTransactionHandler", () => {
                 protocol: "http",
             }),
             {
-                names,
+                name,
                 route
             }
         );

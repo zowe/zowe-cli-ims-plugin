@@ -30,16 +30,16 @@ export async function queryProgram(session: ImsSession, parms?: IQueryProgramPar
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
-    // names is not required; defaults to all programs
-    if ((parms !== undefined) && (parms.names !== undefined)) {
-        if (parms.names.length > 0) {
-            // 'names' text must be lower case
-            resource = resource + delimiter + "names=";
-            for (let i = 0; i < parms.names.length; i++) {
+    // name is not required; defaults to all programs
+    if ((parms !== undefined) && (parms.name !== undefined)) {
+        if (parms.name.length > 0) {
+            // 'name' text must be lower case
+            resource = resource + delimiter + "name=";
+            for (let i = 0; i < parms.name.length; i++) {
                 if (i === 0) {
-                    resource = resource + encodeURIComponent(parms.names[i]);
+                    resource = resource + encodeURIComponent(parms.name[i]);
                 } else {
-                    resource = resource + "," + encodeURIComponent(parms.names[i]);
+                    resource = resource + "," + encodeURIComponent(parms.name[i]);
                 }
             }
             delimiter = "&";
@@ -116,16 +116,16 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
 
-    // names is not required; defaults to all transactions
-    if ((parms !== undefined) && (parms.names !== undefined)) {
-        if (parms.names.length > 0) {
-            // 'names' text must be lower case
-            resource = resource + delimiter + "names=";
-            for (let i = 0; i < parms.names.length; i++) {
+    // name is not required; defaults to all transactions
+    if ((parms !== undefined) && (parms.name !== undefined)) {
+        if (parms.name.length > 0) {
+            // 'name' text must be lower case
+            resource = resource + delimiter + "name=";
+            for (let i = 0; i < parms.name.length; i++) {
                 if (i === 0) {
-                    resource = resource + encodeURIComponent(parms.names[i]);
+                    resource = resource + encodeURIComponent(parms.name[i]);
                 } else {
-                    resource = resource + "," + encodeURIComponent(parms.names[i]);
+                    resource = resource + "," + encodeURIComponent(parms.name[i]);
                 }
             }
             delimiter = "&";

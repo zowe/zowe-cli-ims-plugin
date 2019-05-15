@@ -166,7 +166,7 @@ Object {
   "positionals": Array [
     Object {
       "description": "Specifies the name of transaction(s) to query. You can use an * character as a wildcard to select multiple transactions.",
-      "name": "names...",
+      "name": "name...",
       "required": false,
       "type": "string",
     },

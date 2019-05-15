@@ -24,11 +24,11 @@ import { ImsConstants } from "../../constants";
  * @throws {ImperativeError} ImsRestClient request fails
  */
 export async function updateProgram(session: ImsSession, parms: IUpdateProgramParms): Promise<IIMSApiResponse> {
-    if (parms.names === undefined) {
+    if (parms.name === undefined) {
         throw new ImperativeError({msg: "Expect Error: IMS program name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS program name", "IMS program name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name[0], "IMS program name", "IMS program name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -36,15 +36,15 @@ export async function updateProgram(session: ImsSession, parms: IUpdateProgramPa
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
 
-    // names is required
-    if (parms.names.length > 0) {
-        // 'names' text must be lower case
-        resource = resource + delimiter + "names=";
-        for (let i = 0; i < parms.names.length; i++) {
+    // name is required
+    if (parms.name.length > 0) {
+        // 'name' text must be lower case
+        resource = resource + delimiter + "name=";
+        for (let i = 0; i < parms.name.length; i++) {
             if (i === 0) {
-                resource = resource + encodeURIComponent(parms.names[i]);
+                resource = resource + encodeURIComponent(parms.name[i]);
             } else {
-                resource = resource + "," + encodeURIComponent(parms.names[i]);
+                resource = resource + "," + encodeURIComponent(parms.name[i]);
             }
         }
         delimiter = "&";
@@ -115,11 +115,11 @@ export async function updateProgram(session: ImsSession, parms: IUpdateProgramPa
  */
 export async function updateTransaction(session: ImsSession, parms: IUpdateTransactionParms): Promise<IIMSApiResponse> {
 
-    if (parms.names === undefined) {
+    if (parms.name === undefined) {
         throw new ImperativeError({msg: "Expect Error: IMS transaction name is required"});
     }
 
-    ImperativeExpect.toBeDefinedAndNonBlank(parms.names[0], "IMS transaction name", "IMS transaction name is required");
+    ImperativeExpect.toBeDefinedAndNonBlank(parms.name[0], "IMS transaction name", "IMS transaction name is required");
 
     let delimiter = "?"; // initial delimiter
 
@@ -127,15 +127,15 @@ export async function updateTransaction(session: ImsSession, parms: IUpdateTrans
 
     let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
 
-    // names is required
-    if (parms.names.length > 0) {
-        // 'names' text must be lower case
-        resource = resource + delimiter + "names=";
-        for (let i = 0; i < parms.names.length; i++) {
+    // name is required
+    if (parms.name.length > 0) {
+        // 'name' text must be lower case
+        resource = resource + delimiter + "name=";
+        for (let i = 0; i < parms.name.length; i++) {
             if (i === 0) {
-                resource = resource + encodeURIComponent(parms.names[i]);
+                resource = resource + encodeURIComponent(parms.name[i]);
             } else {
-                resource = resource + "," + encodeURIComponent(parms.names[i]);
+                resource = resource + "," + encodeURIComponent(parms.name[i]);
             }
         }
         delimiter = "&";

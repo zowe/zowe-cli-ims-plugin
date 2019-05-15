@@ -18,7 +18,7 @@ describe("IMS - Stop transaction", () => {
     const content = "This\nis\r\na\ntest";
     const plexName = "fake";
     const stopTransactionParms: IUpdateTransactionParms = {
-        names: [transaction]
+        name: [transaction]
     };
 
     const dummySession = new ImsSession({
@@ -49,7 +49,7 @@ describe("IMS - Stop transaction", () => {
         it("should be able to stop a transaction with name specified", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?names=" + transaction + "&" + ImsConstants.STOP + "=SCHD";
+                "?name=" + transaction + "&" + ImsConstants.STOP + "=SCHD";
 
             response = await stopTransaction(dummySession, stopTransactionParms);
 
@@ -63,7 +63,7 @@ describe("IMS - Stop transaction", () => {
             stopTransactionParms.route = route;
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
-                "?" + ImsConstants.NAMES + "=" + transaction + "&" + ImsConstants.STOP + "=Q,SCHD,TRACE" +
+                "?" + ImsConstants.NAME + "=" + transaction + "&" + ImsConstants.STOP + "=Q,SCHD,TRACE" +
                 "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await stopTransaction(dummySession, stopTransactionParms);
@@ -85,12 +85,12 @@ describe("IMS - Stop transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
         it("should fail if names is not defined", async () => {
 
-            stopTransactionParms.names = undefined;
+            stopTransactionParms.name = undefined;
 
             try {
                 response = await stopTransaction(dummySession, stopTransactionParms);
@@ -105,7 +105,7 @@ describe("IMS - Stop transaction", () => {
 
         it("should fail if names is not provided", async () => {
 
-            stopTransactionParms.names = [""];
+            stopTransactionParms.name = [""];
 
             try {
                 response = await stopTransaction(dummySession, stopTransactionParms);

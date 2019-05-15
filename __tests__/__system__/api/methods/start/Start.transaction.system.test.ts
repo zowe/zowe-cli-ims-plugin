@@ -58,7 +58,7 @@ describe("IMS start transaction", () => {
         let error;
         let response;
 
-        options.names = [transaction];
+        options.name = [transaction];
 
         try {
             response = await startTransaction(session, options);
@@ -76,7 +76,7 @@ describe("IMS start transaction", () => {
         let error;
         let response;
 
-        options.names = ["D*", "IV*"];
+        options.name = ["D*", "IV*"];
         options.start = ["SCHD", "TRACE"];
 
         try {
@@ -95,7 +95,7 @@ describe("IMS start transaction", () => {
         let error;
         let response;
 
-        options.names = [programWildCard];
+        options.name = [programWildCard];
         options.start = ["SCHD"];
         options.route = [route];
 

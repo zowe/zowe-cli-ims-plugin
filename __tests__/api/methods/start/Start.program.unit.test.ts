@@ -18,7 +18,7 @@ describe("IMS - Start program", () => {
     const content = "This\nis\r\na\ntest";
     const plexName = "fakePlex";
     const startProgramParms: IUpdateProgramParms = {
-        names: [program]
+        name: [program]
     };
 
     const dummySession = new ImsSession({
@@ -49,7 +49,7 @@ describe("IMS - Start program", () => {
         it("should be able to start a program with name", async () => {
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.START + "=SCHD";
+                "?" + ImsConstants.NAME + "=" + program + "&" + ImsConstants.START + "=SCHD";
 
             response = await startProgram(dummySession, startProgramParms);
 
@@ -63,7 +63,7 @@ describe("IMS - Start program", () => {
             startProgramParms.route = ["IMS1"];
 
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-                "?" + ImsConstants.NAMES + "=" + program + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
+                "?" + ImsConstants.NAME + "=" + program + "&" + ImsConstants.START + "=Q,SCHD,TRACE" +
                 "&" + ImsConstants.ROUTE + "=" + route;
 
             response = await startProgram(dummySession, startProgramParms);
@@ -85,12 +85,12 @@ describe("IMS - Start program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'names' of undefined");
+            expect(error.message).toContain("Cannot read property 'name' of undefined");
         });
 
         it("should fail if names is not defined", async () => {
 
-            startProgramParms.names = undefined;
+            startProgramParms.name = undefined;
 
             try {
                 response = await startProgram(dummySession, startProgramParms);
@@ -105,7 +105,7 @@ describe("IMS - Start program", () => {
 
         it("should fail if names is not provided", async () => {
 
-            startProgramParms.names = [""];
+            startProgramParms.name = [""];
 
             try {
                 response = await startProgram(dummySession, startProgramParms);
