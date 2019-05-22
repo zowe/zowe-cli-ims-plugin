@@ -60,7 +60,7 @@ describe("IMS query transaction", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toBe("QUERY TRAN SHOW(ALL)");
+        expect(response.messages["OM1OM   "].command).toBe("QUERY TRAN");
     });
 
     it("should query all transactions from IMS using criteria", async () => {
