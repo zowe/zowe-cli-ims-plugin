@@ -141,17 +141,17 @@ exports[`ims query program should display the query program help 1`] = `
 
    - Query information for an application program named PGM123:
 
-      $ zowe ims query program PGM123
+      $ zowe ims query program \\"PGM123\\"
 
    - Query information for application programs named ABC and
    XYZ:
 
-      $ zowe ims query program ABC XYZ
+      $ zowe ims query program \\"ABC XYZ\\"
 
    - Query information for application programs starting with
    PROG using the wild card character '*':
 
-      $ zowe ims query program PROG*
+      $ zowe ims query program \\"PROG*\\"
 
    - Query information for all application programs (default is
    all):
@@ -161,12 +161,12 @@ exports[`ims query program should display the query program help 1`] = `
    - Query information for all application programs specifying
    optional parameters:
 
-      $ zowe ims query program --attributes BMPTYPE TIMESTAMP --status NOTINIT --route IMS1 IMS2
+      $ zowe ims query program --attributes \\"BMPTYPE TIMESTAMP\\" --status \\"NOTINIT\\" --route \\"IMS1 IMS2\\"
 
    - Query information for all application programs specifying
    optional connection parameters:
 
-      $ zowe ims query program --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1
+      $ zowe ims query program --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"
 
 "
 `;

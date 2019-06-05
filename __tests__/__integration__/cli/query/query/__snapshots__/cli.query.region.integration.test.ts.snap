@@ -131,21 +131,21 @@ exports[`ims query region should display the query region help 1`] = `
 
    - Query information for regions on route IMS1:
 
-      $ zowe ims query region IMS1
+      $ zowe ims query region \\"IMS1\\"
 
    - Query information for regions on routes IMS1 and IMS2:
 
-      $ zowe ims query region IMS1 IMS2
+      $ zowe ims query region \\"IMS1 IMS2\\"
 
    - Query DC and region information for regions on routes IMS1
    and IMS2:
 
-      $ zowe ims query region --dc true --region true
+      $ zowe ims query region \\"IMS1 IMS2\\" --dc true --region true
 
    - Query information for regions specifying optional
    connection parameters:
 
-      $ zowe ims query region --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1
+      $ zowe ims query region --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"
 
 "
 `;
