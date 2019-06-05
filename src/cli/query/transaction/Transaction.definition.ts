@@ -106,15 +106,15 @@ export const TransactionDefinition: ICommandDefinition = {
     examples: [
         {
             description: strings.EXAMPLES.EX1,
-            options: "TRN12"
+            options: "\"TRN12\""
         },
         {
             description: strings.EXAMPLES.EX2,
-            options: "TRAN1 TRAN2"
+            options: "\"TRAN1 TRAN2\""
         },
         {
             description: strings.EXAMPLES.EX3,
-            options: "TRAN*"
+            options: "\"TRAN*\""
         },
         {
             description: strings.EXAMPLES.EX4,
@@ -122,11 +122,11 @@ export const TransactionDefinition: ICommandDefinition = {
         },
         {
             description: strings.EXAMPLES.EX5,
-            options: "--attributes AFFIN TIMESTAMP --status NOTINIT --route IMS1 IMS2"
+            options: "--attributes \"AFFIN TIMESTAMP\" --status \"NOTINIT\" --route \"IMS1 IMS2\""
         },
         {
             description: strings.EXAMPLES.EX6,
-            options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+            options: "--host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
         }]
 };
 

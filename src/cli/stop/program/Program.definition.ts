@@ -48,22 +48,22 @@ export const ProgramDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "PGM123"
+        options: "\"PGM123\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "ACC*"
+        options: "\"ACC*\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "PGM234 --attributes TRACE"
+        options: "\"PGM234\" --attributes \"TRACE\""
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "PGM890 --route IMS1 IMS2"
+        options: "\"PGM890\" --route \"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "XYZ1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "\"XYZ1\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };
