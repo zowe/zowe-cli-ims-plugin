@@ -9,27 +9,27 @@ Object {
   "examples": Array [
     Object {
       "description": "Query transaction information for transaction named TRN12",
-      "options": "TRN12",
+      "options": "\\"TRN12\\"",
     },
     Object {
       "description": "Query transaction information for transactions named TRAN1 and TRAN2",
-      "options": "TRAN1 TRAN2",
+      "options": "\\"TRAN1 TRAN2\\"",
     },
     Object {
       "description": "Query transaction information for transactions starting with TRAN using the wild card character '*'",
-      "options": "TRAN*",
+      "options": "\\"TRAN*\\"",
     },
     Object {
-      "description": "Query transaction information for all transactions(default is all)",
+      "description": "Query transaction information for all transactions (default is all)",
       "options": "",
     },
     Object {
       "description": "Query transaction information for all transactions specifying optional parameters",
-      "options": "--attributes AFFIN TIMESTAMP --status NOTINIT --route IMS1 IMS2",
+      "options": "--attributes \\"AFFIN TIMESTAMP\\" --status \\"NOTINIT\\" --route \\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Query transaction information for all transactions specifying optional connection parameters",
-      "options": "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "--host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "transaction",

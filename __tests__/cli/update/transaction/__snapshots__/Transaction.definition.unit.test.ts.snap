@@ -9,23 +9,23 @@ Object {
   "examples": Array [
     Object {
       "description": "Update a transaction named TRN1 to process exclusively as Fast Path",
-      "options": "TRN1 --fp E",
+      "options": "\\"TRN1\\" --fp \\"E\\"",
     },
     Object {
       "description": "Unlock to allow scheduling all transactions beginning with TRN* and associated with class CLASSA",
-      "options": "TRN* --class CLASSA --lock OFF",
+      "options": "\\"TRN*\\" --class \\"CLASSA\\" --lock \\"OFF\\"",
     },
     Object {
       "description": "Set response mode on for transaction named TRN2 and associated with classes CLASS1 and CLASS2",
-      "options": "TRN2 --class CLASS1 CLASS2 --resp Y",
+      "options": "\\"TRN2\\" --class \\"CLASS1 CLASS2\\" --resp \\"Y\\"",
     },
     Object {
       "description": "Update a transaction named TRN3 to process exclusively as Fast Path routing to control regions IMS1 and IMS2",
-      "options": "TRN3 -fp E --route IMS1 IMS2",
+      "options": "\\"TRN3\\" -fp \\"E\\" --route \\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Associate PGM1 with transaction named TRN4 specifying optional connection parameters",
-      "options": "TRN4 --pgm PGM1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "\\"TRN4\\" --pgm \\"PGM1\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "transaction",

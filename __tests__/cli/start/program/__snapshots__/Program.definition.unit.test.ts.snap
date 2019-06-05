@@ -9,23 +9,23 @@ Object {
   "examples": Array [
     Object {
       "description": "Start an application program named PGM123",
-      "options": "PGM123",
+      "options": "\\"PGM123\\"",
     },
     Object {
       "description": "Start all application programs beginning with ACC*",
-      "options": "ACC*",
+      "options": "\\"ACC*\\"",
     },
     Object {
       "description": "Start an application program named PGM234 and start tracing",
-      "options": "PGM234 --attributes SCHD TRACE",
+      "options": "\\"PGM234\\" --attributes \\"SCHD TRACE\\"",
     },
     Object {
       "description": "Start an application program named PGM890 routing to control regions IMS1 and IMS2",
-      "options": "PGM890 --route IMS1 IMS2",
+      "options": "\\"PGM890\\" --route \\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Start an application programs named XYZ1 specifying optional connection parameters",
-      "options": "XYZ1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "\\"XYZ1\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "program",
