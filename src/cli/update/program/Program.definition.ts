@@ -137,22 +137,22 @@ export const ProgramDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "PGM123 --fp E"
+        options: "\"PGM123\" --fp \"E\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "ACC* --bmptype N"
+        options: "\"ACC*\" --bmptype \"N\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "PGM234 --lock OFF"
+        options: "\"PGM*\" --lock \"OFF\""
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "PGM890 --fp E --route IMS1 IMS2"
+        options: "\"PGM890\" --fp \"E\" --route \"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "XYZ1 --lock OFF --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "\"XYZ1\" --lock \"OFF\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };

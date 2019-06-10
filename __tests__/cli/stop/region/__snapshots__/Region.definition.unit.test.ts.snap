@@ -9,7 +9,7 @@ Object {
   "examples": Array [
     Object {
       "description": "Stop a region with job name JOBNM1",
-      "options": "--job-name JOBNM1",
+      "options": "--job-name \\"JOBNM1\\"",
     },
     Object {
       "description": "Stop multiple regions with region identifiers",
@@ -17,7 +17,7 @@ Object {
     },
     Object {
       "description": "Stop a region with region identifier and cause the abnormal termination (ABEND) of the application program",
-      "options": "--region-ids 4 --abdump TRAN1",
+      "options": "--region-ids 4 --abdump \\"TRAN1\\"",
     },
     Object {
       "description": "Stop a region with region identifier and specify 'cancel' because the 'abdump' option failed to stop the region",
@@ -25,7 +25,7 @@ Object {
     },
     Object {
       "description": "Stop a region with job name JOBNM4 specifying optional connection parameters",
-      "options": "--job-name JOBNM4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "--job-name \\"JOBNM4\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "mustSpecifyOne": Array [

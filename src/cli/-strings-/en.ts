@@ -82,7 +82,7 @@ export default {
                     EX1: "Query transaction information for transaction named TRN12",
                     EX2: "Query transaction information for transactions named TRAN1 and TRAN2",
                     EX3: "Query transaction information for transactions starting with TRAN using the wild card character '*'",
-                    EX4: "Query transaction information for all transactions(default is all)",
+                    EX4: "Query transaction information for all transactions (default is all)",
                     EX5: "Query transaction information for all transactions specifying optional parameters",
                     EX6: "Query transaction information for all transactions specifying optional connection parameters",
                 }

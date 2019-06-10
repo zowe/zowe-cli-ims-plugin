@@ -9,23 +9,23 @@ Object {
   "examples": Array [
     Object {
       "description": "Start a transaction named TRN1",
-      "options": "TRN1",
+      "options": "\\"TRN1\\"",
     },
     Object {
       "description": "Start all transactions beginning with TRN*",
-      "options": "TRN*",
+      "options": "\\"TRN*\\"",
     },
     Object {
       "description": "Start a transaction named TRN2 and start tracing",
-      "options": "TRN2 --attributes SCHD TRACE",
+      "options": "\\"TRN2\\" --attributes \\"SCHD TRACE\\"",
     },
     Object {
       "description": "Start a transaction named TRN3 routing to control regions IMS1 and IMS2",
-      "options": "TRN3 --route IMS1 IMS2",
+      "options": "\\"TRN3\\" --route \\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Start a transaction named TRN4 specifying optional connection parameters",
-      "options": "TRN4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "\\"TRN4\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "transaction",
