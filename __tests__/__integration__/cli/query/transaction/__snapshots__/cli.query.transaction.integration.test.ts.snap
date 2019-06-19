@@ -84,11 +84,11 @@ exports[`ims query transaction should display the help 1`] = `
 
    --host  | -H (string)
 
-      The IMS Command Services server host name.
+      The IMS Operations API server host name.
 
    --port  | -P (number)
 
-      The IMS Command Services server port.
+      The IMS Operations API server port.
 
    --ims-connect-host  | --ich (string)
 
@@ -106,11 +106,11 @@ exports[`ims query transaction should display the help 1`] = `
 
    --user  | -u (string)
 
-      Mainframe (IMS) user name, which can be the same as your TSO login.
+      The web server user name where the IMS Operations API resides.
 
    --password  | --pass (string)
 
-      Mainframe (IMS) password, which can be the same as your TSO password.
+      The web server user password where the IMS Operations API resides.
 
  PROFILE OPTIONS
  ---------------
@@ -197,7 +197,7 @@ exports[`ims query transaction should display the help 1`] = `
    - Query transaction information for all transactions
    specifying optional connection parameters:
 
-      $ zowe ims query transaction --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"
+      $ zowe ims query transaction --user \\"username\\" --pass \\"pass1234\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"
 
 "
 `;
