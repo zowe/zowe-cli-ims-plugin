@@ -26,8 +26,8 @@ const config: IImperativeConfig = {
                 type: "object",
                 title: "IMS Profile",
                 description: "An ims profile is used to issue commands in the ims command group that interact with " +
-                    "IMS regions. The ims profile contains your host, port, user name, and password " +
-                    "for the IBM IMS server of your choice.",
+                    "IMS regions. The ims profile contains your IMS Operations API web server host, port, user name and " +
+                    "password, IMS Connect host and port and IMS plex name.",
                 properties: {
                     host: {
                         type: "string",
