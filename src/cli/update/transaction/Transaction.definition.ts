@@ -337,22 +337,23 @@ export const TransactionDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "TRN1 --fp E"
+        options: "\"TRN1\" --fp \"E\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "TRN* --class CLASSA --lock OFF"
+        options: "\"TRN*\" --class \"CLASSA\" --lock \"OFF\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "TRN2 --class CLASS1 CLASS2 --resp Y"
+        options: "\"TRN2\" --class \"CLASS1 CLASS2\" --resp \"Y\""
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "TRN3 -fp E --route IMS1 IMS2"
+        options: "\"TRN3\" -fp \"E\" --route \"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "TRN4 --pgm PGM1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "\"TRN4\" --pgm \"PGM1\" --user \"username\" --pass \"pass1234\" --host \"localhost\" " +
+          "--port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };

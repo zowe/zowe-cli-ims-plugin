@@ -46,18 +46,18 @@ export const RegionDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "IMS1"
+        options: "\"IMS1\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "IMS1 IMS2"
+        options: "\"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "--dc true --region true"
+        options: "\"IMS1 IMS2\" --dc true --region true"
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "--user \"username\" --pass \"pass1234\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };

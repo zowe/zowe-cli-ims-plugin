@@ -9,23 +9,23 @@ Object {
   "examples": Array [
     Object {
       "description": "Stop an application program named PGM123",
-      "options": "PGM123",
+      "options": "\\"PGM123\\"",
     },
     Object {
       "description": "Stop all application programs beginning with ACC*",
-      "options": "ACC*",
+      "options": "\\"ACC*\\"",
     },
     Object {
       "description": "Stop tracing an application program named PGM234",
-      "options": "PGM234 --attributes TRACE",
+      "options": "\\"PGM234\\" --attributes \\"TRACE\\"",
     },
     Object {
       "description": "Stop an application program named PGM890 routing to control regions IMS1 and IMS2",
-      "options": "PGM890 --route IMS1 IMS2",
+      "options": "\\"PGM890\\" --route \\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Stop an application programs named XYZ1 specifying optional connection parameters",
-      "options": "XYZ1 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "\\"XYZ1\\" --user \\"username\\" --pass \\"pass1234\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "program",

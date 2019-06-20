@@ -62,15 +62,15 @@ export const ProgramDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "PGM123"
+        options: "\"PGM123\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "ABC XYZ"
+        options: "\"ABC XYZ\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "PROG*"
+        options: "\"PROG*\""
     },
     {
         description: strings.EXAMPLES.EX4,
@@ -78,10 +78,10 @@ export const ProgramDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "--attributes BMPTYPE TIMESTAMP --status NOTINIT --route IMS1 IMS2"
+        options: "--attributes \"BMPTYPE TIMESTAMP\" --status \"NOTINIT\" --route \"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX6,
-        options: "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "--user \"username\" --pass \"pass1234\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };

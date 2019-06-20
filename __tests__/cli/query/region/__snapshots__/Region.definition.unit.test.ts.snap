@@ -9,19 +9,19 @@ Object {
   "examples": Array [
     Object {
       "description": "Query information for regions on route IMS1",
-      "options": "IMS1",
+      "options": "\\"IMS1\\"",
     },
     Object {
       "description": "Query information for regions on routes IMS1 and IMS2",
-      "options": "IMS1 IMS2",
+      "options": "\\"IMS1 IMS2\\"",
     },
     Object {
       "description": "Query DC and region information for regions on routes IMS1 and IMS2",
-      "options": "--dc true --region true",
+      "options": "\\"IMS1 IMS2\\" --dc true --region true",
     },
     Object {
       "description": "Query information for regions specifying optional connection parameters",
-      "options": "--host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1",
+      "options": "--user \\"username\\" --pass \\"pass1234\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "name": "region",

@@ -124,13 +124,7 @@ node('ca-jenkins-agent') {
     )
 
     // Check for vulnerabilities
-    pipeline.createStage(
-        name: "Check for vulnerabilities",
-        stage: {
-            sh "npm audit"
-        },
-        timeout: [time: 5, unit: 'MINUTES']
-    )
+    pipeline.checkVulnerabilities()
 
     // Deploys the application if on a protected branch. Give the version input
     // 30 minutes before an auto timeout approve.

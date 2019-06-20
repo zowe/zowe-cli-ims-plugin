@@ -21,7 +21,7 @@ Object {
           "aliases": Array [
             "H",
           ],
-          "description": "The IMS Command Services server host name.",
+          "description": "The IMS Operations API server host name.",
           "group": "IMS Connection Options",
           "name": "host",
           "required": true,
@@ -31,7 +31,7 @@ Object {
           "aliases": Array [
             "P",
           ],
-          "description": "The IMS Command Services server port.",
+          "description": "The IMS Operations API server port.",
           "group": "IMS Connection Options",
           "name": "port",
           "required": true,
@@ -71,7 +71,7 @@ Object {
           "aliases": Array [
             "u",
           ],
-          "description": "Mainframe (IMS) user name, which can be the same as your TSO login.",
+          "description": "The web server user name where the IMS Operations API resides.",
           "group": "IMS Connection Options",
           "name": "user",
           "type": "string",
@@ -80,7 +80,7 @@ Object {
           "aliases": Array [
             "pass",
           ],
-          "description": "Mainframe (IMS) password, which can be the same as your TSO password.",
+          "description": "The web server user password where the IMS Operations API resides.",
           "group": "IMS Connection Options",
           "name": "password",
           "type": "string",

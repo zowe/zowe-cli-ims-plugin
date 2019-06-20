@@ -61,7 +61,7 @@ export const RegionDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "--job-name JOBNM1"
+        options: "--job-name \"JOBNM1\""
     },
     {
         description: strings.EXAMPLES.EX2,
@@ -69,7 +69,7 @@ export const RegionDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "--region-ids 4 --abdump TRAN1"
+        options: "--region-ids 4 --abdump \"TRAN1\""
     },
     {
         description: strings.EXAMPLES.EX4,
@@ -77,6 +77,7 @@ export const RegionDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "--job-name JOBNM4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "--job-name \"JOBNM4\" --user \"username\" --pass \"pass1234\" --host \"localhost\" --port 8080" +
+          "--ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };

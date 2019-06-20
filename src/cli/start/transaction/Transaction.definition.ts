@@ -48,22 +48,23 @@ export const TransactionDefinition: ICommandDefinition = {
     profile: {optional: ["ims"]},
     examples: [{
         description: strings.EXAMPLES.EX1,
-        options: "TRN1"
+        options: "\"TRN1\""
     },
     {
         description: strings.EXAMPLES.EX2,
-        options: "TRN*"
+        options: "\"TRN*\""
     },
     {
         description: strings.EXAMPLES.EX3,
-        options: "TRN2 --attributes SCHD TRACE"
+        options: "\"TRN2\" --attributes \"SCHD TRACE\""
     },
     {
         description: strings.EXAMPLES.EX4,
-        options: "TRN3 --route IMS1 IMS2"
+        options: "\"TRN3\" --route \"IMS1 IMS2\""
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "TRN4 --host localhost --port 8080 --ich zos1 --icp 9999 --plex PLEX1"
+        options: "\"TRN4\" --user \"username\" --pass \"pass1234\" --host \"localhost\" --port 8080 --ich \"zos1\"" +
+          " --icp 9999 --plex \"PLEX1\""
     }]
 };
