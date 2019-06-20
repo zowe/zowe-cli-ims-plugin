@@ -26,7 +26,7 @@ export class ImsSessionUtils {
     public static IMS_OPTION_HOST: ICommandOptionDefinition = {
         name: "host",
         aliases: ["H"],
-        description: "The IMS Command Services server host name.",
+        description: "The IMS Operations API server host name.",
         type: "string",
         required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
@@ -39,7 +39,7 @@ export class ImsSessionUtils {
         name: "port",
         required: true,
         aliases: ["P"],
-        description: "The IMS Command Services server port.",
+        description: "The IMS Operations API server port.",
         type: "number",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
@@ -88,7 +88,7 @@ export class ImsSessionUtils {
     public static IMS_OPTION_USER: ICommandOptionDefinition = {
         name: "user",
         aliases: ["u"],
-        description: "Mainframe (IMS) user name, which can be the same as your TSO login.",
+        description: "The web server user name where the IMS Operations API resides.",
         type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
@@ -99,7 +99,7 @@ export class ImsSessionUtils {
     public static IMS_OPTION_PASSWORD: ICommandOptionDefinition = {
         name: "password",
         aliases: ["pass"],
-        description: "Mainframe (IMS) password, which can be the same as your TSO password.",
+        description: "The web server user password where the IMS Operations API resides.",
         type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP,
     };

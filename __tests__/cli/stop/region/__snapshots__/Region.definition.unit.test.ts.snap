@@ -25,7 +25,7 @@ Object {
     },
     Object {
       "description": "Stop a region with job name JOBNM4 specifying optional connection parameters",
-      "options": "--job-name \\"JOBNM4\\" --host \\"localhost\\" --port 8080 --ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
+      "options": "--job-name \\"JOBNM4\\" --user \\"username\\" --pass \\"pass1234\\" --host \\"localhost\\" --port 8080--ich \\"zos1\\" --icp 9999 --plex \\"PLEX1\\"",
     },
   ],
   "mustSpecifyOne": Array [

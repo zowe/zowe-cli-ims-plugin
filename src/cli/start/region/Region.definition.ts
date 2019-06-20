@@ -63,6 +63,6 @@ export const RegionDefinition: ICommandDefinition = {
         },
         {
             description: strings.EXAMPLES.EX5,
-            options: "\"MEM5\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
+            options: "\"MEM5\" --user \"username\" --pass \"pass1234\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
         }]
 };

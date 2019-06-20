@@ -353,6 +353,7 @@ export const TransactionDefinition: ICommandDefinition = {
     },
     {
         description: strings.EXAMPLES.EX5,
-        options: "\"TRN4\" --pgm \"PGM1\" --host \"localhost\" --port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
+        options: "\"TRN4\" --pgm \"PGM1\" --user \"username\" --pass \"pass1234\" --host \"localhost\" " +
+          "--port 8080 --ich \"zos1\" --icp 9999 --plex \"PLEX1\""
     }]
 };
