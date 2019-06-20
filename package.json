@@ -43,7 +43,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
-    "@zowe/imperative": "^4.1.9-alpha.201906191533"
+    "@zowe/imperative": "^4.1.8"
   },
   "peerDependencies": {
     "@zowe/cli": "^3.0.0",
