@@ -166,7 +166,6 @@ exports[`ims query transaction should display the help 1`] = `
 
       Display help text
 
-
  EXAMPLES
  --------
 
@@ -187,7 +186,7 @@ exports[`ims query transaction should display the help 1`] = `
    - Query transaction information for all transactions (default
    is all):
 
-      $ zowe ims query transaction 
+      $ zowe ims query transaction
 
    - Query transaction information for all transactions
    specifying optional parameters:
