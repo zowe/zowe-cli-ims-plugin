@@ -112,6 +112,12 @@ exports[`ims query transaction should display the help 1`] = `
 
       The web server user password where the IMS Operations API resides.
 
+   --base-path  | --bp (string)
+
+      The base path for your API mediation layer instance. Specify this option to
+      prepend the base path to all z/OSMF resources when making REST requests. Do not
+      specify this option if you are not using an API mediation layer.
+
  PROFILE OPTIONS
  ---------------
 
