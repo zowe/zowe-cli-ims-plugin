@@ -141,7 +141,6 @@ exports[`ims query program should display the query program help 1`] = `
 
       Display help text
 
-
  EXAMPLES
  --------
 
@@ -162,7 +161,7 @@ exports[`ims query program should display the query program help 1`] = `
    - Query information for all application programs (default is
    all):
 
-      $ zowe ims query program 
+      $ zowe ims query program
 
    - Query information for all application programs specifying
    optional parameters:
