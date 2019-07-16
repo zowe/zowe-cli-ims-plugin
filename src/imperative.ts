@@ -58,7 +58,11 @@ const config: IImperativeConfig = {
                         type: "string",
                         secure: true,
                         optionDefinition: ImsSessionUtils.IMS_OPTION_PASSWORD
-                    }
+                    },
+                    basePath: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_BASE_PATH,
+                    },
                 },
                 required: ["host"],
             },

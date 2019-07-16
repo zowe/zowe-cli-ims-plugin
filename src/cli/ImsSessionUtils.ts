@@ -105,6 +105,19 @@ export class ImsSessionUtils {
     };
 
     /**
+     * Option used in profile creation and commands for base path setting for connecting to z/OSMF
+     */
+    public static IMS_OPTION_BASE_PATH: ICommandOptionDefinition = {
+        name: "base-path",
+        aliases: ["bp"],
+        description: "The base path for your API mediation layer instance." +
+            " Specify this option to prepend the base path to all z/OSMF resources when making REST requests." +
+            " Do not specify this option if you are not using an API mediation layer.",
+        type: "string",
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
+
+    /**
      * Options related to connecting to IMS
      * These options can be filled in if the user creates a profile
      */
@@ -115,7 +128,8 @@ export class ImsSessionUtils {
         ImsSessionUtils.IMS_OPTION_IMS_CONNECT_PORT,
         ImsSessionUtils.IMS_OPTION_PLEX,
         ImsSessionUtils.IMS_OPTION_USER,
-        ImsSessionUtils.IMS_OPTION_PASSWORD
+        ImsSessionUtils.IMS_OPTION_PASSWORD,
+        ImsSessionUtils.IMS_OPTION_BASE_PATH
     ];
 
     /**

@@ -81,6 +81,12 @@ exports[`ims query program should display the query program help 1`] = `
 
       The web server user password where the IMS Operations API resides.
 
+   --base-path  | --bp (string)
+
+      The base path for your API mediation layer instance. Specify this option to
+      prepend the base path to all z/OSMF resources when making REST requests. Do not
+      specify this option if you are not using an API mediation layer.
+
  PROFILE OPTIONS
  ---------------
 
@@ -135,7 +141,6 @@ exports[`ims query program should display the query program help 1`] = `
 
       Display help text
 
-
  EXAMPLES
  --------
 
@@ -156,7 +161,7 @@ exports[`ims query program should display the query program help 1`] = `
    - Query information for all application programs (default is
    all):
 
-      $ zowe ims query program 
+      $ zowe ims query program
 
    - Query information for all application programs specifying
    optional parameters:
