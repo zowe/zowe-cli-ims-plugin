@@ -1,6 +1,6 @@
 {
   "name": "@zowe/ims",
-  "version": "1.2.7",
+  "version": "1.3.0-alpha.201907161710",
   "description": "CLI Plug-in for IBM IMS",
   "homepage": "https://github.com/zowe/zowe-cli-ims-plugin#readme",
   "bugs": {
@@ -43,11 +43,11 @@
     "configurationModule": "lib/imperative.js"
   },
   "dependencies": {
-    "@zowe/imperative": "^4.1.8"
+    "@zowe/imperative": "^4.1.12-alpha.201907111518"
   },
   "peerDependencies": {
-    "@zowe/cli": "^3.0.0",
-    "@zowe/imperative": "^3.0.0"
+    "@zowe/cli": "^5.0.0",
+    "@zowe/imperative": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^20.0.5",
