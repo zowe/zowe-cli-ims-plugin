@@ -17,6 +17,7 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
 let route: string;
+let systemMessageID: string;
 
 describe("IMS query transaction", () => {
 
@@ -27,6 +28,7 @@ describe("IMS query transaction", () => {
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         route = imsProperties.route;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -60,7 +62,7 @@ describe("IMS query transaction", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toBe("QUERY TRAN");
+        expect(response.messages[systemMessageID].command).toBe("QUERY TRAN");
     });
 
     it("should query all transactions from IMS using criteria", async () => {

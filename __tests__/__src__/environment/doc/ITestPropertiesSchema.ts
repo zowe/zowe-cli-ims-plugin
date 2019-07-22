@@ -76,6 +76,10 @@ export interface ITestPropertiesSchema {
          * The name of transaction running in dependent region
          */
         transaction: string;
+        /**
+         * The name of the system message identifier
+         */
+        systemMessageID: string;
     };
 
 }

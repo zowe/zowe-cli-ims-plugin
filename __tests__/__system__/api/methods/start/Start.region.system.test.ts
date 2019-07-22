@@ -17,6 +17,7 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
 let memberName: string;
+let systemMessageID: string;
 
 describe("IMS start region", () => {
 
@@ -28,6 +29,8 @@ describe("IMS start region", () => {
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         memberName = imsProperties.dependentRegionName;
+        systemMessageID = imsProperties.systemMessageID;
+
         session = new ImsSession({
             user: imsProperties.user,
             password: imsProperties.password,
@@ -62,7 +65,7 @@ describe("IMS start region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("START REGION " + memberName);
+        expect(response.messages[systemMessageID].command).toContain("START REGION " + memberName);
     });
 
     // TODO - IBM NEEDS TO EXPLAIN HOW JOBNAME WORKS

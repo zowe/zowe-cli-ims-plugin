@@ -36,5 +36,9 @@ ims:
   dependentRegionID: 1
   # name of program running in dependent region
   programName: my-ims-program
+  # wild card name of programs defined
+  programWildCard: my-ims-program-wild-card
   # name of transaction running in dependent region
   transaction: my-ims-transaction
+  # system message identifier
+  systemMessageID: my-system-message-id

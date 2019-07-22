@@ -20,6 +20,9 @@ describe("Stop region command", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
+
+        // TODO start regions automatically
+
         testEnvironment = await TestEnvironment.setUp({
             testName: "stop_region_command",
             tempProfileTypes: ["ims"],

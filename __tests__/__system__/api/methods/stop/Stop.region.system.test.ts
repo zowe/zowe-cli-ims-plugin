@@ -18,6 +18,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let regionID: number;
 let memberName: string;
+let systemMessageID: string;
 
 describe("IMS stop region", () => {
 
@@ -32,6 +33,8 @@ describe("IMS stop region", () => {
 
         regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
         memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+        systemMessageID = imsProperties.systemMessageID;
+
         session = new ImsSession({
             user: imsProperties.user,
             password: imsProperties.password,
@@ -83,7 +86,7 @@ describe("IMS stop region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION " + regionID);
+        expect(response.messages[systemMessageID].command).toContain("STOP REGION " + regionID);
     });
 
     // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
@@ -102,8 +105,11 @@ describe("IMS stop region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME " + memberName);
-        expect(response.data[0].imjj).toContain("STOP COMMAND IN PROGRESS");
+        expect(response.messages[systemMessageID].command).toContain("STOP REGION JOBNAME " + memberName);
+
+        for (const messageKey of Object.keys(response.data[0])) {
+            expect(response.data[0][messageKey]).toContain("STOP COMMAND IN PROGRESS");
+        }
     });
 
     it("should fail to stop region due to neither reg_num nor job_name specified", async () => {
