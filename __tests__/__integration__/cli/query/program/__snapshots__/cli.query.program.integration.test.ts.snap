@@ -141,6 +141,10 @@ exports[`ims query program should display the query program help 1`] = `
 
       Display help text
 
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
+
  EXAMPLES
  --------
 
