@@ -6,7 +6,7 @@ Object {
     "**/cli/*/*.definition!(.d).*s",
   ],
   "name": "ims",
-  "productDisplayName": "CLI Plug-in for IBM IMS",
+  "productDisplayName": "IBM IMS Plug-in for zowe CLI",
   "profiles": Array [
     Object {
       "createProfileExamples": Array [
