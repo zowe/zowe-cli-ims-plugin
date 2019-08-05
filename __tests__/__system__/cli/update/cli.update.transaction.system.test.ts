@@ -96,7 +96,7 @@ describe("Update transaction command", () => {
         const output = runCliScript(__dirname + "/__scripts__/update_transaction_error.sh", testEnvironment,
             [transactionName,
                 "Y",
-                "Y",
+                "N",
                 "E",
                 route,
                 1,
