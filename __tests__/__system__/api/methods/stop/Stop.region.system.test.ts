@@ -36,9 +36,8 @@ describe("IMS stop region", () => {
             tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
-        const imsProperties = await testEnvironment.systemTestProperties.ims;
+        const imsProperties = testEnvironment.systemTestProperties.ims;
 
-        // regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
         memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
         systemMessageID = imsProperties.systemMessageID;
 
@@ -68,7 +67,6 @@ describe("IMS stop region", () => {
 
     const options: IStopRegionParms = {} as any;
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by reg_num (region id)", async () => {
         let error;
         let response;
@@ -87,60 +85,12 @@ describe("IMS stop region", () => {
         expect(response.messages[systemMessageID].command).toContain("STOP REGION " + regionID);
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by job_name", async () => {
         let error;
         let response;
 
         options.reg_num = undefined;
         options.job_name = memberName;
-
-        // await queryRegionActiveStartIfNot(session, memberName);
-        // try {
-        //     response = await queryRegion(session, options);
-        // } catch (err) {
-        //     error = err;
-        // }
-        //
-        // let found = false;
-        //
-        // for (const item of response.data) {
-        //     if (item.jobname === memberName) {
-        //         found = true;
-        //         break;
-        //     }
-        // }
-        //
-        // if (found !== true) {
-        //     try {
-        //         const startOptions: IStartRegionParms = {} as any;
-        //         startOptions.memberName = memberName;
-        //         response = await startRegion(session, startOptions);
-        //     } catch (err) {
-        //         error = err;
-        //     }
-        //
-        //     let started = false;
-        //     let count = 0;
-        //
-        //     do {
-        //         try {
-        //             response = await queryRegion(session, options);
-        //         } catch (err) {
-        //             error = err;
-        //         }
-        //
-        //         for (const item of response.data) {
-        //             if (item.jobname === memberName) {
-        //                 started = true;
-        //                 break;
-        //             }
-        //         }
-        //         count++;
-        //
-        //     }
-        //     while (started == false && count < 10);
-        // }
 
         try {
             response = await stopRegion(session, options);

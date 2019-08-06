@@ -12,10 +12,20 @@
 import { runCliScript } from "../../../__src__/TestUtils";
 import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
+import { ImsSession } from "../../../../src/api/rest";
+import { IQueryRegionParms, IStartRegionParms } from "../../../../src/api/doc";
+import { queryRegion } from "../../../../src/api/methods/query";
+import { startRegion } from "../../../../src/api/methods/start";
 
 let testEnvironment: ITestEnvironment;
+let imsConnectHost: string;
+let session: ImsSession;
 let regionID: number;
-let jobName: string;
+let regionID1: number;
+let regionID2: number;
+let memberName: string;
+let memberName2: string;
+
 describe("Stop region command", () => {
 
     // Create the unique test environment
@@ -28,16 +38,42 @@ describe("Stop region command", () => {
             tempProfileTypes: ["ims"],
             installPlugin: true
         });
-        regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
-        jobName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+
+        imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
+        const imsProperties = testEnvironment.systemTestProperties.ims;
+        memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+        memberName2 = testEnvironment.systemTestProperties.ims.dependentRegionName2;
+        // regionID1 = testEnvironment.systemTestProperties.ims.dependentRegionID1;
+        // regionID2 = testEnvironment.systemTestProperties.ims.dependentRegionID2;
+
+        session = new ImsSession({
+            user: imsProperties.user,
+            password: imsProperties.password,
+            hostname: imsProperties.host,
+            port: imsProperties.port,
+            imsConnectHost: testEnvironment.systemTestProperties.ims.imsConnectHost,
+            imsConnectPort: testEnvironment.systemTestProperties.ims.imsConnectPort,
+            plex: testEnvironment.systemTestProperties.ims.plex,
+            type: "basic",
+            strictSSL: false,
+            protocol: "http",
+        });
+    });
+
+    beforeEach(async () => {
+
+        regionID = await queryRegionActiveStartIfNot(session, memberName);
+
     });
 
     afterAll(async () => {
         await TestEnvironment.cleanUp(testEnvironment);
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("Should stop a region by specifying a region ID", async () => {
+
+        // regionID = await queryRegionActiveStartIfNot(session, memberName);
+
         const output = runCliScript(__dirname + "/__scripts__/stop_region.sh", testEnvironment,
             [regionID]);
         const stderr = output.stderr.toString();
@@ -47,10 +83,16 @@ describe("Stop region command", () => {
         expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("Should stop a multiple regions by specifying multiple region IDs", async () => {
+
+        // regionID1 = await queryRegionActiveStartIfNot(session, memberName);
+        regionID2 = await queryRegionActiveStartIfNot(session, memberName2);
+
+        var arr = new Array(regionID, regionID2);
+        arr.sort();
+
         const output = runCliScript(__dirname + "/__scripts__/stop_multiple_regions.sh", testEnvironment,
-            [regionID - 1, regionID]);
+            [ arr[0], arr[1]]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
@@ -58,10 +100,9 @@ describe("Stop region command", () => {
         expect(stdout).toContain("STOP COMMAND IN PROGRESS");
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("Should stop a region by specifying a job name and profile options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/stop_region_fully_qualified.sh", testEnvironment,
-            [jobName,
+            [memberName,
                 testEnvironment.systemTestProperties.ims.host,
                 testEnvironment.systemTestProperties.ims.port,
                 testEnvironment.systemTestProperties.ims.user,
@@ -77,3 +118,62 @@ describe("Stop region command", () => {
     });
 
 });
+
+async function queryRegionActiveStartIfNot(session1: ImsSession, memberName1: string) {
+    const MAX_LOOPS = 10;
+    let error;
+    let response;
+    let id = 0;
+    const queryOptions: IQueryRegionParms = {} as any;
+    queryOptions.dc = true;
+
+    try {
+        response = await queryRegion(session1, queryOptions);
+    } catch (err) {
+        error = err;
+    }
+
+    let found = false;
+
+    for (const item of response.data) {
+        if (item.jobname === memberName1) {
+            found = true;
+            id = item.regid;
+            break;
+        }
+    }
+
+    if (found !== true) {
+        try {
+            const startOptions: IStartRegionParms = {} as any;
+            startOptions.memberName = memberName1;
+            response = await startRegion(session1, startOptions);
+        } catch (err) {
+            error = err;
+        }
+
+        let started = false;
+        let count = 0;
+
+        do {
+            try {
+                response = await queryRegion(session1, queryOptions);
+            } catch (err) {
+                error = err;
+            }
+
+            for (const item of response.data) {
+                if (item.jobname === memberName1) {
+                    started = true;
+                    id = item.regid;
+                    break;
+                }
+            }
+            count++;
+
+        }
+        while (started === false && count < MAX_LOOPS);
+    }
+
+    return id;
+}
