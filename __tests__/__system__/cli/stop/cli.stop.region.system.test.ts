@@ -21,7 +21,6 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
 let regionID: number;
-let regionID1: number;
 let regionID2: number;
 let memberName: string;
 let memberName2: string;
@@ -88,7 +87,7 @@ describe("Stop region command", () => {
         // regionID1 = await queryRegionActiveStartIfNot(session, memberName);
         regionID2 = await queryRegionActiveStartIfNot(session, memberName2);
 
-        var arr = new Array(regionID, regionID2);
+        const arr = new Array(regionID, regionID2);
         arr.sort();
 
         const output = runCliScript(__dirname + "/__scripts__/stop_multiple_regions.sh", testEnvironment,
