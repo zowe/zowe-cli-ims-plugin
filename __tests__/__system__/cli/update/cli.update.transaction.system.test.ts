@@ -100,14 +100,10 @@ describe("Update transaction command", () => {
                 "E",
                 route,
                 1,
-                "N",
-                sixteen,
-                "S"]);
+                "N"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toContain("No fastpath");
-
-        // TODO 'no fastpath' is not in omar's
     });
 
 });
