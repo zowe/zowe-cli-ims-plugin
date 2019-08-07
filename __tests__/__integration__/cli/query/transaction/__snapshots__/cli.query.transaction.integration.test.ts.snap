@@ -172,6 +172,10 @@ exports[`ims query transaction should display the help 1`] = `
 
       Display help text
 
+   --help-web  | --hw (boolean)
+
+      Display HTML help in browser
+
  EXAMPLES
  --------
 
