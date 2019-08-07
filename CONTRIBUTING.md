@@ -2,7 +2,7 @@
 This document is intended to be a living summary of conventions & best practices for development within IBM IMS Plug-in for zowe CLI.
 
 ## Primary Contribution Guidelines
-The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with Zowe CLI properly:
+The following information is critical to working with the code, running/writing/maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates with zowe CLI properly:
 
 | For more information about ... | See: |
 | ------------------------------ | ----- |

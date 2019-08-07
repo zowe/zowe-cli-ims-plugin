@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-ims-plugin)
 
-The IBM® Information Management System (IMS)™ Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).
+The IBM® Information Management System (IMS)™ Plug-in for zowe CLI lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).
 
 As an application developer or DevOps administrator, you can use IBM IMS Plug-in for zowe CLI to perform the following tasks:
 
@@ -12,7 +12,7 @@ As an application developer or DevOps administrator, you can use IBM IMS Plug-in
 
 ## Contribution Guidelines
 
-For Zowe CLI development guidelines and IMS plug-in specific development information, see [the Contribution Guidelines](CONTRIBUTING.md).
+For zowe CLI development guidelines and IMS plug-in specific development information, see [the Contribution Guidelines](CONTRIBUTING.md).
 
 **Tip:** Follow the [tutorials on the documentation site](https://zowe.github.io/docs-site/latest/extend/extend-cli/cli-devTutorials.html) to start developing your first plug-in! 
 
@@ -43,7 +43,7 @@ Before you install the plug-in, meet the following prerequisites:
     npm run build
     ```
 
-    The first time you build your code changes, you will be prompted for the location of the Imperative CLI Framework package, which is located in the `node_modules/@zowe` folder in the directory where Zowe CLI was installed.
+    The first time you build your code changes, you will be prompted for the location of the Imperative CLI Framework package, which is located in the `node_modules/@zowe` folder in the directory where zowe CLI was installed.
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 
@@ -69,7 +69,7 @@ Before you install the plug-in, meet the following prerequisites:
     Validation results for plugin 'ims':
     Successfully validated.
     ``` 
-    **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.  
+    **Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed zowe CLI.  
 
 4.  [Create a user profile](#create-a-user-profile).
 
@@ -84,7 +84,7 @@ You can create an `ims` user profile to avoid typing your connection details on 
     ```
     The result of the command displays as a success or failure message. You can use your profile when you issue commands in the ims command group.
 
-**Tip:** For more information about the syntax, actions, and options, for a profiles create command, open Zowe CLI and issue the following command:
+**Tip:** For more information about the syntax, actions, and options, for a profiles create command, open zowe CLI and issue the following command:
 
 ```
 zowe profiles create ims-profile -h
