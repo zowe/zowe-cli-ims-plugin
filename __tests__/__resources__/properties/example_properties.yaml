@@ -30,6 +30,8 @@ ims:
   expectedProgram: my-ims-expected-program
   # a transaction that should exist when running query transaction command
   expectedTransaction: my-ims-expected-transaction
+  # NOTE: dependentRegionName and dependentRegionName2 should be regions that
+  # have region IDs that are consecutive to ensure only those two are stopped.
   # member name of a dependent region that can be started and stopped
   dependentRegionName: my-ims-dependent-region-name
   # member name of a dependent region that can be started and stopped, used in multiple region stop test
