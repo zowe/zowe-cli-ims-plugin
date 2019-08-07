@@ -30,8 +30,6 @@ describe("Stop region command", () => {
     // Create the unique test environment
     beforeAll(async () => {
 
-        // TODO start regions automatically
-
         testEnvironment = await TestEnvironment.setUp({
             testName: "stop_region_command",
             tempProfileTypes: ["ims"],
@@ -42,8 +40,6 @@ describe("Stop region command", () => {
         const imsProperties = testEnvironment.systemTestProperties.ims;
         memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
         memberName2 = testEnvironment.systemTestProperties.ims.dependentRegionName2;
-        // regionID1 = testEnvironment.systemTestProperties.ims.dependentRegionID1;
-        // regionID2 = testEnvironment.systemTestProperties.ims.dependentRegionID2;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -60,9 +56,8 @@ describe("Stop region command", () => {
     });
 
     beforeEach(async () => {
-
+        // retrieve region ID used in all tests
         regionID = await queryRegionActiveStartIfNot(session, memberName);
-
     });
 
     afterAll(async () => {
@@ -70,8 +65,6 @@ describe("Stop region command", () => {
     });
 
     it("Should stop a region by specifying a region ID", async () => {
-
-        // regionID = await queryRegionActiveStartIfNot(session, memberName);
 
         const output = runCliScript(__dirname + "/__scripts__/stop_region.sh", testEnvironment,
             [regionID]);
@@ -84,9 +77,10 @@ describe("Stop region command", () => {
 
     it("Should stop a multiple regions by specifying multiple region IDs", async () => {
 
-        // regionID1 = await queryRegionActiveStartIfNot(session, memberName);
+        // need second region ID
         regionID2 = await queryRegionActiveStartIfNot(session, memberName2);
 
+        // region ID is random, so sort in ascending order for command
         const arr = new Array(regionID, regionID2);
         arr.sort();
 
