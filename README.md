@@ -1,10 +1,10 @@
-# Zowe CLI Plug-in for IBM® Information Management System (IMS)™
+# IBM® Information Management System (IMS)™ Plug-in for Zowe CLI
 
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-ims-plugin)
 
-The Zowe CLI Plug-in for IBM® Information Management System (IMS)™ lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).
+The IBM® Information Management System (IMS)™ Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).
 
-As an application developer or DevOps administrator, you can use Zowe CLI Plug-in for IBM IMS to perform the following tasks:
+As an application developer or DevOps administrator, you can use IBM IMS Plug-in for Zowe CLI to perform the following tasks:
 
 - Refresh IMS transactions, programs, and dependent IMS regions.
 - Deploy application code into IMS production or test systems.
@@ -30,12 +30,12 @@ Before you install the plug-in, meet the following prerequisites:
 
 ## Build the Plug-in from Source
 **Follow these steps:**
-1. The first time that you clone the Zowe CLI plug-in for IMS from the GitHub repository, issue the following command against the local directory:
+1. The first time that you clone the IBM IMS Plug-in for Zowe CLI from the GitHub repository, issue the following command against the local directory:
 
     ```
     npm install
     ```
-    The command installs the required Zowe CLI Plug-in for IMS dependencies and several development tools. When necessary, you can run the task at any time to update the tools.
+    The command installs the required IBM IMS Plug-in for Zowe CLI dependencies and several development tools. When necessary, you can run the task at any time to update the tools.
 
 2. To build your code changes, issue the following command:
 
@@ -47,7 +47,7 @@ Before you install the plug-in, meet the following prerequisites:
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 
-## Install the Zowe CLI Plug-in for IMS
+## Install the IBM IMS Plug-in for Zowe CLI
 
 **Follow these steps:**
 
@@ -55,14 +55,14 @@ Before you install the plug-in, meet the following prerequisites:
 
 2.  Install the plug-in:
     ```
-    zowe plugins install @zowe/ims@latest
+    zowe plugins install @zowe/ims-for-zowe-cli
     ``` 
     
     **Note**: The `latest` npm tag installs a version of the product that is intended for public consumption. You can use different npm      tags to install other versions of the product. For example, you can install with the `@beta` tag to try new features that have not      been fully validated. For more information about tag usage, see [NPM Tag Names](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md#npm-tag-names).
     
 3.  (Optional) Verify the installation:
     ```
-    zowe plugins validate @zowe/ims
+    zowe plugins validate @zowe/ims-for-zowe-cli
     ```
     When you install the plug-in successfully, the following message displays:
     ```
@@ -99,6 +99,6 @@ For information about running automated, unit, and system and integration tests 
 **Follow these steps:**
 1.  To uninstall the plug-in from a base application, issue the following command:
     ```
-    zowe plugins uninstall @zowe/ims
+    zowe plugins uninstall @zowe/ims-for-zowe-cli
     ```
 After the uninstallation process completes successfully, the product no longer contains the plug-in. 
