@@ -14,7 +14,7 @@ export class PluginConstants {
     /**
      * The name of this plug-in
      */
-    public static readonly PLUGIN_NAME = "CLI Plug-in for IBM IMS";
+    public static readonly PLUGIN_NAME = "IBM IMS Plug-in for zowe CLI";
 
     /**
      * The description of the group exposed by this plug-in
