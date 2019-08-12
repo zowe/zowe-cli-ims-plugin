@@ -11,13 +11,21 @@
 
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ImsSession, IStartRegionParms, startRegion, IStopRegionParms, stopRegion } from "../../../../../src";
+import {
+    ImsSession,
+    IStartRegionParms,
+    startRegion,
+    IStopRegionParms,
+    stopRegion,
+    IQueryRegionParms, queryRegion
+} from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
 let regionID: number;
 let memberName: string;
+let systemMessageID: string;
 
 describe("IMS stop region", () => {
 
@@ -28,10 +36,11 @@ describe("IMS stop region", () => {
             tempProfileTypes: ["ims"]
         });
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
-        const imsProperties = await testEnvironment.systemTestProperties.ims;
+        const imsProperties = testEnvironment.systemTestProperties.ims;
 
-        regionID = testEnvironment.systemTestProperties.ims.dependentRegionID;
         memberName = testEnvironment.systemTestProperties.ims.dependentRegionName;
+        systemMessageID = imsProperties.systemMessageID;
+
         session = new ImsSession({
             user: imsProperties.user,
             password: imsProperties.password,
@@ -46,21 +55,11 @@ describe("IMS stop region", () => {
         });
     });
 
-    // beforeEach(async () => {
-    //     let response;
-    //     let error;
-    //
-    //     const options: IStartRegionParms = {} as any;
-    //
-    //     options.memberName = "IMJJPP4";
-    //
-    //     try {
-    //         response = await startRegion(session, options);
-    //     } catch (err) {
-    //         error = err;
-    //     }
-    //
-    // });
+    beforeEach(async () => {
+
+        regionID = await queryRegionActiveStartIfNot(session, memberName);
+
+    });
 
     afterAll(async () => {
         await TestEnvironment.cleanUp(testEnvironment);
@@ -68,12 +67,12 @@ describe("IMS stop region", () => {
 
     const options: IStopRegionParms = {} as any;
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by reg_num (region id)", async () => {
         let error;
         let response;
 
         options.reg_num = [regionID];
+        options.job_name = undefined;
 
         try {
             response = await stopRegion(session, options);
@@ -83,10 +82,9 @@ describe("IMS stop region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION " + regionID);
+        expect(response.messages[systemMessageID].command).toContain("STOP REGION " + regionID);
     });
 
-    // NOTE: REGION MUST BE STARTED MANUALLY AND RUNNING BEFORE RUNNING TEST
     it("should stop region by job_name", async () => {
         let error;
         let response;
@@ -102,8 +100,11 @@ describe("IMS stop region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toContain("STOP REGION JOBNAME " + memberName);
-        expect(response.data[0].imjj).toContain("STOP COMMAND IN PROGRESS");
+        expect(response.messages[systemMessageID].command).toContain("STOP REGION JOBNAME " + memberName);
+
+        for (const messageKey of Object.keys(response.data[0])) {
+            expect(response.data[0][messageKey]).toContain("STOP COMMAND IN PROGRESS");
+        }
     });
 
     it("should fail to stop region due to neither reg_num nor job_name specified", async () => {
@@ -124,3 +125,62 @@ describe("IMS stop region", () => {
         expect(error.mDetails.msg).toContain("Either region number or job name (but not both) must be specified");
     });
 });
+
+async function queryRegionActiveStartIfNot(session1: ImsSession, memberName1: string) {
+    const MAX_LOOPS = 10;
+    let error;
+    let response;
+    let id = 0;
+    const queryOptions: IQueryRegionParms = {} as any;
+    queryOptions.dc = true;
+
+    try {
+     response = await queryRegion(session1, queryOptions);
+    } catch (err) {
+     error = err;
+    }
+
+    let found = false;
+
+    for (const item of response.data) {
+     if (item.jobname === memberName1) {
+         found = true;
+         id = item.regid;
+         break;
+     }
+    }
+
+    if (found !== true) {
+     try {
+         const startOptions: IStartRegionParms = {} as any;
+         startOptions.memberName = memberName1;
+         response = await startRegion(session1, startOptions);
+     } catch (err) {
+         error = err;
+     }
+
+     let started = false;
+     let count = 0;
+
+     do {
+         try {
+             response = await queryRegion(session1, queryOptions);
+         } catch (err) {
+             error = err;
+         }
+
+         for (const item of response.data) {
+             if (item.jobname === memberName1) {
+                 started = true;
+                 id = item.regid;
+                 break;
+             }
+         }
+         count++;
+
+     }
+     while (started === false && count < MAX_LOOPS);
+    }
+
+    return id;
+ }

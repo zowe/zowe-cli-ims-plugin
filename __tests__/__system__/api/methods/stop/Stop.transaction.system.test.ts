@@ -9,7 +9,6 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { stopTransaction, IUpdateTransactionParms, ImsSession, stopProgram } from "../../../../../src";
@@ -19,6 +18,7 @@ let imsConnectHost: string;
 let session: ImsSession;
 let transactionName: string;
 let route: string;
+let systemMessageID: string;
 
 describe("IMS stop transaction", () => {
 
@@ -32,6 +32,7 @@ describe("IMS stop transaction", () => {
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         transactionName = imsProperties.transaction;
         route = imsProperties.route;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -68,7 +69,7 @@ describe("IMS stop transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transactionName + ") STOP(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(" + transactionName + ") STOP(SCHD)");
     });
 
     it("should stop multiple transactions by transaction name and use multiple stop options", async () => {
@@ -87,7 +88,7 @@ describe("IMS stop transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD, TRACE)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD, TRACE)");
     });
 
     it("should stop multiple transaction by transaction name and use route", async () => {
@@ -107,7 +108,7 @@ describe("IMS stop transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(D*, IV*) STOP(SCHD)");
     });
 
 });

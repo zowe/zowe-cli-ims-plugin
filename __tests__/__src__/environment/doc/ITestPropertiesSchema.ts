@@ -61,7 +61,11 @@ export interface ITestPropertiesSchema {
          */
         dependentRegionName: string;
         /**
-         * ID used to stop a dependent region
+         * a dependent region that can be started and stopped, used to stop multiple regions
+         */
+        dependentRegionName2: string;
+        /**
+         * ID used to stop a dependent regions (unused currently)
          */
         dependentRegionID: number;
         /**
@@ -76,6 +80,10 @@ export interface ITestPropertiesSchema {
          * The name of transaction running in dependent region
          */
         transaction: string;
+        /**
+         * The name of the system message identifier
+         */
+        systemMessageID: string;
     };
 
 }

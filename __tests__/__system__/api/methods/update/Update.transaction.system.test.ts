@@ -20,6 +20,7 @@ let session: ImsSession;
 let route: string;
 let transaction: string;
 let programWildCard: string;
+let systemMessageID: string;
 
 describe("IMS update transaction", () => {
 
@@ -33,6 +34,7 @@ describe("IMS update transaction", () => {
         route = imsProperties.route;
         transaction = imsProperties.transaction;
         programWildCard = imsProperties.programWildCard;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -70,7 +72,7 @@ describe("IMS update transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transaction.toUpperCase() + ") SET(LOCK(OFF))");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(" + transaction.toUpperCase() + ") SET(LOCK(OFF))");
     });
 
     it("should update multiple transactions by transaction name and use multiple update options", async () => {
@@ -89,7 +91,7 @@ describe("IMS update transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) SET(LOCK(OFF))");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(D*, IV*) SET(LOCK(OFF))");
     });
 
     it("should update multiple transactions by transaction name and use route", async () => {
@@ -109,6 +111,6 @@ describe("IMS update transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + programWildCard.toUpperCase() + ") SET(LOCK(OFF))");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(" + programWildCard.toUpperCase() + ") SET(LOCK(OFF))");
     });
 });

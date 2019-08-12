@@ -19,6 +19,7 @@ let session: ImsSession;
 let program: string;
 let route: string;
 let programWildCard: string;
+let systemMessageID: string;
 
 describe("IMS start program", () => {
 
@@ -32,6 +33,7 @@ describe("IMS start program", () => {
         program = imsProperties.programName;
         route = imsProperties.route;
         programWildCard = imsProperties.programWildCard;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -68,7 +70,7 @@ describe("IMS start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE PGM NAME(" + program + ") START(SCHD)");
     });
 
     it("should start program by program name and use multiple start options", async () => {
@@ -88,7 +90,7 @@ describe("IMS start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(DFSIVP4) START(SCHD, TRACE)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE PGM NAME(" + program + ") START(SCHD, TRACE)");
     });
 
     it("should start multiple programs by program name", async () => {
@@ -108,7 +110,7 @@ describe("IMS start program", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE PGM NAME(" + programWildCard + ") START(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE PGM NAME(" + programWildCard + ") START(SCHD)");
     });
 
 });

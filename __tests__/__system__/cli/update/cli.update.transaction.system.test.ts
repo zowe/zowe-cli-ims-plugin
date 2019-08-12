@@ -55,13 +55,11 @@ describe("Update transaction command", () => {
         const output = runCliScript(__dirname + "/__scripts__/update_transaction_error.sh", testEnvironment,
             [transactionName,
                 "Y",
-                "Y",
+                "N",
                 "N",
                 route,
                 1,
-                "N",
-                sixteen,
-                "S"]);
+                "N"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");
@@ -96,13 +94,11 @@ describe("Update transaction command", () => {
         const output = runCliScript(__dirname + "/__scripts__/update_transaction_error.sh", testEnvironment,
             [transactionName,
                 "Y",
-                "Y",
+                "N",
                 "E",
                 route,
                 1,
-                "N",
-                sixteen,
-                "S"]);
+                "N"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toContain("No fastpath");

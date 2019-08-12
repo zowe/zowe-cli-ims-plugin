@@ -20,6 +20,7 @@ let session: ImsSession;
 let route: string;
 let transaction: string;
 let programWildCard: string;
+let systemMessageID: string;
 
 describe("IMS start transaction", () => {
 
@@ -33,6 +34,7 @@ describe("IMS start transaction", () => {
         route = imsProperties.route;
         transaction = imsProperties.transaction;
         programWildCard = imsProperties.programWildCard;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -69,7 +71,7 @@ describe("IMS start transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + transaction + ") START(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(" + transaction + ") START(SCHD)");
     });
 
     it("should start multiple transactions by transaction name and use multiple start options", async () => {
@@ -88,7 +90,7 @@ describe("IMS start transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD, TRACE)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(D*, IV*) START(SCHD, TRACE)");
     });
 
     it("should start multiple transactions by transaction name and use route", async () => {
@@ -108,6 +110,6 @@ describe("IMS start transaction", () => {
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
         expect(response.data[0].cc).toBe("0");
-        expect(response.messages["OM1OM   "].command).toContain("UPDATE TRAN NAME(" + programWildCard + ") START(SCHD)");
+        expect(response.messages[systemMessageID].command).toContain("UPDATE TRAN NAME(" + programWildCard + ") START(SCHD)");
     });
 });

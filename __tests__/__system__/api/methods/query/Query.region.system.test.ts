@@ -17,6 +17,7 @@ let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;
 let session: ImsSession;
 let imsRoute: string;
+let systemMessageID: string;
 
 describe("IMS query region", () => {
 
@@ -27,6 +28,7 @@ describe("IMS query region", () => {
         imsConnectHost = testEnvironment.systemTestProperties.ims.imsConnectHost;
         const imsProperties = await testEnvironment.systemTestProperties.ims;
         imsRoute = imsProperties.route;
+        systemMessageID = imsProperties.systemMessageID;
 
         session = new ImsSession({
             user: imsProperties.user,
@@ -60,7 +62,7 @@ describe("IMS query region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
+        expect(response.messages[systemMessageID].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
     });
 
     it("should query all regions from IMS using criteria", async () => {
@@ -78,7 +80,7 @@ describe("IMS query region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
+        expect(response.messages[systemMessageID].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
     });
 
     it("should query all regions from IMS with valid route", async () => {
@@ -97,7 +99,7 @@ describe("IMS query region", () => {
 
         expect(error).toBeFalsy();
         expect(response).toBeTruthy();
-        expect(response.messages["OM1OM   "].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
+        expect(response.messages[systemMessageID].command).toBe("(DIS ACT REGION) OPTION=AOPOUTPUT");
     });
 
     it("should fail to query all regions from IMS due to invalid route", async () => {
