@@ -23,6 +23,8 @@ As an application developer or DevOps administrator, you can use IBM IMS Plug-in
 
 ## Software rerequirements
 
+<!-- TODO When @latest branch of Zowe docs-site exists, we should give users the option to go and read about/install the @latest or the @lts-incremental versions of this plug-in. We can also explain which branches in the repo correspond to which CLI version. -->
+
 Before you install and use the plug-in:
 
 -   Install Zowe CLI on your computer.
