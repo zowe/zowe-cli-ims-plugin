@@ -61,26 +61,28 @@ Use one of the following methods to install the plug-in:
 
     **Note:** When you update `package.json` to include new dependencies, or when you pull changes that affect `package.json`, issue the `npm update` command to download the dependencies.
 
-## (Optional) Validate the plug-in
-
-The validation process helps to ensure the following conditions:
-
--   The installation process completed successfully.
--   The plug-in does not contain commands, options, and arguments that conflict with (possess the same names) other plug-ins that are installed in your Zowe CLI installation.
-
-**Follow these steps:**
-
-1.  Issue the following command:
+3.  Issue one of the following commands to install the plug-in:
 
     ```
-    zowe plugins validate @zowe/ims-for-zowe-cli
+    zowe plugins install <local path your cloned repo>
     ```
-    When you install the plug-in successfully, the following message displays:
+
+    Or:
+
     ```
-    Validation results for plugin 'ims':
-    Successfully validated.
-    ``` 
-**Tip:** When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.
+    zowe plugins install .
+    ```
+
+**Tip:** After the installation process completes, it validates that the plug-in was installed correct and the names of its commands, options, and arguments do not conflict with that of the other plug-ins that you installed into your Zowe CLi implimentation.
+
+When the validation process is successful, the following message displays:
+
+```
+Validation results for plugin 'ims':
+Successfully validated.
+```
+
+When an unsuccessful message displays, you can troubleshoot the installation by addressing the issues that the message describes. You can also review the information that is contained in the log file that is located in the directory where you installed Zowe CLI.
 
 ## Create a user profile
 
