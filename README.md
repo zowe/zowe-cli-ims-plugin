@@ -113,7 +113,7 @@ You can perform the following types of tests on the IBM IMS plug-in:
 **Note:** For detailed information about conventions and best practices for running tests against Zowe CLI plug-ins, see
 [Zowe CLI Plug-in Testing Guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/PluginTESTINGGuidelines.md).
 
-Before running the system and integration tests, ensure that the requires IBM IMS applications are installed and configured as required. For more information, see [Prerequisites](#prerequisites).
+Before running the system and integration tests, ensure that the required IBM IMS applications are installed and configured as required. For more information, see [Prerequisites](#prerequisites).
 
 Copy the file named `.../__tests__/__resources__/properties/example_properties.yaml` and create a file named `.../__tests__/__resources__/properties/custom_properties.yaml`. Customize the file named `custom_properties.yaml` as required for your environment.
 
