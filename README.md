@@ -12,6 +12,8 @@ The IBM IMS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IMS r
 - [Running tests](#running-tests)
 - [Uninstalling](#uninstalling)
 - [Contributing](#contributing)
+- [Tutorials](#tutorials)
+- [Imperative CLI Framework documentation](#imperative-cli-framework-documentation)
 
 ## How the plug-in works
 
@@ -153,10 +155,10 @@ After the uninstallation process completes successfully, the product no longer c
 
 For information about contributing to the plug-in, see the Zowe CLI [Contribution Guidelines](CONTRIBUTING.md). The guidelines contain standards and conventions for developing plug-ins for Zowe CLI. This includes information about running, writing, maintaining automated tests, developing consistent syntax in your plug-in, and ensuring that your plug-in integrates properly with Zowe CLI.
 
-### Tutorials
+## Tutorials
 
 To learn about building new commands or build a new plug-in for Zowe CLI, see [Developing for Zowe CLI](https://zowe.org/docs-site/latest/extend/extend-cli/cli-devTutorials.html).
 
-### Imperative CLI Framework documentation
+## Imperative CLI Framework documentation
 
 [Imperative CLI Framework](https://github.com/zowe/imperative/wiki) documentation is a key source of information to learn about the features of Imperative CLI Framework (the code framework that you use to build plug-ins for Zowe CLI). Refer to the documentation as you develop your plug-in.
