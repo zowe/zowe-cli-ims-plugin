@@ -29,8 +29,8 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"]],
-        [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.MINOR, dependencies: ["@brightside/imperative": "lts-incremental"]]
+        [name: "master", tag: "latest"],
+        [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.MINOR]
     ])
 
     // Git configuration information
