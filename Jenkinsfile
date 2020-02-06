@@ -115,7 +115,7 @@ node('ca-jenkins-agent') {
     pipeline.test(
         name: "Integration",
         operation: {
-            def zoweVersion = sh(returnStdout: true, script: "echo $(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g')")
+            def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g')")
             sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
             // create the custom properties file. contents don't matter for integration tests
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
