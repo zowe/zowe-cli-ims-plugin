@@ -29,10 +29,10 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], level: SemverLevel.MINOR],
-        //[name: "master", tag: "latest"],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", level: SemverLevel.MINOR]
-        [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.PATCH]
+        [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], dependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR],
+        //[name: "master", tag: "latest", dependencies: ["@zowe/imperative": "latest"]],
+        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", dependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR]
+        [name: "lts-incremental", tag: "lts-incremental", dependencies: ["@zowe/imperative" :"lts-incremental"], level: SemverLevel.PATCH]
     ])
 
     // Git configuration information
@@ -115,7 +115,7 @@ node('ca-jenkins-agent') {
     pipeline.test(
         name: "Integration",
         operation: {
-            def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')")
+            def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
             sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
             // create the custom properties file. contents don't matter for integration tests
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"

@@ -43,8 +43,8 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/cli": ">=6.0.0",
-    "@zowe/imperative": ">=4.0.0"
+    "@zowe/cli": "^6.0.0",
+    "@zowe/imperative": "^4.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",
