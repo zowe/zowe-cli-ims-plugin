@@ -63,6 +63,10 @@ const config: IImperativeConfig = {
                         type: "string",
                         optionDefinition: ImsSessionUtils.IMS_OPTION_BASE_PATH,
                     },
+                    protocol: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_PROTOCOL
+                    },
                 },
                 required: ["host"],
             },
