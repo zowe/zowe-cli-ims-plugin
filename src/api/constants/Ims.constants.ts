@@ -27,7 +27,7 @@ export const ImsConstants: { [key: string]: any } = {
     /**
      * Base Path
      */
-    BASE_PATH: "ims/api/v1",
+    BASE_PATH: "/ims/apis/v1/",
 
     /**
      * NAME
