@@ -29,7 +29,7 @@ export async function queryProgram(session: ImsSession, parms?: IQueryProgramPar
 
     Logger.getAppLogger().debug("Attempting to query program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.PROGRAM;
 
     // name is not required; defaults to all programs
     if ((parms !== undefined) && (parms.name !== undefined)) {
@@ -98,7 +98,7 @@ export async function queryProgram(session: ImsSession, parms?: IQueryProgramPar
             }
         }
     }
-    return ImsRestClient.getExpectJSON(session, resource, []);
+    return ImsRestClient.getExpectJSON(session, resource);
 }
 
 /**
@@ -115,7 +115,7 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
 
     Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.TRANSACTION;
 
     // name is not required; defaults to all transactions
     if ((parms !== undefined) && (parms.name !== undefined)) {
@@ -248,7 +248,7 @@ export async function queryTransaction(session: ImsSession, parms?: IQueryTransa
             resource = resource + delimiter + "resp=" + parms.resp;
         }
     }
-    return ImsRestClient.getExpectJSON(session, resource, []);
+    return ImsRestClient.getExpectJSON(session, resource);
 }
 
 /**

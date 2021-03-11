@@ -22,12 +22,12 @@ export const ImsConstants: { [key: string]: any } = {
     /**
      * URL parameter
      */
-    URL: "/ims/api/v1/",
+    URL: "/ims/apis/v1/",
 
     /**
      * Base Path
      */
-    BASE_PATH: "ims/api/v1",
+    BASE_PATH: "/ims/apis/v1/",
 
     /**
      * NAME
