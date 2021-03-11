@@ -13,6 +13,7 @@ import { Logger } from "@zowe/imperative";
 import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IQueryProgramParms, IQueryRegionParms, IQueryTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
+import { ImsSessionUtils } from "../../../cli/ImsSessionUtils";
 
 /**
  * Query program in IMS through REST API
@@ -264,7 +265,7 @@ export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms
 
     Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = session.ISession.basePath === ImsConstants.URL ? "" : ImsConstants.URL + session.plex + "/" + ImsConstants.REGION;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.REGION;
 
     if (parms !== undefined) {
         // dc value is not required; defaults to true
@@ -302,5 +303,5 @@ export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms
             }
         }
     }
-    return ImsRestClient.getExpectJSON(session, resource, ["hostname: mvsde20.lvn.broadcom.net", "port: 9999", "accept: application/json"]);
+    return ImsRestClient.getExpectJSON(session, resource);
 }

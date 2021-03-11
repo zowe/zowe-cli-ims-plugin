@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, Logger } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, ISession, Logger, SessConstants } from "@zowe/imperative";
+import { ImsConstants } from "../api";
 import { ImsSession } from "../api/rest/ImsSession";
 
 /**
@@ -17,7 +18,6 @@ import { ImsSession } from "../api/rest/ImsSession";
  * @export
  */
 export class ImsSessionUtils {
-
     public static IMS_CONNECTION_OPTION_GROUP = "IMS Connection Options";
 
     /**
@@ -145,6 +145,51 @@ export class ImsSessionUtils {
         ImsSessionUtils.IMS_OPTION_PROTOCOL,
     ];
 
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<ImsSession> {
+        this.log.debug("Creating a IMS session from arguments");
+        let basePath = args.basePath ?? ImsConstants.BASE_PATH;
+
+        // strip "/" before and after sessionBasePath
+        // if (basePath.startsWith("/")) basePath = basePath.substring(1, basePath.length);
+        // if (basePath.endsWith("/")) basePath = basePath.substring(0, basePath.length - 1);
+        // if (!basePath.match(/ims\/api\/v1/))
+        //   throw new ImperativeError({
+        //     msg:
+        //       "Make sure the base path value is: " + ImsConstants.BASE_PATH
+        //   });
+
+        let sessCfg: ISession = {
+            hostname: args.host,
+            port: args.port,
+            rejectUnauthorized: args.rejectUnauthorized,
+            basePath,
+            protocol: args.protocol.toLowerCase() ?? "https"
+        };
+
+        if (args.user && args.password) {
+            sessCfg.user = args.user;
+            sessCfg.password = args.password;
+            sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
+        } else if (args.tokenType && args.tokenValue) {
+            sessCfg.type = SessConstants.AUTH_TYPE_TOKEN;
+            sessCfg.tokenType = args.tokenType;
+            sessCfg.tokenValue = args.tokenValue;
+        }
+
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+
+        return new ImsSession({
+            ...sessCfgWithCreds,
+            imsConnectHost: args.imsConnectHost,
+            imsConnectPort: args.imsConnectPort,
+            plex: args.plex
+        });
+    }
+
+    public static getUrl(basePath: string) {
+        return basePath === ImsConstants.URL ? "" : ImsConstants.URL
+    }
+
     /**
      * Given command line arguments, create a REST Client Session.
      * @static
@@ -153,7 +198,6 @@ export class ImsSessionUtils {
      */
     public static createBasicImsSessionFromArguments(args: ICommandArguments): ImsSession {
         this.log.debug("Creating a IMS session from arguments");
-        this.log.debug(JSON.stringify(args));
 
         return new ImsSession({
             type: args.password && args.user? "basic": "none",

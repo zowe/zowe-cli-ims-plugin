@@ -36,7 +36,10 @@ export abstract class ImsBaseHandler implements ICommandHandler {
     public async process(commandParameters: IHandlerParameters) {
         this.params = commandParameters;
         const profile = commandParameters.profiles.get("ims", false) || {};
-        const session = ImsSessionUtils.createBasicImsSessionFromArguments(commandParameters.arguments);
+
+        const session: ImsSession = await ImsSessionUtils.createSessCfgFromArgs(
+          commandParameters.arguments
+        );
 
         const response = await this.processWithSession(commandParameters, session, profile);
 
