@@ -15,9 +15,19 @@
 export const ImsConstants: { [key: string]: any } = {
 
     /**
+     * HEADER
+     */
+    HEADER_ACCEPT_JSON: "accept: application/json",
+
+    /**
      * URL parameter
      */
     URL: "/ims/api/v1/",
+
+    /**
+     * Base Path
+     */
+    BASE_PATH: "ims/api/v1",
 
     /**
      * NAME

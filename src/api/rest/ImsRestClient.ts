@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { HTTP_VERB, IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -46,6 +46,28 @@ export class ImsRestClient extends RestClient {
             this.mLogger = Logger.getAppLogger();
         }
         return this.mLogger;
+    }
+
+    /**
+     * Overridden request method implemented to append hostname, port, and plex headers to all IMS requests
+     * Takes the same parameters as the vanilla Imperative 'performRest' method.
+     */
+    public request(options: IRestOptions): Promise<string> {
+        if (options.reqHeaders == null) {
+            options.reqHeaders = [];
+        }
+
+        // Log the resource and request info
+        this.log.debug("\n\nResource: " + options.resource + "\nRequest: " + options.request + "\n");
+
+        const imsSession = this.session as ImsSession;
+        if (imsSession.imsConnectHost != null) {
+            options.reqHeaders.push({hostname: imsSession.imsConnectHost});
+        }
+        if (imsSession.imsConnectPort != null) {
+            options.reqHeaders.push({port: imsSession.imsConnectPort});
+        }
+        return super.request(options);
     }
 
     /**
