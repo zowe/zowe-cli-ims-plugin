@@ -29,8 +29,10 @@ node('ca-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest"],
-        [name: "lts-incremental", tag: "lts-incremental", level: SemverLevel.MINOR]
+        [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR],
+        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]],
+        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR]
+        [name: "lts-incremental", tag: "lts-incremental", devDependencies: ["@zowe/imperative" :"lts-incremental"], level: SemverLevel.PATCH]
     ])
 
     // Git configuration information
@@ -43,7 +45,7 @@ node('ca-jenkins-agent') {
     // npm publish configuration
     pipeline.publishConfig = [
         email: pipeline.gitConfig.email,
-        credentialsId: 'GizaArtifactory',
+        credentialsId: 'zowe.jfrog.io',
         scope: '@zowe'
     ]
 
@@ -51,7 +53,7 @@ node('ca-jenkins-agent') {
         [
             email: pipeline.publishConfig.email,
             credentialsId: pipeline.publishConfig.credentialsId,
-            url: 'https://gizaartifactory.jfrog.io/gizaartifactory/api/npm/npm-release/',
+            url: 'https://zowe.jfrog.io/zowe/api/npm/npm-release/',
             scope: pipeline.publishConfig.scope
         ]
     ]
@@ -113,7 +115,8 @@ node('ca-jenkins-agent') {
     pipeline.test(
         name: "Integration",
         operation: {
-            sh "npm i -g @zowe/cli@daily --zowe:registry=${pipeline.registryConfig[0].url}"
+            def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
+            sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
             // create the custom properties file. contents don't matter for integration tests
             sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"
@@ -135,10 +138,22 @@ node('ca-jenkins-agent') {
     // Check for vulnerabilities
     pipeline.checkVulnerabilities()
 
+    // Check that the changelog has been updated
+    pipeline.checkChangelog(
+        file: "CHANGELOG.md",
+        header: "## Recent Changes"
+    )
+
     // Deploys the application if on a protected branch. Give the version input
     // 30 minutes before an auto timeout approve.
     pipeline.deploy(
         versionArguments: [timeout: [time: 30, unit: 'MINUTES']]
+    )
+
+    // Update the changelog when merged
+    pipeline.updateChangelog(
+        file: "CHANGELOG.md",
+        header: "## Recent Changes"
     )
 
     // Once called, no stages can be added and all added stages will be executed. On completion
