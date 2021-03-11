@@ -116,6 +116,18 @@ export class ImsSessionUtils {
         type: "string",
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
+    /**
+     * Option used in profile creation and commands for protocol for CMCI
+     */
+    public static IMS_OPTION_PROTOCOL: ICommandOptionDefinition = {
+        name: "protocol",
+        description: "Specifies protocol (http or https).",
+        type: "string",
+        defaultValue: "https",
+        required: true,
+        allowableValues: {values: ["http", "https"], caseSensitive: false},
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
 
     /**
      * Options related to connecting to IMS
@@ -129,7 +141,8 @@ export class ImsSessionUtils {
         ImsSessionUtils.IMS_OPTION_PLEX,
         ImsSessionUtils.IMS_OPTION_USER,
         ImsSessionUtils.IMS_OPTION_PASSWORD,
-        ImsSessionUtils.IMS_OPTION_BASE_PATH
+        ImsSessionUtils.IMS_OPTION_BASE_PATH,
+        ImsSessionUtils.IMS_OPTION_PROTOCOL,
     ];
 
     /**
@@ -140,6 +153,8 @@ export class ImsSessionUtils {
      */
     public static createBasicImsSessionFromArguments(args: ICommandArguments): ImsSession {
         this.log.debug("Creating a IMS session from arguments");
+        this.log.debug(JSON.stringify(args));
+
         return new ImsSession({
             type: args.password && args.user? "basic": "none",
             hostname: args.host,
@@ -151,7 +166,7 @@ export class ImsSessionUtils {
             password: args.password,
             basePath: args.basePath,
             strictSSL: false,
-            protocol: "http"
+            protocol: args.protocol ? args.protocol : "https"
         });
     }
 

@@ -264,7 +264,7 @@ export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms
 
     Logger.getAppLogger().debug("Attempting to query transaction(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION;
+    let resource = session.ISession.basePath === ImsConstants.URL ? "" : ImsConstants.URL + session.plex + "/" + ImsConstants.REGION;
 
     if (parms !== undefined) {
         // dc value is not required; defaults to true
@@ -302,5 +302,5 @@ export async function queryRegion(session: ImsSession, parms?: IQueryRegionParms
             }
         }
     }
-    return ImsRestClient.getExpectJSON(session, resource, []);
+    return ImsRestClient.getExpectJSON(session, resource, ["hostname: mvsde20.lvn.broadcom.net", "port: 9999", "accept: application/json"]);
 }
