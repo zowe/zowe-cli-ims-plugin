@@ -14,6 +14,7 @@ import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IStartRegionParms, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 import { getQueryFromParms } from "../CommonUtils";
+import { ImsSessionUtils } from "../../../cli/ImsSessionUtils";
 
 /**
  * Start program in IMS through REST API
@@ -30,7 +31,7 @@ export async function startProgram(session: ImsSession, parms: IUpdateProgramPar
 
     Logger.getAppLogger().debug("Attempting to start program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.PROGRAM;
 
     resource = resource + getQueryFromParms(parms, {start: "SCHD"});
 
@@ -52,7 +53,7 @@ export async function startTransaction(session: ImsSession, parms: IUpdateTransa
 
     Logger.getAppLogger().debug("Attempting to start transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.TRANSACTION;
 
     resource = resource + getQueryFromParms(parms, {start: "SCHD"});
 
@@ -73,7 +74,7 @@ export async function startRegion(session: ImsSession, parms: IStartRegionParms)
 
     Logger.getAppLogger().debug("Attempting to start a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START;
 
     resource = resource + getQueryFromParms(parms, {}, {memberName: "member_name"});
 

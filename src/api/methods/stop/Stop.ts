@@ -15,6 +15,7 @@ import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from ".
 import { IStopRegionParms } from "../../doc/IStopRegionParms";
 import { ImsConstants } from "../../constants";
 import { getQueryFromParms } from "../CommonUtils";
+import { ImsSessionUtils } from "../../../cli/ImsSessionUtils";
 
 /**
  * Stop program in IMS through REST API
@@ -31,7 +32,7 @@ export async function stopProgram(session: ImsSession, parms: IUpdateProgramParm
 
     Logger.getAppLogger().debug("Attempting to stop programs(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.PROGRAM;
 
     resource = resource + getQueryFromParms(parms, {stop: "SCHD"});
 
@@ -53,7 +54,7 @@ export async function stopTransaction(session: ImsSession, parms: IUpdateTransac
 
     Logger.getAppLogger().debug("Attempting to stop transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.TRANSACTION;
 
     resource = resource + getQueryFromParms(parms, {stop: "SCHD"});
 
@@ -82,7 +83,7 @@ export async function stopRegion(session: ImsSession, parms: IStopRegionParms): 
 
     Logger.getAppLogger().debug("Attempting to stop a region with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.STOP;
 
     resource = resource + getQueryFromParms(parms);
 

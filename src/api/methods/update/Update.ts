@@ -14,6 +14,7 @@ import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";
 import { getQueryFromParms } from "../CommonUtils";
+import { ImsSessionUtils } from "../../../cli/ImsSessionUtils";
 
 /**
  * Update program in IMS through REST API
@@ -30,7 +31,7 @@ export async function updateProgram(session: ImsSession, parms: IUpdateProgramPa
 
     Logger.getAppLogger().debug("Attempting to update program(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.PROGRAM;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.PROGRAM;
 
     resource = resource + getQueryFromParms(parms);
 
@@ -52,7 +53,7 @@ export async function updateTransaction(session: ImsSession, parms: IUpdateTrans
 
     Logger.getAppLogger().debug("Attempting to start transactions(s) with the following parameters:\n%s", JSON.stringify(parms));
 
-    let resource = ImsConstants.URL + session.plex + "/" + ImsConstants.TRANSACTION;
+    let resource = ImsSessionUtils.getUrl(session.ISession.basePath) + session.plex + "/" + ImsConstants.TRANSACTION;
 
     resource = resource + getQueryFromParms(parms);
 

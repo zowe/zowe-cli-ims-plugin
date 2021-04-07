@@ -16,7 +16,11 @@
  * @param {object} aliases - aliases for querying
  * @returns {string} query string constructed from
  */
- export function getQueryFromParms(parms: {[key: string]: string} = {}, defaults: {[key: string]: any} = {}, aliases: {[key: string]: string} = {}): string {
+ export function getQueryFromParms(
+    parms: {[key: string]: string} = {},
+    defaults: {[key: string]: any} = {},
+    aliases: {[key: string]: string} = {}): string
+{
     let delimiter = "?"; // initial delimiter
     let resource = "";
     for (const [key, value] of Object.entries(parms)) {

@@ -30,6 +30,7 @@ node('ca-jenkins-agent') {
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
         [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR],
+        [name: "next", tag: "next", prerelease: "next", devDependencies: ["@zowe/imperative": "next"]],
         //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]],
         //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR]
         [name: "lts-incremental", tag: "lts-incremental", devDependencies: ["@zowe/imperative" :"lts-incremental"], level: SemverLevel.PATCH]

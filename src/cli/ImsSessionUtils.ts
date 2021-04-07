@@ -166,14 +166,14 @@ export class ImsSessionUtils {
             protocol: args.protocol?.toLowerCase() ?? "https"
         };
 
-        if (args.user && args.password) {
-            sessCfg.user = args.user;
-            sessCfg.password = args.password;
-            sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
-        } else if (args.tokenType && args.tokenValue) {
+        if (args.tokenType && args.tokenValue) {
             sessCfg.type = SessConstants.AUTH_TYPE_TOKEN;
             sessCfg.tokenType = args.tokenType;
             sessCfg.tokenValue = args.tokenValue;
+        } else if (args.user && args.password) {
+            sessCfg.user = args.user;
+            sessCfg.password = args.password;
+            sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
         }
 
         const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
