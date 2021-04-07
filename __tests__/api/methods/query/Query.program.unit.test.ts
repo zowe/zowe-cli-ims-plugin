@@ -66,7 +66,7 @@ describe("IMS - Query program", () => {
             response = await queryProgram(dummySession);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
         it("should be able to query all programs without program name specified", async () => {
@@ -81,7 +81,7 @@ describe("IMS - Query program", () => {
             response = await queryProgram(dummySession, queryProgramParms);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
     });
 });

@@ -94,6 +94,21 @@ Object {
           "name": "base-path",
           "type": "string",
         },
+        Object {
+          "allowableValues": Object {
+            "caseSensitive": false,
+            "values": Array [
+              "http",
+              "https",
+            ],
+          },
+          "defaultValue": "https",
+          "description": "Specifies protocol (http or https).",
+          "group": "IMS Connection Options",
+          "name": "protocol",
+          "required": true,
+          "type": "string",
+        },
       ],
     },
   ],

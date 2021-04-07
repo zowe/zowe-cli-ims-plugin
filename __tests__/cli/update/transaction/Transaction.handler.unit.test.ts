@@ -124,8 +124,8 @@ describe("UpdateTransactionHandler", () => {
                 imsConnectHost: testProfile.imsConnectHost,
                 imsConnectPort: testProfile.imsConnectPort,
                 plex: testProfile.plex,
-                strictSSL: false,
-                protocol: "http",
+                strictSSL: true,
+                protocol: "https",
             }),
             {
                 name,

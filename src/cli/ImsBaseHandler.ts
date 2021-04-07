@@ -9,11 +9,10 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ConnectionPropsForSessCfg, ICommandHandler, IHandlerParameters, ImperativeError, IProfile, ISession, TextUtils, Session } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
 import { ImsSession } from "../api/rest";
-import { IImsSession } from "../api";
 
 /**
  * This class is used by the various ims handlers as the base class for their implementation.
@@ -55,7 +54,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      * be used so that every class does not have to instantiate the session object.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
-     * @param {AbstractSession} session The session object generated from the ims profile.
+     * @param {ImsSession} session The session object generated from the ims profile.
      * @param {IProfile} imsProfile The ims profile that was loaded for the command.
      *
      * @returns {Promise<IIMSApiResponse>} The response from the underlying ims api call.

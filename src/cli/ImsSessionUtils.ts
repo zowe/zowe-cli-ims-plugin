@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition, ImperativeError, IProfile, ISession, Logger, SessConstants, Session } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,  ISession, Logger, SessConstants } from "@zowe/imperative";
 import { ImsConstants } from "../api";
 import { ImsSession } from "../api/rest/ImsSession";
 
@@ -147,7 +147,7 @@ export class ImsSessionUtils {
 
     public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<ImsSession> {
         this.log.debug("Creating a IMS session from arguments");
-        let basePath = args.basePath ?? ImsConstants.BASE_PATH;
+        const basePath = args.basePath;// ?? ImsConstants.BASE_PATH;
 
         // strip "/" before and after sessionBasePath
         // if (basePath.startsWith("/")) basePath = basePath.substring(1, basePath.length);
@@ -158,12 +158,12 @@ export class ImsSessionUtils {
         //       "Make sure the base path value is: " + ImsConstants.BASE_PATH
         //   });
 
-        let sessCfg: ISession = {
+        const sessCfg: ISession = {
             hostname: args.host,
             port: args.port,
             rejectUnauthorized: args.rejectUnauthorized,
             basePath,
-            protocol: args.protocol.toLowerCase() ?? "https"
+            protocol: args.protocol?.toLowerCase() ?? "https"
         };
 
         if (args.user && args.password) {
@@ -187,7 +187,7 @@ export class ImsSessionUtils {
     }
 
     public static getUrl(basePath: string) {
-        return basePath === ImsConstants.URL ? "" : ImsConstants.URL
+        return basePath === ImsConstants.URL ? "" : ImsConstants.URL;
     }
 
     /**

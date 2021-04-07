@@ -73,7 +73,7 @@ describe("IMS - Start region", () => {
             startRegionParms.route = ["route"];
 
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START +
-                "?member_name=" + member + "&job_name=job&local=false&route=route";
+                "?member_name=" + member + "&local=false&job_name=job&route=route";
 
             response = await startRegion(dummySession, startRegionParms);
 

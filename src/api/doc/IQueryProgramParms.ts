@@ -46,4 +46,9 @@ export interface IQueryProgramParms {
      *
      */
     route?: string[];
+
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }

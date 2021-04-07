@@ -231,4 +231,9 @@ export interface IUpdateTransactionParms {
      *
      */
     wfi?: string;
+
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }
