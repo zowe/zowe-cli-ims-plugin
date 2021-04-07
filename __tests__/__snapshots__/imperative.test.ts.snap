@@ -108,6 +108,24 @@ Object {
             },
             "type": "number",
           },
+          "protocol": Object {
+            "optionDefinition": Object {
+              "allowableValues": Object {
+                "caseSensitive": false,
+                "values": Array [
+                  "http",
+                  "https",
+                ],
+              },
+              "defaultValue": "https",
+              "description": "Specifies protocol (http or https).",
+              "group": "IMS Connection Options",
+              "name": "protocol",
+              "required": true,
+              "type": "string",
+            },
+            "type": "string",
+          },
           "user": Object {
             "optionDefinition": Object {
               "aliases": Array [

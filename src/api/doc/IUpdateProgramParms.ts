@@ -86,4 +86,8 @@ export interface IUpdateProgramParms {
      */
     option?: string;
 
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }

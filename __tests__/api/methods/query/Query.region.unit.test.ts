@@ -64,7 +64,7 @@ describe("IMS - Query region", () => {
             response = await queryRegion(dummySession);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
         it("should be able to query regions with route name specified", async () => {
@@ -78,7 +78,7 @@ describe("IMS - Query region", () => {
             response = await queryRegion(dummySession, queryRegionParms);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
         it("should be able to query regions with multiple route names specified", async () => {
@@ -92,7 +92,7 @@ describe("IMS - Query region", () => {
             response = await queryRegion(dummySession, queryRegionParms);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
 

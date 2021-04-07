@@ -49,4 +49,9 @@ export interface IStopRegionParms {
      * Route the stop region command to specific IMS regions
      */
     route?: string[];
+
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }
