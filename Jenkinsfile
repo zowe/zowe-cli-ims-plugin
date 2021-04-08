@@ -98,7 +98,7 @@ node('ca-jenkins-agent') {
             autoUpdateStability: false,
             coberturaReportFile: '__tests__/__results__/unit/coverage/cobertura-coverage.xml',
             classCoverageTargets: '85, 80, 75',
-            conditionalCoverageTargets: '70, 65, 60',
+            conditionalCoverageTargets: '70, 65, 50',
             failUnhealthy: false,
             failUnstable: false,
             lineCoverageTargets: '80, 70, 50',
