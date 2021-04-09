@@ -28,7 +28,6 @@ export class ImsSessionUtils {
         aliases: ["H"],
         description: "The IMS Operations API server host name.",
         type: "string",
-        required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
@@ -37,7 +36,6 @@ export class ImsSessionUtils {
      */
     public static IMS_OPTION_PORT: ICommandOptionDefinition = {
         name: "port",
-        required: true,
         aliases: ["P"],
         description: "The IMS Operations API server port.",
         type: "number",
@@ -53,7 +51,6 @@ export class ImsSessionUtils {
         description: "The hostname of your instance of IMS Connect. This is typically the hostname " +
             "of the mainframe LPAR where IMS Connect is running.",
         type: "string",
-        required: true,
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
 
@@ -62,7 +59,6 @@ export class ImsSessionUtils {
      */
     public static IMS_OPTION_IMS_CONNECT_PORT: ICommandOptionDefinition = {
         name: "ims-connect-port",
-        required: true,
         aliases: ["icp"],
         description: "The port of your instance of IMS Connect." +
             " This port can be found in your IMS Connect configuration file on the mainframe.",
@@ -75,7 +71,6 @@ export class ImsSessionUtils {
      */
     public static IMS_OPTION_PLEX: ICommandOptionDefinition = {
         name: "plex",
-        required: true,
         aliases: ["x"],
         description: "The name of the IMS plex.",
         type: "string",
@@ -124,7 +119,6 @@ export class ImsSessionUtils {
         description: "Specifies protocol (http or https).",
         type: "string",
         defaultValue: "https",
-        required: true,
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
@@ -165,7 +159,6 @@ export class ImsSessionUtils {
             basePath,
             protocol: args.protocol?.toLowerCase() ?? "https"
         };
-
         if (args.tokenType && args.tokenValue) {
             sessCfg.type = SessConstants.AUTH_TYPE_TOKEN;
             sessCfg.tokenType = args.tokenType;

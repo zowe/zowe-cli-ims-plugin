@@ -68,7 +68,7 @@ const config: IImperativeConfig = {
                         optionDefinition: ImsSessionUtils.IMS_OPTION_PROTOCOL
                     },
                 },
-                required: ["host"],
+                required: [],
             },
             createProfileExamples: [
                 {
