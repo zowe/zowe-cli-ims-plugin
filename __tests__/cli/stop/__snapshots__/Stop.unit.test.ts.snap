@@ -24,7 +24,6 @@ Object {
           "description": "The IMS Operations API server host name.",
           "group": "IMS Connection Options",
           "name": "host",
-          "required": true,
           "type": "string",
         },
         Object {
@@ -34,7 +33,6 @@ Object {
           "description": "The IMS Operations API server port.",
           "group": "IMS Connection Options",
           "name": "port",
-          "required": true,
           "type": "number",
         },
         Object {
@@ -44,7 +42,6 @@ Object {
           "description": "The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.",
           "group": "IMS Connection Options",
           "name": "ims-connect-host",
-          "required": true,
           "type": "string",
         },
         Object {
@@ -54,7 +51,6 @@ Object {
           "description": "The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.",
           "group": "IMS Connection Options",
           "name": "ims-connect-port",
-          "required": true,
           "type": "number",
         },
         Object {
@@ -64,7 +60,6 @@ Object {
           "description": "The name of the IMS plex.",
           "group": "IMS Connection Options",
           "name": "plex",
-          "required": true,
           "type": "string",
         },
         Object {
@@ -106,7 +101,6 @@ Object {
           "description": "Specifies protocol (http or https).",
           "group": "IMS Connection Options",
           "name": "protocol",
-          "required": true,
           "type": "string",
         },
       ],
