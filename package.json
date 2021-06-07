@@ -43,14 +43,14 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/imperative": "5.0.0-next.202104071400"
+    "@zowe/imperative": ">=5.0.0-next.202106041929 <5.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.1.1",
     "@types/jest": "^20.0.5",
     "@types/node": "^8.10.66",
     "@types/yargs": "13.0.4",
-    "@zowe/imperative": "^5.0.0-next.202104142114",
+    "@zowe/imperative": "5.0.0-next.202106041929",
     "env-cmd": "^8.0.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.6",
