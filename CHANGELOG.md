@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `3.0.0-next.202106071926`
 
 - **Breaking**: Removed the previously deprecated function ImsRestClient.performRest(). The function ImsRestClient.request() must now be used.
 
