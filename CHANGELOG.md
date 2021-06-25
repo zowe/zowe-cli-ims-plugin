@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- Enhancement: Add apimlConnLookup properties to enable auto-config through APIML. A valid apiId must still be identified.
+
 ## `3.0.0-next.202106071926`
 
 - **Breaking**: Removed the previously deprecated function ImsRestClient.performRest(). The function ImsRestClient.request() must now be used.
