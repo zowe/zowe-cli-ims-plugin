@@ -19,13 +19,13 @@ import org.zowe.pipelines.nodejs.models.SemverLevel
  */
 def PRODUCT_NAME = "Zowe CLI"
 
-node('ca-jenkins-agent') {
+node('zowe-jenkins-agent') {
     // Initialize the pipeline
     def pipeline = new NodeJSPipeline(this)
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "markackert")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
@@ -38,8 +38,7 @@ node('ca-jenkins-agent') {
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',
-        credentialsId: 'zowe-robot-github'  //,
-        // githubAPIEndpoint: 'https://api.github.com/'
+        credentialsId: 'zowe-robot-github'
     ]
 
     // npm publish configuration
@@ -59,7 +58,7 @@ node('ca-jenkins-agent') {
     ]
 
     // Initialize the pipeline library, should create 5 steps
-    pipeline.setup()
+    pipeline.setup(nodeJsVersion: 'v12.22.1')
 
     // Create a custom lint stage that runs immediately after the setup.
     pipeline.createStage(
