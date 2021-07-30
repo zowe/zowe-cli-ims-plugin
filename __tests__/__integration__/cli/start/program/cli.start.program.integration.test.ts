@@ -20,6 +20,7 @@ describe("Start program command", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "start_program_cli_integration",
+            skipProperties: true,
             installPlugin: true
         });
     });
