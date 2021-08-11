@@ -20,6 +20,7 @@ describe("Update transaction command", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "update_transaction_cli_integration",
+            skipProperties: true,
             installPlugin: true
         });
     });

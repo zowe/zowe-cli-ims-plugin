@@ -22,9 +22,11 @@ describe("ims query region", () => {
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_region_command",
+            skipProperties: true,
             installPlugin: true
         });
-        regionName = TEST_ENVIRONMENT.systemTestProperties.ims.dependentRegionName;
+        // regionName = TEST_ENVIRONMENT.systemTestProperties.ims.dependentRegionName;
+        regionName = "test-region";
     });
 
     afterAll(async () => {

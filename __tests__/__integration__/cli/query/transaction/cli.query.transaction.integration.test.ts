@@ -22,9 +22,11 @@ describe("ims query transaction", () => {
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_transaction_command",
+            skipProperties: true,
             installPlugin: true
         });
-        transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
+        // transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
+        transactionName = "test-transaction";
     });
 
     afterAll(async () => {

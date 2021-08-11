@@ -20,6 +20,7 @@ describe("Start transaction command", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "start_transaction_cli_integration",
+            skipProperties: true,
             installPlugin: true
         });
     });

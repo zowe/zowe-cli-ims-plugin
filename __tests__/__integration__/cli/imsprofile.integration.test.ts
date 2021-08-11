@@ -19,6 +19,7 @@ describe("Creating an IMS profile", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             installPlugin: true,
+            skipProperties: true,
             testName: "ims_profile"
         });
     });

@@ -20,6 +20,7 @@ describe("Start region command", () => {
     beforeAll(async () => {
         testEnvironment = await TestEnvironment.setUp({
             testName: "start_region_cli_integration",
+            skipProperties: true,
             installPlugin: true
         });
     });

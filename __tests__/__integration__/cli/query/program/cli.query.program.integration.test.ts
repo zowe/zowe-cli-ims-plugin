@@ -22,9 +22,11 @@ describe("ims query program", () => {
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_program_command",
+            skipProperties: true,
             installPlugin: true
         });
-        programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
+        // programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
+        programName = "test-program";
     });
 
     afterAll(async () => {
