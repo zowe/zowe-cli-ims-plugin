@@ -52,7 +52,7 @@
     "@types/jest": "^20.0.5",
     "@types/node": "^8.10.45",
     "@types/yargs": "8.0.2",
-    "@zowe/imperative": "^4.2.0",
+    "@zowe/imperative": "^4.14.0",
     "env-cmd": "^8.0.2",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.3",
