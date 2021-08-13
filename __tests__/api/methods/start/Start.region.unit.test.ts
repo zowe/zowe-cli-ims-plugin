@@ -9,7 +9,6 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import {
     ImsConstants,
     ImsRestClient,
@@ -110,9 +109,6 @@ describe("IMS - Start region", () => {
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
             expect(error.message).toContain("Expect Error: IMS member name is required");
-        });
-
-        it("should fail if memberName is not provided", async () => {
 
             startRegionParms.memberName = "";
 

@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ImperativeError, ImperativeExpect, Logger } from "@zowe/imperative";
+import { ImperativeError, ImperativeExpect, Logger } from "@zowe/imperative";
 import { ImsRestClient, ImsSession } from "../../rest";
 import { IIMSApiResponse, IUpdateProgramParms, IUpdateTransactionParms } from "../../doc";
 import { ImsConstants } from "../../constants";

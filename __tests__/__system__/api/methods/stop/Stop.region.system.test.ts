@@ -135,52 +135,52 @@ async function queryRegionActiveStartIfNot(session1: ImsSession, memberName1: st
     queryOptions.dc = true;
 
     try {
-     response = await queryRegion(session1, queryOptions);
+        response = await queryRegion(session1, queryOptions);
     } catch (err) {
-     error = err;
+        error = err;
     }
 
     let found = false;
 
     for (const item of response.data) {
-     if (item.jobname === memberName1) {
-         found = true;
-         id = item.regid;
-         break;
-     }
+        if (item.jobname === memberName1) {
+            found = true;
+            id = item.regid;
+            break;
+        }
     }
 
     if (found !== true) {
-     try {
-         const startOptions: IStartRegionParms = {} as any;
-         startOptions.memberName = memberName1;
-         response = await startRegion(session1, startOptions);
-     } catch (err) {
-         error = err;
-     }
+        try {
+            const startOptions: IStartRegionParms = {} as any;
+            startOptions.memberName = memberName1;
+            response = await startRegion(session1, startOptions);
+        } catch (err) {
+            error = err;
+        }
 
-     let started = false;
-     let count = 0;
+        let started = false;
+        let count = 0;
 
-     do {
-         try {
-             response = await queryRegion(session1, queryOptions);
-         } catch (err) {
-             error = err;
-         }
+        do {
+            try {
+                response = await queryRegion(session1, queryOptions);
+            } catch (err) {
+                error = err;
+            }
 
-         for (const item of response.data) {
-             if (item.jobname === memberName1) {
-                 started = true;
-                 id = item.regid;
-                 break;
-             }
-         }
-         count++;
+            for (const item of response.data) {
+                if (item.jobname === memberName1) {
+                    started = true;
+                    id = item.regid;
+                    break;
+                }
+            }
+            count++;
 
-     }
-     while (started === false && count < MAX_LOOPS);
+        }
+        while (started === false && count < MAX_LOOPS);
     }
 
     return id;
- }
+}

@@ -9,10 +9,9 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { stopProgram, IUpdateProgramParms, ImsSession, startTransaction } from "../../../../../src";
+import { stopProgram, IUpdateProgramParms, ImsSession } from "../../../../../src";
 
 let testEnvironment: ITestEnvironment;
 let imsConnectHost: string;

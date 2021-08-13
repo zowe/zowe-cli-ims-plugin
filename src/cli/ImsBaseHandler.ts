@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
 import { ImsSession } from "../api/rest";
