@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandArguments, ICommandOptionDefinition, IProfile, Logger, Session } from "@zowe/imperative";
+import { ICommandArguments, ICommandOptionDefinition, Logger } from "@zowe/imperative";
 import { ImsSession } from "../api/rest/ImsSession";
 
 /**

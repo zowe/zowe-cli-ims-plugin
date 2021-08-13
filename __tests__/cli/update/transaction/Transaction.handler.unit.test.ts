@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, CommandProfiles } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { TransactionDefinition } from "../../../../src/cli/update/transaction/Transaction.definition";
 import TransactionHandler from "../../../../src/cli/update/transaction/Transaction.handler";
@@ -84,7 +84,7 @@ describe("UpdateTransactionHandler", () => {
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
-      };
+    };
 
     const functionSpy = jest.spyOn(Update, "updateTransaction");
 

@@ -9,14 +9,9 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, ITaskWithStatus, TaskStage } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, queryRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
-
-import i18nTypings from "../../-strings-/en";
-
-// Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.REGION;
 
 /**
  * Command handler for querying IMS regions
@@ -26,8 +21,8 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).QU
  */
 export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: ImsSession,
-                                    profile: IProfile): Promise<IIMSApiResponse> {
+        session: ImsSession,
+        profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Querying region defined to IMS",

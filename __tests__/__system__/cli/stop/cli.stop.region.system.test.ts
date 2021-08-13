@@ -81,7 +81,7 @@ describe("Stop region command", () => {
         regionID2 = await queryRegionActiveStartIfNot(session, memberName2);
 
         // region ID is random, so sort in ascending order for command
-        const arr = new Array(regionID, regionID2);
+        const arr = [regionID, regionID2];
         arr.sort();
 
         const output = runCliScript(__dirname + "/__scripts__/stop_multiple_regions.sh", testEnvironment,

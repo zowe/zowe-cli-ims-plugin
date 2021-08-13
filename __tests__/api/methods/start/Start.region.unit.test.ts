@@ -9,7 +9,6 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import {
     ImsConstants,
     ImsRestClient,
@@ -97,7 +96,7 @@ describe("IMS - Start region", () => {
             expect(error.message).toContain("Cannot read property 'memberName' of undefined");
         });
 
-        it("should fail if memberName is not provided", async () => {
+        it("should fail if memberName is undefined", async () => {
 
             startRegionParms.memberName = undefined;
 
@@ -112,7 +111,7 @@ describe("IMS - Start region", () => {
             expect(error.message).toContain("Expect Error: IMS member name is required");
         });
 
-        it("should fail if memberName is not provided", async () => {
+        it("should fail if memberName is empty", async () => {
 
             startRegionParms.memberName = "";
 

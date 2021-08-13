@@ -9,7 +9,6 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import {
     ImsConstants,
     ImsRestClient,

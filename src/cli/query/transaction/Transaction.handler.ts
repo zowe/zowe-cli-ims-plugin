@@ -9,14 +9,9 @@
 *                                                                                 *
 */
 
-import { AbstractSession, ICommandHandler, IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
-
-import i18nTypings from "../../-strings-/en";
-
-// Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).QUERY.RESOURCES.TRANSACTION;
 
 /**
  * Command handler for querying IMS transactions
