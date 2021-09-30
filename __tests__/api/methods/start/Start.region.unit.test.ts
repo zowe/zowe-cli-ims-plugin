@@ -93,7 +93,7 @@ describe("IMS - Start region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'memberName' of undefined");
+            expect(error.message).toMatch(/Cannot read (property 'memberName' of undefined|properties of undefined \(reading 'memberName'\))/);
         });
 
         it("should fail if memberName is undefined", async () => {
