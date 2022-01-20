@@ -15,16 +15,15 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 import { runCliScript } from "../../../../__src__/TestUtils";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
-let regionName: string;
 describe("ims query region", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_region_command",
-            installPlugin: true
+            installPlugin: true,
+            skipProperties: true
         });
-        regionName = TEST_ENVIRONMENT.systemTestProperties.ims.dependentRegionName;
     });
 
     afterAll(async () => {

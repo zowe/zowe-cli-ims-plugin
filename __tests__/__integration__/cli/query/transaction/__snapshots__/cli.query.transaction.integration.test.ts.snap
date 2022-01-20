@@ -154,6 +154,14 @@ exports[`ims query transaction should display the help 1`] = `
 
       The value of the token to pass to the API.
 
+   --cert-file  (local file path)
+
+      The file path to a certificate file to use for authentication
+
+   --cert-key-file  (local file path)
+
+      The file path to a certificate key file to use for authentication
+
  RESPONSE FORMAT OPTIONS
  -----------------------
 
@@ -203,7 +211,7 @@ exports[`ims query transaction should display the help 1`] = `
 
    --help-examples  (boolean)
 
-      Display examples for all the commands in a the group
+      Display examples for all the commands in a group
 
    --help-web  | --hw (boolean)
 

@@ -15,16 +15,15 @@ import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment
 import { runCliScript } from "../../../../__src__/TestUtils";
 
 let TEST_ENVIRONMENT: ITestEnvironment;
-let programName: string;
 describe("ims query program", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_program_command",
-            installPlugin: true
+            installPlugin: true,
+            skipProperties: true
         });
-        programName = TEST_ENVIRONMENT.systemTestProperties.ims.programName;
     });
 
     afterAll(async () => {
