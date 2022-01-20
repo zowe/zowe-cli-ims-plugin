@@ -141,7 +141,7 @@ describe("IMS - Update transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'name' of undefined");
+            expect(error.message).toMatch(/(cannot read).*undefined/ig);
         });
 
         it("should fail if names is not defined", async () => {
