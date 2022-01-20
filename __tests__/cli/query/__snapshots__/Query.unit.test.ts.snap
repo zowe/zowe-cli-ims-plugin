@@ -5,7 +5,7 @@ Object {
   "aliases": Array [
     "qry",
   ],
-  "description": "Query application programs, regions or transactions across an IMSplex.The query returns information about application programs, regions and transactions. This command submits a 'QUERY PGM', 'DIS ACT' or 'QUERY TRAN' IMS command and returns the output.",
+  "description": "Query application programs, regions or transactions across an IMSplex. The query returns information about application programs, regions and transactions. This command submits a 'QUERY PGM', 'DIS ACT' or 'QUERY TRAN' IMS command and returns the output.",
   "name": "query",
   "passOn": Array [
     Object {

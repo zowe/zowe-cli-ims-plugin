@@ -58,7 +58,7 @@ Object {
   "outputFormatOptions": true,
   "positionals": Array [
     Object {
-      "description": "The name of the member that contains JCL for the region to start.  The maximum length of the member name is eight characters.  If no member name is specified, the default member name is used
+      "description": "The name of the member that contains JCL for the region to start. The maximum length of the member name is eight characters. If no member name is specified, the default member name is used
 ",
       "name": "memberName",
       "type": "string",
