@@ -5,10 +5,6 @@ on:
     branches-ignore:
       - 'master'
       - 'zowe-v1-lts'
-<<<<<<< HEAD
-      - 'next'
-=======
->>>>>>> 5f867c16a7ee6a145ce1c8f348ae9a8896c9faab
   pull_request:
     branches:
       - "**"

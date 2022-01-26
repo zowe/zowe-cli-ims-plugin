@@ -3,11 +3,8 @@ name: Changelog
 on:
   pull_request:
     branches:
-<<<<<<< HEAD
-      - next
-=======
       - master
->>>>>>> 5f867c16a7ee6a145ce1c8f348ae9a8896c9faab
+      - next
 
 jobs:
   changelog:
