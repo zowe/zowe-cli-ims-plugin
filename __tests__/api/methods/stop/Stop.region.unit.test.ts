@@ -128,7 +128,7 @@ describe("IMS - Stop region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'reg_num' of undefined");
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should fail if reg_num and job_name are undefined", async () => {

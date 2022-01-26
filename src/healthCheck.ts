@@ -14,6 +14,6 @@
  * No-op health check to avoid an imperative plugin validation warning
  */
 const healthCheck = () => {
-  return true;
+    return true;
 };
 export = healthCheck;

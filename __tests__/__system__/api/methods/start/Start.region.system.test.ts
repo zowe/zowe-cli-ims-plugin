@@ -91,7 +91,7 @@ describe("IMS start region", () => {
         }
     });
 
-    it("should fail to start region due to invalid membername value", async () => {
+    it("should fail to start region due to an undefined memberName value", async () => {
         let error;
         let response;
 
@@ -108,7 +108,7 @@ describe("IMS start region", () => {
         expect(error.mDetails.msg).toContain("IMS member name is required");
     });
 
-    it("should fail to start region due to invalid membername value", async () => {
+    it("should fail to start region due to an empty memberName value", async () => {
         let error;
         let response;
 

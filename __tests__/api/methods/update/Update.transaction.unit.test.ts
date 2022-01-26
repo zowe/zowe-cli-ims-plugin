@@ -101,32 +101,6 @@ describe("IMS - Update transaction", () => {
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
-
-        // it("should be able to update a transaction with all parameters specified but name", async () => {
-        //
-        //     updateTransactionParms.name = undefined;
-        //     updateTransactionParms.bmptype = "N";
-        //     updateTransactionParms.dopt = "N";
-        //     updateTransactionParms.fp = "E";
-        //     updateTransactionParms.gpsb = "N";
-        //     updateTransactionParms.lang = "ASSEM";
-        //     updateTransactionParms.lock = "ON";
-        //     updateTransactionParms.resident = "N";
-        //     updateTransactionParms.schdtype = "SERIAL";
-        //     updateTransactionParms.transtat = "N";
-        //     updateTransactionParms.option = "ALLRSP";
-        //     updateTransactionParms.route = ["IMS1", "IMS2"];
-        //
-        //     endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-        //         "?" + ImsConstants.NAME + "=" + transaction + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
-        //         "&resident=N&schdtype=SERIAL&transtat=N&option=ALLRSP&route=IMS1,IMS2";
-        //
-        //     response = await updateTransaction(dummySession, updateTransactionParms);
-        //
-        //     expect(response).toContain(content);
-        //     expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
-        // });
-
     });
 
     describe("validation scenarios", () => {
@@ -141,7 +115,7 @@ describe("IMS - Update transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'name' of undefined");
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should fail if names is not defined", async () => {

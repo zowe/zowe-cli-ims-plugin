@@ -16,7 +16,7 @@
  * @param {object} aliases - aliases for querying
  * @returns {string} query string constructed from
  */
- export function getQueryFromParms(
+export function getQueryFromParms(
     parms: {[key: string]: string} = {},
     defaults: {[key: string]: any} = {},
     aliases: {[key: string]: string} = {}): string

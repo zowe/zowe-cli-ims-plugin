@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, CommandProfiles } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { RegionDefinition } from "../../../../src/cli/query/region/Region.definition";
 import RegionHandler from "../../../../src/cli/query/region/Region.handler";
@@ -86,7 +86,7 @@ describe("QueryRegionHandler", () => {
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
-      };
+    };
 
     const functionSpy = jest.spyOn(Query, "queryRegion");
 

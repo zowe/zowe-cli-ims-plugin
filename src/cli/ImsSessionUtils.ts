@@ -10,7 +10,7 @@
 */
 
 import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,  ISession, Logger, SessConstants } from "@zowe/imperative";
-import { ImsConstants } from "../api";
+import { ImsConstants } from "../api/constants/Ims.constants";
 import { ImsSession } from "../api/rest/ImsSession";
 
 /**

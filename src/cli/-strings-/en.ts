@@ -13,7 +13,7 @@
 export default {
     QUERY: {
         SUMMARY: "Query resources from IMS",
-        DESCRIPTION: "Query application programs, regions or transactions across an IMSplex." +
+        DESCRIPTION: "Query application programs, regions or transactions across an IMSplex. " +
             "The query returns information about application programs, regions and transactions. " +
             "This command submits a 'QUERY PGM', 'DIS ACT' or 'QUERY TRAN' IMS command and returns the output.",
         RESOURCES: {
@@ -118,9 +118,8 @@ export default {
                 DESCRIPTION: "Start an IMS region.",
                 POSITIONALS: {
                     MEMBERNAME: "The name of the member that contains JCL for the region to start. " +
-                        " The maximum length of the member name is eight characters. " +
-                        " If no member name is specified, the default " +
-                        "member name is used\n",
+                        "The maximum length of the member name is eight characters. " +
+                        "If no member name is specified, the default member name is used\n",
                 },
                 OPTIONS: {
                     LOCAL: "If you specify the --local option, IMS overrides the symbolic IMSID parameter " +
@@ -196,11 +195,10 @@ export default {
                     REGIONIDS: "Region identifier numbers for the regions you want to stop. You must specify either this option " +
                         "or --job-name.",
                     ABDUMP: "Specify this option to cause abnormal termination (ABEND) of an application program. " +
-                        "If the transaction indicated by this argument is currently running in the specified region," +
-                        " an error message is received at the master terminal, indicating an application " +
+                        "If the transaction indicated by this argument is currently running in the specified region, " +
+                        "an error message is received at the master terminal, indicating an application " +
                         "program ABEND. The region will remain active, but the transaction will be " +
-                        "stopped. The command is ignored if the transaction is not currently scheduled " +
-                        "in the region.",
+                        "stopped. The command is ignored if the transaction is not currently scheduled in the region.",
                     TRANSACTION: "Specify a transaction in wait-for-input mode to stop its message processing within the specified region.",
                     CANCEL: "Use this option if the region cannot be stopped with a stop region --abdump" +
                         " command. To use this option, you must have already submitted a stop region command using the --abdump option.",

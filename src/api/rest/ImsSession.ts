@@ -13,25 +13,25 @@ import { Session } from "@zowe/imperative";
 import { IImsSession } from "../doc/IImsSession";
 
 export class ImsSession extends Session {
-  /**
+    /**
    * The host for the specific IMS region
    */
-  public imsConnectHost: string;
+    public imsConnectHost: string;
 
-  /**
+    /**
    * The port for the specific IMS region
    */
-  public imsConnectPort: number;
+    public imsConnectPort: number;
 
-  /**
+    /**
    * The name of the IMS Plex
    */
-  public plex: string;
+    public plex: string;
 
-  constructor(iSession: IImsSession) {
-    super(iSession);
-    this.imsConnectHost = iSession.imsConnectHost;
-    this.imsConnectPort = iSession.imsConnectPort;
-    this.plex = iSession.plex;
-  }
+    constructor(iSession: IImsSession) {
+        super(iSession);
+        this.imsConnectHost = iSession.imsConnectHost;
+        this.imsConnectPort = iSession.imsConnectPort;
+        this.plex = iSession.plex;
+    }
 }

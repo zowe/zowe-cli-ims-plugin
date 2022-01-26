@@ -33,7 +33,7 @@ describe("ims query region", () => {
 
     it("should be able to successfully query regions", async () => {
         const output = runCliScript(__dirname + "/__scripts__/query_region.sh", TEST_ENVIRONMENT,
-        [true, true, TEST_ENVIRONMENT.systemTestProperties.ims.route]);
+            [true, true, TEST_ENVIRONMENT.systemTestProperties.ims.route]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");

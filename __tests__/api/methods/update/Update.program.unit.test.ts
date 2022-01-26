@@ -69,32 +69,6 @@ describe("IMS - Update program", () => {
             expect(response).toContain(content);
             expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
         });
-
-        // it("should be able to update a program with all parameters specified but name", async () => {
-        //
-        //     updateProgramParms.name = undefined;
-        //     updateProgramParms.bmptype = "N";
-        //     updateProgramParms.dopt = "N";
-        //     updateProgramParms.fp = "E";
-        //     updateProgramParms.gpsb = "N";
-        //     updateProgramParms.lang = "ASSEM";
-        //     updateProgramParms.lock = "ON";
-        //     updateProgramParms.resident = "N";
-        //     updateProgramParms.schdtype = "SERIAL";
-        //     updateProgramParms.transtat = "N";
-        //     updateProgramParms.option = "ALLRSP";
-        //     updateProgramParms.route = ["IMS1", "IMS2"];
-        //
-        //     endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.PROGRAM +
-        //         "?" + ImsConstants.NAME + "=" + program + "&bmptype=N&dopt=N&fp=E&gpsb=N&lang=ASSEM&lock=ON" +
-        //         "&resident=N&schdtype=SERIAL&transtat=N&option=ALLRSP&route=IMS1,IMS2";
-        //
-        //     response = await updateProgram(dummySession, updateProgramParms);
-        //
-        //     expect(response).toContain(content);
-        //     expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, [], undefined);
-        // });
-
     });
 
     describe("validation scenarios", () => {
@@ -109,7 +83,7 @@ describe("IMS - Update program", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toContain("Cannot read property 'name' of undefined");
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should fail if name is not defined", async () => {

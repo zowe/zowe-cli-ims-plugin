@@ -37,12 +37,12 @@ describe("Update program command", () => {
     it("Should update a program by specifying its name and some options", async () => {
         const output = runCliScript(__dirname + "/__scripts__/update_program.sh", testEnvironment,
             [programName,
-                  "Y",
-                  "N",
-                  "N",
-                  route,
-                  "SERIAL",
-                  "N"]);
+                "Y",
+                "N",
+                "N",
+                route,
+                "SERIAL",
+                "N"]);
         const stderr = output.stderr.toString();
         const stdout = output.stdout.toString();
         expect(stderr).toEqual("");

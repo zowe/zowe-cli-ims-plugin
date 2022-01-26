@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { HTTP_VERB, IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -57,7 +57,7 @@ export class ImsRestClient extends RestClient {
         }
 
         // Log the resource and request info
-        this.log.debug("\n\nResource: " + options.resource + "\nRequest: " + options.request + "\n");
+        ImsRestClient.log.debug("\n\nResource: " + options.resource + "\nRequest: " + options.request + "\n");
 
         const imsSession = this.session as ImsSession;
         if (imsSession.imsConnectHost != null) {
@@ -85,7 +85,7 @@ export class ImsRestClient extends RestClient {
             return original;
         } catch (e) {
             // if there's an error, the causeErrors text is not json
-            this.log.debug("Encountered an error trying to parse causeErrors as XML  - causeErrors is likely not JSON format");
+            ImsRestClient.log.debug("Encountered an error trying to parse causeErrors as XML  - causeErrors is likely not JSON format");
 
             original.msg += "\n" + details; // add the data string which is the original error
             return original;

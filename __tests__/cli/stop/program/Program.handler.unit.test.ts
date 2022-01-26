@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, CommandProfiles, Session } from "@zowe/imperative";
+import { IHandlerParameters, IProfile, CommandProfiles } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { ProgramDefinition } from "../../../../src/cli/stop/program/Program.definition";
 import ProgramHandler from "../../../../src/cli/stop/program/Program.handler";
@@ -85,7 +85,7 @@ describe("StartProgramHandler", () => {
     const defaultReturn: IIMSApiResponse = {
         data: {},
         messages: {}
-      };
+    };
 
     const functionSpy = jest.spyOn(Start, "stopProgram");
 

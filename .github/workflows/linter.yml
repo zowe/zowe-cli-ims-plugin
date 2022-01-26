@@ -1,0 +1,37 @@
+name: Lint
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+      - 'zowe-v1-lts'
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && !contains(github.event.head_commit.message, '[ci skip]')
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+<<<<<<< HEAD
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+=======
+    - name: Use Node.js LTS
+      uses: actions/setup-node@v2
+      with:
+        node-version: lts/*
+>>>>>>> 5f867c16a7ee6a145ce1c8f348ae9a8896c9faab
+
+    - name: Install Node Package Dependencies
+      run: npm ci
+
+    - name: Lint
+      run: npm run lint
