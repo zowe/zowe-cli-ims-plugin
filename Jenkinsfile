@@ -25,7 +25,7 @@ node('zowe-jenkins-agent') {
 
     // Build admins, users that can approve the build and receive emails for
     // all protected branch builds.
-    pipeline.admins.add("zfernand0", "markackert")
+    pipeline.admins.add("gejohnston", "zfernand0", "mikebauerca", "markackert", "dkelosky", "awharn", "tjohnsonbcm")
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
@@ -39,8 +39,7 @@ node('zowe-jenkins-agent') {
     // Git configuration information
     pipeline.gitConfig = [
         email: 'zowe.robot@gmail.com',
-        credentialsId: 'zowe-robot-github'  //,
-        // githubAPIEndpoint: 'https://api.github.com/'
+        credentialsId: 'zowe-robot-github'
     ]
 
     // npm publish configuration
@@ -118,8 +117,6 @@ node('zowe-jenkins-agent') {
         operation: {
             def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
             sh "npm i -g \"@zowe/cli@$zoweVersion\" --zowe:registry=${pipeline.registryConfig[0].url}"
-            // create the custom properties file. contents don't matter for integration tests
-            sh "cp __tests__/__resources__/properties/example_properties.yaml __tests__/__resources__/properties/custom_properties.yaml"
             sh "npm run test:integration"
         },
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],

@@ -9,7 +9,6 @@
 *                                                                                 *
 */
 
-import { Session } from "@zowe/imperative";
 import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
 import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
 import { startTransaction, IUpdateTransactionParms, ImsSession } from "../../../../../src";

@@ -10,8 +10,6 @@
 */
 
 import {
-    AbstractSession,
-    ICommandHandler,
     IHandlerParameters,
     IProfile,
     ITaskWithStatus, Logger,
@@ -21,11 +19,6 @@ import {
 import { IIMSApiResponse, ImsSession, startTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
-import i18nTypings from "../../-strings-/en";
-
-// Does not use the import in anticipation of some internationalization work to be done later.
-const strings = (require("../../-strings-/en").default as typeof i18nTypings).START.RESOURCES.TRANSACTION;
-
 /**
  * Command handler for stopping IMS transactions
  * @export
@@ -34,8 +27,8 @@ const strings = (require("../../-strings-/en").default as typeof i18nTypings).ST
  */
 export default class TransactionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-                                    session: ImsSession,
-                                    profile: IProfile): Promise<IIMSApiResponse> {
+        session: ImsSession,
+        profile: IProfile): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Start transaction defined to IMS",

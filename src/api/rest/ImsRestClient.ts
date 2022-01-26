@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { HTTP_VERB, IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**

@@ -21,9 +21,9 @@ const config: IImperativeConfig = {
     name: PluginConstants.PLUGIN_GROUP_NAME,
     apimlConnLookup: [
         {
-          apiId: "place_the_ims_apiId_here",
-          gatewayUrl: "api/v1",
-          connProfType: "ims"
+            apiId: "place_the_ims_apiId_here",
+            gatewayUrl: "api/v1",
+            connProfType: "ims"
         }
     ],
     profiles: [

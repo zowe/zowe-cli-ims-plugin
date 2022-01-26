@@ -35,7 +35,7 @@ export const ProgramDefinition: ICommandDefinition = {
         allowableValues: {
             values: ["SCHD", "TRACE", "REFRESH"],
             caseSensitive: true
-    },
+        },
         aliases: ["att"],
         defaultValue: ["SCHD"]
     },
