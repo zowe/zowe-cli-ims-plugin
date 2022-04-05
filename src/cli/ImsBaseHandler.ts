@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, ImperativeError, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
 import { ImsSession } from "../api/rest";
@@ -35,13 +35,14 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         this.params = commandParameters;
-        const profile = commandParameters.profiles.get("ims", false) || {};
 
         const session: ImsSession = await ImsSessionUtils.createSessCfgFromArgs(
-            commandParameters.arguments
+            commandParameters.arguments,
+            true,
+            commandParameters
         );
 
-        const response = await this.processWithSession(commandParameters, session, profile);
+        const response = await this.processWithSession(commandParameters, session);
 
         commandParameters.response.progress.endBar(); // end any progress bars
 
@@ -61,8 +62,7 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: ImsSession,
-        imsProfile: IProfile
+        session: ImsSession
     ): Promise<IIMSApiResponse>;
 
     /**
