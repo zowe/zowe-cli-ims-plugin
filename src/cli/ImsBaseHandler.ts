@@ -56,7 +56,6 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
      * @param {ImsSession} session The session object generated from the ims profile.
-     * @param {IProfile} imsProfile The ims profile that was loaded for the command.
      *
      * @returns {Promise<IIMSApiResponse>} The response from the underlying ims api call.
      */
