@@ -11,7 +11,6 @@
 
 import {
     IHandlerParameters,
-    IProfile,
     ITaskWithStatus, Logger,
     TaskStage,
     TextUtils
@@ -27,8 +26,7 @@ import { ImsBaseHandler } from "../../ImsBaseHandler";
  */
 export default class TransactionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-        session: ImsSession,
-        profile: IProfile): Promise<IIMSApiResponse> {
+        session: ImsSession): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Stop transaction defined to IMS",

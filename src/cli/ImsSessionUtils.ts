@@ -9,7 +9,8 @@
 *                                                                                 *
 */
 
-import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,  ISession, Logger, SessConstants } from "@zowe/imperative";
+import { ConnectionPropsForSessCfg, ICommandArguments, ICommandOptionDefinition,
+    IHandlerParameters,  ISession, Logger, SessConstants } from "@zowe/imperative";
 import { ImsConstants } from "../api/constants/Ims.constants";
 import { ImsSession } from "../api/rest/ImsSession";
 
@@ -139,7 +140,7 @@ export class ImsSessionUtils {
         ImsSessionUtils.IMS_OPTION_PROTOCOL,
     ];
 
-    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true): Promise<ImsSession> {
+    public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams?: IHandlerParameters): Promise<ImsSession> {
         this.log.debug("Creating a IMS session from arguments");
         const basePath = args.basePath;// ?? ImsConstants.BASE_PATH;
 
@@ -169,7 +170,7 @@ export class ImsSessionUtils {
             sessCfg.type = SessConstants.AUTH_TYPE_BASIC;
         }
 
-        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting});
+        const sessCfgWithCreds = await ConnectionPropsForSessCfg.addPropsOrPrompt<ISession>(sessCfg, args, {doPrompting, parms: handlerParams});
 
         return new ImsSession({
             ...sessCfgWithCreds,

@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@zowe/imperative";
+import { IHandlerParameters, ITaskWithStatus, Logger, TaskStage, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, startRegion } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
@@ -21,8 +21,7 @@ import { ImsBaseHandler } from "../../ImsBaseHandler";
  */
 export default class RegionHandler extends ImsBaseHandler {
     public async processWithSession(params: IHandlerParameters,
-        session: ImsSession,
-        profile: IProfile): Promise<IIMSApiResponse> {
+        session: ImsSession): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Starting region defined to IMS",
