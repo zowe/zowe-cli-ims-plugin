@@ -1,12 +1,12 @@
 {
   "name": "@zowe/ims-for-zowe-cli",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "lockfileVersion": 2,
   "requires": true,
   "packages": {
     "": {
       "name": "@zowe/ims-for-zowe-cli",
-      "version": "2.0.3",
+      "version": "2.0.4",
       "license": "EPL-2.0",
       "devDependencies": {
         "@types/fs-extra": "^5.0.0",
