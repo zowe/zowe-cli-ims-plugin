@@ -9,15 +9,14 @@
 *                                                                                 *
 */
 
-import { runCliScript } from "../../../__src__/TestUtils";
-import { ITestEnvironment } from "../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../__src__/doc/ITestPropertiesSchema";
 import { ImsSession } from "../../../../src/api/rest";
 import { IQueryRegionParms, IStartRegionParms } from "../../../../src/api/doc";
 import { queryRegion } from "../../../../src/api/methods/query";
 import { startRegion } from "../../../../src/api/methods/start";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let imsConnectHost: string;
 let session: ImsSession;
 let regionID: number;
