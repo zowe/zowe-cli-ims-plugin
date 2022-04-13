@@ -1,6 +1,6 @@
 {
   "name": "@zowe/ims-for-zowe-cli",
-  "version": "3.0.0-next.202204081444",
+  "version": "3.0.0-next.202204132012",
   "description": "IBM IMS Plug-in for zowe CLI",
   "homepage": "https://github.com/zowe/zowe-cli-ims-plugin#readme",
   "bugs": {
