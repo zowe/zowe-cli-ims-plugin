@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `3.0.0-next.202204132012`
 
 - BugFix: Add missing `reject-unauthorized` flag.
 
