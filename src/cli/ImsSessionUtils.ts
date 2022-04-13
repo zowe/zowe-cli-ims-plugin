@@ -123,7 +123,17 @@ export class ImsSessionUtils {
         allowableValues: {values: ["http", "https"], caseSensitive: false},
         group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
     };
-
+    /**
+     * Option used in profile creation and commands for rejectUnauthorized setting for connecting to IMS
+     */
+    public static IMS_OPTION_REJECT_UNAUTHORIZED: ICommandOptionDefinition = {
+        name: "reject-unauthorized",
+        aliases: ["ru"],
+        description: "Reject self-signed certificates.",
+        type: "boolean",
+        defaultValue: true,
+        group: ImsSessionUtils.IMS_CONNECTION_OPTION_GROUP
+    };
     /**
      * Options related to connecting to IMS
      * These options can be filled in if the user creates a profile
@@ -138,6 +148,7 @@ export class ImsSessionUtils {
         ImsSessionUtils.IMS_OPTION_PASSWORD,
         ImsSessionUtils.IMS_OPTION_BASE_PATH,
         ImsSessionUtils.IMS_OPTION_PROTOCOL,
+        ImsSessionUtils.IMS_OPTION_REJECT_UNAUTHORIZED
     ];
 
     public static async createSessCfgFromArgs(args: ICommandArguments, doPrompting = true, handlerParams?: IHandlerParameters): Promise<ImsSession> {

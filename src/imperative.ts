@@ -74,6 +74,10 @@ const config: IImperativeConfig = {
                         type: "string",
                         optionDefinition: ImsSessionUtils.IMS_OPTION_PROTOCOL
                     },
+                    rejectUnauthorized: {
+                        type: "boolean",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_REJECT_UNAUTHORIZED
+                    }
                 },
                 required: [],
             },
