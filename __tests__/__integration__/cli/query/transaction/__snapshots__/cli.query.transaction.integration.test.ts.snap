@@ -125,6 +125,12 @@ exports[`ims query transaction should display the help 1`] = `
       Default value: https
       Allowed values: http, https
 
+   --reject-unauthorized | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
  PROFILE OPTIONS
  ---------------
 
@@ -138,12 +144,6 @@ exports[`ims query transaction should display the help 1`] = `
 
  BASE CONNECTION OPTIONS
  -----------------------
-
-   --reject-unauthorized | --ru (boolean)
-
-      Reject self-signed certificates.
-
-      Default value: true
 
    --token-type | --tt (string)
 

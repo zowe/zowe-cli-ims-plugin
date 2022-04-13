@@ -103,6 +103,16 @@ Object {
           "name": "protocol",
           "type": "string",
         },
+        Object {
+          "aliases": Array [
+            "ru",
+          ],
+          "defaultValue": true,
+          "description": "Reject self-signed certificates.",
+          "group": "IMS Connection Options",
+          "name": "reject-unauthorized",
+          "type": "boolean",
+        },
       ],
     },
   ],

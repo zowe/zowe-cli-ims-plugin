@@ -127,6 +127,19 @@ Object {
             },
             "type": "string",
           },
+          "rejectUnauthorized": Object {
+            "optionDefinition": Object {
+              "aliases": Array [
+                "ru",
+              ],
+              "defaultValue": true,
+              "description": "Reject self-signed certificates.",
+              "group": "IMS Connection Options",
+              "name": "reject-unauthorized",
+              "type": "boolean",
+            },
+            "type": "boolean",
+          },
           "user": Object {
             "optionDefinition": Object {
               "aliases": Array [
