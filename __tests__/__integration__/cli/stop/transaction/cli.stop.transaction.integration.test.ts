@@ -9,12 +9,11 @@
 *                                                                                 *
 */
 
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { runCliScript } from "../../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { join } from "path";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 describe("Start transaction command", () => {
 
     beforeAll(async () => {
