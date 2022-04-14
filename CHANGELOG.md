@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- LTS Breaking: Updated the resource to use `api` instead of `apis`. [#23](https://github.com/zowe/zowe-cli-ims-plugin/issues/23)
+
 ## `3.0.0-next.202204141926`
 
 - BugFix: Remove APIML Conn Lookup until the IMS definition for APIML is known.
