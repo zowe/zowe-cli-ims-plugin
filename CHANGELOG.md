@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `3.0.0-next.202204142150`
 
 - LTS Breaking: Updated the resource to use `api` instead of `apis`. [#23](https://github.com/zowe/zowe-cli-ims-plugin/issues/23)
 
