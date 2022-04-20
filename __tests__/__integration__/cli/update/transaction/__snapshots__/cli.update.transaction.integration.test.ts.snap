@@ -28,207 +28,207 @@ exports[`Update transaction command should display the help 1`] = `
  OPTIONS
  -------
 
-   --aoi-cmd  | --aocmd (string)
+   --aoi-cmd | --aocmd (string)
 
       Specifies the AOI option that you want to change (N, CMD, TRAN, Y).
 
       Allowed values: N, CMD, TRAN, Y
 
-   --class  | -c (array)
+   --class | -c (array)
 
       Selects the transactions associated with the specified class or classes to be
       updated.
 
-   --commit-mode  | --cmtmode (string)
+   --commit-mode | --cmtmode (string)
 
       Specifies when database updates and non-express output messages are committed
       (SNGL, MULT).
 
       Allowed values: SINGLE, MODE
 
-   --conversation  | --conv (string)
+   --conversation | --conv (string)
 
       Specifies the conversation option (N or Y).
 
       Allowed values: N, Y
 
-   --current-priority  | --cpri (number)
+   --current-priority | --cpri (number)
 
       Specifies a new value for the current priority of a transaction.
 
-   --directed-routing  | --dirroute (string)
+   --directed-routing | --dirroute (string)
 
       Specifies the MSC directed routing option (N or Y).
 
       Allowed values: N, Y
 
-   --edit-routine  | --editrtn (string)
+   --edit-routine | --editrtn (string)
 
       Specifies the 1- to 8-character name of your transaction input edit routine that
       edits messages before the program receives the message.
 
-   --edit-uppercase  | --edituc (string)
+   --edit-uppercase | --edituc (string)
 
       Specifies the edit to uppercase option (N or Y).
 
       Allowed values: N, Y
 
-   --emh-buffer-size  | --emhbsz (number)
+   --emh-buffer-size | --emhbsz (number)
 
       Specifies the EMH buffer size required to run the Fast Path transaction.
 
-   --expiration-time  | --exprtime (number)
+   --expiration-time | --exprtime (number)
 
       Specifies the elapsed time in seconds that IMS can use to cancel the input
       transaction.
 
-   --fast-path  | --fp (string)
+   --fast-path | --fp (string)
 
       Specifies the Fast Path option (E, N, P).
 
       Allowed values: E, N, P
 
-   --inquiry  | --inq (string)
+   --inquiry | --inq (string)
 
       Specifies the inquiry option (N or Y).
 
       Allowed values: N, Y
 
-   --limit-count  | --lct (number)
+   --limit-count | --lct (number)
 
       Specifies the limit count.
 
-   --limit-priority  | --lpri (number)
+   --limit-priority | --lpri (number)
 
       Specifies the limit priority.
 
-   --lock  | -l (string)
+   --lock | -l (string)
 
       Specifies that the LOCK status is to be set on or off. Cannot be specified with
       any other SET attribute(ON or OFF).
 
       Allowed values: ON, OFF
 
-   --log-write-ahead  | --dclwa (string)
+   --log-write-ahead | --dclwa (string)
 
       Specifies the log write-ahead option (N or Y).
 
       Allowed values: N, Y
 
-   --maximum-regions  | --maxrgn (number)
+   --maximum-regions | --maxrgn (number)
 
       Specifies a new value for the maximum number of regions that can be
       simultaneously scheduled for a given transaction.
 
-   --message-type  | --msgtype (string)
+   --message-type | --msgtype (string)
 
       Specifies the message type (single segment or multiple segment) (MULTSEG or
       SNGLSEG).
 
       Allowed values: MULTSEG, SNGLSEG
 
-   --msname  | --mn (string)
+   --msname | --mn (string)
 
       Specifies the one- to eight-character name of the logical link path in a
       multiple IMS system configuration (MSC).
 
-   --normal-scheduling-priority  | --npri (number)
+   --normal-scheduling-priority | --npri (number)
 
       Specifies the normal scheduling priority.
 
-   --option  | -o (string)
+   --option | -o (string)
 
       Specifies functions to be performed along with the command (AFFIN or ALLRSP).
 
       Allowed values: ALLRSP
 
-   --parallel-processing-limit  | --parlim (number)
+   --parallel-processing-limit | --parlim (number)
 
       Specifies the parallel processing limit count.
 
-   --program  | --pgm (string)
+   --program | --pgm (string)
 
       Specifies the name of the application program associated with the transaction.
 
-   --processing-limit-count  | --plct (number)
+   --processing-limit-count | --plct (number)
 
       Specifies the processing limit count.
 
-   --processing-limit-count-time  | --plcttime (number)
+   --processing-limit-count-time | --plcttime (number)
 
       Specifies the processing limit count time.
 
-   --recover  | -r (string)
+   --recover | -r (string)
 
       Specifies the recovery option (N or Y).
 
       Allowed values: N, Y
 
-   --remote  | --re (string)
+   --remote | --re (string)
 
       Specifies the remote option (N or Y).
 
       Allowed values: N, Y
 
-   --response-mode  | --resp (string)
+   --response-mode | --resp (string)
 
       Specifies the response mode option (N or Y).
 
       Allowed values: N, Y
 
-   --route  | --rte (array)
+   --route | --rte (array)
 
       Specifies the region(s) to route the command.
 
-   --segment-number  | --segno (number)
+   --segment-number | --segno (number)
 
       Specifies the segment number.
 
-   --segment-size  | --segsz (number)
+   --segment-size | --segsz (number)
 
       Specifies the segment size.
 
-   --serial  | --sr (string)
+   --serial | --sr (string)
 
       Specifies the serial option (N or Y).
 
       Allowed values: N, Y
 
-   --set-class  | --sc (number)
+   --set-class | --sc (number)
 
       Specifies the transaction class, which is an attribute used to select a
       transaction for scheduling.
 
-   --system-identification-local  | --sidl (number)
+   --system-identification-local | --sidl (number)
 
       Specifies the system identification (SYSID) of the local system in a
       multiple-IMS system (MSC) configuration.
 
-   --system-identification-remote  | --sidr (number)
+   --system-identification-remote | --sidr (number)
 
       Specifies the system identification (SYSID) of the remote system in a
       multiple-IMS system (MSC) configuration.
 
-   --scratchpad-area-size  | --spasz (number)
+   --scratchpad-area-size | --spasz (number)
 
       Specifies the scratchpad area (SPA) size, in bytes, for a conversational
       transaction. The value can be a number from 16 and 32767.
 
-   --scratchpad-area-truncation  | --spatrunc (string)
+   --scratchpad-area-truncation | --spatrunc (string)
 
       Specifies the scratchpad area (SPA) truncation option of a conversational
       transaction (S or R).
 
       Allowed values: S, R
 
-   --transaction-level-stat  | --transtat (string)
+   --transaction-level-stat | --transtat (string)
 
       Specifies whether transaction level statistics should be logged for message
       driven programs (N or Y).
 
       Allowed values: N, Y
 
-   --wait-for-input  | --wfi (string)
+   --wait-for-input | --wfi (string)
 
       Specifies the wait-for input option (N or Y).
 
@@ -237,83 +237,90 @@ exports[`Update transaction command should display the help 1`] = `
  IMS CONNECTION OPTIONS
  ----------------------
 
-   --host  | -H (string)
+   --host | -H (string)
 
       The IMS Operations API server host name.
 
-   --port  | -P (number)
+   --port | -P (number)
 
       The IMS Operations API server port.
 
-   --ims-connect-host  | --ich (string)
+   --ims-connect-host | --ich (string)
 
       The hostname of your instance of IMS Connect. This is typically the hostname of
       the mainframe LPAR where IMS Connect is running.
 
-   --ims-connect-port  | --icp (number)
+   --ims-connect-port | --icp (number)
 
       The port of your instance of IMS Connect. This port can be found in your IMS
       Connect configuration file on the mainframe.
 
-   --plex  | -x (string)
+   --plex | -x (string)
 
       The name of the IMS plex.
 
-   --user  | -u (string)
+   --user | -u (string)
 
       The web server user name where the IMS Operations API resides.
 
-   --password  | --pass (string)
+   --password | --pass (string)
 
       The web server user password where the IMS Operations API resides.
 
-   --base-path  | --bp (string)
+   --base-path | --bp (string)
 
       The base path for your API mediation layer instance. Specify this option to
       prepend the base path to all z/OSMF resources when making REST requests. Do not
       specify this option if you are not using an API mediation layer.
 
+   --protocol (string)
+
+      Specifies protocol (http or https).
+
+      Default value: https
+      Allowed values: http, https
+
+   --reject-unauthorized | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
  PROFILE OPTIONS
  ---------------
 
-   --ims-profile  | --ims-p (string)
+   --ims-profile | --ims-p (string)
 
       The name of a (ims) profile to load for this command execution.
 
-   --base-profile  | --base-p (string)
+   --base-profile | --base-p (string)
 
       The name of a (base) profile to load for this command execution.
 
  BASE CONNECTION OPTIONS
  -----------------------
 
-   --reject-unauthorized  | --ru (boolean)
-
-      Reject self-signed certificates.
-
-      Default value: true
-
-   --token-type  | --tt (string)
+   --token-type | --tt (string)
 
       The type of token to get and use for the API. Omit this option to use the
       default token type, which is provided by 'zowe auth login'.
 
-   --token-value  | --tv (string)
+   --token-value | --tv (string)
 
       The value of the token to pass to the API.
 
-   --cert-file  (local file path)
+   --cert-file (local file path)
 
       The file path to a certificate file to use for authentication
 
-   --cert-key-file  (local file path)
+   --cert-key-file (local file path)
 
       The file path to a certificate key file to use for authentication
 
  RESPONSE FORMAT OPTIONS
  -----------------------
 
-   --response-format-filter  | --rff (array)
+   --response-format-filter | --rff (array)
 
       Filter (include) fields in the response. Accepts an array of field/property
       names to include in the output response. You can filter JSON objects properties
@@ -321,7 +328,7 @@ exports[`Update transaction command should display the help 1`] = `
       with '--response-format-type' to reduce the output of a command to a single
       field/property or a list of a single field/property.
 
-   --response-format-type  | --rft (string)
+   --response-format-type | --rft (string)
 
       The command response output format type. Must be one of the following:
 
@@ -341,7 +348,7 @@ exports[`Update transaction command should display the help 1`] = `
 
       Allowed values: table, list, object, string
 
-   --response-format-header  | --rfh (boolean)
+   --response-format-header | --rfh (boolean)
 
       If \\"--response-format-type table\\" is specified, include the column headers in
       the output.
@@ -349,19 +356,19 @@ exports[`Update transaction command should display the help 1`] = `
  GLOBAL OPTIONS
  --------------
 
-   --response-format-json  | --rfj (boolean)
+   --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
 
-   --help  | -h (boolean)
+   --help | -h (boolean)
 
       Display help text
 
-   --help-examples  (boolean)
+   --help-examples (boolean)
 
       Display examples for all the commands in a group
 
-   --help-web  | --hw (boolean)
+   --help-web | --hw (boolean)
 
       Display HTML help in browser
 
@@ -397,8 +404,8 @@ exports[`Update transaction command should display the help 1`] = `
   \\"success\\": true,
   \\"exitCode\\": 0,
   \\"message\\": \\"The help was constructed for command: transaction.\\",
-  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   transaction | tran\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Update an IMS transaction.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims update transaction [name...] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   name...\\\\t\\\\t (string)\\\\n\\\\n      The name of the transaction(s) to update. The maximum length of a transaction\\\\n      name is eight characters.\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --aoi-cmd  | --aocmd (string)\\\\n\\\\n      Specifies the AOI option that you want to change (N, CMD, TRAN, Y).\\\\n\\\\n      Allowed values: N, CMD, TRAN, Y\\\\n\\\\n   --class  | -c (array)\\\\n\\\\n      Selects the transactions associated with the specified class or classes to be\\\\n      updated.\\\\n\\\\n   --commit-mode  | --cmtmode (string)\\\\n\\\\n      Specifies when database updates and non-express output messages are committed\\\\n      (SNGL, MULT).\\\\n\\\\n      Allowed values: SINGLE, MODE\\\\n\\\\n   --conversation  | --conv (string)\\\\n\\\\n      Specifies the conversation option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --current-priority  | --cpri (number)\\\\n\\\\n      Specifies a new value for the current priority of a transaction.\\\\n\\\\n   --directed-routing  | --dirroute (string)\\\\n\\\\n      Specifies the MSC directed routing option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --edit-routine  | --editrtn (string)\\\\n\\\\n      Specifies the 1- to 8-character name of your transaction input edit routine that\\\\n      edits messages before the program receives the message.\\\\n\\\\n   --edit-uppercase  | --edituc (string)\\\\n\\\\n      Specifies the edit to uppercase option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --emh-buffer-size  | --emhbsz (number)\\\\n\\\\n      Specifies the EMH buffer size required to run the Fast Path transaction.\\\\n\\\\n   --expiration-time  | --exprtime (number)\\\\n\\\\n      Specifies the elapsed time in seconds that IMS can use to cancel the input\\\\n      transaction.\\\\n\\\\n   --fast-path  | --fp (string)\\\\n\\\\n      Specifies the Fast Path option (E, N, P).\\\\n\\\\n      Allowed values: E, N, P\\\\n\\\\n   --inquiry  | --inq (string)\\\\n\\\\n      Specifies the inquiry option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --limit-count  | --lct (number)\\\\n\\\\n      Specifies the limit count.\\\\n\\\\n   --limit-priority  | --lpri (number)\\\\n\\\\n      Specifies the limit priority.\\\\n\\\\n   --lock  | -l (string)\\\\n\\\\n      Specifies that the LOCK status is to be set on or off. Cannot be specified with\\\\n      any other SET attribute(ON or OFF).\\\\n\\\\n      Allowed values: ON, OFF\\\\n\\\\n   --log-write-ahead  | --dclwa (string)\\\\n\\\\n      Specifies the log write-ahead option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --maximum-regions  | --maxrgn (number)\\\\n\\\\n      Specifies a new value for the maximum number of regions that can be\\\\n      simultaneously scheduled for a given transaction.\\\\n\\\\n   --message-type  | --msgtype (string)\\\\n\\\\n      Specifies the message type (single segment or multiple segment) (MULTSEG or\\\\n      SNGLSEG).\\\\n\\\\n      Allowed values: MULTSEG, SNGLSEG\\\\n\\\\n   --msname  | --mn (string)\\\\n\\\\n      Specifies the one- to eight-character name of the logical link path in a\\\\n      multiple IMS system configuration (MSC).\\\\n\\\\n   --normal-scheduling-priority  | --npri (number)\\\\n\\\\n      Specifies the normal scheduling priority.\\\\n\\\\n   --option  | -o (string)\\\\n\\\\n      Specifies functions to be performed along with the command (AFFIN or ALLRSP).\\\\n\\\\n      Allowed values: ALLRSP\\\\n\\\\n   --parallel-processing-limit  | --parlim (number)\\\\n\\\\n      Specifies the parallel processing limit count.\\\\n\\\\n   --program  | --pgm (string)\\\\n\\\\n      Specifies the name of the application program associated with the transaction.\\\\n\\\\n   --processing-limit-count  | --plct (number)\\\\n\\\\n      Specifies the processing limit count.\\\\n\\\\n   --processing-limit-count-time  | --plcttime (number)\\\\n\\\\n      Specifies the processing limit count time.\\\\n\\\\n   --recover  | -r (string)\\\\n\\\\n      Specifies the recovery option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --remote  | --re (string)\\\\n\\\\n      Specifies the remote option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --response-mode  | --resp (string)\\\\n\\\\n      Specifies the response mode option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --route  | --rte (array)\\\\n\\\\n      Specifies the region(s) to route the command.\\\\n\\\\n   --segment-number  | --segno (number)\\\\n\\\\n      Specifies the segment number.\\\\n\\\\n   --segment-size  | --segsz (number)\\\\n\\\\n      Specifies the segment size.\\\\n\\\\n   --serial  | --sr (string)\\\\n\\\\n      Specifies the serial option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --set-class  | --sc (number)\\\\n\\\\n      Specifies the transaction class, which is an attribute used to select a\\\\n      transaction for scheduling.\\\\n\\\\n   --system-identification-local  | --sidl (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the local system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --system-identification-remote  | --sidr (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the remote system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --scratchpad-area-size  | --spasz (number)\\\\n\\\\n      Specifies the scratchpad area (SPA) size, in bytes, for a conversational\\\\n      transaction. The value can be a number from 16 and 32767.\\\\n\\\\n   --scratchpad-area-truncation  | --spatrunc (string)\\\\n\\\\n      Specifies the scratchpad area (SPA) truncation option of a conversational\\\\n      transaction (S or R).\\\\n\\\\n      Allowed values: S, R\\\\n\\\\n   --transaction-level-stat  | --transtat (string)\\\\n\\\\n      Specifies whether transaction level statistics should be logged for message\\\\n      driven programs (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --wait-for-input  | --wfi (string)\\\\n\\\\n      Specifies the wait-for input option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host  | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port  | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host  | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port  | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex  | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user  | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password  | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path  | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile  | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile  | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --reject-unauthorized  | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n   --token-type  | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value  | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file  (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file  (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter  | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type  | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header  | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Update a transaction named TRN1 to process exclusively as\\\\n   Fast Path:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN1\\\\\\" --fp \\\\\\"E\\\\\\"\\\\n\\\\n   - Unlock to allow scheduling all transactions beginning with\\\\n   TRN* and associated with class CLASSA:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN*\\\\\\" --class \\\\\\"CLASSA\\\\\\" --lock \\\\\\"OFF\\\\\\"\\\\n\\\\n   - Set response mode on for transaction named TRN2 and\\\\n   associated with classes CLASS1 and CLASS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN2\\\\\\" --class \\\\\\"CLASS1 CLASS2\\\\\\" --resp \\\\\\"Y\\\\\\"\\\\n\\\\n   - Update a transaction named TRN3 to process exclusively as\\\\n   Fast Path routing to control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN3\\\\\\" -fp \\\\\\"E\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Associate PGM1 with transaction named TRN4 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN4\\\\\\" --pgm \\\\\\"PGM1\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\",
+  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   transaction | tran\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Update an IMS transaction.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims update transaction [name...] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   name...\\\\t\\\\t (string)\\\\n\\\\n      The name of the transaction(s) to update. The maximum length of a transaction\\\\n      name is eight characters.\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --aoi-cmd | --aocmd (string)\\\\n\\\\n      Specifies the AOI option that you want to change (N, CMD, TRAN, Y).\\\\n\\\\n      Allowed values: N, CMD, TRAN, Y\\\\n\\\\n   --class | -c (array)\\\\n\\\\n      Selects the transactions associated with the specified class or classes to be\\\\n      updated.\\\\n\\\\n   --commit-mode | --cmtmode (string)\\\\n\\\\n      Specifies when database updates and non-express output messages are committed\\\\n      (SNGL, MULT).\\\\n\\\\n      Allowed values: SINGLE, MODE\\\\n\\\\n   --conversation | --conv (string)\\\\n\\\\n      Specifies the conversation option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --current-priority | --cpri (number)\\\\n\\\\n      Specifies a new value for the current priority of a transaction.\\\\n\\\\n   --directed-routing | --dirroute (string)\\\\n\\\\n      Specifies the MSC directed routing option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --edit-routine | --editrtn (string)\\\\n\\\\n      Specifies the 1- to 8-character name of your transaction input edit routine that\\\\n      edits messages before the program receives the message.\\\\n\\\\n   --edit-uppercase | --edituc (string)\\\\n\\\\n      Specifies the edit to uppercase option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --emh-buffer-size | --emhbsz (number)\\\\n\\\\n      Specifies the EMH buffer size required to run the Fast Path transaction.\\\\n\\\\n   --expiration-time | --exprtime (number)\\\\n\\\\n      Specifies the elapsed time in seconds that IMS can use to cancel the input\\\\n      transaction.\\\\n\\\\n   --fast-path | --fp (string)\\\\n\\\\n      Specifies the Fast Path option (E, N, P).\\\\n\\\\n      Allowed values: E, N, P\\\\n\\\\n   --inquiry | --inq (string)\\\\n\\\\n      Specifies the inquiry option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --limit-count | --lct (number)\\\\n\\\\n      Specifies the limit count.\\\\n\\\\n   --limit-priority | --lpri (number)\\\\n\\\\n      Specifies the limit priority.\\\\n\\\\n   --lock | -l (string)\\\\n\\\\n      Specifies that the LOCK status is to be set on or off. Cannot be specified with\\\\n      any other SET attribute(ON or OFF).\\\\n\\\\n      Allowed values: ON, OFF\\\\n\\\\n   --log-write-ahead | --dclwa (string)\\\\n\\\\n      Specifies the log write-ahead option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --maximum-regions | --maxrgn (number)\\\\n\\\\n      Specifies a new value for the maximum number of regions that can be\\\\n      simultaneously scheduled for a given transaction.\\\\n\\\\n   --message-type | --msgtype (string)\\\\n\\\\n      Specifies the message type (single segment or multiple segment) (MULTSEG or\\\\n      SNGLSEG).\\\\n\\\\n      Allowed values: MULTSEG, SNGLSEG\\\\n\\\\n   --msname | --mn (string)\\\\n\\\\n      Specifies the one- to eight-character name of the logical link path in a\\\\n      multiple IMS system configuration (MSC).\\\\n\\\\n   --normal-scheduling-priority | --npri (number)\\\\n\\\\n      Specifies the normal scheduling priority.\\\\n\\\\n   --option | -o (string)\\\\n\\\\n      Specifies functions to be performed along with the command (AFFIN or ALLRSP).\\\\n\\\\n      Allowed values: ALLRSP\\\\n\\\\n   --parallel-processing-limit | --parlim (number)\\\\n\\\\n      Specifies the parallel processing limit count.\\\\n\\\\n   --program | --pgm (string)\\\\n\\\\n      Specifies the name of the application program associated with the transaction.\\\\n\\\\n   --processing-limit-count | --plct (number)\\\\n\\\\n      Specifies the processing limit count.\\\\n\\\\n   --processing-limit-count-time | --plcttime (number)\\\\n\\\\n      Specifies the processing limit count time.\\\\n\\\\n   --recover | -r (string)\\\\n\\\\n      Specifies the recovery option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --remote | --re (string)\\\\n\\\\n      Specifies the remote option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --response-mode | --resp (string)\\\\n\\\\n      Specifies the response mode option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --route | --rte (array)\\\\n\\\\n      Specifies the region(s) to route the command.\\\\n\\\\n   --segment-number | --segno (number)\\\\n\\\\n      Specifies the segment number.\\\\n\\\\n   --segment-size | --segsz (number)\\\\n\\\\n      Specifies the segment size.\\\\n\\\\n   --serial | --sr (string)\\\\n\\\\n      Specifies the serial option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --set-class | --sc (number)\\\\n\\\\n      Specifies the transaction class, which is an attribute used to select a\\\\n      transaction for scheduling.\\\\n\\\\n   --system-identification-local | --sidl (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the local system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --system-identification-remote | --sidr (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the remote system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --scratchpad-area-size | --spasz (number)\\\\n\\\\n      Specifies the scratchpad area (SPA) size, in bytes, for a conversational\\\\n      transaction. The value can be a number from 16 and 32767.\\\\n\\\\n   --scratchpad-area-truncation | --spatrunc (string)\\\\n\\\\n      Specifies the scratchpad area (SPA) truncation option of a conversational\\\\n      transaction (S or R).\\\\n\\\\n      Allowed values: S, R\\\\n\\\\n   --transaction-level-stat | --transtat (string)\\\\n\\\\n      Specifies whether transaction level statistics should be logged for message\\\\n      driven programs (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --wait-for-input | --wfi (string)\\\\n\\\\n      Specifies the wait-for input option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n   --protocol (string)\\\\n\\\\n      Specifies protocol (http or https).\\\\n\\\\n      Default value: https\\\\n      Allowed values: http, https\\\\n\\\\n   --reject-unauthorized | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --token-type | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Update a transaction named TRN1 to process exclusively as\\\\n   Fast Path:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN1\\\\\\" --fp \\\\\\"E\\\\\\"\\\\n\\\\n   - Unlock to allow scheduling all transactions beginning with\\\\n   TRN* and associated with class CLASSA:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN*\\\\\\" --class \\\\\\"CLASSA\\\\\\" --lock \\\\\\"OFF\\\\\\"\\\\n\\\\n   - Set response mode on for transaction named TRN2 and\\\\n   associated with classes CLASS1 and CLASS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN2\\\\\\" --class \\\\\\"CLASS1 CLASS2\\\\\\" --resp \\\\\\"Y\\\\\\"\\\\n\\\\n   - Update a transaction named TRN3 to process exclusively as\\\\n   Fast Path routing to control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN3\\\\\\" -fp \\\\\\"E\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Associate PGM1 with transaction named TRN4 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN4\\\\\\" --pgm \\\\\\"PGM1\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\",
   \\"stderr\\": \\"\\",
-  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   transaction | tran\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Update an IMS transaction.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims update transaction [name...] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   name...\\\\t\\\\t (string)\\\\n\\\\n      The name of the transaction(s) to update. The maximum length of a transaction\\\\n      name is eight characters.\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --aoi-cmd  | --aocmd (string)\\\\n\\\\n      Specifies the AOI option that you want to change (N, CMD, TRAN, Y).\\\\n\\\\n      Allowed values: N, CMD, TRAN, Y\\\\n\\\\n   --class  | -c (array)\\\\n\\\\n      Selects the transactions associated with the specified class or classes to be\\\\n      updated.\\\\n\\\\n   --commit-mode  | --cmtmode (string)\\\\n\\\\n      Specifies when database updates and non-express output messages are committed\\\\n      (SNGL, MULT).\\\\n\\\\n      Allowed values: SINGLE, MODE\\\\n\\\\n   --conversation  | --conv (string)\\\\n\\\\n      Specifies the conversation option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --current-priority  | --cpri (number)\\\\n\\\\n      Specifies a new value for the current priority of a transaction.\\\\n\\\\n   --directed-routing  | --dirroute (string)\\\\n\\\\n      Specifies the MSC directed routing option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --edit-routine  | --editrtn (string)\\\\n\\\\n      Specifies the 1- to 8-character name of your transaction input edit routine that\\\\n      edits messages before the program receives the message.\\\\n\\\\n   --edit-uppercase  | --edituc (string)\\\\n\\\\n      Specifies the edit to uppercase option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --emh-buffer-size  | --emhbsz (number)\\\\n\\\\n      Specifies the EMH buffer size required to run the Fast Path transaction.\\\\n\\\\n   --expiration-time  | --exprtime (number)\\\\n\\\\n      Specifies the elapsed time in seconds that IMS can use to cancel the input\\\\n      transaction.\\\\n\\\\n   --fast-path  | --fp (string)\\\\n\\\\n      Specifies the Fast Path option (E, N, P).\\\\n\\\\n      Allowed values: E, N, P\\\\n\\\\n   --inquiry  | --inq (string)\\\\n\\\\n      Specifies the inquiry option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --limit-count  | --lct (number)\\\\n\\\\n      Specifies the limit count.\\\\n\\\\n   --limit-priority  | --lpri (number)\\\\n\\\\n      Specifies the limit priority.\\\\n\\\\n   --lock  | -l (string)\\\\n\\\\n      Specifies that the LOCK status is to be set on or off. Cannot be specified with\\\\n      any other SET attribute(ON or OFF).\\\\n\\\\n      Allowed values: ON, OFF\\\\n\\\\n   --log-write-ahead  | --dclwa (string)\\\\n\\\\n      Specifies the log write-ahead option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --maximum-regions  | --maxrgn (number)\\\\n\\\\n      Specifies a new value for the maximum number of regions that can be\\\\n      simultaneously scheduled for a given transaction.\\\\n\\\\n   --message-type  | --msgtype (string)\\\\n\\\\n      Specifies the message type (single segment or multiple segment) (MULTSEG or\\\\n      SNGLSEG).\\\\n\\\\n      Allowed values: MULTSEG, SNGLSEG\\\\n\\\\n   --msname  | --mn (string)\\\\n\\\\n      Specifies the one- to eight-character name of the logical link path in a\\\\n      multiple IMS system configuration (MSC).\\\\n\\\\n   --normal-scheduling-priority  | --npri (number)\\\\n\\\\n      Specifies the normal scheduling priority.\\\\n\\\\n   --option  | -o (string)\\\\n\\\\n      Specifies functions to be performed along with the command (AFFIN or ALLRSP).\\\\n\\\\n      Allowed values: ALLRSP\\\\n\\\\n   --parallel-processing-limit  | --parlim (number)\\\\n\\\\n      Specifies the parallel processing limit count.\\\\n\\\\n   --program  | --pgm (string)\\\\n\\\\n      Specifies the name of the application program associated with the transaction.\\\\n\\\\n   --processing-limit-count  | --plct (number)\\\\n\\\\n      Specifies the processing limit count.\\\\n\\\\n   --processing-limit-count-time  | --plcttime (number)\\\\n\\\\n      Specifies the processing limit count time.\\\\n\\\\n   --recover  | -r (string)\\\\n\\\\n      Specifies the recovery option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --remote  | --re (string)\\\\n\\\\n      Specifies the remote option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --response-mode  | --resp (string)\\\\n\\\\n      Specifies the response mode option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --route  | --rte (array)\\\\n\\\\n      Specifies the region(s) to route the command.\\\\n\\\\n   --segment-number  | --segno (number)\\\\n\\\\n      Specifies the segment number.\\\\n\\\\n   --segment-size  | --segsz (number)\\\\n\\\\n      Specifies the segment size.\\\\n\\\\n   --serial  | --sr (string)\\\\n\\\\n      Specifies the serial option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --set-class  | --sc (number)\\\\n\\\\n      Specifies the transaction class, which is an attribute used to select a\\\\n      transaction for scheduling.\\\\n\\\\n   --system-identification-local  | --sidl (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the local system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --system-identification-remote  | --sidr (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the remote system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --scratchpad-area-size  | --spasz (number)\\\\n\\\\n      Specifies the scratchpad area (SPA) size, in bytes, for a conversational\\\\n      transaction. The value can be a number from 16 and 32767.\\\\n\\\\n   --scratchpad-area-truncation  | --spatrunc (string)\\\\n\\\\n      Specifies the scratchpad area (SPA) truncation option of a conversational\\\\n      transaction (S or R).\\\\n\\\\n      Allowed values: S, R\\\\n\\\\n   --transaction-level-stat  | --transtat (string)\\\\n\\\\n      Specifies whether transaction level statistics should be logged for message\\\\n      driven programs (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --wait-for-input  | --wfi (string)\\\\n\\\\n      Specifies the wait-for input option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host  | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port  | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host  | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port  | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex  | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user  | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password  | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path  | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile  | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile  | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --reject-unauthorized  | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n   --token-type  | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value  | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file  (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file  (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter  | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type  | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header  | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Update a transaction named TRN1 to process exclusively as\\\\n   Fast Path:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN1\\\\\\" --fp \\\\\\"E\\\\\\"\\\\n\\\\n   - Unlock to allow scheduling all transactions beginning with\\\\n   TRN* and associated with class CLASSA:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN*\\\\\\" --class \\\\\\"CLASSA\\\\\\" --lock \\\\\\"OFF\\\\\\"\\\\n\\\\n   - Set response mode on for transaction named TRN2 and\\\\n   associated with classes CLASS1 and CLASS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN2\\\\\\" --class \\\\\\"CLASS1 CLASS2\\\\\\" --resp \\\\\\"Y\\\\\\"\\\\n\\\\n   - Update a transaction named TRN3 to process exclusively as\\\\n   Fast Path routing to control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN3\\\\\\" -fp \\\\\\"E\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Associate PGM1 with transaction named TRN4 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN4\\\\\\" --pgm \\\\\\"PGM1\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\"
+  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   transaction | tran\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Update an IMS transaction.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims update transaction [name...] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   name...\\\\t\\\\t (string)\\\\n\\\\n      The name of the transaction(s) to update. The maximum length of a transaction\\\\n      name is eight characters.\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --aoi-cmd | --aocmd (string)\\\\n\\\\n      Specifies the AOI option that you want to change (N, CMD, TRAN, Y).\\\\n\\\\n      Allowed values: N, CMD, TRAN, Y\\\\n\\\\n   --class | -c (array)\\\\n\\\\n      Selects the transactions associated with the specified class or classes to be\\\\n      updated.\\\\n\\\\n   --commit-mode | --cmtmode (string)\\\\n\\\\n      Specifies when database updates and non-express output messages are committed\\\\n      (SNGL, MULT).\\\\n\\\\n      Allowed values: SINGLE, MODE\\\\n\\\\n   --conversation | --conv (string)\\\\n\\\\n      Specifies the conversation option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --current-priority | --cpri (number)\\\\n\\\\n      Specifies a new value for the current priority of a transaction.\\\\n\\\\n   --directed-routing | --dirroute (string)\\\\n\\\\n      Specifies the MSC directed routing option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --edit-routine | --editrtn (string)\\\\n\\\\n      Specifies the 1- to 8-character name of your transaction input edit routine that\\\\n      edits messages before the program receives the message.\\\\n\\\\n   --edit-uppercase | --edituc (string)\\\\n\\\\n      Specifies the edit to uppercase option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --emh-buffer-size | --emhbsz (number)\\\\n\\\\n      Specifies the EMH buffer size required to run the Fast Path transaction.\\\\n\\\\n   --expiration-time | --exprtime (number)\\\\n\\\\n      Specifies the elapsed time in seconds that IMS can use to cancel the input\\\\n      transaction.\\\\n\\\\n   --fast-path | --fp (string)\\\\n\\\\n      Specifies the Fast Path option (E, N, P).\\\\n\\\\n      Allowed values: E, N, P\\\\n\\\\n   --inquiry | --inq (string)\\\\n\\\\n      Specifies the inquiry option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --limit-count | --lct (number)\\\\n\\\\n      Specifies the limit count.\\\\n\\\\n   --limit-priority | --lpri (number)\\\\n\\\\n      Specifies the limit priority.\\\\n\\\\n   --lock | -l (string)\\\\n\\\\n      Specifies that the LOCK status is to be set on or off. Cannot be specified with\\\\n      any other SET attribute(ON or OFF).\\\\n\\\\n      Allowed values: ON, OFF\\\\n\\\\n   --log-write-ahead | --dclwa (string)\\\\n\\\\n      Specifies the log write-ahead option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --maximum-regions | --maxrgn (number)\\\\n\\\\n      Specifies a new value for the maximum number of regions that can be\\\\n      simultaneously scheduled for a given transaction.\\\\n\\\\n   --message-type | --msgtype (string)\\\\n\\\\n      Specifies the message type (single segment or multiple segment) (MULTSEG or\\\\n      SNGLSEG).\\\\n\\\\n      Allowed values: MULTSEG, SNGLSEG\\\\n\\\\n   --msname | --mn (string)\\\\n\\\\n      Specifies the one- to eight-character name of the logical link path in a\\\\n      multiple IMS system configuration (MSC).\\\\n\\\\n   --normal-scheduling-priority | --npri (number)\\\\n\\\\n      Specifies the normal scheduling priority.\\\\n\\\\n   --option | -o (string)\\\\n\\\\n      Specifies functions to be performed along with the command (AFFIN or ALLRSP).\\\\n\\\\n      Allowed values: ALLRSP\\\\n\\\\n   --parallel-processing-limit | --parlim (number)\\\\n\\\\n      Specifies the parallel processing limit count.\\\\n\\\\n   --program | --pgm (string)\\\\n\\\\n      Specifies the name of the application program associated with the transaction.\\\\n\\\\n   --processing-limit-count | --plct (number)\\\\n\\\\n      Specifies the processing limit count.\\\\n\\\\n   --processing-limit-count-time | --plcttime (number)\\\\n\\\\n      Specifies the processing limit count time.\\\\n\\\\n   --recover | -r (string)\\\\n\\\\n      Specifies the recovery option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --remote | --re (string)\\\\n\\\\n      Specifies the remote option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --response-mode | --resp (string)\\\\n\\\\n      Specifies the response mode option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --route | --rte (array)\\\\n\\\\n      Specifies the region(s) to route the command.\\\\n\\\\n   --segment-number | --segno (number)\\\\n\\\\n      Specifies the segment number.\\\\n\\\\n   --segment-size | --segsz (number)\\\\n\\\\n      Specifies the segment size.\\\\n\\\\n   --serial | --sr (string)\\\\n\\\\n      Specifies the serial option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --set-class | --sc (number)\\\\n\\\\n      Specifies the transaction class, which is an attribute used to select a\\\\n      transaction for scheduling.\\\\n\\\\n   --system-identification-local | --sidl (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the local system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --system-identification-remote | --sidr (number)\\\\n\\\\n      Specifies the system identification (SYSID) of the remote system in a\\\\n      multiple-IMS system (MSC) configuration.\\\\n\\\\n   --scratchpad-area-size | --spasz (number)\\\\n\\\\n      Specifies the scratchpad area (SPA) size, in bytes, for a conversational\\\\n      transaction. The value can be a number from 16 and 32767.\\\\n\\\\n   --scratchpad-area-truncation | --spatrunc (string)\\\\n\\\\n      Specifies the scratchpad area (SPA) truncation option of a conversational\\\\n      transaction (S or R).\\\\n\\\\n      Allowed values: S, R\\\\n\\\\n   --transaction-level-stat | --transtat (string)\\\\n\\\\n      Specifies whether transaction level statistics should be logged for message\\\\n      driven programs (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n   --wait-for-input | --wfi (string)\\\\n\\\\n      Specifies the wait-for input option (N or Y).\\\\n\\\\n      Allowed values: N, Y\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n   --protocol (string)\\\\n\\\\n      Specifies protocol (http or https).\\\\n\\\\n      Default value: https\\\\n      Allowed values: http, https\\\\n\\\\n   --reject-unauthorized | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --token-type | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Update a transaction named TRN1 to process exclusively as\\\\n   Fast Path:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN1\\\\\\" --fp \\\\\\"E\\\\\\"\\\\n\\\\n   - Unlock to allow scheduling all transactions beginning with\\\\n   TRN* and associated with class CLASSA:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN*\\\\\\" --class \\\\\\"CLASSA\\\\\\" --lock \\\\\\"OFF\\\\\\"\\\\n\\\\n   - Set response mode on for transaction named TRN2 and\\\\n   associated with classes CLASS1 and CLASS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN2\\\\\\" --class \\\\\\"CLASS1 CLASS2\\\\\\" --resp \\\\\\"Y\\\\\\"\\\\n\\\\n   - Update a transaction named TRN3 to process exclusively as\\\\n   Fast Path routing to control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN3\\\\\\" -fp \\\\\\"E\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Associate PGM1 with transaction named TRN4 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims update transaction \\\\\\"TRN4\\\\\\" --pgm \\\\\\"PGM1\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\"
 }"
 `;

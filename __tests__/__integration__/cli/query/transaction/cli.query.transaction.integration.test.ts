@@ -10,23 +10,19 @@
 */
 
 // Test environment will be populated in the "beforeAll"
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
-import { runCliScript } from "../../../../__src__/TestUtils";
+import { ITestEnvironment, TestEnvironment, runCliScript } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 
-let TEST_ENVIRONMENT: ITestEnvironment;
-let transactionName: string;
+let TEST_ENVIRONMENT: ITestEnvironment<ITestPropertiesSchema>;
 describe("ims query transaction", () => {
 
     // Create the unique test environment
     beforeAll(async () => {
         TEST_ENVIRONMENT = await TestEnvironment.setUp({
             testName: "query_transaction_command",
-            skipProperties: true,
-            installPlugin: true
+            installPlugin: true,
+            skipProperties: true
         });
-        // transactionName = TEST_ENVIRONMENT.systemTestProperties.ims.expectedTransaction;
-        transactionName = "test-transaction";
     });
 
     afterAll(async () => {

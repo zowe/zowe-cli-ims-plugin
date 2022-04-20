@@ -94,8 +94,8 @@ describe("IMS - Update transaction", () => {
             endPoint = ImsConstants.URL + plexName + "/" + ImsConstants.TRANSACTION +
                 "?" + ImsConstants.NAME + "=" + transaction + "&class=3&scope=ALL&aocmd=N&setClass=3&cmtmode=MULT&conv=Y" +
                 "&cpri=3&dclwa=N&dirroute=N&editrtn=A&edituc=N&emhbsz=3&exprtime=3&fp=E&inq=N&lct=3&lpri=3&lock=ON&maxrgn=3" +
-                "&msgtype=MULTSEG&msname=name&npri=3&option=ALLRSP&parlim=3&pgm=pgm&plct=3&plcttime=3&recover=Y&remote=N" +
-                "&segno=3&segsz=3&pgm=N&sidl=3&sidr=3&spasz=3&spatrunc=S&transtat=N&wfi=Y&route=IMS1,IMS2";
+                "&msgtype=MULTSEG&msname=name&npri=3&parlim=3&pgm=pgm&plct=3&plcttime=3&recover=Y&remote=N&resp=N" +
+                "&segno=3&segsz=3&serial=N&sidl=3&sidr=3&spasz=3&spatrunc=S&transtat=N&wfi=Y&option=ALLRSP&route=IMS1,IMS2";
             response = await updateTransaction(dummySession, updateTransactionParms);
 
             expect(response).toContain(content);
@@ -115,7 +115,7 @@ describe("IMS - Update transaction", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/Cannot read (property 'name' of undefined|properties of undefined \(reading 'name'\))/);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should fail if names is not defined", async () => {

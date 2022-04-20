@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { ICommandHandler, IHandlerParameters, ImperativeError, IProfile, TextUtils } from "@zowe/imperative";
+import { ICommandHandler, IHandlerParameters, ImperativeError, TextUtils } from "@zowe/imperative";
 import { IIMSApiResponse } from "../api/doc/IIMSApiResponse";
 import { ImsSessionUtils } from "./ImsSessionUtils";
 import { ImsSession } from "../api/rest";
@@ -35,10 +35,14 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      */
     public async process(commandParameters: IHandlerParameters) {
         this.params = commandParameters;
-        const profile = commandParameters.profiles.get("ims", false) || {};
-        const session = ImsSessionUtils.createBasicImsSessionFromArguments(commandParameters.arguments);
 
-        const response = await this.processWithSession(commandParameters, session, profile);
+        const session: ImsSession = await ImsSessionUtils.createSessCfgFromArgs(
+            commandParameters.arguments,
+            true,
+            commandParameters
+        );
+
+        const response = await this.processWithSession(commandParameters, session);
 
         commandParameters.response.progress.endBar(); // end any progress bars
 
@@ -51,15 +55,13 @@ export abstract class ImsBaseHandler implements ICommandHandler {
      * be used so that every class does not have to instantiate the session object.
      *
      * @param {IHandlerParameters} commandParameters Command parameters sent to the handler.
-     * @param {AbstractSession} session The session object generated from the ims profile.
-     * @param {IProfile} imsProfile The ims profile that was loaded for the command.
+     * @param {ImsSession} session The session object generated from the ims profile.
      *
      * @returns {Promise<IIMSApiResponse>} The response from the underlying ims api call.
      */
     public abstract async processWithSession(
         commandParameters: IHandlerParameters,
-        session: ImsSession,
-        imsProfile: IProfile
+        session: ImsSession
     ): Promise<IIMSApiResponse>;
 
     /**

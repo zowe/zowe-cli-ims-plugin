@@ -29,10 +29,9 @@ node('zowe-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR],
-        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR]
-        [name: "lts-incremental", tag: "lts-incremental", devDependencies: ["@zowe/imperative" :"lts-incremental"], level: SemverLevel.PATCH]
+        [name: "master", tag: "latest", level: SemverLevel.MINOR, aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"]],
+        [name: "zowe-v1-lts", tag: "zowe-v1-lts", level: SemverLevel.PATCH, devDependencies: ["@zowe/imperative": "zowe-v1-lts"]]
+        //[name: "next", tag: "next", prerelease: "next", devDependencies: ["@zowe/cli": "next", "@zowe/cli-test-utils": "next", "@zowe/imperative": "next"]]
     ])
 
     // Git configuration information
@@ -96,7 +95,7 @@ node('zowe-jenkins-agent') {
             autoUpdateStability: false,
             coberturaReportFile: '__tests__/__results__/unit/coverage/cobertura-coverage.xml',
             classCoverageTargets: '85, 80, 75',
-            conditionalCoverageTargets: '70, 65, 60',
+            conditionalCoverageTargets: '70, 65, 50',
             failUnhealthy: false,
             failUnstable: false,
             lineCoverageTargets: '80, 70, 50',
@@ -115,7 +114,7 @@ node('zowe-jenkins-agent') {
         name: "Integration",
         operation: {
             def zoweVersion = sh(returnStdout: true, script: "echo \$(cat package.json | grep '@zowe/cli' | head -1 | awk -F: '{ print \$2 }' | sed 's/[\",]//g')").trim()
-            sh "npm i -g @zowe/cli@$zoweVersion --zowe:registry=${pipeline.registryConfig[0].url}"
+            sh "npm i -g \"@zowe/cli@$zoweVersion\" --zowe:registry=${pipeline.registryConfig[0].url}"
             sh "npm run test:integration"
         },
         testResults: [dir: "${INTEGRATION_TEST_ROOT}/jest-stare", files: "index.html", name: "${PRODUCT_NAME} - Integration Test Report"],

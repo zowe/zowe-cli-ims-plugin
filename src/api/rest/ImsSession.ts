@@ -34,5 +34,4 @@ export class ImsSession extends Session {
         this.imsConnectPort = iSession.imsConnectPort;
         this.plex = iSession.plex;
     }
-
 }

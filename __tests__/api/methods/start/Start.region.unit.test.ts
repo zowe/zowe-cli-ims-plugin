@@ -72,7 +72,7 @@ describe("IMS - Start region", () => {
             startRegionParms.route = ["route"];
 
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.REGION + "/" + ImsConstants.START +
-                "?member_name=" + member + "&job_name=job&local=false&route=route";
+                "?member_name=" + member + "&local=false&job_name=job&route=route";
 
             response = await startRegion(dummySession, startRegionParms);
 
@@ -93,7 +93,7 @@ describe("IMS - Start region", () => {
 
             expect(response).toBeUndefined();
             expect(error).toBeDefined();
-            expect(error.message).toMatch(/Cannot read (property 'memberName' of undefined|properties of undefined \(reading 'memberName'\))/);
+            expect(error.message).toMatch(/(Cannot read).*undefined/);
         });
 
         it("should fail if memberName is undefined", async () => {

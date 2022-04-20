@@ -9,6 +9,7 @@
 *                                                                                 *
 */
 
+import { mockHandlerParameters } from "@zowe/cli-test-utils";
 import { IHandlerParameters, IProfile, CommandProfiles } from "@zowe/imperative";
 import { ImsSession, IIMSApiResponse } from "../../../../src";
 import { RegionDefinition } from "../../../../src/cli/start/region/Region.definition";
@@ -40,42 +41,11 @@ PROFILE_MAP.set(
     }]
 );
 const PROFILES: CommandProfiles = new CommandProfiles(PROFILE_MAP);
-const DEFAULT_PARAMETERS: IHandlerParameters = {
-    arguments: {$0: "", _: []}, // Please provide arguments later on
+const DEFAULT_PARAMETERS: IHandlerParameters = mockHandlerParameters({
     positionals: [],
-    response: {
-        data: {
-            setMessage: jest.fn((setMsgArgs) => {
-                expect(setMsgArgs).toMatchSnapshot();
-            }),
-            setObj: jest.fn((setObjArgs) => {
-                expect(setObjArgs).toMatchSnapshot();
-            }),
-            setExitCode: jest.fn()
-        },
-        console: {
-            log: jest.fn((logs) => {
-                expect(logs.toString()).toMatchSnapshot();
-            }),
-            error: jest.fn((errors) => {
-                expect(errors.toString()).toMatchSnapshot();
-            }),
-            errorHeader: jest.fn(() => undefined)
-        },
-        progress: {
-            startBar: jest.fn((parms) => undefined),
-            endBar: jest.fn(() => undefined)
-        },
-        format: {
-            output: jest.fn((parms) => {
-                expect(parms).toMatchSnapshot();
-            })
-        }
-    },
     definition: RegionDefinition,
-    fullDefinition: RegionDefinition,
     profiles: PROFILES
-};
+});
 
 describe("StartRegionHandler", () => {
     const memberName = "member";
@@ -126,8 +96,8 @@ describe("StartRegionHandler", () => {
                 imsConnectHost: testProfile.imsConnectHost,
                 imsConnectPort: testProfile.imsConnectPort,
                 plex: testProfile.plex,
-                strictSSL: false,
-                protocol: "http",
+                strictSSL: true,
+                protocol: "https",
             }),
             {
                 memberName,

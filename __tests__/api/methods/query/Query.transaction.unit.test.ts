@@ -64,7 +64,7 @@ describe("IMS - Query transaction", () => {
             response = await queryTransaction(dummySession);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
         it("should be able to query all transactions without transaction name specified", async () => {
@@ -77,13 +77,13 @@ describe("IMS - Query transaction", () => {
             response = await queryTransaction(dummySession, queryTransactionParms);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
 
         it("should be able to query a transaction with all optional parameters specified", async () => {
             endPoint = ImsConstants.URL + dummySession.plex + "/" + ImsConstants.TRANSACTION +
-                "?name=trans1&attributes=" + attributes + "&status=status&route=route&class=1&qcntcomp=qcnt&qcntval=1&conv=conv"
-                + "&fp=fp&remote=remote&resp=resp";
+                "?name=trans1&attributes=" + attributes + "&status=status&route=route&class=1&conv=conv&fp=fp&qcntcomp=qcnt&qcntval=1&"
+                + "remote=remote&resp=resp";
 
             queryTransactionParms.name = ["trans1"];
             queryTransactionParms.attributes = [attributes];
@@ -100,7 +100,7 @@ describe("IMS - Query transaction", () => {
             response = await queryTransaction(dummySession, queryTransactionParms);
 
             expect(response).toContain(content);
-            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint, []);
+            expect(deleteSpy).toHaveBeenCalledWith(dummySession, endPoint);
         });
     });
 });

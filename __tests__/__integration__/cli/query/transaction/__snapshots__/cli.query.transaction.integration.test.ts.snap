@@ -29,7 +29,7 @@ exports[`ims query transaction should display the help 1`] = `
  OPTIONS
  -------
 
-   --attributes  | --att (array)
+   --attributes | --att (array)
 
       Specifies the transaction output fields to return.
 
@@ -37,7 +37,7 @@ exports[`ims query transaction should display the help 1`] = `
       LANG, LOCAL, MODEL, RESIDENT, SCHDTYPE, STATUS, TIMESTAMP, TRANSTAT,
       EXPORTNEEDED, DB, RTC, TRAN, WORK
 
-   --status  | --st (array)
+   --status | --st (array)
 
       Selects transactions that possess at least one of the specified transaction
       statuses.
@@ -45,120 +45,127 @@ exports[`ims query transaction should display the help 1`] = `
       Allowed values: AFFIN, BAL, CONV, CPIC, DYN, IOPREV, LCK, NOTINIT, QERR, QSTP,
       SUSPEND, STOQ, STOSCHD, TRACE, USTO
 
-   --route  | --rt (array)
+   --route | --rt (array)
 
       Specifies the routes to return.
 
-   --class  | --cl (array)
+   --class | --cl (array)
 
       Selects transactions by the classes you specify.
 
-   --queue-count-operator  | --qco (array)
+   --queue-count-operator | --qco (array)
 
       The compare operator used to select transactions based on queue count. Valid
       values: LT, LE, GT, GE, EQ or NE.
 
-   --queue-count-value  | --qcv (number)
+   --queue-count-value | --qcv (number)
 
       The numeric value used with 'queue_count_operator' to select transactions based
       on queue count.
 
-   --conversation-attributes  | --ca (string)
+   --conversation-attributes | --ca (string)
 
       Selects transactions by the conversational attributes you specify.
 
-   --fast-path-options  | --fpo (string)
+   --fast-path-options | --fpo (string)
 
       Selects transactions by the Fast Path options you specify.
 
-   --remote-option-specified  | --ros (string)
+   --remote-option-specified | --ros (string)
 
       Selects transactions by the remote option you specify.
 
-   --response-mode-option-specified  | --rmos (string)
+   --response-mode-option-specified | --rmos (string)
 
       Selects transactions by the response mode option you specify.
 
  IMS CONNECTION OPTIONS
  ----------------------
 
-   --host  | -H (string)
+   --host | -H (string)
 
       The IMS Operations API server host name.
 
-   --port  | -P (number)
+   --port | -P (number)
 
       The IMS Operations API server port.
 
-   --ims-connect-host  | --ich (string)
+   --ims-connect-host | --ich (string)
 
       The hostname of your instance of IMS Connect. This is typically the hostname of
       the mainframe LPAR where IMS Connect is running.
 
-   --ims-connect-port  | --icp (number)
+   --ims-connect-port | --icp (number)
 
       The port of your instance of IMS Connect. This port can be found in your IMS
       Connect configuration file on the mainframe.
 
-   --plex  | -x (string)
+   --plex | -x (string)
 
       The name of the IMS plex.
 
-   --user  | -u (string)
+   --user | -u (string)
 
       The web server user name where the IMS Operations API resides.
 
-   --password  | --pass (string)
+   --password | --pass (string)
 
       The web server user password where the IMS Operations API resides.
 
-   --base-path  | --bp (string)
+   --base-path | --bp (string)
 
       The base path for your API mediation layer instance. Specify this option to
       prepend the base path to all z/OSMF resources when making REST requests. Do not
       specify this option if you are not using an API mediation layer.
 
+   --protocol (string)
+
+      Specifies protocol (http or https).
+
+      Default value: https
+      Allowed values: http, https
+
+   --reject-unauthorized | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
  PROFILE OPTIONS
  ---------------
 
-   --ims-profile  | --ims-p (string)
+   --ims-profile | --ims-p (string)
 
       The name of a (ims) profile to load for this command execution.
 
-   --base-profile  | --base-p (string)
+   --base-profile | --base-p (string)
 
       The name of a (base) profile to load for this command execution.
 
  BASE CONNECTION OPTIONS
  -----------------------
 
-   --reject-unauthorized  | --ru (boolean)
-
-      Reject self-signed certificates.
-
-      Default value: true
-
-   --token-type  | --tt (string)
+   --token-type | --tt (string)
 
       The type of token to get and use for the API. Omit this option to use the
       default token type, which is provided by 'zowe auth login'.
 
-   --token-value  | --tv (string)
+   --token-value | --tv (string)
 
       The value of the token to pass to the API.
 
-   --cert-file  (local file path)
+   --cert-file (local file path)
 
       The file path to a certificate file to use for authentication
 
-   --cert-key-file  (local file path)
+   --cert-key-file (local file path)
 
       The file path to a certificate key file to use for authentication
 
  RESPONSE FORMAT OPTIONS
  -----------------------
 
-   --response-format-filter  | --rff (array)
+   --response-format-filter | --rff (array)
 
       Filter (include) fields in the response. Accepts an array of field/property
       names to include in the output response. You can filter JSON objects properties
@@ -166,7 +173,7 @@ exports[`ims query transaction should display the help 1`] = `
       with '--response-format-type' to reduce the output of a command to a single
       field/property or a list of a single field/property.
 
-   --response-format-type  | --rft (string)
+   --response-format-type | --rft (string)
 
       The command response output format type. Must be one of the following:
 
@@ -186,7 +193,7 @@ exports[`ims query transaction should display the help 1`] = `
 
       Allowed values: table, list, object, string
 
-   --response-format-header  | --rfh (boolean)
+   --response-format-header | --rfh (boolean)
 
       If \\"--response-format-type table\\" is specified, include the column headers in
       the output.
@@ -194,19 +201,19 @@ exports[`ims query transaction should display the help 1`] = `
  GLOBAL OPTIONS
  --------------
 
-   --response-format-json  | --rfj (boolean)
+   --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
 
-   --help  | -h (boolean)
+   --help | -h (boolean)
 
       Display help text
 
-   --help-examples  (boolean)
+   --help-examples (boolean)
 
       Display examples for all the commands in a group
 
-   --help-web  | --hw (boolean)
+   --help-web | --hw (boolean)
 
       Display HTML help in browser
 

@@ -30,4 +30,9 @@ export interface IQueryRegionParms {
      *
      */
     route?: string[];
+
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }

@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { HTTP_VERB, IImperativeError, Logger, RestClient, TextUtils } from "@zowe/imperative";
+import { IImperativeError, IRestOptions, Logger, RestClient, TextUtils } from "@zowe/imperative";
 import { ImsSession } from "./ImsSession";
 
 /**
@@ -49,30 +49,24 @@ export class ImsRestClient extends RestClient {
     }
 
     /**
-     * Overridden performRest method implemented to append hostname, port, and plex headers to all IMS requests
-     * Takes the same parameters as the vanilla Imperative 'performRest' method.
-     * @param resource
-     * @param request
-     * @param reqHeaders
-     * @param writeData
+     * Overridden request method implemented to append hostname, port, and plex headers to all IMS requests.
      */
-    public performRest(resource: string, request: HTTP_VERB, reqHeaders?: any[], writeData?: any): Promise<string> {
-
-        if (reqHeaders == null) {
-            reqHeaders = [];
+    public request(options: IRestOptions): Promise<string> {
+        if (options.reqHeaders == null) {
+            options.reqHeaders = [];
         }
 
         // Log the resource and request info
-        this.log.debug("\n\nResource: " + resource + "\nRequest: " + request + "\n");
+        ImsRestClient.log.debug("\n\nResource: " + options.resource + "\nRequest: " + options.request + "\n");
 
         const imsSession = this.session as ImsSession;
         if (imsSession.imsConnectHost != null) {
-            reqHeaders.push({hostname: imsSession.imsConnectHost});
+            options.reqHeaders.push({hostname: imsSession.imsConnectHost});
         }
         if (imsSession.imsConnectPort != null) {
-            reqHeaders.push({port: imsSession.imsConnectPort});
+            options.reqHeaders.push({port: imsSession.imsConnectPort});
         }
-        return super.performRest(resource, request, reqHeaders, writeData);
+        return super.request(options);
     }
 
     /**
@@ -91,7 +85,7 @@ export class ImsRestClient extends RestClient {
             return original;
         } catch (e) {
             // if there's an error, the causeErrors text is not json
-            this.log.debug("Encountered an error trying to parse causeErrors as XML  - causeErrors is likely not JSON format");
+            ImsRestClient.log.debug("Encountered an error trying to parse causeErrors as XML  - causeErrors is likely not JSON format");
 
             original.msg += "\n" + details; // add the data string which is the original error
             return original;

@@ -19,6 +19,13 @@ const config: IImperativeConfig = {
     rootCommandDescription: PluginConstants.PLUGIN_DESCRIPTION,
     productDisplayName: PluginConstants.PLUGIN_NAME,
     name: PluginConstants.PLUGIN_GROUP_NAME,
+    // apimlConnLookup: [
+    //     {
+    //         apiId: "place_the_ims_apiId_here",
+    //         gatewayUrl: "api/v1",
+    //         connProfType: "ims"
+    //     }
+    // ],
     profiles: [
         {
             type: "ims",
@@ -63,8 +70,16 @@ const config: IImperativeConfig = {
                         type: "string",
                         optionDefinition: ImsSessionUtils.IMS_OPTION_BASE_PATH,
                     },
+                    protocol: {
+                        type: "string",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_PROTOCOL
+                    },
+                    rejectUnauthorized: {
+                        type: "boolean",
+                        optionDefinition: ImsSessionUtils.IMS_OPTION_REJECT_UNAUTHORIZED
+                    }
                 },
-                required: ["host"],
+                required: [],
             },
             createProfileExamples: [
                 {

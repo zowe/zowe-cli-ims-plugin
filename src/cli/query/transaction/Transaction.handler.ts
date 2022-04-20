@@ -9,7 +9,7 @@
 *                                                                                 *
 */
 
-import { IHandlerParameters, IProfile, ITaskWithStatus, Logger, TaskStage } from "@zowe/imperative";
+import { IHandlerParameters, ITaskWithStatus, Logger, TaskStage } from "@zowe/imperative";
 import { IIMSApiResponse, ImsSession, queryTransaction } from "../../../api";
 import { ImsBaseHandler } from "../../ImsBaseHandler";
 
@@ -20,7 +20,7 @@ import { ImsBaseHandler } from "../../ImsBaseHandler";
  * @implements {ICommandHandler}
  */
 export default class TransactionHandler extends ImsBaseHandler {
-    public async processWithSession(params: IHandlerParameters, session: ImsSession, profile: IProfile): Promise<IIMSApiResponse> {
+    public async processWithSession(params: IHandlerParameters, session: ImsSession): Promise<IIMSApiResponse> {
 
         const status: ITaskWithStatus = {
             statusMessage: "Querying resources from IMS",

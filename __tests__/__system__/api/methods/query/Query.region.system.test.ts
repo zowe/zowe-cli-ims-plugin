@@ -9,11 +9,11 @@
 *                                                                                 *
 */
 
-import { ITestEnvironment } from "../../../../__src__/environment/doc/response/ITestEnvironment";
-import { TestEnvironment } from "../../../../__src__/environment/TestEnvironment";
+import { ITestEnvironment, TestEnvironment } from "@zowe/cli-test-utils";
+import { ITestPropertiesSchema } from "../../../../__src__/doc/ITestPropertiesSchema";
 import { ImsSession, IQueryRegionParms, queryRegion } from "../../../../../src";
 
-let testEnvironment: ITestEnvironment;
+let testEnvironment: ITestEnvironment<ITestPropertiesSchema>;
 let imsConnectHost: string;
 let session: ImsSession;
 let imsRoute: string;

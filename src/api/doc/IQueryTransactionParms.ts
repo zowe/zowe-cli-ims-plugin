@@ -91,4 +91,9 @@ export interface IQueryTransactionParms {
      * Available values : N, Y
      */
     resp?: string;
+
+    /**
+     * Index signature
+     */
+    [key: string]: any;
 }

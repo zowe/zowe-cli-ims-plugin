@@ -22,24 +22,24 @@ exports[`Start region command should display the help 1`] = `
 
    memberName		 (string)
 
-      The name of the member that contains JCL for the region to start.  The maximum
-      length of the member name is eight characters.  If no member name is specified,
+      The name of the member that contains JCL for the region to start. The maximum
+      length of the member name is eight characters. If no member name is specified,
       the default member name is used
 
  OPTIONS
  -------
 
-   --route  | --rte (array)
+   --route | --rte (array)
 
       The region(s) to route the command to
 
-   --local  | -l (boolean)
+   --local | -l (boolean)
 
       If you specify the --local option, IMS overrides the symbolic IMSID parameter in
       the JCL of the default or specified member. --local is the default if you
       specify the --job-name option.
 
-   --job-name  | --jn (string)
+   --job-name | --jn (string)
 
       Use this option to override the job name on the JOB statement of the default or
       specified JCL member for a dependent region.
@@ -47,83 +47,90 @@ exports[`Start region command should display the help 1`] = `
  IMS CONNECTION OPTIONS
  ----------------------
 
-   --host  | -H (string)
+   --host | -H (string)
 
       The IMS Operations API server host name.
 
-   --port  | -P (number)
+   --port | -P (number)
 
       The IMS Operations API server port.
 
-   --ims-connect-host  | --ich (string)
+   --ims-connect-host | --ich (string)
 
       The hostname of your instance of IMS Connect. This is typically the hostname of
       the mainframe LPAR where IMS Connect is running.
 
-   --ims-connect-port  | --icp (number)
+   --ims-connect-port | --icp (number)
 
       The port of your instance of IMS Connect. This port can be found in your IMS
       Connect configuration file on the mainframe.
 
-   --plex  | -x (string)
+   --plex | -x (string)
 
       The name of the IMS plex.
 
-   --user  | -u (string)
+   --user | -u (string)
 
       The web server user name where the IMS Operations API resides.
 
-   --password  | --pass (string)
+   --password | --pass (string)
 
       The web server user password where the IMS Operations API resides.
 
-   --base-path  | --bp (string)
+   --base-path | --bp (string)
 
       The base path for your API mediation layer instance. Specify this option to
       prepend the base path to all z/OSMF resources when making REST requests. Do not
       specify this option if you are not using an API mediation layer.
 
+   --protocol (string)
+
+      Specifies protocol (http or https).
+
+      Default value: https
+      Allowed values: http, https
+
+   --reject-unauthorized | --ru (boolean)
+
+      Reject self-signed certificates.
+
+      Default value: true
+
  PROFILE OPTIONS
  ---------------
 
-   --ims-profile  | --ims-p (string)
+   --ims-profile | --ims-p (string)
 
       The name of a (ims) profile to load for this command execution.
 
-   --base-profile  | --base-p (string)
+   --base-profile | --base-p (string)
 
       The name of a (base) profile to load for this command execution.
 
  BASE CONNECTION OPTIONS
  -----------------------
 
-   --reject-unauthorized  | --ru (boolean)
-
-      Reject self-signed certificates.
-
-      Default value: true
-
-   --token-type  | --tt (string)
+   --token-type | --tt (string)
 
       The type of token to get and use for the API. Omit this option to use the
       default token type, which is provided by 'zowe auth login'.
 
-   --token-value  | --tv (string)
+   --token-value | --tv (string)
 
       The value of the token to pass to the API.
 
-   --cert-file  (local file path)
+   --cert-file (local file path)
 
       The file path to a certificate file to use for authentication
 
-   --cert-key-file  (local file path)
+   --cert-key-file (local file path)
 
       The file path to a certificate key file to use for authentication
 
  RESPONSE FORMAT OPTIONS
  -----------------------
 
-   --response-format-filter  | --rff (array)
+   --response-format-filter | --rff (array)
 
       Filter (include) fields in the response. Accepts an array of field/property
       names to include in the output response. You can filter JSON objects properties
@@ -131,7 +138,7 @@ exports[`Start region command should display the help 1`] = `
       with '--response-format-type' to reduce the output of a command to a single
       field/property or a list of a single field/property.
 
-   --response-format-type  | --rft (string)
+   --response-format-type | --rft (string)
 
       The command response output format type. Must be one of the following:
 
@@ -151,7 +158,7 @@ exports[`Start region command should display the help 1`] = `
 
       Allowed values: table, list, object, string
 
-   --response-format-header  | --rfh (boolean)
+   --response-format-header | --rfh (boolean)
 
       If \\"--response-format-type table\\" is specified, include the column headers in
       the output.
@@ -159,19 +166,19 @@ exports[`Start region command should display the help 1`] = `
  GLOBAL OPTIONS
  --------------
 
-   --response-format-json  | --rfj (boolean)
+   --response-format-json | --rfj (boolean)
 
       Produce JSON formatted data from a command
 
-   --help  | -h (boolean)
+   --help | -h (boolean)
 
       Display help text
 
-   --help-examples  (boolean)
+   --help-examples (boolean)
 
       Display examples for all the commands in a group
 
-   --help-web  | --hw (boolean)
+   --help-web | --hw (boolean)
 
       Display HTML help in browser
 
@@ -206,8 +213,8 @@ exports[`Start region command should display the help 1`] = `
   \\"success\\": true,
   \\"exitCode\\": 0,
   \\"message\\": \\"The help was constructed for command: region.\\",
-  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   region | reg\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Start an IMS region.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims start region [memberName] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   memberName\\\\t\\\\t (string)\\\\n\\\\n      The name of the member that contains JCL for the region to start.  The maximum\\\\n      length of the member name is eight characters.  If no member name is specified,\\\\n      the default member name is used\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --route  | --rte (array)\\\\n\\\\n      The region(s) to route the command to\\\\n\\\\n   --local  | -l (boolean)\\\\n\\\\n      If you specify the --local option, IMS overrides the symbolic IMSID parameter in\\\\n      the JCL of the default or specified member. --local is the default if you\\\\n      specify the --job-name option.\\\\n\\\\n   --job-name  | --jn (string)\\\\n\\\\n      Use this option to override the job name on the JOB statement of the default or\\\\n      specified JCL member for a dependent region.\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host  | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port  | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host  | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port  | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex  | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user  | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password  | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path  | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile  | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile  | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --reject-unauthorized  | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n   --token-type  | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value  | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file  (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file  (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter  | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type  | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header  | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Start a region stored in a member named MEM1:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM2 specifying the\\\\n   region to route the command:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM2\\\\\\" --route \\\\\\"IMS1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM3 and override\\\\n   the job name:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM3\\\\\\" --job-name \\\\\\"JOB9\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM4 routing to\\\\n   control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM4\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM5 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM5\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\",
+  \\"stdout\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   region | reg\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Start an IMS region.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims start region [memberName] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   memberName\\\\t\\\\t (string)\\\\n\\\\n      The name of the member that contains JCL for the region to start. The maximum\\\\n      length of the member name is eight characters. If no member name is specified,\\\\n      the default member name is used\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --route | --rte (array)\\\\n\\\\n      The region(s) to route the command to\\\\n\\\\n   --local | -l (boolean)\\\\n\\\\n      If you specify the --local option, IMS overrides the symbolic IMSID parameter in\\\\n      the JCL of the default or specified member. --local is the default if you\\\\n      specify the --job-name option.\\\\n\\\\n   --job-name | --jn (string)\\\\n\\\\n      Use this option to override the job name on the JOB statement of the default or\\\\n      specified JCL member for a dependent region.\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n   --protocol (string)\\\\n\\\\n      Specifies protocol (http or https).\\\\n\\\\n      Default value: https\\\\n      Allowed values: http, https\\\\n\\\\n   --reject-unauthorized | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --token-type | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Start a region stored in a member named MEM1:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM2 specifying the\\\\n   region to route the command:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM2\\\\\\" --route \\\\\\"IMS1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM3 and override\\\\n   the job name:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM3\\\\\\" --job-name \\\\\\"JOB9\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM4 routing to\\\\n   control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM4\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM5 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM5\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\",
   \\"stderr\\": \\"\\",
-  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   region | reg\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Start an IMS region.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims start region [memberName] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   memberName\\\\t\\\\t (string)\\\\n\\\\n      The name of the member that contains JCL for the region to start.  The maximum\\\\n      length of the member name is eight characters.  If no member name is specified,\\\\n      the default member name is used\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --route  | --rte (array)\\\\n\\\\n      The region(s) to route the command to\\\\n\\\\n   --local  | -l (boolean)\\\\n\\\\n      If you specify the --local option, IMS overrides the symbolic IMSID parameter in\\\\n      the JCL of the default or specified member. --local is the default if you\\\\n      specify the --job-name option.\\\\n\\\\n   --job-name  | --jn (string)\\\\n\\\\n      Use this option to override the job name on the JOB statement of the default or\\\\n      specified JCL member for a dependent region.\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host  | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port  | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host  | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port  | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex  | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user  | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password  | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path  | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile  | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile  | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --reject-unauthorized  | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n   --token-type  | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value  | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file  (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file  (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter  | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type  | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header  | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json  | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help  | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples  (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web  | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Start a region stored in a member named MEM1:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM2 specifying the\\\\n   region to route the command:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM2\\\\\\" --route \\\\\\"IMS1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM3 and override\\\\n   the job name:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM3\\\\\\" --job-name \\\\\\"JOB9\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM4 routing to\\\\n   control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM4\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM5 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM5\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\"
+  \\"data\\": \\"\\\\n COMMAND NAME\\\\n ------------\\\\n\\\\n   region | reg\\\\n\\\\n DESCRIPTION\\\\n -----------\\\\n\\\\n   Start an IMS region.\\\\n\\\\n USAGE\\\\n -----\\\\n\\\\n   zowe ims start region [memberName] [options]\\\\n\\\\n POSITIONAL ARGUMENTS\\\\n --------------------\\\\n\\\\n   memberName\\\\t\\\\t (string)\\\\n\\\\n      The name of the member that contains JCL for the region to start. The maximum\\\\n      length of the member name is eight characters. If no member name is specified,\\\\n      the default member name is used\\\\n\\\\n OPTIONS\\\\n -------\\\\n\\\\n   --route | --rte (array)\\\\n\\\\n      The region(s) to route the command to\\\\n\\\\n   --local | -l (boolean)\\\\n\\\\n      If you specify the --local option, IMS overrides the symbolic IMSID parameter in\\\\n      the JCL of the default or specified member. --local is the default if you\\\\n      specify the --job-name option.\\\\n\\\\n   --job-name | --jn (string)\\\\n\\\\n      Use this option to override the job name on the JOB statement of the default or\\\\n      specified JCL member for a dependent region.\\\\n\\\\n IMS CONNECTION OPTIONS\\\\n ----------------------\\\\n\\\\n   --host | -H (string)\\\\n\\\\n      The IMS Operations API server host name.\\\\n\\\\n   --port | -P (number)\\\\n\\\\n      The IMS Operations API server port.\\\\n\\\\n   --ims-connect-host | --ich (string)\\\\n\\\\n      The hostname of your instance of IMS Connect. This is typically the hostname of\\\\n      the mainframe LPAR where IMS Connect is running.\\\\n\\\\n   --ims-connect-port | --icp (number)\\\\n\\\\n      The port of your instance of IMS Connect. This port can be found in your IMS\\\\n      Connect configuration file on the mainframe.\\\\n\\\\n   --plex | -x (string)\\\\n\\\\n      The name of the IMS plex.\\\\n\\\\n   --user | -u (string)\\\\n\\\\n      The web server user name where the IMS Operations API resides.\\\\n\\\\n   --password | --pass (string)\\\\n\\\\n      The web server user password where the IMS Operations API resides.\\\\n\\\\n   --base-path | --bp (string)\\\\n\\\\n      The base path for your API mediation layer instance. Specify this option to\\\\n      prepend the base path to all z/OSMF resources when making REST requests. Do not\\\\n      specify this option if you are not using an API mediation layer.\\\\n\\\\n   --protocol (string)\\\\n\\\\n      Specifies protocol (http or https).\\\\n\\\\n      Default value: https\\\\n      Allowed values: http, https\\\\n\\\\n   --reject-unauthorized | --ru (boolean)\\\\n\\\\n      Reject self-signed certificates.\\\\n\\\\n      Default value: true\\\\n\\\\n PROFILE OPTIONS\\\\n ---------------\\\\n\\\\n   --ims-profile | --ims-p (string)\\\\n\\\\n      The name of a (ims) profile to load for this command execution.\\\\n\\\\n   --base-profile | --base-p (string)\\\\n\\\\n      The name of a (base) profile to load for this command execution.\\\\n\\\\n BASE CONNECTION OPTIONS\\\\n -----------------------\\\\n\\\\n   --token-type | --tt (string)\\\\n\\\\n      The type of token to get and use for the API. Omit this option to use the\\\\n      default token type, which is provided by 'zowe auth login'.\\\\n\\\\n   --token-value | --tv (string)\\\\n\\\\n      The value of the token to pass to the API.\\\\n\\\\n   --cert-file (local file path)\\\\n\\\\n      The file path to a certificate file to use for authentication\\\\n\\\\n   --cert-key-file (local file path)\\\\n\\\\n      The file path to a certificate key file to use for authentication\\\\n\\\\n RESPONSE FORMAT OPTIONS\\\\n -----------------------\\\\n\\\\n   --response-format-filter | --rff (array)\\\\n\\\\n      Filter (include) fields in the response. Accepts an array of field/property\\\\n      names to include in the output response. You can filter JSON objects properties\\\\n      OR table columns/fields. In addition, you can use this option in conjunction\\\\n      with '--response-format-type' to reduce the output of a command to a single\\\\n      field/property or a list of a single field/property.\\\\n\\\\n   --response-format-type | --rft (string)\\\\n\\\\n      The command response output format type. Must be one of the following:\\\\n\\\\n      table: Formats output data as a table. Use this option when the output data is\\\\n      an array of homogeneous JSON objects. Each property of the object will become a\\\\n      column in the table.\\\\n\\\\n      list: Formats output data as a list of strings. Can be used on any data type\\\\n      (JSON objects/arrays) are stringified and a new line is added after each entry\\\\n      in an array.\\\\n\\\\n      object: Formats output data as a list of prettified objects (or single object).\\\\n      Can be used in place of \\\\\\"table\\\\\\" to change from tabular output to a list of\\\\n      prettified objects.\\\\n\\\\n      string: Formats output data as a string. JSON objects/arrays are stringified.\\\\n\\\\n      Allowed values: table, list, object, string\\\\n\\\\n   --response-format-header | --rfh (boolean)\\\\n\\\\n      If \\\\\\"--response-format-type table\\\\\\" is specified, include the column headers in\\\\n      the output.\\\\n\\\\n GLOBAL OPTIONS\\\\n --------------\\\\n\\\\n   --response-format-json | --rfj (boolean)\\\\n\\\\n      Produce JSON formatted data from a command\\\\n\\\\n   --help | -h (boolean)\\\\n\\\\n      Display help text\\\\n\\\\n   --help-examples (boolean)\\\\n\\\\n      Display examples for all the commands in a group\\\\n\\\\n   --help-web | --hw (boolean)\\\\n\\\\n      Display HTML help in browser\\\\n\\\\n EXAMPLES\\\\n --------\\\\n\\\\n   - Start a region stored in a member named MEM1:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM2 specifying the\\\\n   region to route the command:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM2\\\\\\" --route \\\\\\"IMS1\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM3 and override\\\\n   the job name:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM3\\\\\\" --job-name \\\\\\"JOB9\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM4 routing to\\\\n   control regions IMS1 and IMS2:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM4\\\\\\" --route \\\\\\"IMS1 IMS2\\\\\\"\\\\n\\\\n   - Start a region stored in a member named MEM5 specifying\\\\n   optional connection parameters:\\\\n\\\\n      $ zowe ims start region \\\\\\"MEM5\\\\\\" --user \\\\\\"username\\\\\\" --pass \\\\\\"pass1234\\\\\\" --host \\\\\\"localhost\\\\\\" --port 8080 --ich \\\\\\"zos1\\\\\\" --icp 9999 --plex \\\\\\"PLEX1\\\\\\"\\\\n\\\\n\\"
 }"
 `;
