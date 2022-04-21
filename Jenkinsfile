@@ -29,10 +29,9 @@ node('zowe-jenkins-agent') {
 
     // Protected branch property definitions
     pipeline.protectedBranches.addMap([
-        [name: "master", tag: "latest", aliasTags: ["zowe-v1-lts"], devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR],
-        //[name: "master", tag: "latest", devDependencies: ["@zowe/imperative": "latest"]],
-        //[name: "zowe-v1-lts", tag: "zowe-v1-lts", devDependencies: ["@zowe/imperative": "zowe-v1-lts"], level: SemverLevel.MINOR]
-        [name: "lts-incremental", tag: "lts-incremental", devDependencies: ["@zowe/imperative" :"lts-incremental"], level: SemverLevel.PATCH]
+        [name: "master", tag: "latest", level: SemverLevel.MINOR, aliasTags: ["zowe-v2-lts", "next"], devDependencies: ["@zowe/cli": "zowe-v2-lts", "@zowe/cli-test-utils": "zowe-v2-lts", "@zowe/imperative": "zowe-v2-lts"]],
+        [name: "zowe-v1-lts", tag: "zowe-v1-lts", level: SemverLevel.PATCH, devDependencies: ["@zowe/imperative": "zowe-v1-lts"]]
+        //[name: "next", tag: "next", prerelease: "next", devDependencies: ["@zowe/cli": "next", "@zowe/cli-test-utils": "next", "@zowe/imperative": "next"]]
     ])
 
     // Git configuration information
