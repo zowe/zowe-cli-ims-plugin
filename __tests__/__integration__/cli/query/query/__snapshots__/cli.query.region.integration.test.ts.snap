@@ -172,10 +172,6 @@ exports[`ims query region should display the query region help 1`] = `
 
       Display help text
 
-   --help-examples (boolean)
-
-      Display examples for all the commands in a group
-
    --help-web | --hw (boolean)
 
       Display HTML help in browser
