@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for Imperative
+about: Suggest an idea
 labels: enhancement, new
 ---
 
