@@ -2,6 +2,10 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
+## Recent Changes
+
+- BugFix: Add missing npm-shrinkwrap
+
 ## `2.0.4`
 
 - BugFix: Updated `moment` dependency.
