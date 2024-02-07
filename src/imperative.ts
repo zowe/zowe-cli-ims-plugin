@@ -91,7 +91,8 @@ const config: IImperativeConfig = {
             ]
         }
     ],
-    pluginHealthCheck: __dirname + "/healthCheck"
+    pluginHealthCheck: __dirname + "/healthCheck",
+    pluginLifeCycle: __dirname + "/pluginLifeCycle"
 };
 
 export = config;

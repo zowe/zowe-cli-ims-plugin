@@ -9,14 +9,21 @@
 *                                                                                 *
 */
 
-describe("imperative config", () => {
+import { AbstractPluginLifeCycle, Logger } from "@zowe/imperative";
 
-    // Will fail if imperative config object is changed. This is a sanity/protection check to ensure that any
-    // changes to the configuration document are intended (and the snapshot must be updated).
-    it("should match the snapshot", () => {
-        const config = require("../src/imperative");
-        delete config.pluginHealthCheck; // this path changes depending on your system and can't be snapshotted.
-        delete config.pluginLifeCycle; // this path changes depending on your system and can't be snapshotted.
-        expect(config).toMatchSnapshot();
-    });
-});
+class PluginLifeCycle extends AbstractPluginLifeCycle {
+    public postInstall(): void | Promise<void> {
+        const deprecationMessage = "The IBM® IMS™ Plug-in for Zowe CLI is deprecated, " +
+            "and will not receive additional security updates, bug fixes, or enhancements.";
+        const consoleLogger = Logger.getConsoleLogger();
+        const appLogger = Logger.getAppLogger();
+        consoleLogger.warn(deprecationMessage);
+        appLogger.warn(deprecationMessage);
+    }
+
+    public preUninstall(): void | Promise<void> {
+        return;
+    }
+}
+
+export = PluginLifeCycle;

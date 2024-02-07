@@ -46,7 +46,7 @@
     "configurationModule": "lib/imperative.js"
   },
   "peerDependencies": {
-    "@zowe/imperative": "^5.0.0"
+    "@zowe/imperative": "^5.10.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.0",

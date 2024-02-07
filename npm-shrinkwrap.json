@@ -39,7 +39,7 @@
         "uuid": "^3.2.1"
       },
       "peerDependencies": {
-        "@zowe/imperative": "^5.0.0"
+        "@zowe/imperative": "^5.10.0"
       }
     },
     "node_modules/@babel/code-frame": {
