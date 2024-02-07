@@ -1,5 +1,7 @@
 # IBM® IMS™ Plug-in for Zowe CLI <!-- omit in toc -->
 
+### The IBM® IMS™ Plug-in for Zowe CLI is deprecated, and will not receive additional security updates, bug fixes, or enhancements.
+
 [![codecov](https://codecov.io/gh/zowe/zowe-cli-ims-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/zowe/zowe-cli-ims-plugin)
 
 The IBM IMS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).

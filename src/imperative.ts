@@ -10,7 +10,7 @@
 */
 
 // Imperative version of Zowe CLI
-import { IImperativeConfig } from "@zowe/imperative";
+import { IImperativeConfig} from "@zowe/imperative";
 import { PluginConstants } from "./api/constants/PluginConstants";
 import { ImsSessionUtils } from "./cli/ImsSessionUtils";
 
@@ -91,7 +91,8 @@ const config: IImperativeConfig = {
             ]
         }
     ],
-    pluginHealthCheck: __dirname + "/healthCheck"
+    pluginHealthCheck: __dirname + "/healthCheck",
+    pluginLifeCycle: __dirname + "/pluginLifeCycle"
 };
 
 export = config;
