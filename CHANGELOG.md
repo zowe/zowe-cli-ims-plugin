@@ -2,7 +2,7 @@
 
 All notable changes to the IBM® IMS™ Plug-in for Zowe CLI will be documented in this file.
 
-## Recent Changes
+## `2.0.5`
 
 - Deprecated: Added deprecation notices
 - BugFix: Added missing npm-shrinkwrap
