@@ -7,7 +7,7 @@
 The IBM IMS Plug-in for Zowe CLI lets you extend Zowe CLI to interact with IMS resources (programs and transactions). You can use the plug-in to create new IMS applications or update existing IMS applications. For more information about IMS, see [IBM Information Management System (IMS)](https://www.ibm.com/it-infrastructure/z/ims).
 
 - [How the plug-in works](#how-the-plug-in-works)
-- [Software rerequirements](#software-rerequirements)
+- [Software requirements](#software-requirements)
 - [Installing](#installing)
 - [Building from source](#building-from-source)
 - [Creating a user profile](#creating-a-user-profile)
@@ -23,7 +23,7 @@ As an application developer or DevOps administrator, you can use IBM IMS Plug-in
 -   Deploy application code into IMS production or test systems.
 -   Write scripts to automate IMS actions that you traditionally perform using ISPF editors, TSO, and SPOC.
 
-## Software rerequirements
+## Software requirements
 
 <!-- TODO When @latest branch of Zowe docs-site exists, we should give users the option to go and read about/install the @latest or the @lts-incremental versions of this plug-in. We can also explain which branches in the repo correspond to which CLI version. -->
 
