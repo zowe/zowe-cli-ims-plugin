@@ -6,7 +6,6 @@ Object {
     "**/cli/*/*.definition!(.d).*s",
   ],
   "name": "ims",
-  "pluginLifeCycle": "/home/awharn/GitHub/zowe-cli-ims-plugin/src/pluginLifeCycle",
   "productDisplayName": "IBM IMS Plug-in for zowe CLI",
   "profiles": Array [
     Object {
